@@ -1,0 +1,169 @@
+.__menuIsOpen{
+    background: #3D3D3D;
+}
+
+.__menuBarFull{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.__admin_divisionOptions{
+    background: #3D3D3D;
+    height: 108%;
+}
+
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.__admin_options{
+    padding-bottom: 2rem;
+}
+.__admin_nameUser{
+    display: flex;
+    justify-content: center;
+    padding:1rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: .8rem;
+    color:white;
+}
+
+li { list-style-type: none; }
+
+.__admin_iconOption svg{
+    width: 1.7rem;
+    height: 1.7rem;
+    color: white;
+}
+
+.__admin_linkOption{
+    display: flex;
+}
+
+.__admin_linkOption:hover, .__admin_menu_li:hover{
+    border-left: 3px solid #A75DA3;
+    border-radius: 2px 0 0 2px;
+}
+
+.__admin_linkOption{
+    border-left: 3px solid transparent;
+    padding-left: 1rem;
+}
+
+.__admin_menu_li{
+    border-left: 3px solid transparent;
+    padding-left: 1.3rem;
+}
+
+.__admin_iconOption_active svg{
+    width: 1.7rem;
+    height: 1.7rem;
+    color: #A75DA3;
+}
+
+.__admin_iconOption disabled{
+    cursor: not-allowed;
+}
+
+.__admin_optionTitle{
+    display: flex;
+    align-items: center;
+}
+
+.__admin_option{
+    display: flex;
+    cursor: pointer;
+}
+.__admin_option{
+    padding-bottom: 1rem;
+    margin-left: 0.4rem;
+}
+.__admin_optionTitle{
+    padding-left: 1rem;
+}
+.__admin_optionTitle{
+    color: #E2E8F0;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: .8rem;
+}
+
+.__admin_notify{
+   }
+
+.__admin_arrowOption{
+}
+
+.__admin_logo img{
+    max-width: 200px; 
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    max-height: 2.3rem;
+    padding-right: 1.1rem;
+    padding-left: 1.1rem;
+    cursor: pointer;
+}
+
+.__admin_closeMenu{
+    display:none;
+}
+
+.__admin_menu_ul{
+    padding-right: 0.4rem;
+    margin-top: 0.4rem;
+}
+
+.__admin_menu_li{
+    color: #E2E8F0;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: .8rem;    
+}
+
+@media screen and (max-width: 600px){
+
+    .__admin_closeMenu{
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 2.5rem;
+    }
+    
+    .__admin_closeMenu svg{    
+        position: relative;
+        width: 3rem;
+        height: 2rem;
+        color: white;
+        top: 2rem;
+        left: 1rem;
+    }
+
+    .__admin_notify{
+        padding:0px;
+        position: relative;
+        left: 1rem;
+        top: 0.2rem;
+     }
+
+     .__admin_arrowOption {
+        padding-left: 0px;
+        position: relative;
+        left: 0.5rem;
+        top: 0.2rem;
+    }
+    
+    .__admin_logo{
+        display: flex;
+        justify-content: center;
+    }
+    .__admin_nameUser {
+        justify-content: center;
+    }
+
+    .__admin_option{
+        justify-content: center;
+        padding-left:0rem!important;
+    }
+}

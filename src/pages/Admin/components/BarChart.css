@@ -1,0 +1,67 @@
+.chart-container {
+    height: max-content;
+    width: 93%;
+    margin: auto;
+    margin-bottom: 2rem;
+    margin-left: 2rem;
+    background: #FFFFFF;
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+.chart-barchart{
+    height: 300px;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.chart-legendas {
+    display: flex;
+    align-items: center;
+}
+
+.chart-legenda {
+    margin-right: 0.5rem;
+    display: flex;
+}
+
+.chart-legenda-new {
+    width: 16px;
+    height: 16px;
+    background: #F2EFFF;
+    border-radius: 2px;
+}
+
+.chart-legenda-approved{
+    width: 16px;
+    height: 16px;
+    background: #353535;
+    border-radius: 2px;
+}
+
+.chart-legenda-new, .chart-legenda-approved {
+    margin-right: 0.2rem;
+}
+
+.chart-legenda-p{
+    display: flex;
+    align-items: center;
+}
+
+.chart-select{
+    background: #F7F7F7;
+    border: 1px solid #E0E0E0;
+    border-radius: 12px;
+    padding: 4px;
+}
+
+@media screen and (max-width: 600px) {
+    .chart-container{
+        width: auto;
+    }
+}

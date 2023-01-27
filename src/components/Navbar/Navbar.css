@@ -1,0 +1,48 @@
+.__navbar_content{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.__navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    gap: 10px;
+    background: #3D3D3D;
+    color: #FFFFFF;
+}
+
+.__navbar_notifications{
+    display: flex;
+    align-items: center;
+    font-family: 'Poppins';
+}
+
+.__navbar_header{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat';
+}
+
+.__navbar_subtitle{
+    font-size: 12px;
+}
+
+.__navbar_notifications_icon{
+    color: #A75DA3;
+    font-size: 20px;
+    margin-right: 0.5rem;
+}
+
+.__navbar_notifications_span{
+    margin-right: 3rem;
+}
+
+@media screen and (min-width: 1400px){
+    .__navbar_content{
+        width: 50%;
+    }
+}

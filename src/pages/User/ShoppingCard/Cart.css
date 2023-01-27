@@ -1,0 +1,264 @@
+/*overflow-y: scroll
+*/
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000055;
+    z-index: 10;
+    
+}
+
+.shoppingCart {
+    width: 86%;
+    height: 100%;
+    left: 202px;
+    background-color: #F2F2F2;
+    padding: 1rem;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+}
+
+ .select{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: .8rem;
+    color: #767676;
+    padding-left: 1rem;
+ }
+
+.cart-product {
+    width: 20rem;
+    box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    border-radius: 28px;    
+    padding: 30px;
+    gap: 27px;
+    background-color: #FFFFFF;
+}
+
+.cart-product h1{
+    margin-top: 0px;
+    margin-bottom: 1rem;
+}
+.cart-product-img img{
+    max-width: 18rem;
+    padding-bottom: 3px;
+}
+
+.cart-product-img{
+    display: flex;
+    justify-content: center;
+}
+
+.next-page-payment{
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    background-color: #1F2533;
+    border: none;
+    width: 10rem;
+    height: 3rem;
+    border-radius: 10px;
+    color: #F7FAFC;
+    font-family: 'Inter', sans-serif; 
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.next-page-payment:hover{
+    background-color: #a96f03;
+}
+
+.button-next-page-payment{
+   display: flex;
+   padding-top: 1rem;
+   justify-content: flex-end;
+}
+
+.cancel-payment{
+    width: 10rem;
+    height: 3rem;
+    border: none;
+    background-color: white;
+    font-family: 'Inter', sans-serif;
+    color: #4A5568;
+    font-weight: 500;
+}
+
+.cart-products-payment{
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: .6rem;
+    color: #000000;
+    padding-right: 2rem;
+}
+
+.headerShoppingCart h1{
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #000000;
+    padding-left: 2.5rem;
+    position: relative;
+    bottom: 1rem;
+}
+
+.headerShoppingCart{
+    display: flex;
+    padding-top: 3rem;
+    padding-left: 4rem;
+}
+
+.product-price{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-price h1 {
+    margin: 0px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: #000000;
+}
+
+.product-price h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #000000;
+}
+
+.product-subtotal{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-subtotal h1{
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #4A5568;
+}
+
+.product-subtotal h2{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #2D3748;
+}
+
+.product-taxa{
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-taxa h1{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #4A5568;
+}
+
+.product-taxa h2{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #2D3748;
+}
+
+.product-delivery{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-delivery h1{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #4A5568;   
+}
+
+.product-delivery h2{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #38B2AC; 
+}
+
+.product-quantity{
+ display: flex;
+ justify-content: space-between;
+}
+
+.count-product-quantity{
+    height:2rem;
+    width: 3rem;
+    border:none;
+}
+
+.product-quantity h1{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #4A5568;
+}
+
+.total-products-car{
+    display: flex;
+    justify-content: space-between;   
+    align-items: center
+}
+
+.total-products-car h1{
+    font-family: 'Inter', sans-serif; 
+    font-size: 1rem;
+    font-weight: bold;
+    color: #2D3748; 
+}
+
+.total-products-car h2{
+    font-family: 'Inter', sans-serif; 
+    font-size: 1rem;
+    font-weight: bold;
+    color: #2D3748; 
+}
+
+.remove-item-car{
+    display: flex;
+    justify-content: space-between; 
+}
+
+.remove-item-car h1{
+    margin:0px;
+    font-family: 'Inter', sans-serif; 
+    font-size: 1rem;
+    font-weight: bold;
+    color: #2D3748; 
+}
+
+.content-products-payment{
+    height: 80%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.__content-payment-card_{
+    display: flex;
+    width: 96%;
+    justify-content: space-evenly;
+}
+
+.display-block {
+    display: block;
+  }
+  
+  .display-none {
+    display: none;
+  }

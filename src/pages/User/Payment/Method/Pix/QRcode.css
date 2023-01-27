@@ -1,0 +1,49 @@
+
+
+.__qrcode {
+    justify-content: center;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 202px;
+    right: 0;
+    bottom: 0;
+    width: 86.5%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    align-items: center;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+}
+
+.__imgQr{
+    display: flex;
+}
+
+.__titleQrcode h1{
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin: 0px;
+    padding-bottom: 1rem;
+}
+
+.__closedModalPix{
+    display: flex;
+    width: 36%;
+    justify-content: flex-end;
+    
+}
+
+@media screen and (max-width: 600px){
+    .__qrcode{
+        width: 100%;
+        left:0px;
+    }
+    .__closedModalPix {
+        padding-left: 12rem;
+    }
+
+}

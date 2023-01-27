@@ -1,0 +1,12 @@
+.__containerOrderPlaced{
+   display: flex;
+    background-color:  #F2F2F2;
+
+}
+
+.__orderPlacedComponent{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    
+}

@@ -1,0 +1,414 @@
+.__container {
+    display: flex;
+    width: 100%;
+
+}
+
+.__menu {
+    background-color: red;
+
+    width: 20%;
+}
+
+.__card {
+    padding: 1rem;
+
+    width: 100%;
+}
+
+
+.__linkIndication {
+    display: flex;
+    padding-bottom: 1rem;
+}
+
+.__myCommunity {
+    width: 34rem;
+    margin-top:2rem;
+    background-color: #FFFFFF;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+}
+
+.__cardRewards {
+    display: flex;
+    height: 41%;
+}
+
+
+.__cardHistoric {
+    padding: 1rem;
+    box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    border-radius: 5px;
+    background-color: #FFFFFF;
+}
+
+._cardmyhart {
+    display: flex;
+    align-items: center;
+}
+
+.__limitBar {
+    padding-top: 1.5rem;
+}
+
+.__summaryTitle {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #404040;
+
+}
+
+.__incomeAmounts {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #404040;
+}
+
+.__cardIndications {
+    box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    border-radius: 5px;
+    width: 315px;
+    height: 128px;
+    background-color: #FFFFFF;
+}
+
+._cardIndications{
+    display: flex;
+}
+
+
+.__valueIndications h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: .8rem;
+}
+
+._userIndication{
+  padding-top: .5rem;
+}
+
+.__valueIndications{
+    display: flex;
+}
+
+._cardIndication{
+width: 17rem;
+height: 7rem;
+background-color: #FFFFFF;
+border-radius: 5px;
+display: flex;
+}
+
+._cardIndication h1{
+    font-family: 'Poppins', sans-serif; 
+    font-size: .8rem; 
+    color: #2B2B2B;
+    font-weight: 600;
+}
+
+._percentage{
+    display: flex;
+    align-items: center;
+}
+
+._percentage h2{
+    font-family: 'Inter', sans-serif; 
+    font-size: .7rem; 
+    color: #535353;
+    font-weight: 600;
+}
+
+
+
+._divisionCardIndication{
+   width: 74%;
+   padding-left: 1rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+}
+
+._divisionCardIndication h1{
+   font-family: 'Poppins', sans-serif;
+   font-weight: 600;
+   font-size: 1rem;
+   margin: 2px;
+}
+
+._iconPercentage{
+    display: flex;
+    padding: 3px, 2px, 3px, 2px;
+    background: rgba(217, 83, 79, 0.24);
+    align-items: center;
+    height: 1.5rem;
+}
+
+._percentage h2{
+   padding-left: .8rem;
+}
+
+._iconPercentage h1{
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 600;
+    font-size: .7rem;
+    color: #D9534F;
+}
+
+._contentCardIndication{
+    width: 34rem;
+    height: 16rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+._totalIndications {
+    padding-top: 3.2rem;
+}
+
+.__cardSummary {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+._contentCard{
+    display: flex;
+    width: 36rem;
+    justify-content: space-between;
+}
+
+.__valueIndications h1 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+    font-size: 2rem;
+    color: #696969;
+}
+
+.__valueIndications h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: .8rem;
+    color: hsl(166, 39%, 43%);
+    margin: 1rem;
+}
+
+.__valueIndications h4 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: .8rem;
+    color: #979797;
+    margin: 1rem;
+}
+
+.__myCommunity h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #404040;
+}
+
+.__inputIndications {
+    width: 23rem;
+    height: 50px;
+    background-color: #F1F3F6;
+    border-radius: 8px;
+    border: none;
+}
+
+
+.__buttonIndications {
+    background-color: #A75DA3;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0px 4px 12px rgba(92, 92, 92, 0.5);
+    width: 101px;
+    height: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer !important;
+}
+
+.__favorites {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-right: 6rem;
+}
+
+.__favorites a {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #555555;
+}
+
+.__peopleName {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: .8rem;
+    color: #404040;
+    display: flex;
+    justify-content: center;
+}
+
+.__rewards {
+    margin-right: 2rem;
+    box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    border-radius: 5px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    width: 15rem;
+}
+
+.__incomeAmounts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 15rem;
+    box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: #FFFFFF;
+}
+
+.__incomeAmounts img {
+    max-width: 223px;
+
+}
+
+._titleRewards {
+    display: flex;
+}
+
+._titleRewards h1 {
+    font-family: 'Poppins', sans-serif;
+    color: #202020;
+    font-weight: 600;
+    font-size: 1rem;
+    display: flex;
+}
+
+.__incomeAmounts h1 {
+    font-family: 'Poppins', sans-serif;
+    color: #202020;
+    font-weight: 600;
+    font-size: 1rem;
+    display: flex;
+}
+
+.__rewardTitle {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #404040;
+    justify-content: space-between;
+    display: flex;
+}
+
+.__rewards img {
+
+    max-width: 214px;
+}
+
+
+.__rewards h2 {
+    font-family: 'Lato', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: #696969;
+    margin-bottom: 0px;
+}
+
+.__rewards h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: #898989;
+}
+
+.__nameUser {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: .8rem;
+    color: white;
+}
+
+
+
+@media screen and (max-width: 600px) {
+    .__card {
+        padding: 0px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .__cardCommunity {
+        flex-direction: column;
+        height: 100%;
+    }
+
+    ._cardmyhart {
+        display: flex;
+        justify-content: center;
+
+    }
+
+    ._cardmyhart img {
+        max-width: 260px;
+    }
+
+    .__favorites {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding-right: 0rem;
+        flex-wrap: wrap;
+    }
+
+    .__cardRewards {
+        flex-direction: column;
+    }
+
+    ._cardmyhart img {
+        max-width: none;
+    }
+
+    .__historyRewards h1 {
+        font-size: 1.2rem;
+    }
+
+    .__cardSummary {
+        flex-wrap: wrap;
+    }
+
+
+    .rightArrow {
+        position: relative;
+        margin-left: 0rem;
+        right: 3rem;
+    }
+
+    .__limitBar img {
+        max-width: 330px;
+    }
+
+    .__limitBar {
+        padding-top: 0rem;
+    }
+}

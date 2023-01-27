@@ -1,0 +1,111 @@
+.__historicRewards h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #404040;
+    padding-left: 2rem;
+    margin: 0px;
+}
+
+.__tableRewardsTitle {
+    display: flex;
+    padding-left: 4rem;
+    padding-right: 2rem;
+    justify-content: space-between;
+}
+
+
+.__titleRewards {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+    font-size: 1rem;
+    color: #AEAEAE;
+}
+
+.__tableRewards {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: .8rem;
+}
+
+.__tableRewardsTitle {
+    display: flex;
+    padding-left: 4rem;
+    padding-right: 2rem;
+    justify-content: space-between;
+}
+
+.__titleRewards {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+    font-size: 1rem;
+    color: #AEAEAE;
+}
+
+.__originRewards {
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: .8rem;
+    color: #404040;
+    word-break: break-all;
+}
+
+.__typeRewards {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: .8rem;
+    color: #C7C7C7;
+    padding-right: 4rem;
+    word-break: break-all;
+}
+
+.__dateRewards {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: .8rem;
+    color: #C7C7C7;
+    padding-right: 4rem;
+}
+
+.__valueRewards {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: .8rem;
+    color: #404040;
+}
+
+.__tableRewards td {
+    padding: 1rem;
+    word-break: break-all;
+}
+
+.__tableRewards td img {
+    position: relative;
+    bottom: 0.3rem;
+}
+
+.__tableRewards tr {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 600px) {
+    .__tableRewardsTitle {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .__dateRewards {
+        padding-right: 0px !important;
+    }
+
+    .__typeRewards {
+        padding-right: 0px !important;
+    }
+
+    .td {
+        white-space: none;
+    }
+}

@@ -1,0 +1,62 @@
+.__admin_dashboard_community_table {
+    width: 100%;
+}
+
+.__table_scroll{
+    overflow-x: auto !important;
+}
+
+.__admin_dashboard_community_table th,
+td {
+    text-align: left;
+    padding: 1rem;
+}
+
+.__admin_dashboard_community_table th{
+    color: #949494;
+    font-family: 'Inter';
+    font-weight: 400;
+}
+
+.__admin_dashboard_community_table td{
+    font-weight: 600;
+}
+
+.__admin_dashboard_community_header_title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.__admin_dashboard_community_pay {
+    color: #16C098;
+    font-family: 'Inter';
+    font-weight: 700;
+}
+
+.__admin_dashboard_community_pay {
+    background: rgba(22, 192, 152, 0.2);
+    border-radius: 4px;
+    padding: 0.5rem;
+}
+
+.operational{
+    /* background: #4BBF73;
+    background: #f00; */
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 0.4rem;
+}
+
+.operational.approved{
+    background: #4BBF73;
+}
+
+.operational.refused{
+    background: #f00;
+}
+
+.operational.pending{
+    background: #f1c232;
+}

@@ -1,0 +1,122 @@
+.__titleOrderPlaced h1{
+    font-family: 'Inter', sans-serif; 
+    font-weight: 600;
+    font-size: 1rem; 
+    color: #1F2533; 
+    margin-left: 2rem; 
+}
+
+.__orderConfirmed h1{
+   font-family: 'Poppins', sans-serif;
+   font-weight: 600;
+   font-size: 1rem; 
+   color: #5A607F;
+}
+
+.__orderConfirmed h2{
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1rem; 
+    color: #A75DA3;
+}
+
+.__titleDetailsOrderPlaced h1{
+    font-family: 'Inter', sans-serif; 
+    font-weight: 600;
+    font-size: .8rem; 
+    color: #000000;
+}
+
+.__dataUserPlaced h1{
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: .8rem;
+    color: #000000;
+}
+
+.__dataUserPlaced h2{
+    margin-left: .8rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 200;
+    font-size: .8rem;
+    color: #000000;
+}
+
+
+
+.__waitingPayment h1{
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #000000;
+    margin: 0px;
+    text-align: center;
+}
+
+.__dataUserPlaced{
+    display: flex;
+    align-items: center;
+}
+
+.__infoUserOrderPlaced{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 2rem;
+}
+
+.__orderContent{
+margin-top: 6rem;
+box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+border-radius: 28px;
+height: 29rem;
+background-color: #FFFFFF;
+padding: 20px;
+width: 28rem;
+}
+
+._orderContent{
+    padding: .6rem;
+}
+
+.__waitingPayment{
+    width: 27rem;
+    display: flex;
+    justify-content: center; 
+}
+
+._waitingPayment{
+    width: 23rem;
+}
+
+.__orderConfirmed{
+    height: 12rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.__detailsOrderPlaced{
+    margin-top: 2rem;
+    margin-left: 2rem
+}
+
+.__buttonOrderPlaced{
+    background-color: #1F2533;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500; 
+    font-size: .8rem;
+    color: #F7FAFC;
+    padding: 10px;
+    gap: 10px;
+    border-radius: 10px;
+    width: 10rem;
+    height: 3rem;
+}
+
+._buttonOrderPlaced{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}

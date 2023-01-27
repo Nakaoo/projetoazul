@@ -1,0 +1,247 @@
+.__cardMyhart h1 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #404040;
+    padding-left: 1rem;
+    margin: 0px;
+}
+
+.__contentLimit{
+
+}
+
+.__cardCommunity {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    display: flex;
+    border-radius: 5px;
+    box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    background-color: #FFFFFF;
+    justify-content: space-between;
+}
+
+.leftArrow {
+    margin-right: 15px;
+}
+
+.rightArrow {
+    position: relative;
+    margin-left: 0rem;
+    right: 3rem;
+}
+
+.__divisionBar {
+    padding-left: 28px;
+}
+
+.cardMyHart{
+    width: 20rem;
+    height: 12rem;
+}
+
+
+.__limitValue {
+    display: flex;
+}
+
+.__limitValue h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: .9rem;
+    color: #AEAEAE;
+}
+
+.__limitValue h2 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+    font-size: .9rem;
+    color: #404040;
+    padding-left: 6.2rem;
+}
+
+._upgrade{
+    display: none;
+}
+
+.__divisionLimit {
+    display: flex;
+    flex-direction: column;
+ 
+}
+
+.__valueLimit {
+    display: flex;
+    flex-direction: column;
+}
+
+.__currentBalance {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-top: 32px;
+}
+
+.__currentBalance h2 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #197BBD;
+    margin: 0px;
+}
+
+.__currentBalance h1 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+    font-size: 2.2rem;
+    color: #197BBD;
+    margin: 0px;
+}
+
+.__currentBalance h3 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 200;
+    font-size: 1rem;
+    color: #AEAEAE;
+    margin: 0px;
+}
+
+.__income h1 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: #439A86;
+    font-style: normal;
+}
+
+.__income h2 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 200;
+    font-size: 1rem;
+    color: #AEAEAE;
+    margin: 0px;
+}
+
+
+.__cashBack h1 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: #439A86;
+}
+
+.__cashBack h2 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 200;
+    font-size: 1rem;
+    color: #AEAEAE;
+    margin: 0px;
+}
+
+.__cashBack {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 20px;
+}
+
+.__buttonRequest button {
+    width: 10rem;
+    height: 2.7rem;
+    background-color: #A75DA3;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0px 4px 12px rgba(92, 92, 92, 0.5);
+}
+
+.__buttonRequest {
+    padding-top: 1rem;
+}
+
+.__buttonRequest h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: .9rem;
+    color: #FFFFFF;
+    white-space: nowrap;
+}
+
+.__productsCards{
+    display: flex;
+    padding-top: 2rem;
+}
+
+.__arrows{
+    padding: 1rem;
+}
+
+.__income{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 600px) {
+    .__cardCommunity {
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .leftArrow {
+        left: 3rem;
+        position: relative;
+        margin-right: 0rem;
+    }
+
+    .rightArrow {
+        position: relative;
+        margin-left: 0rem;
+        right: 3rem;
+    }
+
+    .__divisionBar {
+        display: none;
+    }
+
+    .cardMyHart {
+        transform: scale(.7);
+    }
+
+    .__limitValue {
+        justify-content: space-between;
+    }
+
+    .__limitValue h2 {
+        padding-left: 0rem;
+    }
+
+    .__valueLimit {
+        flex-direction: column;
+    }
+
+    .__currentBalance {
+        padding-top: 0px;
+    }
+
+    .__currentBalance {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .__income {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .__cashBack {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .__buttonRequest {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        justify-content: center;
+    }
+}

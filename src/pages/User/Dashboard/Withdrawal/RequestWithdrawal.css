@@ -1,0 +1,186 @@
+
+
+.__containerWithdrawal{
+position: fixed;
+top: 0;
+left: 202px;
+right: 0;
+bottom: 0;
+width: 86.5%;
+height: 100%;
+background-color: white;
+z-index: 10;
+display: flex;
+align-items: center; 
+justify-content: center;
+}
+
+.__titleWithdrawal h1{
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #1F2533;
+}
+
+.__contentWithdrawal{
+    align-items: center;
+   display: flex;
+   flex-direction: column;
+}
+
+.__titleAvailable{
+   display: flex;
+   justify-content: center;
+}
+
+.__titleAvailable h1{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #5A607F;
+    margin: 0px;
+}
+
+.__valueWithdrawal h1{
+    font-family: 'Lato', sans-serif;
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: #197BBD;
+    margin-bottom: .8rem;
+}
+
+.__valueWithdrawal h2{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: .8rem;
+    color: #7E84A3;
+    margin: 0px;
+}
+
+.__valueWithdrawal{
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+
+.__desiredValue{
+    margin-top: 1rem;
+}
+
+.__infoWithdrawal h1{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #000000;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+}
+
+._valueWithdrawal{
+    display: flex;
+    align-items: center;
+}
+
+._valueWithdrawal h1{
+    margin-right: .8rem;
+}
+
+.__formWithdrawal{
+  justify-content: space-between;
+  display: flex;
+}
+
+.__formWithdrawal h1{
+   font-family: 'Inter', sans-serif; 
+   font-weight: 600;
+   font-size: .8rem;
+   color: #2D3748;
+}
+
+._formWithdrawal{
+    font-family: 'Inter', sans-serif; 
+    font-weight: 400;
+    font-size: .8rem;
+    color: #2D3748; 
+}
+
+._optionWithdrawal{
+    display: flex;
+}
+
+.__saveInfo h1{
+   font-family: 'Poppins', sans-serif; 
+   font-weight: 400;
+   font-size: .8rem;
+   color: #212529;
+}
+
+._formWithdrawal{
+    width: 14rem;
+    height: 2.5rem;
+    border: none;
+    box-shadow: 0px 16px 24px rgb(0 0 0 / 6%), 0px 2px 6px rgb(0 0 0 / 4%), 0px 0px 1px rgb(0 0 0 / 4%);
+}
+
+.__modalWithdrawal{
+    width: 27rem;
+    padding: 1.5rem;
+    border-radius: 28px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 16px 24px rgb(0 0 0 / 6%), 0px 2px 6px rgb(0 0 0 / 4%), 0px 0px 1px rgb(0 0 0 / 4%);
+}
+
+.__desiredValue h1{  
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: .8rem;
+    color:#718096;
+    margin-bottom: .6rem;
+}
+
+.__desiredValue form{
+    background-color: #F1F3F6;
+    height: 2.5rem;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif; 
+    font-weight: 500;
+    color: #767676;
+    display: flex;
+    align-items: center;
+}
+
+.__saveInfo{
+    display: flex;
+    width: 100%;
+}
+
+.__buttonWithdrawalRequest{
+    width: 10rem;
+    height: 3rem; 
+    border-radius: 10px;
+    background-color:#06c238;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #FFFFFF;
+}
+
+.__buttonWithdrawalCancel{
+    width: 10rem;
+    height: 3rem; 
+    border-radius: 10px;
+    background-color:#FFFFFF;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #000000;
+}
+
+.__buttonWithdrawal{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top:3rem;
+}

@@ -1,0 +1,77 @@
+.__auth-stepper-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
+
+
+.__auth-stepper-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.3rem;
+}
+
+.__auth-stepper-item::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  top: 20px;
+  z-index: 2;
+}
+
+.__auth-stepper-item::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  top: 20px;
+  left: 50%;
+  z-index: 2;
+}
+
+.__auth-stepper-item .__auth-step-counter {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 2px solid #579900;
+  margin-bottom: 6px;
+  padding: 15px;
+  color: #579900;
+}
+
+
+.__auth-step-name {
+  text-align: center;
+  font-size: 15px;
+}
+
+@media (max-width: 600px) {
+  .__auth-step-name {
+    display: none;
+  }
+}
+
+.__auth-stepper-item.active {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+
+.__auth-step-counter.active, .__auth-step-counter.completed{
+  background: #579900;
+  border: 2px solid transparent;
+  color: white; 
+}
+
+
+.icon_counter{
+  flex-shrink: 0;
+}
+

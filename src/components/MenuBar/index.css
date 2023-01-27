@@ -1,0 +1,173 @@
+.__menuIsOpen{
+    background: #3D3D3D;
+}
+
+.__menuBarFull{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.__menuBar{
+    height: 100%;
+}
+
+.__divisionOptions{
+    background: #3D3D3D;
+    height: 100%;
+}
+
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.__options{
+    padding-bottom: 2rem;
+}
+.__nameUser{
+    display: flex;
+    justify-content: center;
+    padding:1rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: .8rem;
+    color:white;
+}
+
+li { list-style-type: none; }
+
+.__iconOption svg{
+    width: 1.7rem;
+    height: 1.7rem;
+    color: white;
+}
+
+.__linkOption{
+    display: flex;
+}
+
+.__linkOption:hover, .__menu_li:hover{
+    border-left: 3px solid #A75DA3;
+    border-radius: 2px 0 0 2px;
+}
+
+.__linkOption{
+    border-left: 3px solid transparent;
+    padding-left: 1rem;
+}
+
+.__menu_li{
+    border-left: 3px solid transparent;
+    padding-left: 1.3rem;
+}
+
+.__iconOption_active svg{
+    width: 1.7rem;
+    height: 1.7rem;
+    color: #A75DA3;
+}
+
+.__iconOption disabled{
+    cursor: not-allowed;
+}
+
+.__optionTitle{
+    display: flex;
+    align-items: center;
+}
+
+.__option{
+    display: flex;
+    cursor: pointer;
+}
+.__option{
+    padding-bottom: 1rem;
+    margin-left: 0.4rem;
+}
+.__optionTitle{
+    padding-left: 1rem;
+}
+.__optionTitle{
+    color: #E2E8F0;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: .8rem;
+}
+
+.__notify{
+   }
+
+.__arrowOption{
+}
+
+.__logo img{
+    max-width: 200px; 
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    max-height: 2.3rem;
+    padding-right: 1.1rem;
+    padding-left: 1.1rem;
+    cursor: pointer;
+}
+
+.__closeMenu{
+    display:none;
+}
+
+.__menu_ul{
+    padding-right: 0.4rem;
+    margin-top: 0.4rem;
+}
+
+.__menu_li{
+    color: #E2E8F0;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: .8rem;    
+}
+
+@media screen and (max-width: 600px){
+
+    .__closeMenu{
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 2.5rem;
+    }
+    
+    .__closeMenu svg{    
+        position: relative;
+        width: 3rem;
+        height: 2rem;
+        color: white;
+        top: 2rem;
+        left: 1rem;
+    }
+
+    .__notify{
+        padding:0px;
+        position: relative;
+        left: 1rem;
+        top: 0.2rem;
+     }
+
+     .__arrowOption {
+        padding-left: 0px;
+        position: relative;
+        left: 0.5rem;
+        top: 0.2rem;
+    }
+    
+    .__logo{
+        display: flex;
+        justify-content: center;
+    }
+    .__nameUser {
+        justify-content: center;
+    }
+
+    .__option{
+        justify-content: center;
+        padding-left:0rem!important;
+    }
+}
