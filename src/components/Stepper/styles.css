@@ -40,10 +40,10 @@
   height: 10px;
   border-radius: 50%;
   background: #FFFFFF;
-  border: 2px solid #579900;
+  border: 2px solid #184CC0;
   margin-bottom: 6px;
   padding: 15px;
-  color: #579900;
+  color: #184CC0;
 }
 
 
@@ -65,7 +65,7 @@
 
 
 .__auth-step-counter.active, .__auth-step-counter.completed{
-  background: #579900;
+  background: #184CC0;
   border: 2px solid transparent;
   color: white; 
 }

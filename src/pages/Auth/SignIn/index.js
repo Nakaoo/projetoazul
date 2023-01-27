@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
 import './styles.css'
-import logo_principal from '../../../assets/img/logo_myhart.png'
 import LoginForm from "./Form/LoginForm";
 import PasswordForm from "./Form/PasswordForm";
 import TokenForm from "./Form/TokenForm";
@@ -8,9 +7,11 @@ import { generateRandomKeyword, getCpfOrEmail, loginAccount, validateToken, getP
 import { message } from "antd";
 import { useNavigate } from "react-router-dom";
 import { PersonContext } from "../../../hooks/PersonContext";
+import { globalImg } from "../../../utils/globalImg";
 
 const SignIn = () => {
 
+    const logo = globalImg.logo
     const [visibleError, setVisibleError] = useState(false)
     const [errMessage, setErrMessage] = useState('')
     const [step, setStep] = useState(0)
@@ -255,7 +256,7 @@ const SignIn = () => {
             <div className="__signin_content">
                 <div className="__signin_padding">
                     <div className="__signin_header">
-                        <img src='https://dsm01pap008files.storage.live.com/y4mzMjHpa7Hd8VLeaXN4S3r3NoyUL_WiAYk6_YWLvpWu3bW3NtXTivWADQIRTQk65tb6tQ5tF5dJ0JwcnCuFaT_QPZeQWABJuIB78YZDgh-gWyTN-25Ax3IMEEzng9ernRJCiReriD7s5gHdYVfA7dPD4swh_QcjkHrxfZM3GfYjAktaW8l7AnFXFMnWJ7WMZXn?width=400&height=98&cropmode=none' alt="Logo principal MyHart" width="350px" />
+                        <img src={logo} alt="Logo principal ESG TECH" width="350px" />
                     </div>
                     <section>
                         <div className="__signin_content_form">

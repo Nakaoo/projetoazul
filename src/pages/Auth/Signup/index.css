@@ -1,16 +1,20 @@
 .__signup_container{
     height: 125vh;
-    background: url('https://dsm01pap008files.storage.live.com/y4mEYrademHI_VoY2yzbpbL-ew2WUfVsEdz393enmhBCq1Ej3UsQGLmpFnLOqSi-Zy09ukg2h1rJXPmJT00GQN9NUcxIbB8qnm9S3-sTu_edzpYYTI7KPZAxHbfG7g6XDNp5zXF-qGmY5PPOgF5KCexFqJWHHEvTlkEqQX-2_-S9tL2NRIuSjupzRBIhtIDsu6t?width=1726&height=1000&cropmode=none');
+    background: url('https://dsm01pap008files.storage.live.com/y4mt44WrpllRoHBZdvQSU1GuDMNlGWt11cVFzVNrTQa5fEhGqztgi49OjvBmLtD3m9MLF2iG6Pi85cee_3daAv_WPXLx8GYCKmEelKuoGgObfMuJoQ7C0asqYJlY4edxqjpbLPrOl1n5GyRdR4eXx80cMtUO_v98grZD9CEl0MwLyam_NJts8e0gjkBVVVk3LkG?width=1726&height=1000&cropmode=none');
 }
 
 .__signup_content {
     width: 60rem;
     height: max-content;
-    background: radial-gradient(129.4% 129.4% at 50% 50%, #1B1B1B 0%, rgba(27, 27, 27, 0) 100%);
+    border: 2px solid #FFFFFF;
     box-shadow: 0px 12px 50px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
+    border-radius: 10px;
     margin: auto;
     color: #FFFFFF;
+}
+
+.__signup_logo img{
+    height: 110px;
 }
 
 .__signin_error{

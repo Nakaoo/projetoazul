@@ -5,10 +5,11 @@ import { useState, useRef } from "react";
 
 // Pages
 import RegisterForm from "./Form/RegisterForm";
+import { globalImg } from "../../../utils/globalImg";
 
 const Signup = () => {
     const [step, setStep] = useState(0);
-    let logo_principal = 'https://dsm01pap008files.storage.live.com/y4mzMjHpa7Hd8VLeaXN4S3r3NoyUL_WiAYk6_YWLvpWu3bW3NtXTivWADQIRTQk65tb6tQ5tF5dJ0JwcnCuFaT_QPZeQWABJuIB78YZDgh-gWyTN-25Ax3IMEEzng9ernRJCiReriD7s5gHdYVfA7dPD4swh_QcjkHrxfZM3GfYjAktaW8l7AnFXFMnWJ7WMZXn?width=400&height=98&cropmode=none'
+    const logo_principal = globalImg.logo
 
     const routeProps = {
         0: { name: "Pessoais", route: "personal" },
@@ -25,7 +26,7 @@ const Signup = () => {
             <div className="__signup_content">
                 <div className="__signup_header">
                     <div className="__signup_logo">
-                        <img src={logo_principal} alt="Logo principal MyHart" width="350px" />
+                        <img src={logo_principal} alt="Logo principal ESG TECH" width="350px" />
                     </div>
                     <div className="__signup_title">
                         <h3 className="__signup_span_title">Cadastre-se na pré-venda e tenha acesso a

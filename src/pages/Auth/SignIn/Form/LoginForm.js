@@ -37,7 +37,7 @@ const LoginForm = ({ email, setEmail, handleNextStep, loading, setLoading, errMe
     return (
         <>
             <div className="__signin_content_title">
-                <span>Seja bem-vindo ao Be Luck</span>
+                <span>Seja bem-vindo á ESGTech</span>
                 <span>Entre ou registre-se</span>
             </div>
 
