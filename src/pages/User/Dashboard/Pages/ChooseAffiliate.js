@@ -38,8 +38,8 @@ function Afiliado({ menu }) {
       <div className="__division-card">
         <div className="__title">
 
-          <h1>ESCOLHA A SUA COMUNIDADE</h1>
-          <h3>Escolha em qual comunidade você deseja fazer parte.</h3>
+          <h1>Projeto Solar</h1>
+          <h3>Faça seu investimento do futuro hoje mesmo!</h3>
         </div>
 
         <div className="__cardsDivision">

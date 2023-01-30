@@ -145,7 +145,7 @@ span.anticon.anticon-exclamation-circle.__signup-input-error-icon {
 }
 
 .__signup_button_finalizar button{
-    background: #579900;
+    background: #184CC0;
     font-family: 'poppins';
     text-transform: uppercase;
     font-size: 16px;
@@ -162,7 +162,7 @@ span.anticon.anticon-exclamation-circle.__signup-input-error-icon {
 }
 
 .__signup_button_finalizar button:hover{
-    background: #8cc63f;
+    background: #0eb1d2;
 }
 
 .__signup_button_proximo{
@@ -173,7 +173,7 @@ span.anticon.anticon-exclamation-circle.__signup-input-error-icon {
 }
 
 .__signup_button_proximo button, .__signup_button_proximo2 button {
-    background: #579900;
+    background: #184CC0;
     font-family: 'poppins';
     text-transform: uppercase;
     font-size: 16px;
@@ -192,7 +192,7 @@ span.anticon.anticon-exclamation-circle.__signup-input-error-icon {
 }
 
 .__signup_button_proximo button:hover {
-    background: #8cc63f;
+    background: #0eb1d2;
 }
 
 .__signup_button_anterior button {
@@ -214,7 +214,7 @@ span.anticon.anticon-exclamation-circle.__signup-input-error-icon {
 }
 
 .__signup_button_anterior button:hover {
-    background: #8cc63f;
+    background: #0eb1d2;
 }
 
 .__signup_warning {
@@ -242,7 +242,7 @@ span.anticon.anticon-exclamation-circle.__signup-input-error-icon {
 }
 
 .__signup_form_button {
-    background: #579900;;
+    background: #184CC0;
     font-family: 'poppins';
     text-transform: uppercase;
     font-size: 16px;
@@ -259,7 +259,7 @@ span.anticon.anticon-exclamation-circle.__signup-input-error-icon {
 }
 
 .__signup_form_button:hover{
-    background: #8cc63f;
+    background: #0eb1d2;
 }
 
 .__sign {
