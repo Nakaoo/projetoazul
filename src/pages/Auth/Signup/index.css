@@ -1,5 +1,5 @@
 .__signup_container{
-    height: 125vh;
+    height: 100%;
     background: url('https://dsm01pap008files.storage.live.com/y4mt44WrpllRoHBZdvQSU1GuDMNlGWt11cVFzVNrTQa5fEhGqztgi49OjvBmLtD3m9MLF2iG6Pi85cee_3daAv_WPXLx8GYCKmEelKuoGgObfMuJoQ7C0asqYJlY4edxqjpbLPrOl1n5GyRdR4eXx80cMtUO_v98grZD9CEl0MwLyam_NJts8e0gjkBVVVk3LkG?width=1726&height=1000&cropmode=none');
 }
 
@@ -366,5 +366,9 @@ span.anticon.anticon-exclamation-circle.__signup-input-error-icon {
     .__signup_buttons_end{
         align-items: center;
         justify-content: center;
+    }
+
+    .__signup_buttons{
+        margin-left: 0px;
     }
 }

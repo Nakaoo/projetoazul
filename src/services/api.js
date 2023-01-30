@@ -1,10 +1,10 @@
 import axios from "axios"
 
 const api = axios.create({
-    baseURL: "https://api.dkawasaka.com/api/v1",
+    baseURL: "https://api.dkawasaka.com/api/v1/",
     headers: {
       'Content-Type': 'application/json',
-      Accept: 'application/json',
+      'Accept': 'application/json',
   }
 })
 
