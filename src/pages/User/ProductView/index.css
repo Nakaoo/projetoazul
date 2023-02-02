@@ -3,7 +3,9 @@
 }
 
 .teste-div{
-    width:100%;
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }
 
 .text-2{
@@ -14,10 +16,9 @@
 .__modalProductView {
     position: fixed;
     top: 0;
-    left: 202px;
     right: 0;
     bottom: 0;
-    width: 86.5%;
+    width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.8);
     z-index: 10;
@@ -47,7 +48,6 @@
 
 .__titleCardImg{
     display: flex;
-   
     position: relative;
     display: flex;
     justify-content: center;
@@ -65,10 +65,44 @@
 
 .__closedProductView{
     display: flex;
-    justify-content: flex-end;  
-    position: relative; 
-    bottom: 8rem; 
-    right: 10rem;
+    /* justify-content: flex-end; */
+    position: relative;
+    bottom: 2rem;
+    left: 35rem;    
+    cursor: pointer;
+}
+
+.__option_energy_content{
+    border: 1px solid #184CC0;
+    border-radius: 30px;
+    color: #FFFF;
+    padding: 2rem;
+}
+
+.__option_energy_header {
+    margin-bottom: 10px;
+}
+
+.__option_energy_header h3{
+    text-align: center;
+}
+
+.__option_energy_header span{
+    font-size: 12px;
+}
+
+.__option_energy_header_map{
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.product img{
+    height: 100px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
 }
 
 ._buttonProductView{
@@ -109,4 +143,18 @@
     right: 2rem;
 }
 
+}
+
+@media screen and (min-width: 1400px){
+    .__cardsDivision{
+        justify-content: center;
+    }
+
+    .__closedProductView{
+        left: 60rem;
+    }
+
+    .product img{
+        height: 200px;
+    }
 }

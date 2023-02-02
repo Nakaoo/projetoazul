@@ -6,23 +6,53 @@ import ModalPix from "../Payment/Method/Pix/Pix";
 import ModalTed from "../Payment/Method/Ted/Ted";
 import ModalBoleto from "../Payment/Method/Boleto/Boleto";
 import apitest from "../../../services/apitest";
+import api from "../../../services/api";
+import { LoadingOutlined, QuestionCircleOutlined } from "@ant-design/icons";
 
 export default function Payment({
   productsInCart,
-  OrderPayment,
   setCartsVisibility,
   setModalProduct,
+  id,
+  product
 }) {
-  const [optionValue, setOptionValue] = useState("");
+  const [optionValue, setOptionValue] = useState("option1");
   const changeOption = (newState) => {
     setOptionValue(newState);
   };
   const [confirmPay, setConfirmPay] = useState(false);
+  const [orderPayment, setOrderPayment] = useState();
+  const [loading, setLoading] = useState(false);
+  // atual função para criar order
+  async function CreateOrder() {
+    await api.
+      post(`order`, {
+        wallet: id,
+        product: [{
+          id: product.uuid,
+          qtt: 1
+        }]
+      })
+      .then(response => {
+        setOrderPayment(response.data.result)
+        console.log("create order", response)
+      })
+      .catch(err => console.error(err));
+  }
 
   useEffect(() => {
     LoadDataShipping();
   }, []);
 
+  async function handleConfirmPay() {
+    setLoading(true)
+
+    await CreateOrder();
+
+    setConfirmPay(true)
+
+    setLoading(false)
+  }
   /// alterar dados
   const [editShippingName, setEditShippingName] = useState(false);
   const [editShippingCpf, setEditShippingCpf] = useState(false);
@@ -39,7 +69,7 @@ export default function Payment({
   //update data shipping
   const data = JSON.stringify(updateShipping);
   async function UpdateShipping() {
-    await apitest
+    await api
       .post(`person`, data)
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
@@ -48,7 +78,7 @@ export default function Payment({
   //load data shipping
   const dataShipping = {};
   async function LoadDataShipping() {
-    await apitest
+    await api
       .get(`person`, dataShipping)
       .then((response) => setDataUser(response.data.result))
       .catch((error) => console.log(error));
@@ -79,18 +109,19 @@ export default function Payment({
   return (
     <>
       {optionValue == "option1" && confirmPay == true ? (
-        <ModalPix OrderPayment={OrderPayment} 
-        setConfirmPay={setConfirmPay} 
-        setCartsVisibility={setCartsVisibility}
+        <ModalPix OrderPayment={orderPayment}
+          setConfirmPay={setConfirmPay}
+          setCartsVisibility={setCartsVisibility}
+          CloseModal={CloseModal}
         />
       ) : optionValue == "option2" && confirmPay == true ? (
-        <ModalTed setConfirmPay={setConfirmPay} />
+        <ModalTed setConfirmPay={setConfirmPay} CloseModal={CloseModal} />
       ) : optionValue == "option3" && confirmPay == true ? (
-        <ModalBoleto setConfirmPay={setConfirmPay} />
+        <ModalBoleto setConfirmPay={setConfirmPay} CloseModal={CloseModal} />
       ) : (
         <div className="__content-payment-">
           <div className="cart-payment">
-            <div>
+            <div className="cart-payment-container">
               <div className="title-payment">
                 <h1>
                   <b>Pagamento</b>
@@ -163,7 +194,7 @@ export default function Payment({
                     <>
                       <div className="_form-update">
                         <input
-                          className="__form-input-name"
+                          className="__form-payment-input"
                           onChange={(e) => {
                             setChangedLastName(true);
                             setUpdateShipping({
@@ -357,9 +388,9 @@ export default function Payment({
                 </button>
                 <button
                   className="next-page-payment"
-                  onClick={() => setConfirmPay(true)}
+                  onClick={handleConfirmPay}
                 >
-                  Ir para o Pagamento
+                  {loading ? <LoadingOutlined /> : "Ir para o pagamento"}
                 </button>
               </div>
             ) : (
@@ -372,9 +403,9 @@ export default function Payment({
                 </button>
                 <button
                   className="next-page-payment"
-                  onClick={() => setConfirmPay(true)}
+                  onClick={() => handleConfirmPay}
                 >
-                  Ir para o Pagamento
+                  {loading ? <LoadingOutlined /> : "Ir para o pagamento"}
                 </button>
               </div>
             ) : (

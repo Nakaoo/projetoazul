@@ -46,7 +46,7 @@ export default function ({productsInCart, onProductRemove}) {
         )}
         {productsInCart.map((product) => (
             <div className="cart-product" key={product.id}>
-              <h1>Resumo do Pedido</h1>
+              <h1 className="cart-product-title">Resumo do Pedido</h1>
               <div className="cart-product-img">
               <img src={product.image} alt="" />
               </div>
@@ -56,8 +56,8 @@ export default function ({productsInCart, onProductRemove}) {
                   <h2>R${product.price}</h2>
                 </span>
                 <span className="product-subtotal">
-                  <h1>Taxa</h1>
-                  <h2>R${product.taxa}</h2>
+                  <h1>CDI</h1>
+                  <h2>{product.cdi * 100}%</h2>
                 </span>
                 <span className="product-delivery">
                   <h1>Entrega</h1>
@@ -67,7 +67,7 @@ export default function ({productsInCart, onProductRemove}) {
                   <h1>Total</h1>
                   <h2>{product.price * product.count}</h2>
                 </span>
-                <span className="remove-item-car">
+                {/* <span className="remove-item-car">
                   <h1>Remover Produto</h1>
                    <button 
               className="btn remove-btn"
@@ -77,7 +77,7 @@ export default function ({productsInCart, onProductRemove}) {
                 
                 <RiDeleteBin6Line size={20} />
              </button>
-                </span>
+                </span> */}
               </div>
              
 

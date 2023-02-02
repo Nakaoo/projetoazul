@@ -385,7 +385,6 @@ const RegisterForm = ({ step, setStep, routeProps }) => {
 
         setLoading(true)
 
-        const mobile1 = values.mobile1 ? values.mobile1.replace(/\D/g, "") : "";
 
         const data = {
             name: values.name,
@@ -404,7 +403,8 @@ const RegisterForm = ({ step, setStep, routeProps }) => {
             city: values.city,
             state: values.state,
             cep: values.cep,
-            sponsor_id: id
+            sponsor_id: id ? id : 2,
+            agency: 1
         };
 
         try {

@@ -26,7 +26,7 @@ export default function OrderverifyConfi(){
     return(
         <>
         {accountType === "invalido" && (
-          <OrderConfirmation menu={menu}/>
+          <OrderConfirmation />
         )}
       </>
     )

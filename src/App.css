@@ -1,12 +1,9 @@
-html{
-  height: 100%;
-}
-
-body{
-  margin: 0;
-  min-height: 100%;
-}
-
 * {
   font-family: 'Poppins';
+}
+
+html, body, #app, #app>div{
+  height: 100%;
+  scroll-behavior: auto;
+  margin: 0;
 }

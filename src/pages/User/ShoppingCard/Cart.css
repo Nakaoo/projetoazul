@@ -10,109 +10,122 @@
     height: 100%;
     background-color: #00000055;
     z-index: 10;
-    
+
+}
+
+.cart-product h1, h2, h3, h4, h5 {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.cart-product span{
+    margin-bottom: 1.5rem;
+}
+
+.cart-product-title{
+    margin-bottom: 1.5rem !important;
 }
 
 .shoppingCart {
     width: 86%;
     height: 100%;
     left: 202px;
-    background-color: #F2F2F2;
+    background: #01001C;
     padding: 1rem;
     display: flex;
     position: relative;
     flex-direction: column;
 }
 
- .select{
+.select {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: .8rem;
     color: #767676;
     padding-left: 1rem;
- }
+}
 
 .cart-product {
     width: 20rem;
-    box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
-    border-radius: 28px;    
+    height: 28rem;
     padding: 30px;
     gap: 27px;
-    background-color: #FFFFFF;
+    border: 1px solid #184CC0;
+    border-radius: 30px;
 }
 
-.cart-product h1{
+.cart-product h1 {
     margin-top: 0px;
-    margin-bottom: 1rem;
 }
-.cart-product-img img{
+
+.cart-product-img img {
     max-width: 18rem;
     padding-bottom: 3px;
+    margin-bottom: 1.5rem;
 }
 
-.cart-product-img{
+.cart-product-img {
     display: flex;
     justify-content: center;
 }
 
-.next-page-payment{
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    background-color: #1F2533;
+.next-page-payment {
+    background: #184CC0;
     border: none;
     width: 10rem;
     height: 3rem;
     border-radius: 10px;
     color: #F7FAFC;
-    font-family: 'Inter', sans-serif; 
+    font-family: 'Inter', sans-serif;
     font-weight: 500;
     cursor: pointer;
 }
 
-.next-page-payment:hover{
-    background-color: #a96f03;
+.next-page-payment:hover {
+    background: #0eb1d2;
 }
 
-.button-next-page-payment{
-   display: flex;
-   padding-top: 1rem;
-   justify-content: flex-end;
+.button-next-page-payment {
+    display: flex;
+    padding-top: 1rem;
+    justify-content: flex-end;
 }
 
-.cancel-payment{
+.cancel-payment {
     width: 10rem;
     height: 3rem;
     border: none;
-    background-color: white;
+    background: transparent;
+    color: #FFFFFF;
+    cursor: pointer;
     font-family: 'Inter', sans-serif;
-    color: #4A5568;
     font-weight: 500;
 }
 
-.cart-products-payment{
+.cart-products-payment {
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: .6rem;
-    color: #000000;
+    color: #FFFFFF !important;
     padding-right: 2rem;
 }
 
-.headerShoppingCart h1{
+.headerShoppingCart h1 {
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: 1.5rem;
-    color: #000000;
+    color: #FFFFFF;
     padding-left: 2.5rem;
     position: relative;
-    bottom: 1rem;
 }
 
-.headerShoppingCart{
+.headerShoppingCart {
     display: flex;
-    padding-top: 3rem;
-    padding-left: 4rem;
+    padding-top: 2rem;
+    padding-left: 2rem;
 }
 
-.product-price{
+.product-price {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -123,133 +136,136 @@
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 1.2rem;
-    color: #000000;
+    color: #FFFFFF;
 }
 
+.product-subtotal, .product-delivery, .total-products-car{
+    border-bottom: 1px solid #FFFFFF;
+}
 .product-price h2 {
     font-family: 'Inter', sans-serif;
     font-weight: bold;
     font-size: 1.2rem;
-    color: #000000;
+    color: #FFFFFF;
 }
 
-.product-subtotal{
+.product-subtotal {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.product-subtotal h1{
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  font-size: 1rem;
-  color: #4A5568;
-}
-
-.product-subtotal h2{
+.product-subtotal h1 {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 1rem;
-    color: #2D3748;
+    color: #FFFFFF;
 }
 
-.product-taxa{
+.product-subtotal h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #FFFFFF;
+}
+
+.product-taxa {
     display: flex;
     justify-content: space-between;
 }
 
-.product-taxa h1{
+.product-taxa h1 {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 1rem;
-    color: #4A5568;
+    color: #FFFFFF;
 }
 
-.product-taxa h2{
+.product-taxa h2 {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 1rem;
-    color: #2D3748;
+    color: #FFFFFF;
 }
 
-.product-delivery{
+.product-delivery {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.product-delivery h1{
+.product-delivery h1 {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 1rem;
-    color: #4A5568;   
+    color: #FFFFFF;
 }
 
-.product-delivery h2{
+.product-delivery h2 {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 1rem;
-    color: #38B2AC; 
+    color: #38B2AC;
 }
 
-.product-quantity{
- display: flex;
- justify-content: space-between;
+.product-quantity {
+    display: flex;
+    justify-content: space-between;
 }
 
-.count-product-quantity{
-    height:2rem;
+.count-product-quantity {
+    height: 2rem;
     width: 3rem;
-    border:none;
+    border: none;
 }
 
-.product-quantity h1{
+.product-quantity h1 {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 1rem;
-    color: #4A5568;
+    color: #FFFFFF;
 }
 
-.total-products-car{
+.total-products-car {
     display: flex;
-    justify-content: space-between;   
+    justify-content: space-between;
     align-items: center
 }
 
-.total-products-car h1{
-    font-family: 'Inter', sans-serif; 
+.total-products-car h1 {
+    font-family: 'Inter', sans-serif;
     font-size: 1rem;
     font-weight: bold;
-    color: #2D3748; 
+    color: #FFFFFF;
 }
 
-.total-products-car h2{
-    font-family: 'Inter', sans-serif; 
+.total-products-car h2 {
+    font-family: 'Inter', sans-serif;
     font-size: 1rem;
     font-weight: bold;
-    color: #2D3748; 
+    color: #FFFFFF;
 }
 
-.remove-item-car{
+.remove-item-car {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
 }
 
-.remove-item-car h1{
-    margin:0px;
-    font-family: 'Inter', sans-serif; 
+.remove-item-car h1 {
+    margin: 0px;
+    font-family: 'Inter', sans-serif;
     font-size: 1rem;
     font-weight: bold;
-    color: #2D3748; 
+    color: #FFFFFF;
 }
 
-.content-products-payment{
+.content-products-payment {
     height: 80%;
     display: flex;
     justify-content: space-around;
 }
 
-.__content-payment-card_{
+.__content-payment-card_ {
     display: flex;
     width: 96%;
     justify-content: space-evenly;
@@ -257,8 +273,8 @@
 
 .display-block {
     display: block;
-  }
-  
-  .display-none {
+}
+
+.display-none {
     display: none;
-  }
+}

@@ -4,44 +4,18 @@ import { IoMdReturnLeft } from "react-icons/io";
 import Payment from '../Payment/Payment';
 import Product from '../ShoppingCard/Product/Product'
 import apitest from '../../../services/apitest'
+import api from '../../../services/api';
 
 function ShoppingCard({
     setCartsVisibility,
     cartsVisibility,
     productsInCart, 
     onProductRemove,
-    userId,
+    id,
     setModalProduct,
+    product
 }) {
   
-  const [orderPayment, setOrderPayment] = useState(); 
-
-
-   // adiciona produto para criar order
-   let product = [];
-   for (let i=0; i< productsInCart.length; i++){
-    let id = productsInCart[i]?.uuid;
-    let qtt = productsInCart[i]?.count;
-    product.push({id: id, qtt: qtt})
-   }
-
-     useEffect(() => {
-      CreateOrder();
-   },[])
-
-   // atual função para criar order
-   async function CreateOrder() {
-    await apitest.
-    post(`order`, {
-      product: product
-    })
-    .then(response => {
-        setOrderPayment(response.data.result)
-        console.log("create order", response)
-    })
-    .catch(err => console.error(err)); 
-   }
-
    // method payment *api bloqueando cors 
   /*const [methodPayment, setMethodPayment] = useState(); 
   useEffect(() => {
@@ -72,8 +46,6 @@ function ShoppingCard({
         <div className="shoppingCart">
        
           <div className="headerShoppingCart">
-             <IoMdReturnLeft  size={30}  onClick={() => setCartsVisibility(false)}/>
-            
           </div>
         <div className="content-products-payment">
         <div className="__content-payment-card_">
@@ -82,9 +54,10 @@ function ShoppingCard({
                   />
           <Payment 
           productsInCart={productsInCart} 
-          OrderPayment={orderPayment} userId={userId} 
           setCartsVisibility={setCartsVisibility} 
           setModalProduct={setModalProduct}
+          id={id}
+          product={product}
           />
         </div>
        </div>

@@ -1,11 +1,12 @@
-.__containerTed{
-    box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
-    border-radius: 28px;
+.__containerTed {
+    height: 100%;
     padding: 30px;
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem; 
-    font-weight: 700;
-    color: #1F2533;
+    height: 28rem;
+    color: #FFFF;
+    gap: 27px;
+    border: 1px solid #184CC0;
+    border-radius: 30px;
+    margin-bottom: 1rem;
 }
 
 
@@ -20,133 +21,119 @@ flex-direction: column;
 
 
 
-.__stepTed{
- display: flex;
- align-items: center;
+.__stepTed {
+    display: flex;
+    align-items: center;
 }
 
-.__step_ted_2{
+.__step_ted_2 {
     padding-top: 1rem;
 }
 
-.__stepTed h1{
-  padding-left: 1rem;
-  font-family: 'Inter', sans-serif;
-  font-size: .8rem; 
-  font-weight: 700;
-  color: #1F2533;
+.__stepTed h1 {
+    padding-left: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: .8rem;
+    font-weight: 700;
 }
 
-.__titlePaymentTed{
+.__titlePaymentTed {
     display: flex;
     align-items: center;
-    
+
 }
 
-.__titlePaymentTed h1{
+.__titlePaymentTed h1 {
     font-family: 'Inter', sans-serif;
-    font-size: .8rem; 
+    font-size: .8rem;
     font-weight: 700;
     padding-left: 1rem;
 }
 
-._infoPaymentTed{
+._infoPaymentTed {
     display: flex;
     align-items: center;
 }
 
-.__headerTed{
+.__headerTed {
     display: flex;
     justify-content: center;
 }
 
-._buttonReceipt{
+._buttonReceipt {
     display: flex;
     justify-content: center;
     padding-top: .4rem;
 }
 
-.__returnOptionTed{
+.__returnOptionTed {
     position: relative;
     right: 8rem;
     bottom: 0.6rem;
 }
 
-._infoPaymentTed h1{
- font-family: 'Poppins', sans-serif;
- font-weight: 700; 
- font-size: .8rem;
- color: black;
+._infoPaymentTed h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: .8rem;
 }
 
-._infoPaymentTed h2{
+._infoPaymentTed h2 {
     font-family: 'Poppins', sans-serif;
-    font-weight: 400; 
+    font-weight: 400;
     font-size: .8rem;
-    color: black;
     padding-left: .6rem;
 }
 
-.__contentInfoTed{
+.__contentInfoTed {
     padding-right: 1rem;
 }
 
-.__infoPaymentTed{
+.__infoPaymentTed {
     display: flex;
     padding-left: .8rem;
 }
 
-.__titleStepTed_3{
+.__titleStepTed_3 {
     display: flex;
     padding-top: .3rem;
 }
 
-.__stepTed_3{
+.__stepTed_3 {
     display: flex;
     flex-direction: column;
 }
 
-.__titleStepTed_3 h1{
-    padding-left:1rem;
+.__titleStepTed_3 h1 {
+    padding-left: 1rem;
     font-family: 'Inter', sans-serif;
-    font-size: .8rem; 
+    font-size: .8rem;
     font-weight: 700;
-    color: #1F2533;
 }
 
-.__buttonReceipt{
+.__buttonReceipt {
     color: white;
     font-size: .8rem;
     width: 5.5rem;
     height: 2.5rem;
-    background: #A75DA3;
+    background: #184CC0;
+    box-shadow: 0px 4px 12px rgba(92, 92, 92, 0.5);
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    box-shadow: 0px 4px 12px rgba(92, 92, 92, 0.5);
     border-radius: 8px;
     border: none;
-}
-
-._buttonFinishPix{
-    background-color: #1F2533;
-    color: white;
-    border: none;
-    font-family: 'Inter', sans-serif; 
-    font-weight: 500; 
-    font-size: .8rem;
-    border-radius: 10px;
-    width: 10rem;
-    height: 3rem;
+    cursor: pointer;
 }
 
 .__buttonFinishTed {
     display: flex;
     justify-content: flex-end;
-    padding-top: 1rem;
 }
 
 ._buttonFinishTed {
-    background-color: #1F2533;
+    background: #184CC0;
+    cursor: pointer;
+    box-shadow: 0px 4px 12px rgba(92, 92, 92, 0.5);
     color: white;
     border: none;
     font-family: 'Inter', sans-serif;
@@ -155,4 +142,8 @@ flex-direction: column;
     border-radius: 10px;
     width: 10rem;
     height: 3rem;
+}
+
+._buttonFinishTed:hover, .__buttonReceipt:hover{
+    background: #0eb1d2;
 }

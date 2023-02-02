@@ -1,9 +1,13 @@
 .cart-payment{
-    box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
-    border-radius: 28px;
+    border: 1px solid #184CC0;
+    border-radius: 30px;
     padding: 30px;
     width: 30rem;
-    background-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
+.cart-payment-container{
+    height: 28rem;
 }
 
 .title-payment h1{
@@ -11,14 +15,12 @@
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 1.2rem;
-    color: #1F2533;
    }
 
    .title-payment h2{
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 1rem;
-    color: #000000;
     line-height: 24px;
    }
 
@@ -33,7 +35,6 @@
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: .8rem;
-    color: #2D3748;
 }
 
 .__selectOption-payment{
@@ -56,14 +57,12 @@
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: .8rem;
-    color: #767676;
  }
  
  .description-payment{
      font-family: 'Inter', sans-serif;
      font-weight: bold;
      font-size: .7rem;
-     color: #1F2533;
      display: flex;
      margin-bottom: 1rem;
      margin-top: .7rem
@@ -81,7 +80,6 @@
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: .8rem;
-    color: #718096;
  }
 
  .__form-payment{
@@ -94,7 +92,7 @@
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: .8rem;
-    color: #767676;
+    color: #767676; 
     padding-left: 1rem;
 }
 
@@ -122,14 +120,12 @@
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: .8rem;
-    color: #718096;
  }
 
  .input-shipping-name h1{
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: .8rem;
-    color: #718096;
  }
 
  .input-shipping-name{
