@@ -26,6 +26,19 @@ export default function MenuBar({ value, setValue, title, active, subtitle, setT
 
         if (tkUser) {
             await api
+            .get(`person/config`, {
+                headers: {
+                    Authorization: `Bearer ${JSON.parse(tkUser)}`,
+                },
+            })
+            .then(response => {
+                if(response?.data.result.purchase_active < 1){
+                    setMenu(true)
+                    console.log(menu)
+                }}
+            )
+
+            await api
                 .get(`person`, {
                     headers: {
                         Authorization: `Bearer ${JSON.parse(tkUser)}`,
@@ -39,6 +52,7 @@ export default function MenuBar({ value, setValue, title, active, subtitle, setT
                         setMenu(true)
                     }}
                 )
+            
         }
         else {
             navigate('/login')
@@ -93,14 +107,14 @@ export default function MenuBar({ value, setValue, title, active, subtitle, setT
                                 {SidebarData.map((item, index) => {
                                     return (
                                         <div key={index} className="__menu_option">
-                                            <Link to={item.path}>
+                                            <Link to={!menu ? item.path : ""}>
                                                 <div className={!menu ? "__menu_linkOption" : "__menu_linkOption disabled"} onClick={() => openDropDown(item)}>
                                                     <div className={active === item.title ? "__menu_iconOption_active" : "__menu_iconOption"}>
                                                         {item.icon}
                                                     </div>
 
                                                     <div className="__menu_optionTitle">
-                                                        {item.blocked ? <AiFillLock style={{ marginRight: '0.2rem' }} /> : ""} {item.title}
+                                                        {item.blocked ? <AiFillLock style={{ marginRight: '0.2rem' }} /> : menu ? <AiFillLock style={{ marginRight: '0.2rem' }} /> : ""} {item.title}
 
                                                     </div>
                                                 </div>
