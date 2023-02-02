@@ -125,7 +125,7 @@ export default function ProductView({ modalProduct, selectedProduct, productsApi
               {productsApi.filter((val, index) => val?.category_id == 1).map((val, index) => {
                 return (
                     <div className={`product ${val.title}`} onClick={() => addProductToCart(val)}>
-                      <img src={val.image} title={`${val.title} - R$ ${val.price} - CDI ${val.cdi * 100}%`}></img>
+                      <img src={val.image} title={`${val.title} - R$ ${val.price} - CDI ${(val.cdi * 100).toFixed(2)}%`}></img>
                     </div>
                 )
               })}

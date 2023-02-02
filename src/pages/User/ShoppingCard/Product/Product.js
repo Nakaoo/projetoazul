@@ -57,7 +57,7 @@ export default function ({productsInCart, onProductRemove}) {
                 </span>
                 <span className="product-subtotal">
                   <h1>CDI</h1>
-                  <h2>{product.cdi * 100}%</h2>
+                  <h2>{(product.cdi * 100).toFixed(2)}%</h2>
                 </span>
                 <span className="product-delivery">
                   <h1>Entrega</h1>
