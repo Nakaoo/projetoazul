@@ -47,8 +47,10 @@ export default function Payment({
   async function handleConfirmPay() {
     setLoading(true)
 
-    await CreateOrder();
+    let order = await CreateOrder();
 
+    console.log(order)
+    
     setConfirmPay(true)
 
     setLoading(false)

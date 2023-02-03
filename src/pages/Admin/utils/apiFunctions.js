@@ -5,3 +5,9 @@ export async function getPerson(){
 
     return person;
 }
+
+export async function getOrders(){
+    const person = await api.get('/person/config')
+
+    return person;
+}
