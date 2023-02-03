@@ -15,18 +15,21 @@ const FormLogin = (
     const onKeyDownEmail = e => {
         if (e.key === "Tab" || e.key === "Enter") {
             document.getElementById("confemail").focus();
+            e.preventDefault();
         }
     }
 
     const onKeyDownConfirmEmail = e => {
         if (e.key === "Tab" || e.key === "Enter") {
             document.getElementById("login").focus();
+            e.preventDefault();
         }
     }
 
     const onKeyDownEnter = e => {
         if (e.key === "Tab" || e.key === "Enter") {
             document.getElementById("proximo").click();
+            e.preventDefault();
         }
     }
     return (
@@ -55,8 +58,8 @@ const FormLogin = (
                         type="email"
                         control={control}
                         label="Confirmação de Email"
-                        register={register("confemail")}
                         onKeyDown={onKeyDownConfirmEmail}
+                        register={register("confemail")}
                         placeholder="Digite a confirmação do seu E-mail"
                         error={errors.confemail?.message}
                         required
@@ -64,7 +67,7 @@ const FormLogin = (
                 </Col>
                 <Col sm={10} className="__signup_col">
                     <Input
-                        id="login"
+                        id="loginzx"
                         label="Login"
                         placeholder="Digite o seu login"
                         onKeyDown={onKeyDownEnter}
