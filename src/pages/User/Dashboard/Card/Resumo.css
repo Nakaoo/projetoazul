@@ -4,6 +4,52 @@
 
 }
 
+.__user_dashboard_cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    margin-bottom: 1rem;
+}
+
+.__user_dashboard_card{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #184CC0;
+    filter: drop-shadow(3px 3px 30px rgba(0, 0, 0, 0.2));
+    border-radius: 5px;
+    width: 16rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    height: max-content;
+    margin-bottom: 1rem;
+    color: #FFFFFF;
+}
+
+.__user_dashboard_card_addon {
+    display: flex;
+    align-items: center;
+}
+
+.__user_dashboard_card_value {
+    font-size: 26px;
+    font-family: 'Lato';
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    color: #FFFFFF;
+}
+
+.__user_dashboard_card_addon_people {
+    font-size: 18px;
+    margin-left: 1rem;
+    background: rgba(44, 182, 125, 0.25);
+    border-radius: 5px;
+    /* width: 2rem; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem;
+}
+
 .__menu {
     background-color: red;
 
@@ -24,11 +70,11 @@
 
 .__myCommunity {
     width: 34rem;
-    margin-top:2rem;
-    background-color: #FFFFFF;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     padding: 1rem;
     border-radius: 5px;
+    color: #FFFFFF;
+    border: 1px solid #184CC0;
     box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
 }
 
@@ -42,7 +88,8 @@
     padding: 1rem;
     box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
     border-radius: 5px;
-    background-color: #FFFFFF;
+    border: 1px solid #184CC0;
+    color: #FFFFFF;
 }
 
 ._cardmyhart {
@@ -58,7 +105,6 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 1.2rem;
-    color: #404040;
 
 }
 
@@ -66,7 +112,6 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 1.2rem;
-    color: #404040;
 }
 
 .__cardIndications {
@@ -107,7 +152,6 @@ display: flex;
 ._cardIndication h1{
     font-family: 'Poppins', sans-serif; 
     font-size: .8rem; 
-    color: #2B2B2B;
     font-weight: 600;
 }
 
@@ -176,7 +220,6 @@ display: flex;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    margin-bottom: 2rem;
 }
 
 ._contentCard{
@@ -212,7 +255,6 @@ display: flex;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: 1rem;
-    color: #404040;
 }
 
 .__inputIndications {
@@ -225,7 +267,7 @@ display: flex;
 
 
 .__buttonIndications {
-    background-color: #A75DA3;
+    background: #0C26AD;
     border-radius: 8px;
     border: none;
     box-shadow: 0px 4px 12px rgba(92, 92, 92, 0.5);
@@ -236,6 +278,10 @@ display: flex;
     font-size: 1rem;
     color: white;
     cursor: pointer !important;
+}
+
+.__buttonIndications:hover{
+    background: #0eb1d2;
 }
 
 .__favorites {
@@ -249,14 +295,12 @@ display: flex;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 1rem;
-    color: #555555;
 }
 
 .__peopleName {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: .8rem;
-    color: #404040;
     display: flex;
     justify-content: center;
 }
@@ -264,13 +308,14 @@ display: flex;
 .__rewards {
     margin-right: 2rem;
     box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    border: 1px solid #184CC0;
     border-radius: 5px;
     padding: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #FFFFFF;
     width: 15rem;
+    color: #FFFFFF;
 }
 
 .__incomeAmounts {
@@ -279,9 +324,10 @@ display: flex;
     align-items: center;
     width: 15rem;
     box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    border: 1px solid #184CC0;
+    color: #FFFFFF;
     border-radius: 5px;
     padding: 1rem;
-    background-color: #FFFFFF;
 }
 
 .__incomeAmounts img {
@@ -295,7 +341,6 @@ display: flex;
 
 ._titleRewards h1 {
     font-family: 'Poppins', sans-serif;
-    color: #202020;
     font-weight: 600;
     font-size: 1rem;
     display: flex;
@@ -303,7 +348,6 @@ display: flex;
 
 .__incomeAmounts h1 {
     font-family: 'Poppins', sans-serif;
-    color: #202020;
     font-weight: 600;
     font-size: 1rem;
     display: flex;
@@ -313,7 +357,6 @@ display: flex;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 1.2rem;
-    color: #404040;
     justify-content: space-between;
     display: flex;
 }
@@ -328,7 +371,6 @@ display: flex;
     font-family: 'Lato', sans-serif;
     font-size: 2.2rem;
     font-weight: 400;
-    color: #696969;
     margin-bottom: 0px;
 }
 
@@ -336,7 +378,6 @@ display: flex;
     font-family: 'Inter', sans-serif;
     font-size: 0.8rem;
     font-weight: 300;
-    color: #898989;
 }
 
 .__nameUser {
@@ -346,7 +387,6 @@ display: flex;
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-size: .8rem;
-    color: white;
 }
 
 

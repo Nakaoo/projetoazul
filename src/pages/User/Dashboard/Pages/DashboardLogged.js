@@ -13,8 +13,7 @@ import { Skeleton } from "antd"
 import apitest from "../../../../services/apitest"
 import Navbar from "../../../../components/Navbar/Navbar"
 import './DashboardLogged.css'
-export default function DashboardLogged({ menu }) {
-  const { value, setValue } = useContext(UserContext)
+export default function DashboardLogged() {
   const [pessoa, setPessoa] = useState()
   const [loadingTela, setLoadingTela] = useState()
   const tkUser = localStorage.getItem('tk-user')

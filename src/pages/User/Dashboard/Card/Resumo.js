@@ -7,202 +7,119 @@ import './Resumo.css'
 import { BsPersonSquare } from "react-icons/bs"
 import { AiOutlineFall } from "react-icons/ai"
 import { useNavigate } from 'react-router-dom';
+import { BsFillPersonFill } from 'react-icons/bs'
+
+export default function Resumo({ pessoa }) {
+  const navigate = useNavigate();
 
 
-export default function Resumo({pessoa}){
-    const navigate = useNavigate();
+  async function copiarLink() {
+    let range = document.createRange();
+    range.selectNode(document.getElementById('email_indicacao'));
+    window.getSelection().removeAllRanges(); // clear current selection
+    window.getSelection().addRange(range); // to select text
+    document.execCommand("copy");
+    window.getSelection().removeAllRanges();// to deselect
 
-    
-    async function copiarLink(){
-        let range = document.createRange();
-        range.selectNode(document.getElementById('email_indicacao'));
-        window.getSelection().removeAllRanges(); // clear current selection
-        window.getSelection().addRange(range); // to select text
-        document.execCommand("copy");
-        window.getSelection().removeAllRanges();// to deselect
-  
-        message.success("Link copiado");
-    }
+    message.success("Link copiado");
+  }
 
 
-    return(
-        <>
-          <div className="__cardSummary">
-            <div className="_contentCardIndication">
-             
-            <div className="_contentCard">
-              <div className="_cardIndication">
-                <div className="_divisionCardIndication">
-                 <div className="_totalCardIndicationTitle">
-                   <h1>Total de Indicações</h1>
-                   <h1>11</h1>
-                 </div>
-                
-                <div className="_percentageIndication">
-                    <div className="_percentage">
-                        <div className="_iconPercentage">
-                        <div>
-                          <AiOutlineFall color={'#D9534F'} />
-                        </div>
-                        <h1>127%</h1>
-                        </div>
-                       
-                        <h2>Que o mês passado</h2>
-                    </div>
-                </div>
-                </div>
-                <div className="_userIndication">
-                  <BsPersonSquare color={'#2CB67D'} size={30}/>
-                </div>
-               
-              </div>
-            
-              <div className="_cardIndication">
-                <div className="_divisionCardIndication">
-                 <div className="_totalCardIndicationTitle">
-                   <h1>Total de Indicações</h1>
-                   <h1>11</h1>
-                 </div>
-                
-                <div className="_percentageIndication">
-                    <div className="_percentage">
-                        <div className="_iconPercentage">
-                        <div>
-                          <AiOutlineFall color={'#D9534F'} />
-                        </div>
-                        <h1>127%</h1>
-                        </div>
-                       
-                        <h2>Que o mês passado</h2>
-                    </div>
-                </div>
-                </div>
-                <div className="_userIndication">
-                  <BsPersonSquare color={'#2CB67D'} size={30}/>
-                </div>
-               
-              </div>
-            </div>
+  return (
+    <>
+      <div className="__cardSummary">
 
-            <div className="_contentCard">
-              <div className="_cardIndication">
-                <div className="_divisionCardIndication">
-                 <div className="_totalCardIndicationTitle">
-                   <h1>Total de Indicações</h1>
-                   <h1>11</h1>
-                 </div>
-                
-                <div className="_percentageIndication">
-                    <div className="_percentage">
-                        <div className="_iconPercentage">
-                        <div>
-                          <AiOutlineFall color={'#D9534F'} />
-                        </div>
-                        <h1>127%</h1>
-                        </div>
-                       
-                        <h2>Que o mês passado</h2>
-                    </div>
-                </div>
-                </div>
-                <div className="_userIndication">
-                  <BsPersonSquare color={'#2CB67D'} size={30}/>
-                </div>
-               
-              </div>
-            
-              <div className="_cardIndication">
-                <div className="_divisionCardIndication">
-                 <div className="_totalCardIndicationTitle">
-                   <h1>Total de Indicações</h1>
-                   <h1>11</h1>
-                 </div>
-                
-                <div className="_percentageIndication">
-                    <div className="_percentage">
-                        <div className="_iconPercentage">
-                        <div>
-                          <AiOutlineFall color={'#D9534F'} />
-                        </div>
-                        <h1>127%</h1>
-                        </div>
-                       
-                        <h2>Que o mês passado</h2>
-                    </div>
-                </div>
-                </div>
-                <div className="_userIndication">
-                  <BsPersonSquare color={'#2CB67D'} size={30}/>
-                </div>
-               
-              </div>
-            </div>
-
-              </div>
-              <div className="__myCommunity">
-                <div className="__summaryTitle" onClick={() => navigate("/community")}>Minha Comunidade</div>
-                <h1>Seu Link de Indicação:</h1>
-                <div className="__linkIndication">
-                    <input type="text" name="teste" id="email_indicacao" value={window.location.hostname + `/cadastro?ref=${pessoa}`} disabled=""
-                        className="__inputIndications" />
-
-                    <button className="__buttonIndications" onClick={copiarLink}>COPIAR</button>
-                </div>
-                <div className="__favorites">
-                    <div className="__people">
-                        <img alt="" />
-                        <div className="__peopleName">
-                            Ana
-                        </div>
-                    </div>
-                    <div className="__people">
-                        <img alt="" />
-                        <div className="__peopleName">
-                            Monica
-                        </div>
-                    </div>
-                    <div className="__people">
-                        <img alt="" />
-                        <div className="__peopleName">
-                            James
-                        </div>
-                    </div>
-                    <div className="__people">
-                        <img alt="" />
-                        <div className="__peopleName">
-                            Mike
-                        </div>
-                    </div>
-                    <div className="__people">
-                        <img alt="" />
-                        <div className="__peopleName">
-                            Mia
-                        </div>
-                    </div>
-                    <a onClick={() => navigate("/community")}>Ver Todos</a>
-                </div>
-            </div>
-            <div className="__cardRewards">
-                <div className="__rewards">
-                    <div className="__rewardTitle">
-                        Recompensas
-                        <img src={viewMore} alt="" />
-                    </div>
-                    <h2>R$1,750.23</h2>
-                    <h3>Ultimos 30 dias</h3>
-                    <img src={graphic1} alt="" />
-                </div>
-                <div className="__incomeAmounts">
-                    Income Amounts
-                    <img src={graphic2} alt="" />
-                </div>
-            </div>
-
-
+        <div className="__user_dashboard_cards">
+          <div className="__user_dashboard_card">
+            <div className="__user_dashboard_card_addon"><p className="__user_dashboard_card_addon_title">Total de indicações</p><span className="__user_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
+            <span className="__user_dashboard_card_value">5</span>
+            <div className="__user_dashboard_last_addon"><span className="__user_dashboard_last_addon_percentage"></span><span className="__user_dashboard_card_explanation">que o mês passado</span></div>
           </div>
 
-          
-            
-            </>
-    )
+          <div className="__user_dashboard_card">
+            <div className="__user_dashboard_card_addon"><p className="__user_dashboard_card_addon_title">Indicações aprovadas</p><span className="__user_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
+            <span className="__user_dashboard_card_value">8</span>
+            <div className="__user_dashboard_last_addon"><span className="__user_dashboard_last_addon_percentage"></span><span className="__user_dashboard_card_explanation">que o mês passado</span></div>
+          </div>
+
+          <div className="__user_dashboard_card">
+            <div className="__user_dashboard_card_addon"><p className="__user_dashboard_card_addon_title">Indicações pendentes</p><span className="__user_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
+            <span className="__user_dashboard_card_value">3</span>
+            <div className="__user_dashboard_last_addon"><span className="__user_dashboard_last_addon_percentage"></span><span className="__user_dashboard_card_explanation">que o mês passado</span></div>
+          </div>
+
+
+          <div className="__user_dashboard_card">
+            <div className="__user_dashboard_card_addon"><p className="__user_dashboard_card_addon_title">Mensagens</p><span className="__user_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
+            <span className="__user_dashboard_card_value">40</span>
+            <div className="__user_dashboard_last_addon"><span className="__user_dashboard_last_addon_percentage"></span><span className="__user_dashboard_card_explanation">que o mês passado</span></div>
+          </div>
+        </div>
+
+        <div className="__myCommunity">
+          <div className="__summaryTitle" onClick={() => navigate("/community")}>Minha Comunidade</div>
+          <h1>Seu Link de Indicação:</h1>
+          <div className="__linkIndication">
+            <input type="text" name="teste" id="email_indicacao" value={window.location.hostname + `/cadastro?ref=${pessoa}`} disabled=""
+              className="__inputIndications" />
+
+            <button className="__buttonIndications" onClick={copiarLink}>COPIAR</button>
+          </div>
+          <div className="__favorites">
+            <div className="__people">
+              <img alt="" />
+              <div className="__peopleName">
+                Ana
+              </div>
+            </div>
+            <div className="__people">
+              <img alt="" />
+              <div className="__peopleName">
+                Monica
+              </div>
+            </div>
+            <div className="__people">
+              <img alt="" />
+              <div className="__peopleName">
+                James
+              </div>
+            </div>
+            <div className="__people">
+              <img alt="" />
+              <div className="__peopleName">
+                Mike
+              </div>
+            </div>
+            <div className="__people">
+              <img alt="" />
+              <div className="__peopleName">
+                Mia
+              </div>
+            </div>
+            <a onClick={() => navigate("/community")}>Ver Todos</a>
+          </div>
+        </div>
+        <div className="__cardRewards">
+          <div className="__rewards">
+            <div className="__rewardTitle">
+              Recompensas
+              <img src={viewMore} alt="" />
+            </div>
+            <h2>R$1,750.23</h2>
+            <h3>Ultimos 30 dias</h3>
+            <img src={graphic1} alt="" />
+          </div>
+          <div className="__incomeAmounts">
+           Histórico de Recompensas
+            <img src={graphic2} alt="" />
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+    </>
+  )
 }

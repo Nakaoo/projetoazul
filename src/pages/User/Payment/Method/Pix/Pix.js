@@ -10,6 +10,7 @@ import { IoMdReturnLeft } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import api from '../../../../../services/api';
 import { LoadingOutlined, QuestionCircleOutlined } from "@ant-design/icons";
+import { message } from 'antd';
 
 export default function Pix({ OrderPayment, setConfirmPay, CloseModal }) {
   const [modalQrCode, setModalQrCode] = useState(false);
@@ -18,6 +19,17 @@ export default function Pix({ OrderPayment, setConfirmPay, CloseModal }) {
   const [keyQrCode, setKeyQrCode] = useState('7f6844d0-de89-47e5-9ef7-e0a35a681615');
   const [modalOrderConfirm, setModalOrderConfirm] = useState(false);
   const navigate = useNavigate();
+
+  async function copiarLink() {
+    let range = document.createRange();
+    range.selectNode(document.getElementById('key'));
+    window.getSelection().removeAllRanges(); // clear current selection
+    window.getSelection().addRange(range); // to select text
+    document.execCommand("copy");
+    window.getSelection().removeAllRanges();// to deselect
+
+    message.success("Link copiado");
+  }
 
   return (
     <div className="__contentMain">
@@ -37,10 +49,10 @@ export default function Pix({ OrderPayment, setConfirmPay, CloseModal }) {
           </div>
           <div className="__randomKey">
             <h1>Chave Aleatoria</h1>
-            <form className="_randomKey" ><div className="__keyQrCode"><h1>{keyQrCode}</h1></div></form>
+            <form className="_randomKey" ><div className="__keyQrCode"><h1 id="key">{keyQrCode}</h1></div></form>
           </div>
           <div className="__buttonCopy_pix">
-            <button className="_buttonCopy_pix">COPIAR</button>
+            <button className="_buttonCopy_pix" onClick={copiarLink}>COPIAR</button>
             <button className="_buttonCopy_pix" onClick={() => setModalQrCode(true)}>QRCODE</button>
           </div>
           {modalQrCode == true ? <QrCode ImgQrCode={imgQrCode} setModalQrCode={setModalQrCode} /> : <></>}

@@ -3,13 +3,13 @@ import rightArrow from "../../../../assets/img/rightArrow.svg"
 import limitBar from "../../../../assets/img/limitBar.svg"
 import './Card.css'
 import { useState, useEffect } from "react"
-
+import { globalImg } from "../../../../utils/globalImg"
 import RequestWithdrawal from "../Withdrawal/RequestWithdrawal"
 
 
 export default function Card({ products, balanceUser }) {
     const [modalWithdrawal, setModalWithdrawal] = useState(false);
-
+    const cardImg = globalImg.cardImg
     let product = [];
     if (Array.isArray(products)) {
         product = products[0];
@@ -27,7 +27,7 @@ export default function Card({ products, balanceUser }) {
                         <img src={leftArrow} className="__arrows" />
 
                         <div className="__imgCard-">
-                            <img src={product?.image} className="__imgProduct" />
+                            <img src={cardImg} className="__imgProduct" />
                         </div>
 
                         <img src={rightArrow} className="__arrows" />
@@ -37,7 +37,7 @@ export default function Card({ products, balanceUser }) {
                     </div>
                     <div className="__limitValue">
                         <h1>valor minimo para saque:</h1>
-                        <h2>R$2.850/ R$5.000</h2>
+                        <h2>R$00.00/ R$1.000</h2>
                     </div>
 
                 </div>

@@ -60,6 +60,7 @@ const AppRoutes = () => {
                         />
                         <Route
                             path="/financeiro"
+                            element={<Financeiro />}
                         />
                         <Route
                             path="/community"
@@ -76,7 +77,6 @@ const AppRoutes = () => {
                     </Routes>
                 </ContainerUser>
             </ProtectedRoute>
-
 
             <Routes>
                 <Route

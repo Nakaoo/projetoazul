@@ -24,10 +24,6 @@ import { getPerson } from "../utils/apiFunctions"
   }, [])
 
     return (
-    <>
-    {accountType === "valido" && (
       <Financeiro menu={menu}/>
-    )}
-  </>
     )
   }

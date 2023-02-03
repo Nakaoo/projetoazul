@@ -19,24 +19,10 @@
     padding-bottom: 1rem;
 }
 
-.__myCommunity {
-    margin-bottom: 2rem;
-    padding: 1rem;
-    border-radius: 28px;
-    box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
-}
 
 .__cardRewards {
     display: flex;
     height: 41%;
-}
-
-
-.__cardHistoric {
-    padding: 1rem;
-    box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
-    border-radius: 5px;
-    background-color: #FFFFFF;
 }
 
 ._cardmyhart {
@@ -49,28 +35,11 @@
 }
 
 
-.__summaryTitle {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 1.2rem;
-    color: #404040;
-
-}
-
-.__incomeAmounts {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 1.2rem;
-    color: #404040;
-}
-
 .__cardIndications {
     box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
     border-radius: 28px;
     width: 11rem;
 }
-
-
 
 .__valueIndications h2 {
     font-family: 'Poppins', sans-serif;
@@ -94,7 +63,6 @@
     font-family: 'Lato', sans-serif;
     font-weight: 600;
     font-size: 2rem;
-    color: #696969;
 }
 
 .__valueIndications h3 {
@@ -109,15 +77,7 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: .8rem;
-    color: #979797;
     margin: 1rem;
-}
-
-.__myCommunity h1 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    font-size: 1rem;
-    color: #404040;
 }
 
 .__inputIndications {
@@ -140,14 +100,12 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 1rem;
-    color: #555555;
 }
 
 .__peopleName {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: .8rem;
-    color: #404040;
     display: flex;
     justify-content: center;
 }
@@ -179,7 +137,6 @@
 
 ._titleRewards h1 {
     font-family: 'Poppins', sans-serif;
-    color: #202020;
     font-weight: 600;
     font-size: 1rem;
     display: flex;
@@ -187,7 +144,6 @@
 
 .__incomeAmounts h1 {
     font-family: 'Poppins', sans-serif;
-    color: #202020;
     font-weight: 600;
     font-size: 1rem;
     display: flex;
@@ -197,7 +153,6 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 1.2rem;
-    color: #404040;
     justify-content: space-between;
     display: flex;
 }
@@ -212,7 +167,6 @@
     font-family: 'Lato', sans-serif;
     font-size: 2.2rem;
     font-weight: 400;
-    color: #696969;
     margin-bottom: 0px;
 }
 
@@ -220,7 +174,6 @@
     font-family: 'Inter', sans-serif;
     font-size: 0.8rem;
     font-weight: 300;
-    color: #898989;
 }
 
 
@@ -241,7 +194,7 @@
 .__contentDashBoard{
     display: flex;
     height: 58rem;
-    background-color: #F2F2F2;
+    background-color: #01001C;
 }
 
 .__imgCard- img{
