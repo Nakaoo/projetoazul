@@ -2,7 +2,7 @@ import MenuBar from '../MenuBar'
 import Navbar from '../Navbar/Navbar'
 import { useState } from 'react'
 import './index.css'
-import { useNavigate, Navigate } from 'react-router-dom'
+import { useNavigate, Navigate, Outlet } from 'react-router-dom'
 
 function ContainerUser({ children }) {
     const [title, setTitle] = useState('Dashboard')
@@ -26,7 +26,7 @@ function ContainerUser({ children }) {
 
             <aside className='aside_user'>
                 <Navbar value={value} setValue={setValue} title={title} subtitle={subtitle} />
-                {children}
+                <Outlet />
             </aside>
         </main>
     )
