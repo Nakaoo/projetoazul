@@ -1,16 +1,20 @@
-.__menuIsOpen{
+.__admin_menuIsOpen{
     background: #3D3D3D;
 }
 
-.__menuBarFull{
+.__admin_menuBarFull{
     position: fixed;
     width: 100%;
     height: 100%;
 }
 
+.__admin_menuBar{
+    height: 100%;
+}
+
 .__admin_divisionOptions{
-    background: #3D3D3D;
-    height: 108%;
+    background: #0E1227;
+    height: 100%;
 }
 
 a{
@@ -21,10 +25,10 @@ a{
 .__admin_options{
     padding-bottom: 2rem;
 }
+
 .__admin_nameUser{
     display: flex;
     justify-content: center;
-    padding:1rem;
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-size: .8rem;
@@ -44,7 +48,7 @@ li { list-style-type: none; }
 }
 
 .__admin_linkOption:hover, .__admin_menu_li:hover{
-    border-left: 3px solid #A75DA3;
+    border-left: 3px solid #184cc0;
     border-radius: 2px 0 0 2px;
 }
 
@@ -61,7 +65,7 @@ li { list-style-type: none; }
 .__admin_iconOption_active svg{
     width: 1.7rem;
     height: 1.7rem;
-    color: #A75DA3;
+    color: #184cc0;
 }
 
 .__admin_iconOption disabled{
@@ -99,9 +103,8 @@ li { list-style-type: none; }
 
 .__admin_logo img{
     max-width: 200px; 
-    margin-top: 2rem;
+    margin-top: 0.3rem;
     margin-bottom: 2rem;
-    max-height: 2.3rem;
     padding-right: 1.1rem;
     padding-left: 1.1rem;
     cursor: pointer;
@@ -123,6 +126,10 @@ li { list-style-type: none; }
     font-size: .8rem;    
 }
 
+.__admin_highlight{
+    color: #184cc0;
+    margin-left: 0.5rem;
+}
 @media screen and (max-width: 600px){
 
     .__admin_closeMenu{

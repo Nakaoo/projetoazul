@@ -32,6 +32,7 @@ import OrderPlaced from "../pages/User/ConfirmPayment/OrderPlaced/OrderPlacedVer
 import AdminDashboard from "../pages/Admin/Dashboard";
 import AdminCompliance from "../pages/Admin/Compliance/AdminCompliance";
 import ProtectedRoute from "./ProtectedRoutes";
+import ContainerAdmin from "../components/Layout/ContainerAdmin";
 
 const AppRoutes = () => {
 
@@ -48,47 +49,41 @@ const AppRoutes = () => {
                 <Route path='/activation/:token' element={<FormAtivacao />}></Route>
                 <Route path='/recover-password' element={<RecoverPasswordForm />}></Route>
                 <Route path='/reset-password/:token' element={<ResetPasswordForm />}></Route>
-            </Routes>
 
-            {/* User logged routes */}
-            <ProtectedRoute>
-                <ContainerUser>
-                    <Routes>
-                        <Route
-                            path="/dashboard"
-                            element={<Dashboard />}
-                        />
-                        <Route
-                            path="/financeiro"
-                            element={<Financeiro />}
-                        />
-                        <Route
-                            path="/community"
-                            element={<Community />}
-                        />
-                        <Route
-                            path="/orderConfirmation"
-                            element={<OrderConfirmation />}
-                        />
-                        <Route
-                            path="/orderPlaced"
-                            element={<OrderPlaced />}
-                        />
-                    </Routes>
-                </ContainerUser>
-            </ProtectedRoute>
+                <Route element={<ContainerUser />}>
+                    <Route
+                        path="/dashboard"
+                        element={<Dashboard />}
+                    />
+                    <Route
+                        path="/financeiro"
+                        element={<Financeiro />}
+                    />
+                    <Route
+                        path="/community"
+                        element={<Community />}
+                    />
+                    <Route
+                        path="/orderConfirmation"
+                        element={<OrderConfirmation />}
+                    />
+                    <Route
+                        path="/orderPlaced"
+                        element={<OrderPlaced />}
+                    />
+                </Route>
 
-            <Routes>
-                <Route
-                    path="/admin/dashboard"
-                    element={<AdminDashboard />}
-                />
+                <Route element={<ContainerAdmin />}>
+                    <Route
+                        path="/admin/dashboard"
+                        element={<AdminDashboard />}
+                    />
 
-                <Route
-                    path="/admin/compliance"
-                    element={<AdminCompliance />}
-                />
-
+                    <Route
+                        path="/admin/compliance"
+                        element={<AdminCompliance />}
+                    />
+                </Route>
             </Routes>
 
         </BrowserRouter >

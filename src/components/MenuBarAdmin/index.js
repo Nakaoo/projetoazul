@@ -13,16 +13,31 @@ import { UserContext } from '../../hooks/UserContext'
 import { useContext } from "react"
 import { BiLogOut } from 'react-icons/bi'
 import { AiFillLock } from 'react-icons/ai'
+import { globalImg } from '../../utils/globalImg';
 
-export default function MenuBarAdmin({ menu, active }) {
-    const { value, setValue } = useContext(UserContext)
+export default function MenuBarAdmin({ value, setValue, title, active, subtitle, setTitle, setActive, setSubtitle }) {
+    const [menu, setMenu] = useState(false)
     const navigate = useNavigate();
     const [dataUser, setDataUser] = useState();
     const tkUser = localStorage.getItem('tk-user')
+    let logo = globalImg.logo
 
     async function fetchUser() {
 
         if (tkUser) {
+            await api
+            .get(`person/config`, {
+                headers: {
+                    Authorization: `Bearer ${JSON.parse(tkUser)}`,
+                },
+            })
+            .then(response => {
+                if(response?.data.result.purchase_active < 1){
+                    setMenu(true)
+                    console.log(menu)
+                }}
+            )
+
             await api
                 .get(`person`, {
                     headers: {
@@ -30,9 +45,14 @@ export default function MenuBarAdmin({ menu, active }) {
                     },
                 })
                 .then(response => {
-                    setDataUser(response?.result.data);
-                }
+                    console.log(response)
+                    setDataUser(response?.data.result);
+
+                    if(response?.data.result.purchase_active < 1){
+                        setMenu(true)
+                    }}
                 )
+            
         }
         else {
             navigate('/login')
@@ -58,146 +78,79 @@ export default function MenuBarAdmin({ menu, active }) {
         } else if (item.dropdownOpened == true) {
             item.dropdownOpened = false
         }
-        console.log(item.dropdownOpened)
     }
 
-    //  <HiMenu size={30} onClick={() => setMenuOpen(false)} />
     return (
         <>
-            {value == false && window.innerWidth <= '600' && (
+            {value == false && window.innerWidth <= '600' ? (
                 <>
 
                 </>
-            )
+            ) :
+                (
+                    <div className={value == true && window.innerWidth > '600' ? '__admin_menuBar' : value == false && window.innerWidth < 600 ? '__admin_menuBarFull' : '__admin_menuBar'}>
+                        <div className="__admin_divisionOptions">
+                            <div className="__admin_options">
+                                <div className="__admin_closeMenu">
+                                    <AiOutlineClose onClick={() => setValue(false)} />
+                                </div>
+                                <div className="__admin_logo">
+                                    <img src={logo} alt="" onClick={() => navigate("/")} />
+                                </div>
+
+                                <div className='__admin_info'>
+                                    <div className="__admin_nameUser">Olá <span className='__admin_highlight'>{dataUser?.first_name}</span></div>
+                                    <div className="__admin_nameUser">Seu ID: <span className='__admin_highlight'>{dataUser?.id}</span> </div>
+                                </div>  
+                            </div>
+                            <div>
+                                {SidebarData.map((item, index) => {
+                                    return (
+                                        <div key={index} className="__admin_option">
+                                            <Link to={item.path}>
+                                                <div className={!item.blocked ? "__admin_linkOption" : "__admin_linkOption disabled"} onClick={() => openDropDown(item)}>
+                                                    <div className={active === item.title ? "__admin_iconOption_active" : "__admin_iconOption"}>
+                                                        {item.icon}
+                                                    </div>
+
+                                                    <div className="__admin_optionTitle">
+                                                        {item.blocked ? <AiFillLock style={{ marginRight: '0.2rem' }} /> : ""} {item.title}
+
+                                                    </div>
+                                                </div>
+                                                {item.dropdown == true && item.dropdownOpened == true && (
+                                                    <ul className='__admin_menu_ul' id={`__admin_menu_ul${index}`}>
+                                                        {item.dropdownItems.map((value, index) => {
+                                                            return (
+                                                                <Link to={value.url}>
+                                                                    <li className='__admin_menu_li' key={index + 1}>{value.title}</li>
+                                                                </Link>
+                                                            )
+                                                        })}
+                                                    </ul>
+                                                )}
+                                            </Link>
+                                        </div>
+                                    )
+                                })}
+
+                                <div className="__admin_option">
+                                    <div className={"__admin_linkOption"} onClick={logout} >
+                                        <div className="__admin_iconOption">
+                                            <BiLogOut />
+                                        </div>
+
+                                        <div className="__admin_optionTitle">
+                                            Sair
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                )
             }
-
-            {value == true && window.innerWidth <= 600 && (
-                <div className='__menuBarFull'>
-                    <div className="__admin_divisionOptions">
-                        <div className="__admin_options">
-                            <div className="__admin_closeMenu">
-                                <AiOutlineClose onClick={() => setValue(false)} />
-                            </div>
-                            <div className="__admin_logo">
-                                <img src={logo} alt="" onClick={() => navigate("/")} />
-                            </div>
-
-                            <div className="__admin_nameUser">Administrativo</div>
-
-                            <div className="__admin_nameUser">Olá {dataUser?.name}
-                                <br />Seu ID: {dataUser?.id}</div>
-                        </div>
-                        <div>
-                            {SidebarData.map((item, index) => {
-                                return (
-                                    <div key={index} className="__admin_option">
-                                        <Link to={item.path}>
-                                            <div className={!menu ? "__admin_linkOption" : "__admin_linkOption disabled"} onClick={() => openDropDown(item)}>
-                                                <div className={active === item.title ? "__admin_iconOption_active" : "__admin_iconOption"}>
-                                                    {item.icon}
-                                                </div>
-
-                                                <div className="__admin_optionTitle">
-                                                    {item.blocked ? <AiFillLock style={{ marginRight: '0.2rem' }} /> : ""} {item.title}
-
-                                                </div>
-                                            </div>
-                                            {item.dropdown == true && item.dropdownOpened == true && (
-                                                <ul className='__admin_menu_ul' id={`__admin_menu_ul${index}`}>
-                                                    {item.dropdownItems.map((value, index) => {
-                                                        return (
-                                                            <Link to={value.url}>
-                                                                <li className='__admin_menu_li' key={index + 1}>{value.title}</li>
-                                                            </Link>
-                                                        )
-                                                    })}
-                                                </ul>
-                                            )}
-                                        </Link>
-                                    </div>
-                                )
-                            })}
-
-                            <div className="__admin_option">
-                                <div className={"__admin_linkOption"} onClick={logout} >
-                                    <div className="__admin_iconOption">
-                                        <BiLogOut />
-                                    </div>
-
-                                    <div className="__admin_optionTitle">
-                                        Sair
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            )}
-
-            {window.innerWidth > 600 && (
-                <div className='__menuBar'>
-                    <div className="__admin_divisionOptions">
-                        <div className="__admin_options">
-                            <div className="__admin_closeMenu">
-                                <AiOutlineClose onClick={() => setValue(false)} />
-                            </div>
-                            <div className="__admin_logo">
-                                <img src={logo} alt="" onClick={() => navigate("/")} />
-                            </div>
-
-                            <div className="__admin_nameUser">Administrativo</div>
-
-                            <div className="__admin_nameUser">Olá {dataUser?.name}
-                                <br />Seu ID: {dataUser?.id}</div>
-                        </div>
-                        <div>
-                            {SidebarData.map((item, index) => {
-                                return (
-                                    <div key={index} className="__admin_option">
-                                        <Link to={item.path}>
-                                            <div className={!menu ? "__admin_linkOption" : "__admin_linkOption disabled"} onClick={() => openDropDown(item)}>
-                                                <div className={active === item.title ? "__admin_iconOption_active" : "__admin_iconOption"}>
-                                                    {item.icon}
-                                                </div>
-
-                                                <div className="__admin_optionTitle">
-                                                    {item.blocked ? <AiFillLock style={{ marginRight: '0.2rem' }} /> : ""} {item.title}
-
-                                                </div>
-                                            </div>
-                                            {item.dropdown == true && item.dropdownOpened == true && (
-                                                <ul className='__admin_menu_ul' id={`__admin_menu_ul${index}`}>
-                                                    {item.dropdownItems.map((value, index) => {
-                                                        return (
-                                                            <Link to={value.url}>
-                                                                <li className='__admin_menu_li' key={index + 1}>{value.title}</li>
-                                                            </Link>
-                                                        )
-                                                    })}
-                                                </ul>
-                                            )}
-                                        </Link>
-                                    </div>
-                                )
-                            })}
-
-                            <div className="__admin_option">
-                                <div className={"__admin_linkOption"} onClick={logout} >
-                                    <div className="__admin_iconOption">
-                                        <BiLogOut />
-                                    </div>
-
-                                    <div className="__admin_optionTitle">
-                                        Sair
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            )}
         </>
     )
 }

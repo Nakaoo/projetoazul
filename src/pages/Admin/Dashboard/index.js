@@ -79,54 +79,47 @@ export default function AdminDashboard() {
 
 
     return (
-        <div className="__admin_dashboard_container">
-            
-            <MenuBarAdmin />
-            <aside className="__admin_dashboard_aside">
-                <Navbar title={"Dashboard"} subtitle={"Painel de controle"} />
-                <div className="__admin_dashboard_content">
-                    <div className="__admin_dashboard_cards">
-                        <div className="__admin_dashboard_card">
-                            <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Total de indicações</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-                            <span className="__admin_dashboard_card_value">5</span>
-                            <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
-                        </div>
-
-                        <div className="__admin_dashboard_card">
-                            <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Indicações aprovadas</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-                            <span className="__admin_dashboard_card_value">8</span>
-                            <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
-                        </div>
-
-                        <div className="__admin_dashboard_card">
-                            <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Indicações pendentes</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-                            <span className="__admin_dashboard_card_value">3</span>
-                            <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
-                        </div>
-
-
-                        <div className="__admin_dashboard_card">
-                            <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Mensagens</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-                            <span className="__admin_dashboard_card_value">40</span>
-                            <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
-                        </div>
+            <div className="__admin_dashboard_content">
+                <div className="__admin_dashboard_cards">
+                    <div className="__admin_dashboard_card">
+                        <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Total de indicações</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
+                        <span className="__admin_dashboard_card_value">5</span>
+                        <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
                     </div>
 
-                    <div className="__admin_dashboard_barchart">
-                        <BarChart chartData={chartData} data={Data} />
+                    <div className="__admin_dashboard_card">
+                        <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Indicações aprovadas</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
+                        <span className="__admin_dashboard_card_value">8</span>
+                        <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
                     </div>
 
-                    <div className="__admin_dashboard_end">
-                        <div className="__admin_dashboard_community">
-                            <CommunityTable />
-                        </div>
+                    <div className="__admin_dashboard_card">
+                        <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Indicações pendentes</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
+                        <span className="__admin_dashboard_card_value">3</span>
+                        <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
+                    </div>
 
-                        <div className="__admin_dashboard_information">
-                            <PieChart chartData={chartDataPie} />
-                        </div>
+
+                    <div className="__admin_dashboard_card">
+                        <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Mensagens</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
+                        <span className="__admin_dashboard_card_value">40</span>
+                        <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
                     </div>
                 </div>
-            </aside>
-        </div>
+
+                <div className="__admin_dashboard_barchart">
+                    <BarChart chartData={chartData} data={Data} />
+                </div>
+
+                <div className="__admin_dashboard_end">
+                    <div className="__admin_dashboard_community">
+                        <CommunityTable />
+                    </div>
+
+                    <div className="__admin_dashboard_information">
+                        <PieChart chartData={chartDataPie} />
+                    </div>
+                </div>
+            </div>
     )
 }
