@@ -1,14 +1,14 @@
 import './index.css'
-import {MdKeyboardArrowDown} from 'react-icons/md'
+import { MdKeyboardArrowDown } from 'react-icons/md'
 
-export default function Refused() {
+export default function Refused({setStep}) {
 
     return (
         <div className='__admin_compliance'>
             <table className="__admin_compliance_table">
                 <thead className='__admin_compliance_table_thead'>
                     <tr>
-                    <h4 className='__admin_compliance_title'>Todas operações recusadas</h4>
+                        <h4 className='__admin_compliance_title'>Todas operações recusadas</h4>
                     </tr>
                     <tr className='__admin_compliance_table_thead_tr'>
                         <th>Nome</th>
@@ -30,7 +30,7 @@ export default function Refused() {
                         <td>3343</td>
                         <td><button className='__admin_compliance_table_body_button'>OPÇÃO <MdKeyboardArrowDown /></button>
                             <ul className='__admin_compliance_table_dropdown'>
-                                <li>Analisar</li>
+                                <li onClick={() => setStep(1)}>Analisar</li>
                             </ul>
                         </td>
                     </tr>
@@ -44,7 +44,7 @@ export default function Refused() {
                     <div className='__admin_compliance_table_filter_date_element'>7 dias</div>
                     <div className='__admin_compliance_table_filter_date_element'>30 dias</div>
                     <div className='__admin_compliance_table_filter_date_element'>Mês</div>
-                    <input type='date' className='__admin_compliance_table_filter_date_element_input'/>
+                    <input type='date' className='__admin_compliance_table_filter_date_element_input' />
                 </div>
             </div>
             <div className='__admin_compliance_table_filter_input'>

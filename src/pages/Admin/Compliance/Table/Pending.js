@@ -31,7 +31,7 @@ export default function Pending({step, setStep}) {
                         <td>3343</td>
                         <td><button className='__admin_compliance_table_body_button'>OPÇÃO <MdKeyboardArrowDown /></button>
                             <ul className='__admin_compliance_table_dropdown'>
-                                <li>Analisar</li>
+                                <li onClick={() => setStep(1)}>Analisar</li>
                             </ul>
                         </td>
                     </tr>
