@@ -30,12 +30,17 @@ const ResetPasswordForm = () => {
     const [step, setStep] = useState(0)
     const [loading, setLoading] = useState(false)
     const [formData, setFormData] = useState({
-        email: "",
         password: "",
         confirmPassword: ""
     })
     const { token } = useParams();
+    const [email, setEmail] = useState('')
     const location = useLocation();
+
+    useEffect(() => {
+        let email = location.search.split("=")[1]
+        setEmail(email)
+    }, [])
 
     function redirect() {
         setTimeout(() => {
@@ -74,7 +79,7 @@ const ResetPasswordForm = () => {
             }
 
             setLoading(true)
-            let recover = await resetPassword(token, data)
+            let recover = await resetPassword(token, data, email)
 
             setStep(1)
             setVisibleError(false)

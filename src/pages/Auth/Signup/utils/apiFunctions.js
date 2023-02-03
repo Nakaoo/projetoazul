@@ -74,9 +74,9 @@ export async function recoverPassword(data){
     return user;
 }
 
-export async function resetPassword(token, data){
+export async function resetPassword(token, data, email){
     let tokenpassword = token
-    const user = await api.post(`/reset-password/${tokenpassword}`, data)
+    const user = await api.post(`/reset-password/${tokenpassword}?email=${email}`, data)
 
     return user;
 }
