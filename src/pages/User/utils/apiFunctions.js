@@ -18,3 +18,19 @@ export async function getProducts(){
 
     return products
 }
+
+export async function generatePix(uuid){
+    const id = uuid;
+
+    const pix = await api.post(`/payment/order/pix/${id}`)
+
+    return pix;
+}
+
+export async function deleteOrder(uuid){
+    const id = uuid;
+
+    const order = await api.delete(`/order/${id}`)
+
+    return order;
+}

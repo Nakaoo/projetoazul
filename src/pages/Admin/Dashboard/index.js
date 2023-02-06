@@ -1,6 +1,6 @@
 import React from "react"
 import { useEffect, useState, useContext } from "react"
-import { getPerson } from "../utils/apiFunctions"
+import { getPerson, getMultiNivel, getMultiNivelTotal } from "../utils/apiFunctions"
 import { useNavigate } from "react-router-dom"
 import MenuBarAdmin from "../../../components/MenuBarAdmin"
 import { HiMenu } from "react-icons/hi"
@@ -18,7 +18,11 @@ import { BsFillPersonFill } from 'react-icons/bs'
 
 export default function AdminDashboard() {
     const [accountType, setAccountType] = useState('')
-    const [menu, setMenu] = useState(false)
+    const [menu, setMenu] = useState(false);
+    const [multinivel, setMultiNivel] = useState([]);
+    const [multiniveltotal, setMultiNivelTotal] = useState([]);
+    const [sumMultiNivel, setSumMultiNivel] = useState();
+
     const tkUser = localStorage.getItem('tk-user')
     const navigate = useNavigate();
     const [chartData, setChartData] = useState({
@@ -73,8 +77,44 @@ export default function AdminDashboard() {
         }
     }
 
+    async function getMultiNivelValue(){
+        try{
+            let multinivel = await getMultiNivel();
+            let arr = []
+
+            multinivel.data.result.forEach(element => {
+                arr.push(element)    
+            });
+
+            setMultiNivel(arr)
+        }catch(err){
+            console.log(err);
+        }
+    }
+
+    async function getMultiNivelTotalValue(){
+        try{
+            let multinivel = await getMultiNivelTotal();
+            let arr = []
+            let sum = 0;
+            
+            multinivel.data.result.forEach((element, index) => {
+                arr.push(element)
+                sum += element.total
+            });
+
+            console.log(arr, 'arr2')
+            setSumMultiNivel(sum)
+            setMultiNivelTotal(arr)
+        }catch(err){
+            console.log(err);
+        }
+    }
+
     useEffect(() => {
-        getPersonConfig()
+        getPersonConfig();
+        getMultiNivelValue();
+        getMultiNivelTotalValue();
     }, [])
 
 
@@ -83,26 +123,26 @@ export default function AdminDashboard() {
                 <div className="__admin_dashboard_cards">
                     <div className="__admin_dashboard_card">
                         <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Total de indicações</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-                        <span className="__admin_dashboard_card_value">5</span>
+                        <span className="__admin_dashboard_card_value">{multinivel.length}</span>
                         <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
                     </div>
 
                     <div className="__admin_dashboard_card">
                         <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Indicações aprovadas</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-                        <span className="__admin_dashboard_card_value">8</span>
+                        <span className="__admin_dashboard_card_value">{multiniveltotal.length}</span>
                         <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
                     </div>
 
                     <div className="__admin_dashboard_card">
                         <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Indicações pendentes</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-                        <span className="__admin_dashboard_card_value">3</span>
+                        <span className="__admin_dashboard_card_value">{multinivel.length - multiniveltotal.length}</span>
                         <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
                     </div>
 
 
                     <div className="__admin_dashboard_card">
                         <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Mensagens</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-                        <span className="__admin_dashboard_card_value">40</span>
+                        <span className="__admin_dashboard_card_value">0</span>
                         <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
                     </div>
                 </div>

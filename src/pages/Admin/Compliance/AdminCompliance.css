@@ -2,6 +2,7 @@
     margin-left: 2rem;
 }
 
+
 .__admin_information_content_principal{
     width: 70%;
     margin-right: 2rem;
@@ -35,7 +36,13 @@
     justify-content: space-between;
     align-items: center;
 }
-
+.__admin_information_content_card_form_content{
+    clear: both;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: max-content;
+}   
 .__admin_information_content_card_form{
     display: grid !important;
     grid-auto-flow: row;
@@ -56,7 +63,7 @@
     justify-content: space-between;
 }
 
-.__admin_information_content_button_back button{
+.__admin_information_content_button_back button, button.__admin_information_content_button_edit button{
     background: white;
     border: 1px solid #492D90;
     box-shadow: 0px 12px 50px rgb(0 0 0 / 10%);

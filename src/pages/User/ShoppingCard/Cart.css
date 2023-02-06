@@ -27,9 +27,9 @@
 }
 
 .shoppingCart {
-    width: 86%;
+    width: 100%;
     height: 100%;
-    left: 202px;
+    /* left: 202px; */
     background: #01001C;
     padding: 1rem;
     display: flex;

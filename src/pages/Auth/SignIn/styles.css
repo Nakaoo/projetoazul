@@ -382,6 +382,7 @@ span.__signin_content_subtitle_explanation {
     color: white;
 }
 
+
 /* Responsivo */
 @media only screen and (max-width: 583px) {
 
@@ -444,8 +445,7 @@ span.__signin_content_subtitle_explanation {
     }
 
     .__signin_header img {
-        height: 75px;
-        width: 290px;
+        width: 310px;
     }
 }
 

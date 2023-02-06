@@ -14,7 +14,7 @@ import { message } from 'antd';
 
 export default function Pix({ OrderPayment, setConfirmPay, CloseModal }) {
   const [modalQrCode, setModalQrCode] = useState(false);
-  const [orderPayment, setOrderPayment] = useState(OrderPayment.data.uuid);
+  const [orderPayment, setOrderPayment] = useState(OrderPayment.uuid);
   const [imgQrCode, setImgQrCode] = useState();
   const [keyQrCode, setKeyQrCode] = useState('7f6844d0-de89-47e5-9ef7-e0a35a681615');
   const [modalOrderConfirm, setModalOrderConfirm] = useState(false);

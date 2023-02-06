@@ -14,7 +14,7 @@
 .__admin_compliance_table th,
 td {
     text-align: start;
-    padding: 1rem;
+    padding: 0.4rem;
     width: max-content;
 }
 
@@ -117,4 +117,8 @@ td {
 
 .__admin_compliance_title{
     padding: 1rem;
+}
+
+.dropdown{
+    display: none;
 }

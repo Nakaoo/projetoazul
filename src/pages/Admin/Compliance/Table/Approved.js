@@ -1,7 +1,7 @@
 import './index.css'
 import {MdKeyboardArrowDown} from 'react-icons/md'
 
-export default function Approved({setStep}) {
+export default function Approved({ loading, step, setStep, complianceOrders, handleNextPerson, handleNextStep, actualValue, setActualValue, handleActualValue, openedMenu }) {
 
     return (
         <div className='__admin_compliance'>
@@ -21,19 +21,28 @@ export default function Approved({setStep}) {
                     </tr>
                 </thead>
                 <tbody className='__admin_compliance_table_body'>
-                    <tr>
-                        <td>Fulano de Tal</td>
-                        <td>XXX.XXX.XXX-XX</td>
-                        <td>14 horas</td>
-                        <td>Saque</td>
-                        <td>150 R$</td>
-                        <td>3343</td>
-                        <td><button className='__admin_compliance_table_body_button'>OPÇÃO <MdKeyboardArrowDown /></button>
-                            <ul className='__admin_compliance_table_dropdown'>
-                                <li onClick={() => setStep(1)}>Analisar</li>
-                            </ul>
-                        </td>
-                    </tr>
+                {loading ? (
+                    <h1>Ola corno</h1>
+                ) : 
+                complianceOrders?.map((val, index) => {
+                    return (
+                        <tr key={index + 1}>
+                            <td>{val.person.first_name} {val.person.last_name}</td>
+                            <td>{val.person.doc_fiscal}</td>
+                            <td></td>
+                            <td>Compra</td>
+                            <td>R$ {val.amount}</td>
+                            <td>{val.uuid}</td>
+                            <td><button className='__admin_compliance_table_body_button' onClick={() => handleActualValue(val)}>OPÇÃO <MdKeyboardArrowDown /></button>
+                                {openedMenu == true && (
+                                    <ul className='__admin_compliance_table_dropdown'>
+                                        <li onClick={() => handleNextPerson(val)}>Analisar</li>
+                                    </ul>
+                                )}
+                            </td>
+                        </tr>
+                    )
+                })}
                 </tbody>
             </table>
 

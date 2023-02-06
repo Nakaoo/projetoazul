@@ -355,6 +355,7 @@ span.anticon.anticon-exclamation-circle.__signup-input-error-icon {
         align-items: center;
         margin-top: 0.5rem;
         margin-bottom: 0.5rem;
+        margin-left: 0;
     }
 
     .__signup_button_anterior{

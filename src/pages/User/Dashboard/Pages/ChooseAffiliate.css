@@ -4,6 +4,7 @@
 
 
 ._cardsDivision {
+    
     display: flex;
     justify-content: center;
 }
@@ -22,6 +23,7 @@
     padding-left: 4rem;
     padding-right: 4rem;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     padding-top: 2rem;
     padding-bottom: 90px;
@@ -163,6 +165,10 @@
 }
 
 @media screen and (max-width: 600px) {
+
+    .__choose_text{
+        margin-left: 0rem;
+    }
 
     .__menuIsOpen {
         padding-left: 1rem;

@@ -8,6 +8,7 @@ import ModalBoleto from "../Payment/Method/Boleto/Boleto";
 import apitest from "../../../services/apitest";
 import api from "../../../services/api";
 import { LoadingOutlined, QuestionCircleOutlined } from "@ant-design/icons";
+import { deleteOrder, generatePix } from "../utils/apiFunctions";
 
 export default function Payment({
   productsInCart,
@@ -34,23 +35,25 @@ export default function Payment({
         }]
       })
       .then(response => {
-        setOrderPayment(response.data.result)
-        console.log("create order", response)
+        setOrderPayment(response.data.result.data)
       })
       .catch(err => console.error(err));
   }
 
   useEffect(() => {
     LoadDataShipping();
+    CreateOrder();
   }, []);
 
   async function handleConfirmPay() {
     setLoading(true)
 
-    let order = await CreateOrder();
+    if(optionValue == 'option1'){
+      let pix = await generatePix(orderPayment.uuid);
 
-    console.log(order)
-    
+      console.log("Pix", pix);
+    }
+
     setConfirmPay(true)
 
     setLoading(false)
@@ -86,27 +89,12 @@ export default function Payment({
       .catch((error) => console.log(error));
   }
 
-  function CloseModal() {
+  async function CloseModal() {
     setCartsVisibility(false);
     setModalProduct(false);
+    await deleteOrder(orderPayment.uuid)
   }
 
-  // primeiro acesso, adicionando endereço de entrega
-  /* useEffect(() => {
-     if(dataUser?.shipping_address_1 == ""){
-      console.log("entrou no if")
-      let newData = dataUser?.address_1
-      LoadDataShipping()
-      let updateData = { shipping_address_1 : newData }
-      async function LoadDataShipping(){
-        await apitest.post(`person`, 
-        updateData
-        )
-        .then((response) => console.log("deu certo",response))
-        .catch(error => console.log(error))
-      }
-     }
-  },[])  */
 
   return (
     <>
