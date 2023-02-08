@@ -178,8 +178,14 @@
     display: flex;
 }
 
+.span.ant-upload-list-item-name{
+    color: #FFFFFF;
+}
+
+.ant-upload-list-item-actions picture{
+    color: #FFFFFF;
+}
+
 @media screen and (min-width: 1400px) {
-    .__content-payment-card_ {
-        align-items: center;
-    }
+
 }

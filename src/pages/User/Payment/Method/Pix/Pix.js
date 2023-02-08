@@ -1,22 +1,15 @@
 import './Pix.css';
 import pix from '../../../../../assets/icons/pix.png';
-import step1 from '../../../../../assets/icons/step-1.png';
-import step2 from '../../../../../assets/icons/step-2.png';
-import step3 from '../../../../../assets/icons/step-3.png';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import QrCode from "./QRcode"
-import apitest from '../../../../../services/apitest';
-import { IoMdReturnLeft } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-import api from '../../../../../services/api';
-import { LoadingOutlined, QuestionCircleOutlined } from "@ant-design/icons";
-import { message } from 'antd';
+import { message, Upload, Form } from 'antd';
+import { uploadObject } from '../../../../../utils/uploadImg';
 
-export default function Pix({ OrderPayment, setConfirmPay, CloseModal }) {
+export default function Pix({ hdocument, setDocument, OrderPayment, setConfirmPay, CloseModal, handleConfirmPay, handleRemoveUpload, handleChangeUpload }) {
   const [modalQrCode, setModalQrCode] = useState(false);
-  const [orderPayment, setOrderPayment] = useState(OrderPayment.uuid);
   const [imgQrCode, setImgQrCode] = useState();
-  const [keyQrCode, setKeyQrCode] = useState('7f6844d0-de89-47e5-9ef7-e0a35a681615');
+  const [keyQrCode, setKeyQrCode] = useState('5b851cea-2ee8-403f-899b-f090831107c2');
   const [modalOrderConfirm, setModalOrderConfirm] = useState(false);
   const navigate = useNavigate();
 
@@ -64,26 +57,71 @@ export default function Pix({ OrderPayment, setConfirmPay, CloseModal }) {
             <div className="_infoPayment_pix">
               <div className="infoPayment_pix">
                 <h1>Nome:</h1>
-                <h2>ESGTECH</h2>
+                <h2>ROCHA INTERMEDIACAO DE PAGAMENTOS LTDA</h2>
               </div>
               <div className="infoPayment_pix">
                 <h1>CNPJ:</h1>
-                <h2>41000245/47</h2>
+                <h2>47.846.013/0001-40</h2>
               </div>
             </div>
           </div>
-          <div className="__step_pix">
-            <div className='__stepper'>3</div>
-            <h1>Aguarde a Confirmação do Pagamento e Ativação da Comunidade</h1>
+          <div className="__stepTed_3">
+            <div className="__titleStepTed_3">
+              <div className='__stepper'>3</div>
+              <h1>Anexe o comprovante de Transferência.</h1>
+            </div>
+            <div className="_buttonReceipt">
+              <Upload
+                style={{ color: "white" }}
+                onPreview={() => null}
+                onChange={(file) =>
+                  handleChangeUpload(file)
+                }
+                onRemove={() => {
+                  handleRemoveUpload();
+                }}
+
+                beforeUpload={(file) => {
+                  let valid = true;
+
+                  if (
+                    ![
+                      "image/png",
+                      "image/jpg",
+                      "image/jpeg",
+                      "application/pdf",
+                    ].includes(file.type)
+                  ) {
+                    message.error(
+                      `${file.name} não possui um formato válido`
+                    );
+                    valid = false;
+                  }
+
+                  if (file.size > 15000000) {
+                    message.error("O arquivo possui tamanho superior a 5mb");
+                    valid = false;
+                  }
+
+                  return valid ? false : Upload.LIST_IGNORE;
+                }}
+                listType="picture"
+                maxCount={1}
+                accept=".png, .jpg, .jpeg, application/pdf"
+              >
+                <button className="__buttonReceipt">
+                  ANEXAR
+                </button>
+              </Upload>
+            </div>
           </div>
         </div>
-
       </div>
       <div className="__buttonFinishPix">
         <button className="cancel-payment" onClick={() => CloseModal()}>
           Cancelar
         </button>
-        <button className="_buttonFinishPix" onClick={() => navigate('/orderConfirmation')}>
+        <button className="_buttonFinishPix" onClick={() => handleConfirmPay()}>
           Finalizar
         </button>
       </div>

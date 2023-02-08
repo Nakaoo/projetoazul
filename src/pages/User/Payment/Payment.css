@@ -3,6 +3,7 @@
     border-radius: 30px;
     padding: 30px;
     width: 35rem;
+    height: 100%;
     color: #FFFFFF;
 }
 
@@ -259,6 +260,19 @@ border: none;
 }
 
 @media screen and (max-width: 600px){
+.cart-payment{
+    width: auto;
+    height: 35rem;
+}
+
+.cart-product{
+    width: auto;
+}
+
+.__content-payment-card_{
+    flex-direction: column;
+}
+
 .modal {
     overflow: scroll;
 }
@@ -273,6 +287,7 @@ border: none;
 
 .shoppingCart{
     left: 0px;
+    height: max-content;
     width: 100%;
 }
 
@@ -281,13 +296,9 @@ border: none;
     left: 1rem;
 }
 
-.shoppingCart{
-    height: 82rem;
-}
-
 .cart-products-payment{
- height: 39rem;
- padding-right: 0rem;
+    margin-bottom: 2rem;
+    padding-right: 0rem;
 }
 
 .__form-address_logradouro{

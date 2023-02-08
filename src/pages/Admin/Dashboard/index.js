@@ -32,14 +32,17 @@ export default function AdminDashboard() {
                 label: "Contas aprovadas",
                 data: Data.map((data) => data.approvedAccounts),
                 backgroundColor: [
-                    "#353535;",
+                    "white",
                 ],
+                borderColor: [
+                    'red'
+                ]
             },
             {
                 label: "Novas contas",
                 data: Data.map((data) => data.newAccounts),
                 backgroundColor: [
-                    "#ecf0f1",
+                    "#0C26AD",
                 ],
             }
         ],

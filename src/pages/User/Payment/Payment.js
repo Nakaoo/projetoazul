@@ -9,6 +9,7 @@ import apitest from "../../../services/apitest";
 import api from "../../../services/api";
 import { LoadingOutlined, QuestionCircleOutlined } from "@ant-design/icons";
 import { deleteOrder, generatePix } from "../utils/apiFunctions";
+import { uploadObject } from "../../../utils/uploadImg";
 
 export default function Payment({
   productsInCart,
@@ -21,6 +22,16 @@ export default function Payment({
   const changeOption = (newState) => {
     setOptionValue(newState);
   };
+  const [document, setDocument] = useState({
+    Bucket: "mtbroadcast",
+    Key: "",
+    Body: "",
+    ACL: "public",
+    Metadata: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  })
   const [confirmPay, setConfirmPay] = useState(false);
   const [orderPayment, setOrderPayment] = useState();
   const [loading, setLoading] = useState(false);
@@ -42,19 +53,20 @@ export default function Payment({
 
   useEffect(() => {
     LoadDataShipping();
-    CreateOrder();
   }, []);
 
   async function handleConfirmPay() {
     setLoading(true)
 
-    if(optionValue == 'option1'){
-      let pix = await generatePix(orderPayment.uuid);
+    let documentTst = await uploadObject(document)
 
-      console.log("Pix", pix);
-    }
+    console.log(documentTst)
+    // if(optionValue == 'option1'){
+    //   await CreateOrder();
+    //   let pix = await generatePix(orderPayment.uuid);
 
-    setConfirmPay(true)
+    //   console.log("Pix", pix);
+    // }
 
     setLoading(false)
   }
@@ -96,6 +108,25 @@ export default function Payment({
   }
 
 
+  const handleRemoveUpload = async () => {
+    setDocument({
+      Bucket: "mtbroadcast",
+      Key: "",
+      Body: "",
+      ACL: "public",
+      Metadata: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+  };
+
+  const handleChangeUpload = async (file) => {
+    setDocument({ ...document, Key: file.file.uid, Body: file.file })
+
+    console.log(document)
+  };
+
   return (
     <>
       {optionValue == "option1" && confirmPay == true ? (
@@ -103,6 +134,11 @@ export default function Payment({
           setConfirmPay={setConfirmPay}
           setCartsVisibility={setCartsVisibility}
           CloseModal={CloseModal}
+          handleConfirmPay={handleConfirmPay}
+          handleRemoveUpload={handleRemoveUpload}
+          handleChangeUpload={handleChangeUpload}
+          document={document}
+          setDocument={setDocument}
         />
       ) : optionValue == "option2" && confirmPay == true ? (
         <ModalTed setConfirmPay={setConfirmPay} CloseModal={CloseModal} />
@@ -378,7 +414,7 @@ export default function Payment({
                 </button>
                 <button
                   className="next-page-payment"
-                  onClick={handleConfirmPay}
+                  onClick={() => setConfirmPay(true)}
                 >
                   {loading ? <LoadingOutlined /> : "Ir para o pagamento"}
                 </button>
@@ -393,7 +429,7 @@ export default function Payment({
                 </button>
                 <button
                   className="next-page-payment"
-                  onClick={() => handleConfirmPay}
+                  onClick={() => setConfirmPay(true)}
                 >
                   {loading ? <LoadingOutlined /> : "Ir para o pagamento"}
                 </button>

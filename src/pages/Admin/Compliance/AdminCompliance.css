@@ -12,7 +12,7 @@
     margin-left: 2rem;
     padding-top: 2rem;
     display: flex;
-
+    color: #FFFFFF;
 }
 
 .__admin_information_content_cards  {
@@ -28,7 +28,7 @@
 }
 
 .__admin_information_content_card_title{
-    background: #282B30;
+    background: #001F64;
     border-radius: 5px 5px 0px 0px;
     color: white;
     padding: 1rem;
@@ -53,7 +53,9 @@
 }
 
 .__adin_information_content_card_container{
-    background: #FFFFFF;
+    background: transparent;
+    border: 1px solid #184CC0;
+    color: #FFFFFF;
     border-radius: 0px 0px 5px 5px;
     padding: 1rem;
 }
@@ -63,7 +65,7 @@
     justify-content: space-between;
 }
 
-.__admin_information_content_button_back button, button.__admin_information_content_button_edit button{
+.__admin_information_content_button_back button{
     background: white;
     border: 1px solid #492D90;
     box-shadow: 0px 12px 50px rgb(0 0 0 / 10%);
@@ -79,6 +81,21 @@
     padding: 0.6rem;
 }
 
+button.__admin_information_content_button_edit{
+    background: white;
+    border: 1px solid #492D90;
+    box-shadow: 0px 12px 50px rgb(0 0 0 / 10%);
+    font-family: 'poppins';
+    text-transform: uppercase;
+    font-size: 16px;
+    border-radius: 10px;
+    color: #492D90;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 16px;
+    width: 7rem;
+    padding: 0.6rem;
+}
 .__admin_information_content_button_refuse{
     background: white;
     border: 1px solid #D9534F;
@@ -114,11 +131,15 @@
 
 .__admin_information_account_title{
     font-size: 22px;
+    color: #FFFFFF;
     font-weight: bold;
 }
 
 .__admin_information_account_details{
-    background: #FFFFFF;
+    border: 1px solid;
+    background: transparent;
+    border: 1px solid #184CC0;
+    color: #FFFFFF;
     box-shadow: 3px 3px 30px rgb(0 0 0 / 25%);
     border-radius: 10px;
     padding-left: 1rem;

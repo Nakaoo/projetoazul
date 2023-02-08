@@ -9,7 +9,7 @@
 
 .__admin_dashboard_content {
     width: 100%;
-    height: max-content;
+    min-height: 100vh;
     background-color: #01001C;
 }
 
@@ -76,20 +76,26 @@
 }
 
 .__admin_dashboard_community {
-    background: #FFFFFF;
     border-radius: 5px;
     width: 60%;
     height: max-content;
     margin-left: 2rem;
     margin-right: 2rem;
     padding: 1rem;
+    border: 1px solid #184CC0;
+    filter: drop-shadow(3px 3px 30px rgba(0, 0, 0, 0.2));
+    border-radius: 5px;
+    color: #FFFFFF;
 }
 
 .__admin_dashboard_information {
     width: 25%;
     height: max-content;
     padding: 1rem;
-    background: #FFFFFF;
+    border: 1px solid #184CC0;
+    filter: drop-shadow(3px 3px 30px rgba(0, 0, 0, 0.2));
+    border-radius: 5px;
+    color: #FFFFFF;
     border-radius: 5px;
 }
 

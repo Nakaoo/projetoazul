@@ -124,7 +124,7 @@ export default function ProductView({ modalProduct, selectedProduct, productsApi
             <div className='__option_energy_header_map'>
               {productsApi.filter((val, index) => val?.category_id == 1).map((val, index) => {
                 return (
-                    <div className={`product ${val.title}`} onClick={() => addProductToCart(val)}>
+                    <div className={`product ${val.title}`} onClick={() => addProductToCart(val)} key={index+1} >
                       <img src={val.image} title={`${val.title} - R$ ${val.price} - CDI ${(val.cdi * 100).toFixed(2)}%`}></img>
                     </div>
                 )

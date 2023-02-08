@@ -15,7 +15,7 @@ export const dateToFront = val => {
 }
 
 export const formatCurrencyFront = value => {
-  if(!value) return value
+  if (!value) return value
   const patrimony = (value / 100).toLocaleString("pt-BR", {
     style: "currency",
     currency: "BRL",
@@ -30,4 +30,10 @@ export const formatCurrency = value => {
   newValue.replace(/[^0-9]/g, "")
 
   return newValue
+}
+
+export const cpfToFront = value => {
+  const taxId = value.replace(/[^\d]/g, "");
+
+  return taxId.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
 }

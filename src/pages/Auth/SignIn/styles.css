@@ -395,7 +395,7 @@ span.__signin_content_subtitle_explanation {
     }
 
     .__signin_container {
-        height: 120vh;
+        min-height: 100vh;
     }
 
     .input_addon {

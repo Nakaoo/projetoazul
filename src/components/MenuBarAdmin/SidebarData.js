@@ -15,7 +15,18 @@ export const SidebarData = [
         title: 'Financeiro', 
         icon: <AiFillSignal />,
         cName: 'nav-text',
-        blocked: true
+        dropdown: true,
+        dropdownOpened: false,
+        dropdownItems: [
+            {
+                title: 'Pendentes',
+                url: '/admin/finance?=pending'
+            },
+            {
+                title: 'Histórico',
+                url: '/admin/finance?=historic'
+            }
+        ]
     },
     {
         title: 'Compliance', 

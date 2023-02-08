@@ -31,33 +31,37 @@ export default function AdminCompliance() {
     const [documentDetails, setDocumentDetails] = useState(true)
     const [complianceOrders, setComplianceOrders] = useState([])
     const [complianceOrder, setComplianceOrder] = useState([])
+    const [filterds, setFilterds] = useState([])
+    const [dateSearch, setDateSearch] = useState([])
+    const [search, setSearch] = useState()
     const [actualValue, setActualValue] = useState('');
     const [openedMenu, setOpenedMenu] = useState(false);
-
     const location = useLocation();
 
     useEffect(() => {
         setComplianceOrders(null)
         setLoading(true)
-        let page = location.search.split("=")[1]
-        setPage(page)
-        handlePix();
-        setLoading(false)
+        setSearch()
+        let actualPage = location.search.split("=")[1]
+        setPage(actualPage)
+        handleTableExihibition(actualPage);
     }, [location.search.split("=")[1]])
 
-    async function handlePix() {
-        if (page == 'pending') {
-            let orders = await getOrders(1)
+    async function handleTableExihibition(actualPage) {
+        setLoading(true)
+        if (actualPage === 'pending') {
+            let orders = await getOrders(3)
             setComplianceOrders(orders.data.result)
         }
-        else if (page == 'approved') {
+        else if (actualPage === 'approved') {
             let orders = await getOrders(6)
             setComplianceOrders(orders.data.result)
         }
-        else if (page == 'refused') {
+        else if (actualPage === 'refused') {
             let orders = await getOrders(2)
             setComplianceOrders(orders.data.result)
         }
+        setLoading(false)
     }
 
     function handlePersonalDetails() {
@@ -107,6 +111,84 @@ export default function AdminCompliance() {
 
     function handleRefuseButton() {
 
+    }
+
+    function handleSearchName(e) {
+
+        setSearch(e)
+        let array = []
+
+        complianceOrders.filter((item) => {
+            if (item?.person?.first_name.toLowerCase().includes(search.toLowerCase())) {
+                array.push(item)
+            }
+        });
+
+
+        setFilterds(array)
+
+        if (!search)
+            setFilterds([])
+    }
+
+
+    function handleSearchCpf(e) {
+
+        setSearch(e)
+        let array = []
+
+        complianceOrders.filter((item) => {
+            if (item?.person?.doc_fiscal.toLowerCase().includes(search.toLowerCase())) {
+                array.push(item)
+            }
+        });
+
+
+        setFilterds(array)
+
+        if (!search)
+            setFilterds([])
+    }
+
+    function handleSearchCpf(e) {
+
+        setSearch(e)
+        let array = []
+
+        complianceOrders.filter((item) => {
+            if (item?.person?.doc_fiscal.toLowerCase().includes(search.toLowerCase())) {
+                array.push(item)
+            }
+        });
+
+
+        setFilterds(array)
+
+        if (!search)
+            setFilterds([])
+    }
+
+    function handleSearchOrder(e) {
+
+        setSearch(e)
+        let array = []
+
+        complianceOrders.filter((item) => {
+            if (item?.uuid.toLowerCase().includes(search.toLowerCase())) {
+                array.push(item)
+            }
+        });
+
+
+        setFilterds(array)
+
+        if (!search)
+            setFilterds([])
+    }
+
+    function clearFilter() {
+        setFilterds([])
+        setSearch()
     }
 
     function handleAcceptButton() {
@@ -182,35 +264,50 @@ export default function AdminCompliance() {
                         <div className="__admin_compliance_table">
                             {page == 'approved' && (
                                 <Approved
-                                    step={step}
-                                    setStep={setStep}
                                     complianceOrders={complianceOrders}
                                     handleNextPerson={handleNextPerson}
                                     handleActualValue={handleActualValue}
                                     openedMenu={openedMenu}
                                     loading={loading}
+                                    actualValue={actualValue}
+                                    filterds={filterds}
+                                    handleSearchName={handleSearchName}
+                                    handleSearchCpf={handleSearchCpf}
+                                    handleSearchOrder={handleSearchOrder}
+                                    clearFilter={clearFilter}
+                                    search={search}
                                 />
                             )}
                             {page == 'pending' && (
                                 <Pending
-                                    step={step}
-                                    setStep={setStep}
                                     complianceOrders={complianceOrders}
                                     handleNextPerson={handleNextPerson}
                                     handleActualValue={handleActualValue}
                                     openedMenu={openedMenu}
                                     loading={loading}
+                                    actualValue={actualValue}
+                                    filterds={filterds}
+                                    handleSearchName={handleSearchName}
+                                    handleSearchCpf={handleSearchCpf}
+                                    handleSearchOrder={handleSearchOrder}
+                                    clearFilter={clearFilter}
+                                    search={search}
                                 />
                             )}
                             {page == 'refused' && (
                                 <Refused
-                                    step={step}
-                                    setStep={setStep}
                                     complianceOrders={complianceOrders}
                                     handleNextPerson={handleNextPerson}
                                     handleActualValue={handleActualValue}
                                     openedMenu={openedMenu}
                                     loading={loading}
+                                    actualValue={actualValue}
+                                    filterds={filterds}
+                                    handleSearchName={handleSearchName}
+                                    handleSearchCpf={handleSearchCpf}
+                                    handleSearchOrder={handleSearchOrder}
+                                    clearFilter={clearFilter}
+                                    search={search}
                                 />
                             )}
                         </div>

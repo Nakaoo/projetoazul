@@ -13,16 +13,14 @@ export default function CommunityTable() {
                     <tr className="__admin_dashboard_community_header_tr">
                         <th>Nome</th>
                         <th>Id</th>
+                        <th>Indicações aprov.</th>
+                        <th>Indicações reprov.</th>
                         <th>Val. Comissão</th>
-                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr className="__admin_dashboard_community_body_tr">
-                        <td>Jorge Batista</td>
-                        <td>22</td>
-                        <td>R$ 1240,00</td>
-                        <td><span className='__admin_dashboard_community_pay'>Pago</span></td>
+
                     </tr>
                 </tbody>
             </table>
