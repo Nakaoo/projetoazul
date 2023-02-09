@@ -1,14 +1,13 @@
 import './Pix.css';
 import pix from '../../../../../assets/icons/pix.png';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import QrCode from "./QRcode"
 import { useNavigate } from "react-router-dom";
 import { message, Upload, Form } from 'antd';
 import { uploadObject } from '../../../../../utils/uploadImg';
 
-export default function Pix({ hdocument, setDocument, OrderPayment, setConfirmPay, CloseModal, handleConfirmPay, handleRemoveUpload, handleChangeUpload }) {
+export default function Pix({ pixDetails, hdocument, setDocument, OrderPayment, setConfirmPay, CloseModal, handleConfirmPay, handleRemoveUpload, handleChangeUpload }) {
   const [modalQrCode, setModalQrCode] = useState(false);
-  const [imgQrCode, setImgQrCode] = useState();
   const [keyQrCode, setKeyQrCode] = useState('5b851cea-2ee8-403f-899b-f090831107c2');
   const [modalOrderConfirm, setModalOrderConfirm] = useState(false);
   const navigate = useNavigate();
@@ -48,7 +47,7 @@ export default function Pix({ hdocument, setDocument, OrderPayment, setConfirmPa
             <button className="_buttonCopy_pix" onClick={copiarLink}>COPIAR</button>
             <button className="_buttonCopy_pix" onClick={() => setModalQrCode(true)}>QRCODE</button>
           </div>
-          {modalQrCode == true ? <QrCode ImgQrCode={imgQrCode} setModalQrCode={setModalQrCode} /> : <></>}
+          {modalQrCode == true ? <QrCode ImgQrCode={pixDetails?.pix} setModalQrCode={setModalQrCode} /> : <></>}
           <div className="__step_2_pix">
             <div className="__confirmPayment">
               <div className='__stepper'>2</div>

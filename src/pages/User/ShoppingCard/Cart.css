@@ -47,7 +47,7 @@
 
 .cart-product {
     width: 20rem;
-    height: 28rem;
+    min-height: 30rem;
     padding: 30px;
     gap: 27px;
     border: 1px solid #184CC0;
@@ -121,7 +121,6 @@
 
 .headerShoppingCart {
     display: flex;
-    padding-top: 2rem;
     padding-left: 2rem;
 }
 

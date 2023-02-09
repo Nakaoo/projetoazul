@@ -19,6 +19,12 @@ export async function getProducts(){
     return products
 }
 
+export async function generateOrder(data){
+    const order = await api.post(`/order`, data)
+
+    return order;
+}
+
 export async function generatePix(uuid){
     const id = uuid;
 

@@ -8,9 +8,9 @@ import ModalBoleto from "../Payment/Method/Boleto/Boleto";
 import apitest from "../../../services/apitest";
 import api from "../../../services/api";
 import { LoadingOutlined, QuestionCircleOutlined } from "@ant-design/icons";
-import { deleteOrder, generatePix } from "../utils/apiFunctions";
+import { deleteOrder, generatePix, generateOrder } from "../utils/apiFunctions";
 import { uploadObject } from "../../../utils/uploadImg";
-
+import { useNavigate } from "react-router-dom";
 export default function Payment({
   productsInCart,
   setCartsVisibility,
@@ -32,35 +32,43 @@ export default function Payment({
       'Accept': 'application/json'
     }
   })
-  
-const params = {
-  Bucket: "mtbroadcast", // The path to the directory you want to upload the object to, starting with your Space name.
-  Key: "folder-path/hello-worlde.txt", // Object key, referenced whenever you want to access this file later.
-  Body: "Hello, World!", // The object's contents. This variable is an object, not a string.
-  ACL: "public", // Defines ACL permissions, such as private or public.
-  Metadata: { // Defines metadata tags.
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    'Allow-Access-Control-Origin': '*'
-  }
-};
+  const navigate = useNavigate();
+
+  const params = {
+    Bucket: "mtbroadcast", // The path to the directory you want to upload the object to, starting with your Space name.
+    Key: "folder-path/hello-worlde.txt", // Object key, referenced whenever you want to access this file later.
+    Body: "Hello, World!", // The object's contents. This variable is an object, not a string.
+    ACL: "public", // Defines ACL permissions, such as private or public.
+    Metadata: { // Defines metadata tags.
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Allow-Access-Control-Origin': '*'
+    }
+  };
   const [confirmPay, setConfirmPay] = useState(false);
   const [orderPayment, setOrderPayment] = useState();
   const [loading, setLoading] = useState(false);
+  const [pixDetails, setPixDetails] = useState();
   // atual função para criar order
   async function CreateOrder() {
-    await api.
-      post(`order`, {
-        wallet: id,
-        product: [{
-          id: product.uuid,
-          qtt: 1
-        }]
-      })
-      .then(response => {
-        setOrderPayment(response.data.result.data)
-      })
-      .catch(err => console.error(err));
+    setLoading(true)
+    const data = {
+      wallet: id,
+      product: [{
+        id: product.uuid,
+        qtt: 1
+      }]
+    }
+
+    let order = await generateOrder(data)
+    setOrderPayment(order.data.result.data)
+
+    let pix = await generatePix(order.data.result.data.uuid);
+
+    setPixDetails(pix.data.result)
+    setLoading(false)
+
+    setConfirmPay(true)
   }
 
   useEffect(() => {
@@ -71,14 +79,7 @@ const params = {
     setLoading(true)
 
     let documentTst = await uploadObject(params)
-
-    console.log(documentTst)
-    // if(optionValue == 'option1'){
-    //   await CreateOrder();
-    //   let pix = await generatePix(orderPayment.uuid);
-
-    //   console.log("Pix", pix);
-    // }
+    navigate('/orderconfirmation')
 
     setLoading(false)
   }
@@ -147,11 +148,13 @@ const params = {
           setConfirmPay={setConfirmPay}
           setCartsVisibility={setCartsVisibility}
           CloseModal={CloseModal}
+          CreateOrder={CreateOrder}
           handleConfirmPay={handleConfirmPay}
           handleRemoveUpload={handleRemoveUpload}
           handleChangeUpload={handleChangeUpload}
           document={document}
           setDocument={setDocument}
+          pixDetails={pixDetails}
         />
       ) : optionValue == "option2" && confirmPay == true ? (
         <ModalTed setConfirmPay={setConfirmPay} CloseModal={CloseModal} />
@@ -427,7 +430,7 @@ const params = {
                 </button>
                 <button
                   className="next-page-payment"
-                  onClick={() => setConfirmPay(true)}
+                  onClick={() => CreateOrder()}
                 >
                   {loading ? <LoadingOutlined /> : "Ir para o pagamento"}
                 </button>
@@ -442,7 +445,7 @@ const params = {
                 </button>
                 <button
                   className="next-page-payment"
-                  onClick={() => setConfirmPay(true)}
+                  onClick={() => CreateOrder()}
                 >
                   {loading ? <LoadingOutlined /> : "Ir para o pagamento"}
                 </button>

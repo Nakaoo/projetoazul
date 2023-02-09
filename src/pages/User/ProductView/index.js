@@ -119,7 +119,7 @@ export default function ProductView({ modalProduct, selectedProduct, productsApi
           <div className='__option_energy_content'>
             <div className='__option_energy_header'>
               <h3>O quanto deseja investir?</h3>
-              <span>Escolha o tipo de investimento da sua preferência para<br />continuar o processo</span>
+              <span className='__option_energy_text'>Escolha o tipo de investimento da sua preferência para continuar o processo</span>
             </div>
             <div className='__option_energy_header_map'>
               {productsApi.filter((val, index) => val?.category_id == 1).map((val, index) => {

@@ -3,6 +3,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 
 
 export default function ({productsInCart, onProductRemove}) {
+let taxValue = 14.90;
 
 /* alterar quantidade de produto 
 <span className="product-quantity">
@@ -60,12 +61,16 @@ export default function ({productsInCart, onProductRemove}) {
                   <h2>{(product.cdi * 100).toFixed(2)}%</h2>
                 </span>
                 <span className="product-delivery">
+                  <h1>Taxa</h1>
+                  <h2>R$ 14.90</h2>
+                </span>
+                <span className="product-delivery">
                   <h1>Entrega</h1>
                   <h2>Grátis</h2>
                 </span>
                 <span className="total-products-car">
-                  <h1>Total</h1>
-                  <h2>{product.price * product.count}</h2>
+                  <h1>Subtotal</h1>
+                  <h2>R$ {(parseFloat(product.price, 2) + 14.90).toFixed(2)}</h2>
                 </span>
                 {/* <span className="remove-item-car">
                   <h1>Remover Produto</h1>

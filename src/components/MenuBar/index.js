@@ -99,7 +99,7 @@ export default function MenuBar({ value, setValue, title, active, subtitle, setT
                                 </div>
 
                                 <div className='__menu_info'>
-                                    <div className="__menu_nameUser">Olá <span className='__menu_highlight'>{dataUser?.first_name}</span></div>
+                                    <div className="__menu_nameUser">Olá, <span className='__menu_highlight'>{dataUser?.first_name}</span></div>
                                     <div className="__menu_nameUser">Seu ID: <span className='__menu_highlight'>{dataUser?.id}</span> </div>
                                 </div>  
                             </div>

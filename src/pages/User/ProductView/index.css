@@ -68,7 +68,7 @@
     /* justify-content: flex-end; */
     position: relative;
     bottom: -1rem;
-    left: 33rem;
+    left: 40rem;
     cursor: pointer;
 }
 
@@ -79,16 +79,17 @@
     padding: 2rem;
 }
 
+.__option_energy_text{
+    font-size: 15px;
+}
+
 .__option_energy_header {
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
 }
 
 .__option_energy_header h3 {
     text-align: center;
-}
-
-.__option_energy_header span {
-    font-size: 12px;
+    margin-bottom: 1rem;
 }
 
 .__option_energy_header_map {
@@ -160,5 +161,13 @@
 
     .product img {
         height: 200px;
+    }
+
+    .__option_energy_text{
+        font-size: 22px;
+    }
+
+    .__option_energy_header{
+        text-align: center;
     }
 }
