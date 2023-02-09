@@ -8,6 +8,7 @@ import { message } from "antd";
 import { useNavigate } from "react-router-dom";
 import { PersonContext } from "../../../hooks/PersonContext";
 import { globalImg } from "../../../utils/globalImg";
+import { removeMaskCpf } from "../../../utils/removeMask";
 
 const SignIn = () => {
 
@@ -61,7 +62,7 @@ const SignIn = () => {
         }
 
         try {
-            let login = await getCpfOrEmail(email)
+            let login = await getCpfOrEmail(removeMaskCpf(email))
 
 
             if (login.status == 204) {

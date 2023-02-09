@@ -3,6 +3,17 @@ export const removeMask = val => {
   return String(val).replace(/\D+/g, '')
 }
 
+export const removeMaskCpf = val => {
+  let valueCpf = String(val).replace(/\D+/g, '')
+
+  if(/^\d+$/.test(valueCpf)){
+    return valueCpf;
+  }else{
+    return val;
+  }
+}
+
+
 export const dateToBack = val => {
   return String(val).split('/').reverse().join('-')
 }

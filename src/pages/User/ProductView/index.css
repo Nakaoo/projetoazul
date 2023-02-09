@@ -67,8 +67,8 @@
     display: flex;
     /* justify-content: flex-end; */
     position: relative;
-    bottom: 2rem;
-    left: 35rem;
+    bottom: -1rem;
+    left: 33rem;
     cursor: pointer;
 }
 

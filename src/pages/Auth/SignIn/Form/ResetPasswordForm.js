@@ -13,6 +13,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from 'yup';
 import { Spin } from 'antd';
 import { globalImg } from '../../../../utils/globalImg';
+
 const antIcon = (
     <LoadingOutlined
         style={{
@@ -51,12 +52,14 @@ const ResetPasswordForm = () => {
     const onKeyDownEnter = e => {
         if (e.key === "Enter") {
             document.getElementById("proximo").click();
+            e.preventDefault();
         }
     }
 
     const onKeyDownConfirmPassword = e => {
         if (e.key === "Tab" || e.key === "Enter") {
             document.getElementById("confirm").focus();
+            e.preventDefault();
         }
     }
 

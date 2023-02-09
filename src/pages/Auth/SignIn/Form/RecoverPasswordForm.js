@@ -5,6 +5,7 @@ import '../styles.css'
 import { recoverPassword } from '../../Signup/utils/apiFunctions'
 import { LoadingOutlined } from "@ant-design/icons";
 import { globalImg } from '../../../../utils/globalImg'
+import { removeMaskCpf } from '../../../../utils/removeMask'
 
 const RecoverPasswordForm = () => {
     const logoImg = globalImg.logo
@@ -24,8 +25,10 @@ const RecoverPasswordForm = () => {
 
     async function handleRecoverPassword() {
         try {
+            let emailFN = removeMaskCpf(email)
+
             const data = {
-                email: email
+                email: emailFN
             }
             setLoading(true)
             let recover = await recoverPassword(data)

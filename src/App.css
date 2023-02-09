@@ -7,3 +7,7 @@ html, body, #app, #app>div{
   scroll-behavior: auto;
   margin: 0;
 }
+
+button{
+  text-transform: uppercase !important;
+}
