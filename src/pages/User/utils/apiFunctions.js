@@ -34,3 +34,16 @@ export async function deleteOrder(uuid){
 
     return order;
 }
+
+export async function getMultiNivel(){
+    const multinivel = await api.get(`/multinivel`)
+
+
+    return multinivel
+}
+
+export async function getMultiNivelTotal(){
+    const multiniveltotal = await api.get(`/multiniveltotal`)
+
+    return multiniveltotal;
+}

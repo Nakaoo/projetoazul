@@ -13,6 +13,8 @@ import { Skeleton } from "antd"
 import apitest from "../../../../services/apitest"
 import Navbar from "../../../../components/Navbar/Navbar"
 import './DashboardLogged.css'
+import { getMultiNivel, getMultiNivelTotal } from "../../utils/apiFunctions"
+
 export default function DashboardLogged() {
   const [pessoa, setPessoa] = useState()
   const [loadingTela, setLoadingTela] = useState()
@@ -20,6 +22,9 @@ export default function DashboardLogged() {
 
   const [products, setProducts] = useState();
   const [balanceUser, setBalanceUser] = useState();
+  const [multinivel, setMultiNivel] = useState([]);
+  const [multiniveltotal, setMultiNivelTotal] = useState([]);
+  const [sumMultiNivel, setSumMultiNivel] = useState();
 
   async function LoadProducts() {
     await apitest.get(`product`)
@@ -45,10 +50,46 @@ export default function DashboardLogged() {
     setLoadingTela(false)
   }
 
+  async function getMultiNivelValue() {
+    try {
+      let multinivel = await getMultiNivel();
+      let arr = []
+
+      multinivel.data.result.forEach(element => {
+        arr.push(element)
+      });
+
+      setMultiNivel(arr)
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async function getMultiNivelTotalValue() {
+    try {
+      let multinivel = await getMultiNivelTotal();
+      let arr = []
+      let sum = 0;
+
+      multinivel.data.result.forEach((element, index) => {
+        arr.push(element)
+        sum += element.total
+      });
+
+      console.log(arr, 'arr2')
+      setSumMultiNivel(sum)
+      setMultiNivelTotal(arr)
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   useEffect(() => {
     fetchUser()
     LoadBalance();
     LoadProducts();
+    getMultiNivelValue();
+    getMultiNivelTotalValue();
   }, [])
 
 
@@ -65,7 +106,7 @@ export default function DashboardLogged() {
           </div>
         </div>
         <div className="__card">
-          <Resumo pessoa={pessoa} />
+          <Resumo pessoa={pessoa} multinivel={multinivel} multiniveltotal={multiniveltotal} sumMultiNivel={sumMultiNivel} />
         </div>
       </div>
     )
