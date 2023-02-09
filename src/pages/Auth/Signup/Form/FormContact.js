@@ -15,6 +15,8 @@ const FormContact = (
     const onKeyDownPhone = e => {
         if (e.key === "Tab" || e.key === "Enter") {
             document.getElementById("mobile2").focus();
+
+            e.preventDefault();
         }
     };
 

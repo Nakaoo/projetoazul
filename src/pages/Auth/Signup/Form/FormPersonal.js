@@ -86,6 +86,7 @@ const FormPersonal = (
                         ref={calendarRef}
                         minDate={new Date("1900")}
                         error={errors.birthDate?.message}
+                        wrapperClassName="auth_datePicker"
                     />
                 </Col>
                 <Col sm={10} className="__signup_col">

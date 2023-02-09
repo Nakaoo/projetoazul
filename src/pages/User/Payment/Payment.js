@@ -32,6 +32,18 @@ export default function Payment({
       'Accept': 'application/json'
     }
   })
+  
+const params = {
+  Bucket: "mtbroadcast", // The path to the directory you want to upload the object to, starting with your Space name.
+  Key: "folder-path/hello-worlde.txt", // Object key, referenced whenever you want to access this file later.
+  Body: "Hello, World!", // The object's contents. This variable is an object, not a string.
+  ACL: "public", // Defines ACL permissions, such as private or public.
+  Metadata: { // Defines metadata tags.
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Allow-Access-Control-Origin': '*'
+  }
+};
   const [confirmPay, setConfirmPay] = useState(false);
   const [orderPayment, setOrderPayment] = useState();
   const [loading, setLoading] = useState(false);
@@ -58,7 +70,7 @@ export default function Payment({
   async function handleConfirmPay() {
     setLoading(true)
 
-    let documentTst = await uploadObject(document)
+    let documentTst = await uploadObject(params)
 
     console.log(documentTst)
     // if(optionValue == 'option1'){
@@ -116,7 +128,8 @@ export default function Payment({
       ACL: "public",
       Metadata: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'Allow-Access-Control-Origin': '*'
       }
     })
   };

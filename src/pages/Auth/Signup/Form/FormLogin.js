@@ -67,7 +67,7 @@ const FormLogin = (
                 </Col>
                 <Col sm={10} className="__signup_col">
                     <Input
-                        id="loginzx"
+                        id="login"
                         label="Login"
                         placeholder="Digite o seu login"
                         onKeyDown={onKeyDownEnter}

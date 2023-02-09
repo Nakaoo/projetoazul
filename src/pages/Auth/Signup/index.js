@@ -17,7 +17,7 @@ const Signup = () => {
         2: { name: "Contato", route: "contact" },
         3: { name: "Endereço", route: "address" },
         4: { name: "Segurança", route: "security" },
-        5: { name: "Termos", route: "terms" },
+        5: { name: "Termos", route: "agreement" },
         6: { name: "Details", route: "details" },
     };
 
