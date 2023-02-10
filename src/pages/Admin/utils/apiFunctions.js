@@ -13,9 +13,9 @@ export async function getOrders(status){
 }
 
 export async function approveOrder(orderUuid){
-    let orderItem = order;
+    let orderItem = orderUuid;
 
-    const order = await api.post(`/financial/payment/${orderItem}`)
+    const order = await api.put(`/financial/payment/${orderItem}`)
 
     return order
 }

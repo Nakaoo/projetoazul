@@ -7,7 +7,7 @@ import { globalImg } from "../../../../utils/globalImg"
 import RequestWithdrawal from "../Withdrawal/RequestWithdrawal"
 
 
-export default function Card({ products, balanceUser }) {
+export default function Card({ products, balanceUser, pessoa }) {
     const [modalWithdrawal, setModalWithdrawal] = useState(false);
     const cardImg = globalImg.cardImg
     let product = [];
@@ -15,6 +15,9 @@ export default function Card({ products, balanceUser }) {
         product = products[0];
     }
 
+    useEffect(() => {
+        console.log(pessoa)
+    })
     return (
         <>
             {
@@ -47,15 +50,15 @@ export default function Card({ products, balanceUser }) {
                     <div className="__valueLimit">
                         <div className="__currentBalance">
                             <h2>R$</h2>
-                            <h1>{balanceUser}</h1>
+                            <h1>{pessoa?.wallet?.balance}</h1>
                             <h3>Saldo Atual</h3>
                         </div>
                         <div className="__income">
-                            <h1>{product.cdi}</h1>
+                            <h1>0</h1>
                             <h2>Rendimentos</h2>
                         </div>
                         <div className="__cashBack">
-                            <h1>{product.cashback}</h1>
+                            <h1>0</h1>
                             <h2>Cashback</h2>
                         </div>
 

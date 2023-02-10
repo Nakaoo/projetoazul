@@ -13,6 +13,7 @@ import { useLocation } from "react-router-dom"
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 import { BsCheck2Circle } from 'react-icons/bs'
 import { approveOrder, getOrders } from "../utils/apiFunctions"
+import { LoadingOutlined } from "@ant-design/icons";
 import { message, Skeleton } from "antd"
 import { act } from "@testing-library/react"
 
@@ -20,7 +21,7 @@ export default function AdminCompliance() {
     const [accountType, setAccountType] = useState('')
     const [menu, setMenu] = useState(false)
     const [page, setPage] = useState('pending')
-    const [step, setStep] = useState(0)
+    const [step, setStep] = useState(2)
     const [loading, setLoading] = useState(true)
     const [orderNumber, setOrderNumber] = useState()
     const [person, setPerson] = useState()
@@ -36,12 +37,15 @@ export default function AdminCompliance() {
     const [search, setSearch] = useState()
     const [actualValue, setActualValue] = useState('');
     const [openedMenu, setOpenedMenu] = useState(false);
+    const [complianceStatus, setComplianceStatus] = useState();
+
     const location = useLocation();
 
     useEffect(() => {
         setComplianceOrders(null)
         setLoading(true)
         setSearch()
+        setStep(0)
         let actualPage = location.search.split("=")[1]
         setPage(actualPage)
         handleTableExihibition(actualPage);
@@ -107,6 +111,7 @@ export default function AdminCompliance() {
     function handleBackButton() {
         setActualValue(null)
         setStep(0)
+        setComplianceStatus()
     }
 
     function handleRefuseButton() {
@@ -208,6 +213,23 @@ export default function AdminCompliance() {
 
     }
 
+    async function handleAcceptButton(){
+        setLoading(true)
+
+        try{
+            let order = await approveOrder(actualValue.uuid)
+
+            console.log(order)
+
+            message.success("Pedido aprovado com sucesso")
+            setStep(2)
+            setLoading(false)
+        }catch(err){
+            message.error(err)
+            setLoading(false)
+        }
+    }
+
     function handleNextPerson(person) {
         setComplianceOrder(person)
         setActualValue(person)
@@ -262,7 +284,7 @@ export default function AdminCompliance() {
                     </div>
                 </div><div className="__admin_compliance_table_">
                         <div className="__admin_compliance_table">
-                            {page == 'approved' && (
+                            {page == 'approved' && step == 0 && (
                                 <Approved
                                     complianceOrders={complianceOrders}
                                     handleNextPerson={handleNextPerson}
@@ -278,7 +300,7 @@ export default function AdminCompliance() {
                                     search={search}
                                 />
                             )}
-                            {page == 'pending' && (
+                            {page == 'pending' && step == 0 && (
                                 <Pending
                                     complianceOrders={complianceOrders}
                                     handleNextPerson={handleNextPerson}
@@ -294,7 +316,7 @@ export default function AdminCompliance() {
                                     search={search}
                                 />
                             )}
-                            {page == 'refused' && (
+                            {page == 'refused' && step == 0 && (
                                 <Refused
                                     complianceOrders={complianceOrders}
                                     handleNextPerson={handleNextPerson}
@@ -497,13 +519,13 @@ export default function AdminCompliance() {
                             </div>
                             <div className="__admin_information_content_buttons_end">
                                 {page == 'pending' && (
-                                    <><button className="__admin_information_content_button_refuse">Reprovar</button><button className="__admin_information_content_button_approve" onClick={() => handleAcceptButton(actualValue.uuid)}>Aprovar</button></>
+                                    <>{loading ? <LoadingOutlined /> : <><button className="__admin_information_content_button_refuse">Reprovar</button><button className="__admin_information_content_button_approve" onClick={() => handleAcceptButton(actualValue.uuid)}>Aprovar</button></>}</>
                                 )}
                                 {page == 'approved' && (
-                                    <><button className="__admin_information_content_button_edit">Editar</button></>
+                                    <>{loading ? <LoadingOutlined /> : <button className="__admin_information_content_button_edit">Editar</button>}</>
                                 )}
                                 {page == 'refused' && (
-                                    <><button className="__admin_information_content_button_approve" onClick={() => handleAcceptButton(actualValue.uuid)}>Aprovar</button></>
+                                    <>{loading ? <LoadingOutlined /> : <button className="__admin_information_content_button_approve" onClick={() => handleAcceptButton(actualValue?.uuid)}>Aprovar</button>}</>
                                 )}
                             </div>
                         </div>
@@ -536,12 +558,14 @@ export default function AdminCompliance() {
                 <div className="__admin_dashboard_compliance_status">
                     <div className="__admin_dashboard_compliance_status_content">
                         <div className="__admin_dashboard_compliance_status_content_header">
-                            <BsCheck2Circle />
+                            <BsCheck2Circle className="__adm_dashboard_compliance_status_icon" size={62}/>
                             <span className="__admin_dashboard_compliance_status_content_header_title">Compliance Aprovado</span>
+                        </div>
+                        <div className="__admin_dashboard_compliance_status_content_body">
                             <p>O compliance foi aprovado e enviado para o financeiro para que eles possam efetuar o pagamento</p>
                         </div>
                         <div className="__admin_dashboard_compliance_">
-                            <button onClick={handleBackButton()}>Finalizar</button>
+                            <button onClick={() => handleBackButton()}>Finalizar</button>
                         </div>
                     </div>
                 </div>

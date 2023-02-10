@@ -1,0 +1,113 @@
+.__user_community_content{
+    height: 100vh;
+    background: #01001C;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    display: flex;
+}
+
+.__admin_dashboard_cards_grid{
+    width: 100%;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+
+.__admin_dashboard_card_grid {
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    width: 14rem;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    color: #FFFFFF;
+    height: max-content;
+    border: 1px solid #184CC0;
+    filter: drop-shadow(3px 3px 30px rgba(0, 0, 0, 0.2));
+    border-radius: 5px;
+}
+
+.__user_community_left{
+    width: 70%;
+    margin-right: 1rem;
+}
+
+.__user_community_right{
+    display: flex;
+    flex-direction: column;
+}
+
+.__community_table{
+    width: 45rem;
+    color: #FFFFFF;
+    border: 1px solid #184CC0;
+    filter: drop-shadow(3px 3px 30px rgba(0, 0, 0, 0.2));
+    border-radius: 5px;
+    height: max-content;
+    padding: 1rem;
+}
+
+.__cardRewards2{
+    display: flex;
+    flex-direction: column;
+}
+
+.__rewards2{
+    box-shadow: 0px 16px 24px rgb(0 0 0 / 6%), 0px 2px 6px rgb(0 0 0 / 4%), 0px 0px 1px rgb(0 0 0 / 4%);
+    border: 1px solid #184CC0;
+    border-radius: 5px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 15rem;
+    color: #FFFFFF;
+    margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 1140px) {
+    .__admin_dashboard_cards_grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
+
+    .__admin_dashboard_card_grid {
+        width: auto;
+        margin-bottom: 1rem;
+    }
+
+}
+
+
+@media screen and (max-width: 600px) {
+    .__admin_dashboard_cards {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .__admin_dashboard_end {
+        flex-direction: column;
+    }
+
+    .__admin_dashboard_community {
+        width: 80%;
+        margin-bottom: 2rem;
+    }
+
+    .__admin_dashboard_information {
+        width: 80%;
+        margin-left: 2rem;
+    }
+
+    .__community_table{
+        width: auto;
+    }
+    
+    .__user_community_content{
+        flex-direction: column;
+        height: max-content;
+    }
+}

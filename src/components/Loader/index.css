@@ -1,0 +1,8 @@
+.__loader_container {
+    width: 100%;
+    min-height: 100vh;
+    background: #01001C;
+    display: grid;
+    place-content: center;
+}
+

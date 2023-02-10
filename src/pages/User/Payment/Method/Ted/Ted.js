@@ -5,9 +5,10 @@ import step3 from '../../../../../assets/icons/step-3.png'
 import step4 from '../../../../../assets/icons/step-4.png'
 import { useNavigate } from 'react-router-dom'
 import { IoMdReturnLeft } from "react-icons/io";
+import Product from '../../../ShoppingCard/Product/Product'
 
 
-export default function Ted({ setConfirmPay, CloseModal }) {
+export default function Ted({ setConfirmPay, CloseModal, product, tedDetails, orderDetails }) {
   const navigate = useNavigate();
 
   return (
@@ -18,7 +19,7 @@ export default function Ted({ setConfirmPay, CloseModal }) {
         </div>
         <div className="__stepTed">
           <div className='__stepper'>1</div>
-          <h1>Seu pedido Número #4343 foi aberto</h1>
+          <h1>Seu pedido {orderDetails.uuid} foi aberto</h1>
         </div>
 
         <div className="__step_ted_2">
@@ -32,15 +33,15 @@ export default function Ted({ setConfirmPay, CloseModal }) {
             <div className="__contentInfoTed">
               <div className="_infoPaymentTed">
                 <h1>Títular:</h1>
-                <h2>MyhartBank</h2>
+                <h2>ROCHA INTERMEDIACAO DE PAGAMENTOS LTDA</h2>
               </div>
               <div className="_infoPaymentTed">
                 <h1>Agência:</h1>
-                <h2>410000245/47</h2>
+                <h2>0001 </h2>
               </div>
               <div className="_infoPaymentTed">
                 <h1>Conta:</h1>
-                <h2>41000245/47</h2>
+                <h2>216771-6</h2>
               </div>
             </div>
 
@@ -48,17 +49,17 @@ export default function Ted({ setConfirmPay, CloseModal }) {
 
               <div className="_infoPaymentTed">
                 <h1>Banco:</h1>
-                <h2>Fitbank</h2>
+                <h2>274 BMP MONEY PLUS </h2>
               </div>
 
               <div className="_infoPaymentTed">
                 <h1>CNPJ:</h1>
-                <h2>41000245/47</h2>
+                <h2>47.846.013/0001-40</h2>
               </div>
 
               <div className="_infoPaymentTed">
                 <h1>Valor:</h1>
-                <h2>R$110,00</h2>
+                <h2>R$ {orderDetails.amount}</h2>
               </div>
 
             </div>

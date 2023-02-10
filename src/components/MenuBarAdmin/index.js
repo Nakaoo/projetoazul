@@ -15,53 +15,11 @@ import { BiLogOut } from 'react-icons/bi'
 import { AiFillLock } from 'react-icons/ai'
 import { globalImg } from '../../utils/globalImg';
 
-export default function MenuBarAdmin({ value, setValue, title, active, subtitle, setTitle, setActive, setSubtitle }) {
-    const [menu, setMenu] = useState(false)
+export default function MenuBarAdmin({ people, value, setValue, title, active, subtitle, setTitle, setActive, setSubtitle }) {
     const navigate = useNavigate();
     const [dataUser, setDataUser] = useState();
     const tkUser = localStorage.getItem('tk-user')
     let logo = globalImg.logo
-
-    async function fetchUser() {
-
-        if (tkUser) {
-            await api
-            .get(`person/config`, {
-                headers: {
-                    Authorization: `Bearer ${JSON.parse(tkUser)}`,
-                },
-            })
-            .then(response => {
-                if(response?.data.result.purchase_active < 1){
-                    setMenu(true)
-                    console.log(menu)
-                }}
-            )
-
-            await api
-                .get(`person`, {
-                    headers: {
-                        Authorization: `Bearer ${JSON.parse(tkUser)}`,
-                    },
-                })
-                .then(response => {
-                    console.log(response)
-                    setDataUser(response?.data.result);
-
-                    if(response?.data.result.purchase_active < 1){
-                        setMenu(true)
-                    }}
-                )
-            
-        }
-        else {
-            navigate('/login')
-        }
-    }
-
-    useEffect(() => {
-        fetchUser();
-    }, [])
 
     async function logout() {
         let tkUser = localStorage.getItem('tk-user')
@@ -78,6 +36,7 @@ export default function MenuBarAdmin({ value, setValue, title, active, subtitle,
         } else if (item.dropdownOpened == true) {
             item.dropdownOpened = false
         }
+        setActive(item.title)
     }
 
     return (
@@ -99,8 +58,8 @@ export default function MenuBarAdmin({ value, setValue, title, active, subtitle,
                                 </div>
 
                                 <div className='__admin_info'>
-                                    <div className="__admin_nameUser">Olá <span className='__admin_highlight'>{dataUser?.first_name}</span></div>
-                                    <div className="__admin_nameUser">Seu ID: <span className='__admin_highlight'>{dataUser?.id}</span> </div>
+                                    <div className="__admin_nameUser">Olá <span className='__admin_highlight'>{people?.user.person.first_name}</span></div>
+                                    <div className="__admin_nameUser">Seu ID: <span className='__admin_highlight'>{people?.user.id}</span> </div>
                                 </div>  
                             </div>
                             <div>

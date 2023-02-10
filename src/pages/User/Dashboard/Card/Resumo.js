@@ -32,19 +32,19 @@ export default function Resumo({ pessoa, multinivel, multiniveltotal, sumMultiNi
         <div className="__user_dashboard_cards">
           <div className="__user_dashboard_card">
             <div className="__user_dashboard_card_addon"><p className="__user_dashboard_card_addon_title">Total de indicações</p><span className="__user_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-            <span className="__user_dashboard_card_value">{multinivel.length}</span>
+            <span className="__user_dashboard_card_value">{pessoa.indication.total}</span>
             <div className="__user_dashboard_last_addon"><span className="__user_dashboard_last_addon_percentage"></span><span className="__user_dashboard_card_explanation">que o mês passado</span></div>
           </div>
 
           <div className="__user_dashboard_card">
             <div className="__user_dashboard_card_addon"><p className="__user_dashboard_card_addon_title">Indicações aprovadas</p><span className="__user_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-            <span className="__user_dashboard_card_value">{multiniveltotal.length}</span>
+            <span className="__user_dashboard_card_value">{pessoa.active.active}</span>
             <div className="__user_dashboard_last_addon"><span className="__user_dashboard_last_addon_percentage"></span><span className="__user_dashboard_card_explanation">que o mês passado</span></div>
           </div>
 
           <div className="__user_dashboard_card">
             <div className="__user_dashboard_card_addon"><p className="__user_dashboard_card_addon_title">Indicações pendentes</p><span className="__user_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-            <span className="__user_dashboard_card_value">{multinivel.length - multiniveltotal.length}</span>
+            <span className="__user_dashboard_card_value">{pessoa.indication.total > 0 ? pessoa.indication.total - pessoa.active.active : 0}</span>
             <div className="__user_dashboard_last_addon"><span className="__user_dashboard_last_addon_percentage"></span><span className="__user_dashboard_card_explanation">que o mês passado</span></div>
           </div>
 
@@ -60,7 +60,7 @@ export default function Resumo({ pessoa, multinivel, multiniveltotal, sumMultiNi
           <div className="__summaryTitle" onClick={() => navigate("/community")}>Minha Comunidade</div>
           <h1>Seu Link de Indicação:</h1>
           <div className="__linkIndication">
-            <input type="text" name="teste" id="email_indicacao" value={window.location.hostname + `/cadastro?ref=${pessoa}`} disabled=""
+            <input type="text" name="teste" id="email_indicacao" value={window.location.hostname + `/cadastro?ref=${pessoa.user.id}`} disabled=""
               className="__inputIndications" />
 
             <button className="__buttonIndications" onClick={copiarLink}>COPIAR</button>

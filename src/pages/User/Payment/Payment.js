@@ -8,9 +8,10 @@ import ModalBoleto from "../Payment/Method/Boleto/Boleto";
 import apitest from "../../../services/apitest";
 import api from "../../../services/api";
 import { LoadingOutlined, QuestionCircleOutlined } from "@ant-design/icons";
-import { deleteOrder, generatePix, generateOrder } from "../utils/apiFunctions";
+import { deleteOrder, generatePix, generateOrder, generateTed } from "../utils/apiFunctions";
 import { uploadObject } from "../../../utils/uploadImg";
 import { useNavigate } from "react-router-dom";
+import { message } from "antd";
 export default function Payment({
   productsInCart,
   setCartsVisibility,
@@ -49,6 +50,8 @@ export default function Payment({
   const [orderPayment, setOrderPayment] = useState();
   const [loading, setLoading] = useState(false);
   const [pixDetails, setPixDetails] = useState();
+  const [tedDetails, setTedDetails] = useState();
+  
   // atual função para criar order
   async function CreateOrder() {
     setLoading(true)
@@ -57,15 +60,40 @@ export default function Payment({
       product: [{
         id: product.uuid,
         qtt: 1
-      }]
+      }, 
+      {
+        id: 'a0b326b2-dd9f-40a3-87e4-6ee6857f0cdb',
+        qtt: 1
+      }
+    ]
     }
 
     let order = await generateOrder(data)
     setOrderPayment(order.data.result.data)
 
-    let pix = await generatePix(order.data.result.data.uuid);
+    if (optionValue == 'option1') {
+      try {
+        let pix = await generatePix(order.data.result.data.uuid);
+        setPixDetails(pix.data.result)
+      } catch (err) {
+        message.error("Houve algum erro na geração")
+        setLoading(false)
+        return;
+      }
+    }
+    if (optionValue == 'option2') {
+      try {
+        let ted = await generateTed(order.data.result.data.uuid)
+        console.log('ted', ted)
+        console.log('order', order)
+        setTedDetails(ted)
+      } catch (err) {
+        message.error("Houve algum erro na geração")
+        setLoading(false)
+        return;
+      }
+    }
 
-    setPixDetails(pix.data.result)
     setLoading(false)
 
     setConfirmPay(true)
@@ -157,7 +185,7 @@ export default function Payment({
           pixDetails={pixDetails}
         />
       ) : optionValue == "option2" && confirmPay == true ? (
-        <ModalTed setConfirmPay={setConfirmPay} CloseModal={CloseModal} />
+        <ModalTed setConfirmPay={setConfirmPay} CloseModal={CloseModal} tedDetails={tedDetails} orderDetails={orderPayment} />
       ) : optionValue == "option3" && confirmPay == true ? (
         <ModalBoleto setConfirmPay={setConfirmPay} CloseModal={CloseModal} />
       ) : (

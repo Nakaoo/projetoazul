@@ -51,6 +51,7 @@ function ShoppingCard({
         <div className="__content-payment-card_">
           <Product productsInCart={productsInCart}
                    onProductRemove={onProductRemove}
+                   product={product}
                   />
           <Payment 
           productsInCart={productsInCart} 

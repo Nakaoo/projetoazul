@@ -60,6 +60,8 @@ li { list-style-type: none; }
 .__menu_menu_li{
     border-left: 3px solid transparent;
     padding-left: 1.3rem;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
 }
 
 .__menu_iconOption_active svg{

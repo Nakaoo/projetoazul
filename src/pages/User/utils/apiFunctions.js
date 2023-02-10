@@ -33,6 +33,14 @@ export async function generatePix(uuid){
     return pix;
 }
 
+export async function generateTed(uuid){
+    const id = uuid;
+
+    const pix = await api.post(`/payment/order/deposit/${id}`)
+
+    return pix;     
+}
+
 export async function deleteOrder(uuid){
     const id = uuid;
 
@@ -52,4 +60,10 @@ export async function getMultiNivelTotal(){
     const multiniveltotal = await api.get(`/multiniveltotal`)
 
     return multiniveltotal;
+}
+
+export async function getUserInfo(){
+    const user = await api.get('/user')
+
+    return user;
 }

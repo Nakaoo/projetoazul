@@ -15,53 +15,10 @@ import { BiLogOut } from 'react-icons/bi'
 import { AiFillLock } from 'react-icons/ai'
 import { globalImg } from '../../utils/globalImg';
 
-export default function MenuBar({ value, setValue, title, active, subtitle, setTitle, setActive, setSubtitle }) {
-    const [menu, setMenu] = useState(false)
+export default function MenuBar({ people, menu, setMenu, value, setValue, title, active, subtitle, setTitle, setActive, setSubtitle }) {
     const navigate = useNavigate();
     const [dataUser, setDataUser] = useState();
-    const tkUser = localStorage.getItem('tk-user')
     let logo = globalImg.logo
-
-    async function fetchUser() {
-
-        if (tkUser) {
-            await api
-            .get(`person/config`, {
-                headers: {
-                    Authorization: `Bearer ${JSON.parse(tkUser)}`,
-                },
-            })
-            .then(response => {
-                if(response?.data.result.purchase_active < 1){
-                    setMenu(true)
-                    console.log(menu)
-                }}
-            )
-
-            await api
-                .get(`person`, {
-                    headers: {
-                        Authorization: `Bearer ${JSON.parse(tkUser)}`,
-                    },
-                })
-                .then(response => {
-                    console.log(response)
-                    setDataUser(response?.data.result);
-
-                    if(response?.data.result.purchase_active < 1){
-                        setMenu(true)
-                    }}
-                )
-            
-        }
-        else {
-            navigate('/login')
-        }
-    }
-
-    useEffect(() => {
-        fetchUser();
-    }, [])
 
     async function logout() {
         let tkUser = localStorage.getItem('tk-user')
@@ -99,15 +56,15 @@ export default function MenuBar({ value, setValue, title, active, subtitle, setT
                                 </div>
 
                                 <div className='__menu_info'>
-                                    <div className="__menu_nameUser">Olá, <span className='__menu_highlight'>{dataUser?.first_name}</span></div>
-                                    <div className="__menu_nameUser">Seu ID: <span className='__menu_highlight'>{dataUser?.id}</span> </div>
+                                    <div className="__menu_nameUser">Olá, <span className='__menu_highlight'>{people?.user.person.first_name}</span></div>
+                                    <div className="__menu_nameUser">Seu ID: <span className='__menu_highlight'>{people?.user.id}</span> </div>
                                 </div>  
                             </div>
                             <div>
                                 {SidebarData.map((item, index) => {
                                     return (
                                         <div key={index} className="__menu_option">
-                                            <Link to={!menu ? item.path : ""}>
+                                            <Link to={!menu ? item.path : ""} onClick={() => setActive(item.title)}>
                                                 <div className={!menu ? "__menu_linkOption" : "__menu_linkOption disabled"} onClick={() => openDropDown(item)}>
                                                     <div className={active === item.title ? "__menu_iconOption_active" : "__menu_iconOption"}>
                                                         {item.icon}

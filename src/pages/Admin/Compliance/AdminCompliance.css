@@ -63,6 +63,7 @@
 .__admin_information_content_buttons{
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
 }
 
 .__admin_information_content_button_back button{
@@ -110,6 +111,7 @@ button.__admin_information_content_button_edit{
     font-size: 16px;
     width: 7rem;
     padding: 0.6rem;
+    cursor: pointer;
 }
 
 .__admin_information_content_button_approve{
@@ -121,6 +123,7 @@ button.__admin_information_content_button_edit{
     margin-left: 2rem;
     font-size: 16px;
     width: 7rem;
+    cursor: pointer;
     padding: 0.6rem;
 }
 
@@ -193,4 +196,59 @@ button.__admin_information_content_button_edit{
 
 .__admin_compliance_table_{
     overflow: auto !important;
+}
+
+.__admin_dashboard_compliance_status{
+    display: flex;
+    justify-content: center;
+    color: #FFFFFF;
+    padding-top: 1rem;
+}
+
+.__admin_dashboard_compliance_status_content{
+    border: 1px solid #184CC0;
+    padding: 1rem;
+}
+
+.__admin_dashboard_compliance_ button{
+    background: #2CB67D;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    text-transform: uppercase;
+    color: white;
+    margin-left: 2rem;
+    font-size: 16px;
+    width: 25rem;
+    cursor: pointer;
+    padding: 0.6rem;
+}
+
+.__admin_dashboard_compliance_status_content_header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.__admin_dashboard_compliance_status_content_header_title{
+    font-size: 24px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
+.__admin_dashboard_compliance_{
+    display: grid;
+    place-content: center;
+}
+
+.__adm_dashboard_compliance_status_icon{
+    color: green;
+    margin-bottom: 1rem;
+}
+
+.__admin_dashboard_compliance_status_content_body{
+    font-size: 15px;
+    margin-bottom: 1rem;
 }
