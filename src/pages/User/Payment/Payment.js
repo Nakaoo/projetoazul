@@ -83,10 +83,11 @@ export default function Payment({
     }
     if (optionValue == 'option2') {
       try {
-        let ted = await generateTed(order.data.result.data.uuid)
-        console.log('ted', ted)
-        console.log('order', order)
-        setTedDetails(ted)
+        setConfirmPay(true)
+        // let ted = await generateTed(order.data.result.data.uuid)
+        // console.log('ted', ted)
+        // console.log('order', order)
+        // setTedDetails(ted)
       } catch (err) {
         message.error("Houve algum erro na geração")
         setLoading(false)
