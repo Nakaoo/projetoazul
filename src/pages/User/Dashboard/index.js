@@ -24,7 +24,7 @@ export default function Dashboard() {
   return (
     <>
       {accountType === "invalido" && (
-        <Afiliado id={personId} productsApi={productsApi} />
+        <Afiliado id={people.wallet.id} productsApi={productsApi} />
       )}
       {accountType === "valido" && (
         <DashboardLogged />
