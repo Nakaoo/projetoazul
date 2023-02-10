@@ -3,12 +3,13 @@ import step1 from '../../../../../assets/icons/step-1.png'
 import step2 from '../../../../../assets/icons/step-2.png'
 import step3 from '../../../../../assets/icons/step-3.png'
 import step4 from '../../../../../assets/icons/step-4.png'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
+import { message, Upload, Form } from 'antd';
 import { IoMdReturnLeft } from "react-icons/io";
 import Product from '../../../ShoppingCard/Product/Product'
 
 
-export default function Ted({ setConfirmPay, CloseModal, product, tedDetails, orderDetails }) {
+export default function Ted({ setConfirmPay, CloseModal, product, tedDetails, orderDetails, handleConfirmPay, handleRemoveUpload, handleChangeUpload }) {
   const navigate = useNavigate();
 
   return (
@@ -72,9 +73,50 @@ export default function Ted({ setConfirmPay, CloseModal, product, tedDetails, or
             <h1>Anexe o comprovante de Transferência.</h1>
           </div>
           <div className="_buttonReceipt">
-            <button className="__buttonReceipt">
-              ANEXAR
-            </button>
+            <div className="_buttonReceipt">
+              <Upload
+                style={{ color: "white" }}
+                onPreview={() => null}
+                onChange={(file) =>
+                  handleChangeUpload(file)
+                }
+                onRemove={() => {
+                  handleRemoveUpload();
+                }}
+
+                beforeUpload={(file) => {
+                  let valid = true;
+
+                  if (
+                    ![
+                      "image/png",
+                      "image/jpg",
+                      "image/jpeg",
+                      "application/pdf",
+                    ].includes(file.type)
+                  ) {
+                    message.error(
+                      `${file.name} não possui um formato válido`
+                    );
+                    valid = false;
+                  }
+
+                  if (file.size > 15000000) {
+                    message.error("O arquivo possui tamanho superior a 5mb");
+                    valid = false;
+                  }
+
+                  return valid ? false : Upload.LIST_IGNORE;
+                }}
+                listType="picture"
+                maxCount={1}
+                accept=".png, .jpg, .jpeg, application/pdf"
+              >
+                <button className="__buttonReceipt">
+                  ANEXAR
+                </button>
+              </Upload>
+            </div>
           </div>
         </div>
         <div className="__stepTed">
@@ -87,7 +129,7 @@ export default function Ted({ setConfirmPay, CloseModal, product, tedDetails, or
         <button className="cancel-payment" onClick={() => CloseModal()}>
           Cancelar
         </button>
-        <button className="_buttonFinishPix" onClick={() => navigate('/orderConfirmation')}>
+        <button className="_buttonFinishPix" onClick={() => handleConfirmPay()}>
           Finalizar
         </button>
       </div>

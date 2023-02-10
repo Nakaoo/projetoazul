@@ -20,6 +20,23 @@ export async function approveOrder(orderUuid){
     return order
 }
 
+export async function complianceActivation (orderUuid){
+    let orderItem = orderUuid;
+
+    const order = await api.put(`/compliance/activation/${orderItem}`)
+
+    return order
+}
+
+export async function compliancePayment (orderUuid){
+    let orderItem = orderUuid;
+
+    const order = await api.put(`/compliance/payment/${orderItem}`)
+
+    return order
+}
+
+
 export async function getMultiNivel(){
     const multinivel = await api.get(`/multinivel`)
 

@@ -12,7 +12,7 @@ import Refused from "./Table/Refused"
 import { useLocation } from "react-router-dom"
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 import { BsCheck2Circle } from 'react-icons/bs'
-import { approveOrder, getOrders } from "../utils/apiFunctions"
+import { approveOrder, complianceActivation, getOrders } from "../utils/apiFunctions"
 import { LoadingOutlined } from "@ant-design/icons";
 import { message, Skeleton } from "antd"
 import { act } from "@testing-library/react"
@@ -218,8 +218,6 @@ export default function AdminCompliance() {
 
         try{
             let order = await approveOrder(actualValue.uuid)
-
-            console.log(order)
 
             message.success("Pedido aprovado com sucesso")
             setStep(2)
