@@ -1,10 +1,12 @@
 import './QRcode.css'
 import { AiOutlineClose } from "react-icons/ai";
 import { useEffect, useState } from 'react';
+import { globalImg } from '../../../../../utils/globalImg';
 
 export default function QRcode({ImgQrCode, setModalQrCode}){
     const [img2, setImg2] = useState();
     let img;
+    let imgEstatica = globalImg.pixQrCode
     useEffect(() => {
         img = ImgQrCode.substring(ImgQrCode.indexOf(`h`))
         setImg2(img)
@@ -22,7 +24,7 @@ export default function QRcode({ImgQrCode, setModalQrCode}){
                 E EFETUE O PAGAMENTO
                 </h1>
             </div>
-            <img src={img2} />
+            <img src={imgEstatica} width="200px" height="200px" />
        </div>    
     </>
 )

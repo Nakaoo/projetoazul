@@ -51,7 +51,7 @@ export default function Payment({
   const [loading, setLoading] = useState(false);
   const [pixDetails, setPixDetails] = useState();
   const [tedDetails, setTedDetails] = useState();
-  
+
   // atual função para criar order
   async function CreateOrder() {
     setLoading(true)

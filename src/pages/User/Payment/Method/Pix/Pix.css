@@ -21,6 +21,12 @@
     color: #FFFFFF;
 }
 
+.ant-upload-wrapper{
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+}
+
 .__containerPix {
     min-height: 30rem;
     padding: 30px;
@@ -147,6 +153,10 @@
 
 ._buttonFinishPix:hover {
     background: #0eb1d2;
+}
+
+.ant-upload-list ant-upload-list-picture{
+    margin-left: 2rem;
 }
 
 .__iconPix {
