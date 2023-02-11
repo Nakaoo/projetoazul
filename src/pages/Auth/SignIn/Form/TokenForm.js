@@ -47,7 +47,7 @@ const TokenForm = ({ botaoTimer, name, onSubmit, loading, setLoading, setToken, 
             )}
 
             <div className="__signin_content_buttons">
-                <button className="__signin_login" onClick={onSubmit} type="button" >
+                <button className="__signin_login" onClick={onSubmit} type="submit" >
                     {loading ? <LoadingOutlined /> : "Entrar"}
                 </button>
                 <div class="options_login">
