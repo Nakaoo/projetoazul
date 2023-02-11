@@ -111,7 +111,10 @@ const SignIn = () => {
 
             let login = await loginAccount(data)
 
+            console.log(login)
+
             if (login.data.error == true) {
+                console.log("error")
                 setVisibleError(true)
                 let err = "Dados de acesso invalidos"
                 setErrMessage(err)
@@ -175,20 +178,25 @@ const SignIn = () => {
 
         try {
             setLoading(true)
+            
+            console.log(1)
+
+            console.log(data)
 
             let res = await validateToken(data)
 
-            if (res.data.error == true) {
+            console.log(res)
+            if (res.status == 422) {
                 setVisibleError(true)
                 let erro = "Token invalido"
                 setErrMessage(erro)
                 setLoading(false)
-                return 0;
             }
 
             if (toggle === true) {
                 localStorage.setItem('email', JSON.stringify(email))
             }
+            console.log(3)
 
             if (toggle === false) {
                 localStorage.removeItem('email')
@@ -198,7 +206,11 @@ const SignIn = () => {
 
             localStorage.setItem('tk-user', JSON.stringify(user))
 
+            console.log(4)
+
             let person = await getPerson()
+
+            console.log(5)
 
             console.log(person.data.result.nivel)
 
@@ -220,9 +232,13 @@ const SignIn = () => {
                 localStorage.setItem('role', 'financial')
             }
 
+            console.log(6)
 
         } catch (err) {
-            message.err("Token invalido")
+            setVisibleError(true)
+            let erro = "Token invalido"
+            setErrMessage(erro)
+            setLoading(false)
         }
         setLoading(false)
     }

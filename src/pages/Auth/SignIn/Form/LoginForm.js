@@ -50,7 +50,7 @@ const LoginForm = ({ email, setEmail, handleNextStep, loading, setLoading, errMe
                     <div className="savepassword">
                         <div className="custom-checkbox">
                             <input type="checkbox" name='salvar' className="custom-control-input"
-                                id="customSwitch1" value="salvar" onClick={handleToggle} />
+                                id="customSwitch1" value="salvar" onClick={() => handleToggle} />
                         </div>
                         <label className="custom-control-label" htmlFor="customSwitch1">Lembrar
                             acesso?</label>

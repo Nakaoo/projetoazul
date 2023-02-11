@@ -32,13 +32,13 @@ export default function Resumo({ pessoa, multinivel, multiniveltotal, sumMultiNi
         <div className="__user_dashboard_cards">
           <div className="__user_dashboard_card">
             <div className="__user_dashboard_card_addon"><p className="__user_dashboard_card_addon_title">Total de indicações</p><span className="__user_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-            <span className="__user_dashboard_card_value">{pessoa?.indication?.total}</span>
+            <span className="__user_dashboard_card_value">{pessoa?.indication?.total ?pessoa?.indication?.total : 0 }</span>
             <div className="__user_dashboard_last_addon"><span className="__user_dashboard_last_addon_percentage"></span><span className="__user_dashboard_card_explanation">que o mês passado</span></div>
           </div>
 
           <div className="__user_dashboard_card">
-            <div className="__user_dashboard_card_addon"><p className="__user_dashboard_card_addon_title">Indicações aprovadas</p><span className="__user_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-            <span className="__user_dashboard_card_value">{pessoa?.active?.active}</span>
+            <div className="__user_dashboard_card_addon"><p className="__user_dashboard_card_addon_title">Valor em indicações</p><span className="__user_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
+            <span className="__user_dashboard_card_value">{pessoa?.lockwallet?.balance ? `R$ ${pessoa?.lockwallet?.balance}` : "R$ 0,00" }</span>
             <div className="__user_dashboard_last_addon"><span className="__user_dashboard_last_addon_percentage"></span><span className="__user_dashboard_card_explanation">que o mês passado</span></div>
           </div>
 
@@ -48,10 +48,9 @@ export default function Resumo({ pessoa, multinivel, multiniveltotal, sumMultiNi
             <div className="__user_dashboard_last_addon"><span className="__user_dashboard_last_addon_percentage"></span><span className="__user_dashboard_card_explanation">que o mês passado</span></div>
           </div>
 
-
           <div className="__user_dashboard_card">
-            <div className="__user_dashboard_card_addon"><p className="__user_dashboard_card_addon_title">Mensagens</p><span className="__user_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-            <span className="__user_dashboard_card_value">0</span>
+            <div className="__user_dashboard_card_addon"><p className="__user_dashboard_card_addon_title">Indicações aprovadas</p><span className="__user_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
+            <span className="__user_dashboard_card_value">{pessoa?.active?.active}</span>
             <div className="__user_dashboard_last_addon"><span className="__user_dashboard_last_addon_percentage"></span><span className="__user_dashboard_card_explanation">que o mês passado</span></div>
           </div>
         </div>
@@ -65,7 +64,7 @@ export default function Resumo({ pessoa, multinivel, multiniveltotal, sumMultiNi
 
             <button className="__buttonIndications" onClick={copiarLink}>COPIAR</button>
           </div>
-          
+
         </div>
         <div className="__cardRewards">
           <div className="__rewards">
@@ -78,7 +77,7 @@ export default function Resumo({ pessoa, multinivel, multiniveltotal, sumMultiNi
             <img src={graphic1} alt="" />
           </div>
           <div className="__incomeAmounts">
-           Histórico de Recompensas
+            Histórico de Recompensas
             <img src={graphic2} alt="" />
           </div>
         </div>

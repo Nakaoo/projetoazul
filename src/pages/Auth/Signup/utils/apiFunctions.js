@@ -1,4 +1,5 @@
 import api from '../../../../services/api'
+import apitest from '../../../../services/apitest'
 
 export async function getUserByCpf(arg){
     let {cpf} = arg 
@@ -55,7 +56,7 @@ export async function validateToken(data){
 export async function validaConta(arg){
     const token = arg
 
-    const user = await api.get(`/activation/${token}`)
+    const user = await apitest.get(`/activation/${token}`)
 
     return user;
 }
