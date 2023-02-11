@@ -57,7 +57,7 @@ export default function MenuBar({ people, menu, setMenu, value, setValue, title,
 
                                 <div className='__menu_info'>
                                     <div className="__menu_nameUser">Olá, <span className='__menu_highlight'>{people?.user.person.first_name}</span></div>
-                                    <div className="__menu_nameUser">Seu ID: <span className='__menu_highlight'>{people?.user.id}</span> </div>
+                                    <div className="__menu_nameUser">Seu ID: <span className='__menu_highlight'>{people?.user.person.id}</span> </div>
                                 </div>  
                             </div>
                             <div>
