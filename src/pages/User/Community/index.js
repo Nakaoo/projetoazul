@@ -89,7 +89,7 @@ export default function Community() {
               Recompensas
               <img src={viewMore} alt="" />
             </div>
-            <h2>R$1,750.23</h2>
+            <h2></h2>
             <h3>Ultimos 30 dias</h3>
             <img src={graphic1} alt="" />
           </div>
