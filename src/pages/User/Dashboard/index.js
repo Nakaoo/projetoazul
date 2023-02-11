@@ -5,6 +5,7 @@ import Afiliado from "./Pages/ChooseAffiliate"
 import { useNavigate, useOutletContext } from "react-router-dom"
 import DashboardLogged from "./Pages/DashboardLogged"
 import { getProducts, getMultiNivel, getMultiNivelTotal } from "../utils/apiFunctions"
+import PendingOrder from "./Pages/PendingOrder"
 
 export default function Dashboard() {
   const [accountType, people] = useOutletContext();
@@ -28,6 +29,9 @@ export default function Dashboard() {
       )}
       {accountType === "valido" && (
         <DashboardLogged />
+      )}
+      {accountType === "pagamento" && (
+        <PendingOrder />
       )}
     </>
   )

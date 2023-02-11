@@ -67,3 +67,9 @@ export async function getUserInfo(){
 
     return user;
 }
+
+export async function getUserOrder(){
+    const order = await api.get('/order')
+
+    return order;
+}

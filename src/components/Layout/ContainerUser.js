@@ -1,7 +1,7 @@
 import MenuBar from '../MenuBar'
 import Navbar from '../Navbar/Navbar'
 import { useState, useEffect } from 'react'
-import { getUserInfo } from '../../pages/User/utils/apiFunctions'
+import { getUserInfo, getUserOrder } from '../../pages/User/utils/apiFunctions'
 import './index.css'
 import { useNavigate, Navigate, Outlet } from 'react-router-dom'
 import Loader from '../Loader/Loader'
@@ -22,19 +22,21 @@ function ContainerUser({ children }) {
     async function getUserAllInfo() {
         setLoadingAmbiente(true)
 
-        try{
+        try {
             let user = await getUserInfo()
-
-            console.log(user.data.result)
-    
+            let order = await getUserOrder()
             setPeople(user.data.result)
-    
-            if(user.data.result.active == null || !user.data.result.active){
+            if (order.data.result.data.length > 0 && order.data.result.data[0].status_id == 3) {
+                setMenu(true)
+                setAccountType('pagamento')
+            } else if (user.data.result.user.person.is_active < 1) {
                 setMenu(true)
                 setAccountType('invalido')
-            }    
-        }catch(err){
-            navigate('/')
+            }else{
+                setAccountType('valido')
+            }
+        } catch (err) {
+            console.log(err)
         }
 
         setLoadingAmbiente(false)
@@ -42,9 +44,9 @@ function ContainerUser({ children }) {
 
     useEffect(() => {
         getUserAllInfo()
-    }, [])
+    }, [accountType])
 
-    if(loadingAmbiente) return <Loader />
+    if (loadingAmbiente) return <Loader />
     return (
         <main className='container_user'>
             <aside className='aside_navbar'>
@@ -52,7 +54,7 @@ function ContainerUser({ children }) {
                     menu={menu}
                     value={value}
                     setValue={setValue}
-                    people = {people}
+                    people={people}
                     title={title}
                     subtitle={subtitle}
                     active={active}
@@ -61,12 +63,12 @@ function ContainerUser({ children }) {
             </aside>
 
             <aside className='aside_user'>
-                <Navbar 
-                value={value} 
-                setValue={setValue} 
-                title={title} 
-                subtitle={subtitle}
-                people={people}
+                <Navbar
+                    value={value}
+                    setValue={setValue}
+                    title={title}
+                    subtitle={subtitle}
+                    people={people}
                 />
                 <Outlet context={[accountType, people]} />
             </aside>

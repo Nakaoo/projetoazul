@@ -108,7 +108,7 @@ export default function Payment({
     setLoading(true)
 
     let documentTst = await uploadObject(params)
-    navigate('/orderconfirmation')
+    navigate('/')
 
     setLoading(false)
   }
