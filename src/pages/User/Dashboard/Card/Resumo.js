@@ -65,39 +65,7 @@ export default function Resumo({ pessoa, multinivel, multiniveltotal, sumMultiNi
 
             <button className="__buttonIndications" onClick={copiarLink}>COPIAR</button>
           </div>
-          <div className="__favorites">
-            <div className="__people">
-              <img alt="" />
-              <div className="__peopleName">
-                Ana
-              </div>
-            </div>
-            <div className="__people">
-              <img alt="" />
-              <div className="__peopleName">
-                Monica
-              </div>
-            </div>
-            <div className="__people">
-              <img alt="" />
-              <div className="__peopleName">
-                James
-              </div>
-            </div>
-            <div className="__people">
-              <img alt="" />
-              <div className="__peopleName">
-                Mike
-              </div>
-            </div>
-            <div className="__people">
-              <img alt="" />
-              <div className="__peopleName">
-                Mia
-              </div>
-            </div>
-            <a onClick={() => navigate("/community")}>Ver Todos</a>
-          </div>
+          
         </div>
         <div className="__cardRewards">
           <div className="__rewards">
