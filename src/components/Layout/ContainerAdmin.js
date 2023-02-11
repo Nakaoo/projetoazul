@@ -22,6 +22,7 @@ function ContainerAdmin({ children }) {
 
         try {
             let user = await getUserInfo()
+            console.log(user)
             setPeople(user.data.result)
         } catch (err) {
             console.log(err)
@@ -32,7 +33,7 @@ function ContainerAdmin({ children }) {
 
     useEffect(() => {
         getUserAllInfo()
-    }, [people])
+    }, [])
 
     if (loadingAmbiente) return <Loader />
     return (

@@ -64,21 +64,22 @@ const SignIn = () => {
         try {
             let login = await getCpfOrEmail(removeMaskCpf(email))
 
+            console.log(login)
 
             if (login.status == 204) {
                 setVisibleError(true)
                 let err = "Usuário não encontrado em nosso banco de dados"
                 setErrMessage(err)
 
-                return 0;
+                return;
             }
 
-            if (login.data.message.original.error == "Email nao ativado") {
+            if (login.data.message == "Account not validated") {
                 setVisibleError(true)
                 let err = "A sua conta ainda não foi ativada, cheque o seu email para poder ativar"
                 setErrMessage(err)
 
-                return 0;
+                return;
             }
         } catch (err) {
             message.error(err)

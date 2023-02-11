@@ -45,42 +45,42 @@ export default function MenuBarAdmin({ people, menu, setMenu, value, setValue, t
                 </>
             ) :
                 (
-                    <div className={value == true && window.innerWidth > '600' ? '__admin_menu_menuBar' : value == false && window.innerWidth < 600 ? '__admin_menu_menuBarFull' : '__admin_menu_menuBar'}>
-                        <div className="__admin_menu_divisionOptions">
-                            <div className="__admin_menu_options">
-                                <div className="__admin_menu_closeMenu">
+                    <div className={value == true && window.innerWidth > '600' ? '__admin_menuBar' : value == false && window.innerWidth < 600 ? '__admin_menuBarFull' : '__admin_menuBar'}>
+                        <div className="__admin_divisionOptions">
+                            <div className="__admin_options">
+                                <div className="__admin_closeMenu">
                                     <AiOutlineClose onClick={() => setValue(false)} />
                                 </div>
-                                <div className="__admin_menu_logo">
+                                <div className="__admin_logo">
                                     <img src={logo} alt="" onClick={() => navigate("/")} />
                                 </div>
 
-                                <div className='__admin_menu_info'>
-                                    <div className="__admin_menu_nameUser">Olá, <span className='__admin_menu_highlight'>{people?.user.person.first_name}</span></div>
-                                    <div className="__admin_menu_nameUser">Seu ID: <span className='__admin_menu_highlight'>{people?.user.id}</span> </div>
+                                <div className='__admin_info'>
+                                    <div className="__admin_nameUser">Olá, <span className='__admin_highlight'>{people?.user.person.first_name}</span></div>
+                                    <div className="__admin_nameUser">Seu ID: <span className='__admin_highlight'>{people?.user.id}</span> </div>
                                 </div>  
                             </div>
                             <div>
                                 {SidebarData.map((item, index) => {
                                     return (
-                                        <div key={index} className="__admin_menu_option">
+                                        <div key={index} className="__admin_option">
                                             <Link to={!menu ? item.path : ""} onClick={() => setActive(item.title)}>
-                                                <div className={!menu ? "__admin_menu_linkOption" : "__admin_menu_linkOption disabled"} onClick={() => openDropDown(item)}>
-                                                    <div className={active === item.title ? "__admin_menu_iconOption_active" : "__admin_menu_iconOption"}>
+                                                <div className={!menu ? "__admin_linkOption" : "__admin_linkOption disabled"} onClick={() => openDropDown(item)}>
+                                                    <div className={active === item.title ? "__admin_iconOption_active" : "__admin_iconOption"}>
                                                         {item.icon}
                                                     </div>
 
-                                                    <div className="__admin_menu_optionTitle">
+                                                    <div className="__admin_optionTitle">
                                                         {item.blocked ? <AiFillLock style={{ marginRight: '0.2rem' }} /> : menu ? <AiFillLock style={{ marginRight: '0.2rem' }} /> : ""} {item.title}
 
                                                     </div>
                                                 </div>
                                                 {item.dropdown == true && item.dropdownOpened == true && (
-                                                    <ul className='__admin_menu_menu_ul' id={`__admin_menu_menu_ul${index}`}>
+                                                    <ul className='__admin_menu_ul' id={`__admin_menu_ul${index}`}>
                                                         {item.dropdownItems.map((value, index) => {
                                                             return (
                                                                 <Link to={value.url}>
-                                                                    <li className='__admin_menu_menu_li' key={index + 1}>{value.title}</li>
+                                                                    <li className='__admin_menu_li' key={index + 1}>{value.title}</li>
                                                                 </Link>
                                                             )
                                                         })}
@@ -91,13 +91,13 @@ export default function MenuBarAdmin({ people, menu, setMenu, value, setValue, t
                                     )
                                 })}
 
-                                <div className="__admin_menu_option">
-                                    <div className={"__admin_menu_linkOption"} onClick={logout} >
-                                        <div className="__admin_menu_iconOption">
+                                <div className="__admin_option">
+                                    <div className={"__admin_linkOption"} onClick={logout} >
+                                        <div className="__admin_iconOption">
                                             <BiLogOut />
                                         </div>
 
-                                        <div className="__admin_menu_optionTitle">
+                                        <div className="__admin_optionTitle">
                                             Sair
                                         </div>
                                     </div>

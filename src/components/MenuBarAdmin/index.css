@@ -60,6 +60,8 @@ li { list-style-type: none; }
 .__admin_menu_li{
     border-left: 3px solid transparent;
     padding-left: 1.3rem;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
 }
 
 .__admin_iconOption_active svg{
@@ -123,8 +125,7 @@ li { list-style-type: none; }
     color: #E2E8F0;
     font-family: "Inter", sans-serif;
     font-weight: 500;
-    font-size: 0.85rem;
-    margin-bottom: 0.5rem;
+    font-size: .8rem;    
 }
 
 .__admin_highlight{
