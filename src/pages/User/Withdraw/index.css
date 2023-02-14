@@ -1,0 +1,110 @@
+.__withdraw_component {
+    height: 100%;
+    display: grid;
+    place-content: center;
+    background: #01001C;
+    color: #FFF;
+}
+
+.__withdraw_form_content {
+    border: 1px solid #184CC0;
+    padding: 2rem;
+    width: 32rem;
+}
+
+.__withdraw_form_header_title {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    margin-bottom: 2rem;
+}
+
+.__withdraw_form_header_bar {
+    height: 0.01rem;
+    margin-right: 1rem;
+    width: 2rem;
+    border: 1px solid #FFFFFF;
+}
+
+.__withdraw_form_header_information {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.__withdraw_form_header_information_value {
+    color: #43A6E9;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.__withdraw_form_header_information_description{
+    margin-bottom: 1rem;
+}
+
+.__withdraw_form_header_information_title{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.__withdraw_form_header_information_value_icon {
+    margin-left: 2rem;
+    margin-top: 0.2rem;
+}
+
+.__withdraw_form_body h4{
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.__col_flex{
+    display: flex;
+}
+
+.__withdraw_form_button_primary{
+    position: relative;
+    background: #184CC0;
+    color: white;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: .8rem;
+    border-radius: 10px;
+    width: 10rem;
+    height: 3rem;
+    cursor: pointer;
+}
+
+.__withdraw_form_button_primary:hover{
+    background: #0eb1d2;
+}
+
+.__withdraw_form_button_secondary{
+    background: transparent;
+    border: 0px;
+    cursor: pointer;
+    color: #FFF;
+}
+
+.__withdraw_form_check{
+    margin-top: 1rem;
+}
+
+.__withdraw_form_buttons{
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.2rem;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+
+@media screen and (min-width: 1400px){
+    .__withdraw_component{
+        height: 100vh;
+    }
+}

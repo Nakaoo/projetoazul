@@ -397,6 +397,18 @@ display: flex;
         display: flex;
         flex-direction: column;
     }
+    
+    .__rewards{
+        width: 20rem;
+    }
+
+    .__incomeAmounts{
+        width: 20rem;
+    }
+    
+    .__user_dashboard_card{
+        width: 21rem;
+    }
 
     .__cardCommunity {
         flex-direction: column;

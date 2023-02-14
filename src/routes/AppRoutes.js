@@ -33,6 +33,7 @@ import AdminDashboard from "../pages/Admin/Dashboard";
 import AdminCompliance from "../pages/Admin/Compliance/AdminCompliance";
 import ProtectedRoute from "./ProtectedRoutes";
 import ContainerAdmin from "../components/Layout/ContainerAdmin";
+import Withdraw from "../pages/User/Withdraw";
 
 const AppRoutes = () => {
 
@@ -70,6 +71,10 @@ const AppRoutes = () => {
                     <Route
                         path="/orderPlaced"
                         element={<OrderPlaced />}
+                    />
+                    <Route
+                        path="/withdraw"
+                        element={<Withdraw />}
                     />
                 </Route>
 

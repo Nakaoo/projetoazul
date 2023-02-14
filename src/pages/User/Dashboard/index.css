@@ -191,22 +191,21 @@
     color: white;
 }
 
-.__contentDashBoard{
+.__contentDashBoard {
     display: flex;
-    height: 58rem;
     background-color: #01001C;
 }
 
-.__imgCard- img{
+.__imgCard- img {
     max-width: 22rem;
 }
 
 
 @media screen and (max-width: 600px) {
-    .__contentDashBoard{
+    .__contentDashBoard {
         flex-direction: column;
     }
-    
+
     .__card {
         padding: 0px;
         display: flex;
@@ -216,6 +215,7 @@
     .__cardCommunity {
         flex-direction: column;
         height: 100%;
+        margin-top: 1rem;
     }
 
     ._cardmyhart {
@@ -278,13 +278,36 @@
     .__limitValue h2 {
         padding-left: 0rem;
     }
-    .__contentDashBoard{
+
+    .__contentDashBoard {
         flex-direction: column;
         padding-top: 0px;
     }
-    
-    .__containerDashboard{
+
+    .__containerDashboard {
         height: 881px;
         flex-direction: column;
+    }
+
+
+    .__imgCard- img {
+        max-width: 16rem;
+    }
+    
+    .__user_dashboard_cards {
+        display: flex !important;
+        flex-direction: column;
+    }
+    
+    .__myCommunity{
+        width: 20rem !important;
+    }
+
+    .__cardHistoric{
+        margin-bottom: 1rem;
+    }
+
+    .__rewards{
+        margin-bottom: 1rem;
     }
 }

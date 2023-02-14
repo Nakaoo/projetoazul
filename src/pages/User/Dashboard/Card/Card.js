@@ -4,12 +4,13 @@ import limitBar from "../../../../assets/img/limitBar.svg"
 import './Card.css'
 import { useState, useEffect } from "react"
 import { globalImg } from "../../../../utils/globalImg"
-import RequestWithdrawal from "../Withdrawal/RequestWithdrawal"
-
+import { useNavigate } from "react-router-dom"
 
 export default function Card({ products, balanceUser, pessoa }) {
     const [modalWithdrawal, setModalWithdrawal] = useState(false);
     const cardImg = globalImg.cardImg
+    const navigate = useNavigate();
+
     let product = [];
     if (Array.isArray(products)) {
         product = products[0];
@@ -20,9 +21,6 @@ export default function Card({ products, balanceUser, pessoa }) {
     })
     return (
         <>
-            {
-                modalWithdrawal == true ?
-                    <RequestWithdrawal setModalWithdrawal={setModalWithdrawal} /> : <></>}
             <div className="__divisionCardCommunity">
 
                 <div className="__cardLimit">
@@ -66,7 +64,7 @@ export default function Card({ products, balanceUser, pessoa }) {
 
                 </div>
                 <div className="__buttonRequest">
-                    <button onClick={() => setModalWithdrawal(true)}>
+                    <button onClick={() => navigate('/withdraw')}>
                         <h1>SOLICITAR SAQUE</h1>
                     </button>
                 </div>

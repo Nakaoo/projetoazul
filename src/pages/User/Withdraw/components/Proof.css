@@ -1,0 +1,27 @@
+@media print {
+    .__withdraw_form_content {
+        padding-left: 8rem;
+        border: 0px;
+    }
+
+    .logo_black{
+        display: inline-block !important;
+    }
+
+    .withdraw_form_print{
+        padding-top: 1rem;
+        width: 100%;
+        border: 1px solid black;
+        text-align: center;
+        display: inline-block !important;
+    }
+
+    .logo_white{
+        display: none;
+    }
+}
+
+@page {
+    size: auto;
+    padding: 2.5rem;
+}

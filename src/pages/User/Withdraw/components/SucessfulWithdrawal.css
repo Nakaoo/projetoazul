@@ -1,0 +1,27 @@
+.__withdraw_form_body_information {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.__withdraw_form_body_information span {
+    font-weight: 600;
+}
+
+.__withdraw_print_logo {
+    margin: auto;
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.__withdraw_print_logo img {
+    max-height: 120px;
+}
+
+.logo_black{
+    display: none;
+}
+
+.withdraw_form_print{
+    display: none;
+}

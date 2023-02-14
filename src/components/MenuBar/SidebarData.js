@@ -5,12 +5,14 @@ import {FiSettings} from 'react-icons/fi'
 export const SidebarData = [
     {
         title: 'Dashboard', 
+        subtitle: 'Painel de controle',
         path: '/dashboard',
         icon: <AiFillDashboard />,
         cName: 'nav-text'
     },
     {
         title: 'Financeiro', 
+        subtitle: 'Painel financeiro',
         path: '/financeiro',
         icon: <AiFillSignal />,
         cName: 'nav-text'
@@ -29,6 +31,7 @@ export const SidebarData = [
     },
     {
         title: 'Comunidade',
+        subtitle: 'Painel de comunidade',
         path:'/community',
         icon: <MdPeople />,
         cName: 'nav-text',

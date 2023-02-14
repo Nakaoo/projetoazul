@@ -8,11 +8,11 @@ import MenuBarAdmin from '../MenuBarAdmin'
 
 function ContainerAdmin({ children }) {
     const navigate = useNavigate()
-    const [title, setTitle] = useState('Dashboard')
+    const [title, setTitle] = useState()
     const [menu, setMenu] = useState(false)
     const [loadingAmbiente, setLoadingAmbiente] = useState(true)
-    const [active, setActive] = useState('Dashboard')
-    const [subtitle, setSubtitle] = useState('Painel administrativo')
+    const [active, setActive] = useState()
+    const [subtitle, setSubtitle] = useState()
     const [people, setPeople] = useState()
     const [value, setValue] = useState(false)
     const user = localStorage.getItem('tk-user')

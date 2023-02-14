@@ -41,9 +41,3 @@
 .__navbar_notifications_span{
     margin-right: 3rem;
 }
-
-@media screen and (min-width: 1400px){
-    .__navbar_content{
-        width: 50%;
-    }
-}

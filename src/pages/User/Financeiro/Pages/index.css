@@ -1,6 +1,6 @@
-.__container {
+.__container_ {
     width: 100%;
-    height: max-content;
+    height: 100%;
     display: flex;
 }
 
@@ -10,10 +10,20 @@
 }
 
 .__cardBalanceIncome {
-    padding-top: 4rem;
+    height: 100%;
     width: 100%;
     background: #01001C;
     color: #FFFFFF;
+    padding: 1rem;
+}
+
+.__admin_compliance_table_2{
+    width: 80%;
+    border: 1px solid #184CC0;
+    filter: drop-shadow(3px 3px 30px rgba(0, 0, 0, 0.2));
+    border-radius: 5px;
+    color: #FFFFFF;
+    border-collapse: collapse;
 }
 
 ._myBalance {
@@ -350,6 +360,15 @@
     display: flex;
 }
 
+.input_search{
+    border: 1px solid #184CC0;
+    padding: 0.75rem;
+    background: #01001C;
+    width: 28rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    color: #FFFF;
+}
 
 @media screen and (max-width: 600px) {
     ._imgTest {
@@ -394,6 +413,6 @@
     }
 
     .__financialMovements {
-        width: 21rem;
+        width: 20rem;
     }
 }

@@ -32,7 +32,7 @@ function ContainerUser({ children }) {
             } else if (user.data.result.user.person.is_active < 1) {
                 setMenu(true)
                 setAccountType('invalido')
-            }else{
+            } else {
                 setAccountType('valido')
             }
         } catch (err) {
@@ -50,27 +50,31 @@ function ContainerUser({ children }) {
     return (
         <main className='container_user'>
             <aside className='aside_navbar'>
-                <MenuBar
-                    menu={menu}
-                    value={value}
-                    setValue={setValue}
-                    people={people}
-                    title={title}
-                    subtitle={subtitle}
-                    active={active}
-                    setActive={setActive}
-                    setSubtitle={setSubtitle} />
+                <>
+                    <MenuBar
+                        menu={menu}
+                        value={value}
+                        setValue={setValue}
+                        people={people}
+                        title={title}
+                        subtitle={subtitle}
+                        active={active}
+                        setActive={setActive}
+                        setSubtitle={setSubtitle} />
+                </>
             </aside>
 
             <aside className='aside_user'>
-                <Navbar
-                    value={value}
-                    setValue={setValue}
-                    title={title}
-                    subtitle={subtitle}
-                    people={people}
-                />
-                <Outlet context={[accountType, people]} />
+                <>
+                    <Navbar
+                        value={value}
+                        setValue={setValue}
+                        title={title}
+                        subtitle={subtitle}
+                        people={people}
+                    />
+                    <Outlet context={[accountType, people]} />
+                </>
             </aside>
         </main>
     )

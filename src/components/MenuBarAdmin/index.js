@@ -37,6 +37,18 @@ export default function MenuBarAdmin({ people, menu, setMenu, value, setValue, t
         }
     }
 
+    function handleClick(item){
+        setActive(item.title)
+        setTitle(item.title)
+
+        if(!item.dropdown){
+            setSubtitle(item.subtitle)
+        }
+        if(value){
+            setValue(false)
+        }
+    }
+
     return (
         <>
             {value == false && window.innerWidth <= '600' ? (
@@ -45,7 +57,7 @@ export default function MenuBarAdmin({ people, menu, setMenu, value, setValue, t
                 </>
             ) :
                 (
-                    <div className={value == true && window.innerWidth > '600' ? '__admin_menuBar' : value == false && window.innerWidth < 600 ? '__admin_menuBarFull' : '__admin_menuBar'}>
+                    <div className={value == true && window.innerWidth > 600 ? '__admin_menuBar' : value == true && window.innerWidth ? '__admin_menuBarFull'  : "" }>
                         <div className="__admin_divisionOptions">
                             <div className="__admin_options">
                                 <div className="__admin_closeMenu">
@@ -64,7 +76,7 @@ export default function MenuBarAdmin({ people, menu, setMenu, value, setValue, t
                                 {SidebarData.map((item, index) => {
                                     return (
                                         <div key={index} className="__admin_option">
-                                            <Link to={!menu ? item.path : ""} onClick={() => setActive(item.title)}>
+                                            <Link to={!menu ? item.path : ""}>
                                                 <div className={!menu ? "__admin_linkOption" : "__admin_linkOption disabled"} onClick={() => openDropDown(item)}>
                                                     <div className={active === item.title ? "__admin_iconOption_active" : "__admin_iconOption"}>
                                                         {item.icon}

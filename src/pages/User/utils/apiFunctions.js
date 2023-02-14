@@ -73,3 +73,9 @@ export async function getUserOrder(){
 
     return order;
 }
+
+export async function getWithdrawals(){
+    const withdrawals = await api.get('/withdrawal')
+
+    return withdrawals;
+}
