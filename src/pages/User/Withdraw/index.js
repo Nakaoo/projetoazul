@@ -52,8 +52,10 @@ export default function Withdraw() {
         withdrawWay: Yup.string().required("Campo obrigatório"),
         amount: Yup.string().required("Insira o valor do saque")
             .test("amount", "A sua conta não possui saldo suficiente", (value, context) => {
-                const amount = Number(value?.replace(/\D/g, "") / 100);
-                return amount < (people?.wallet?.balance / 100);
+                const amount = parseFloat(value?.replace(/\D/g, "") / 100);
+                console.log(amount.toFixed(2))
+                console.log(people?.wallet?.balance)
+                return amount.toFixed(2) < (parseFloat(people?.wallet?.balance));
             }),
     });
 

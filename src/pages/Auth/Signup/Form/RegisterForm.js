@@ -266,7 +266,6 @@ const RegisterForm = ({ step, setStep, routeProps }) => {
         let validLogin = false;
 
         if (step === 0 && values.cpf) {
-            console.log("1")
             try {
                 const response = await getUserByCpf({ 'cpf': removeMask(values.cpf) })
 
@@ -403,7 +402,7 @@ const RegisterForm = ({ step, setStep, routeProps }) => {
             city: values.city,
             state: values.state,
             cep: values.cep,
-            sponsor_id: id ? id : 2,
+            sponsor_id: id ? id : 1,
             agency: 1
         };
 
