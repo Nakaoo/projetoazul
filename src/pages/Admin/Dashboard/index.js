@@ -1,7 +1,7 @@
 import React from "react"
 import { useEffect, useState, useContext } from "react"
 import { getPerson, getMultiNivel, getMultiNivelTotal } from "../utils/apiFunctions"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useOutletContext } from "react-router-dom"
 import MenuBarAdmin from "../../../components/MenuBarAdmin"
 import { HiMenu } from "react-icons/hi"
 import { UserContext } from "../../../hooks/UserContext"
@@ -17,6 +17,7 @@ import Navbar from "../../../components/Navbar/Navbar"
 import { BsFillPersonFill } from 'react-icons/bs'
 
 export default function AdminDashboard() {
+    const [accountType, people] = useOutletContext()
     const tkUser = localStorage.getItem('tk-user')
     const navigate = useNavigate();
     const [chartData, setChartData] = useState({

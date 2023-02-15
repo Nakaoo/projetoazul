@@ -4,9 +4,11 @@
     margin: auto;
     margin-bottom: 2rem;
     margin-left: 2rem;
-    background: #FFFFFF;
+    /* background: #FFFFFF; */
+    border: 1px solid #184CC0;
     border-radius: 5px;
     padding: 1rem;
+    color: #FFFF;
 }
 
 .chart-barchart{

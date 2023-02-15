@@ -20,6 +20,20 @@ export async function approveOrder(orderUuid){
     return order
 }
 
+export async function getFinancial(status){
+    const orders = await api.get(`/financial/withdrawal?status_id=${status}`)
+
+    return orders;
+}
+
+export async function approveFinancial(orderUuid){
+    let orderItem = orderUuid;
+
+    const order = await api.put(`/financial/withdrawal/${orderItem}`)
+
+    return order
+}
+
 export async function complianceActivation (orderUuid){
     let orderItem = orderUuid;
 

@@ -2,8 +2,8 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { AiOutlineDollarCircle } from 'react-icons/ai'
 import { useForm } from "react-hook-form";
-import { message, Modal, Button, Col } from "antd";
-import { useEffect, useRef, useState } from "react";
+import { message, Col } from "antd";
+import { useRef, useState } from "react";
 import { useOutletContext } from "react-router-dom"
 import InputSelect from './components/InputSelect'
 import './index.css'
@@ -17,7 +17,6 @@ import { LoadingOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 
 export default function Withdraw() {
-    const formRef = useRef(null);
     const selectRef = useRef(null);
     const navigate = useNavigate();
     const [accountType, people] = useOutletContext();
@@ -54,6 +53,10 @@ export default function Withdraw() {
             .test("amount", "A sua conta não possui saldo suficiente", (value, context) => {
                 const amount = parseFloat(value?.replace(/\D/g, "") / 100);
                 return amount.toFixed(2) <= (parseFloat(people?.wallet?.balance));
+            })
+            .test("amount", "O saque mínimo são R$ 200", (value, context) => {
+                const amount = parseFloat(value?.replace(/\D/g, "") / 100);
+                return amount.toFixed(2) >= 200;
             }),
     });
 
@@ -62,10 +65,7 @@ export default function Withdraw() {
         handleSubmit,
         control,
         getValues,
-        setError,
-        setValue,
         watch,
-        reset,
         formState: { errors },
     } = useForm({ mode: "all", resolver: yupResolver(schema) });
 
@@ -76,13 +76,12 @@ export default function Withdraw() {
             account,
             amount,
             keyPix,
-            withdrawWay,
-            emergency_fee,
+            withdrawWay
         } = getValues();
 
         setLoading(true);
 
-        let value = (parseInt(amount.replace(/\D/g, '')) / 100).toFixed(2);
+        let value = parseInt(amount.replace(/\D/g, ''));
 
         if (withdrawWay === "PIX") {
             const data = {
@@ -137,7 +136,7 @@ export default function Withdraw() {
                     setConfirmPage(true)
                     setLoading(false)
                     setIdOperacao(withdrawCreate?.data?.result.id)
-                    setUuid(withdrawCreate?.data?.uuid)
+                    setUuid(withdrawCreate?.data?.result.uuid)
                 }
             } catch (err) {
                 message.error("Erro na solicitação de saque. Entre em contato com o nosso suporte")
@@ -147,7 +146,7 @@ export default function Withdraw() {
     }
 
     function handleEmergencyFee() {
-        if (emergencyFee == 0)
+        if (emergencyFee === 0)
             setEmergencyFee(1)
         else
             setEmergencyFee(0)

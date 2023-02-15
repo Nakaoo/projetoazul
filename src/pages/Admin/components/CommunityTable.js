@@ -19,10 +19,7 @@ export default function CommunityTable() {
                 </thead>
                 <tbody>
                     <tr className="__admin_dashboard_community_body_tr">
-                        <td>Jorge Batista</td>
-                        <td>22</td>
-                        <td>R$ 1240,00</td>
-                        <td><span className='__admin_dashboard_community_pay'>Pago</span></td>
+    
                     </tr>
                 </tbody>
             </table>

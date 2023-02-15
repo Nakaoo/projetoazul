@@ -1,23 +1,16 @@
 import React from "react"
-import { useEffect, useState, useContext, useNavigate } from "react"
-import Navbar from "../../../components/Navbar/Navbar"
-import MenuBarAdmin from "../../../components/MenuBarAdmin"
-import { UserContext } from "../../../hooks/UserContext"
-import { HiMenu } from "react-icons/hi"
+import { useEffect, useState } from "react"
 import { BsFillPersonFill } from 'react-icons/bs'
 import Approved from "./Table/Approved"
 import './AdminFinance.css'
 import Pending from "./Table/Pending"
-import Refused from "./Table/Refused"
 import { useLocation } from "react-router-dom"
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 import { BsCheck2Circle } from 'react-icons/bs'
-import { approveOrder, getOrders } from "../utils/apiFunctions"
-import { message, Skeleton } from "antd"
-import { act } from "@testing-library/react"
+import { approveFinancial, getFinancial } from "../utils/apiFunctions"
+import { message } from "antd"
 
-export default function AdminCompliance() {
-    const [accountType, setAccountType] = useState('')
+export default function AdminFinance() {
     const [menu, setMenu] = useState(false)
     const [page, setPage] = useState('pending')
     const [step, setStep] = useState(0)
@@ -50,15 +43,11 @@ export default function AdminCompliance() {
     async function handleTableExihibition(actualPage) {
         setLoading(true)
         if (actualPage === 'pending') {
-            let orders = await getOrders(3)
+            let orders = await getFinancial(1)
             setComplianceOrders(orders.data.result)
         }
         else if (actualPage === 'approved') {
-            let orders = await getOrders(6)
-            setComplianceOrders(orders.data.result)
-        }
-        else if (actualPage === 'refused') {
-            let orders = await getOrders(2)
+            let orders = await getFinancial(3)
             setComplianceOrders(orders.data.result)
         }
         setLoading(false)
@@ -191,11 +180,12 @@ export default function AdminCompliance() {
         setSearch()
     }
 
-    function handleAcceptButton() {
+    async function handleAcceptButton() {
         setLoading(true)
-        let order = approveOrder(actualValue?.uuid)
+        let order = await approveFinancial(actualValue?.uuid)
 
-        if (order?.data.error != false) {
+
+        if (order.status === 200) {
             setStep(2)
         } else {
             message.error("Houve um erro no pagamento.")
@@ -237,26 +227,19 @@ export default function AdminCompliance() {
             {step == 0 && (
                 <><div className="__admin_dashboard_cards">
                     <div className="__admin_dashboard_card">
-                        <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Total de indicações</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
+                        <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Solicitações abertas</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
                         <span className="__admin_dashboard_card_value"></span>
                         <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
                     </div>
 
                     <div className="__admin_dashboard_card">
-                        <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Indicações aprovadas</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
+                        <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Solicitações concluídas</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
                         <span className="__admin_dashboard_card_value"></span>
                         <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
                     </div>
 
                     <div className="__admin_dashboard_card">
-                        <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Indicações pendentes</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-                        <span className="__admin_dashboard_card_value"></span>
-                        <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
-                    </div>
-
-
-                    <div className="__admin_dashboard_card">
-                        <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Mensagens</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
+                        <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Valor pendente</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
                         <span className="__admin_dashboard_card_value"></span>
                         <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
                     </div>
@@ -280,22 +263,6 @@ export default function AdminCompliance() {
                             )}
                             {page == 'pending' && (
                                 <Pending
-                                    complianceOrders={complianceOrders}
-                                    handleNextPerson={handleNextPerson}
-                                    handleActualValue={handleActualValue}
-                                    openedMenu={openedMenu}
-                                    loading={loading}
-                                    actualValue={actualValue}
-                                    filterds={filterds}
-                                    handleSearchName={handleSearchName}
-                                    handleSearchCpf={handleSearchCpf}
-                                    handleSearchOrder={handleSearchOrder}
-                                    clearFilter={clearFilter}
-                                    search={search}
-                                />
-                            )}
-                            {page == 'refused' && (
-                                <Refused
                                     complianceOrders={complianceOrders}
                                     handleNextPerson={handleNextPerson}
                                     handleActualValue={handleActualValue}
@@ -537,11 +504,10 @@ export default function AdminCompliance() {
                     <div className="__admin_dashboard_compliance_status_content">
                         <div className="__admin_dashboard_compliance_status_content_header">
                             <BsCheck2Circle />
-                            <span className="__admin_dashboard_compliance_status_content_header_title">Compliance Aprovado</span>
-                            <p>O compliance foi aprovado e enviado para o financeiro para que eles possam efetuar o pagamento</p>
+                            <span className="__admin_dashboard_compliance_status_content_header_title">Saque Aprovado</span>
+                            <p>Pedido finalizado</p>
                         </div>
                         <div className="__admin_dashboard_compliance_">
-                            <button onClick={handleBackButton()}>Finalizar</button>
                         </div>
                     </div>
                 </div>

@@ -25,3 +25,8 @@
 .withdraw_form_print{
     display: none;
 }
+
+.__observation{
+    margin-top: 0.5rem;
+    font-style: italic;
+}

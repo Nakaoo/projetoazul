@@ -9,7 +9,7 @@ import apitest from "../../../services/apitest";
 import api from "../../../services/api";
 import { LoadingOutlined, QuestionCircleOutlined } from "@ant-design/icons";
 import { deleteOrder, generatePix, generateOrder, generateTed } from "../utils/apiFunctions";
-import { uploadObject } from "../../../utils/uploadImg";
+import { uploadImg, uploadObject } from "../../../utils/uploadImg";
 import { useNavigate } from "react-router-dom";
 import { message } from "antd";
 export default function Payment({
@@ -35,17 +35,6 @@ export default function Payment({
   })
   const navigate = useNavigate();
 
-  const params = {
-    Bucket: "mtbroadcast", // The path to the directory you want to upload the object to, starting with your Space name.
-    Key: "folder-path/hello-worlde.txt", // Object key, referenced whenever you want to access this file later.
-    Body: "Hello, World!", // The object's contents. This variable is an object, not a string.
-    ACL: "public", // Defines ACL permissions, such as private or public.
-    Metadata: { // Defines metadata tags.
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Allow-Access-Control-Origin': '*'
-    }
-  };
   const [confirmPay, setConfirmPay] = useState(false);
   const [orderPayment, setOrderPayment] = useState();
   const [loading, setLoading] = useState(false);
@@ -106,9 +95,10 @@ export default function Payment({
 
   async function handleConfirmPay() {
     setLoading(true)
-
-    let documentTst = await uploadObject(params)
-    navigate('/')
+    console.log(document)
+    let documentTst = await uploadImg(document.Body)
+    console.log(documentTst)
+    // navigate('/')
 
     setLoading(false)
   }

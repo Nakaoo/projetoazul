@@ -8,6 +8,13 @@
         display: inline-block !important;
     }
 
+    .__withdraw_form_body{
+        padding: 1rem;
+        border: 1px solid black;
+        margin-bottom: 1rem;
+    }
+
+
     .withdraw_form_print{
         padding-top: 1rem;
         width: 100%;
@@ -17,6 +24,10 @@
     }
 
     .logo_white{
+        display: none;
+    }
+
+    .__withdraw_form_header_bar{
         display: none;
     }
 }

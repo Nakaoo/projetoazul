@@ -559,9 +559,9 @@ export default function AdminCompliance() {
                             <BsCheck2Circle className="__adm_dashboard_compliance_status_icon" size={62}/>
                             <span className="__admin_dashboard_compliance_status_content_header_title">Compliance Aprovado</span>
                         </div>
-                        <div className="__admin_dashboard_compliance_status_content_body">
+                        {/* <div className="__admin_dashboard_compliance_status_content_body">
                             <p>O compliance foi aprovado e enviado para o financeiro para que eles possam efetuar o pagamento</p>
-                        </div>
+                        </div> */}
                         <div className="__admin_dashboard_compliance_">
                             <button onClick={() => handleBackButton()}>Finalizar</button>
                         </div>

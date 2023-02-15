@@ -402,7 +402,7 @@ const RegisterForm = ({ step, setStep, routeProps }) => {
             city: values.city,
             state: values.state,
             cep: values.cep,
-            sponsor_id: id ? id : 1,
+            sponsor_id: id,
             agency: 1
         };
 

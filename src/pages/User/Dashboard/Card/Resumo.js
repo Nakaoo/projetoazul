@@ -59,7 +59,7 @@ export default function Resumo({ pessoa, multinivel, multiniveltotal, sumMultiNi
           <div className="__summaryTitle" onClick={() => navigate("/community")}>Minha Comunidade</div>
           <h1>Seu Link de Indicação:</h1>
           <div className="__linkIndication">
-            <input type="text" name="teste" id="email_indicacao" value={window.location.hostname + `/cadastro?ref=${pessoa?.user.person.id}`} disabled=""
+            <input type="text" name="teste" id="email_indicacao" value={window.location.hostname + `/cadastro?ref=${pessoa?.user.person.nickname}`} disabled=""
               className="__inputIndications" />
 
             <button className="__buttonIndications" onClick={copiarLink}>COPIAR</button>

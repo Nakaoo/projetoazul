@@ -1,5 +1,4 @@
 import api from "../../../services/api";
-import apitest from "../../../services/apitest";
 
 export async function getUser(){
     const user = await api.get('/person')

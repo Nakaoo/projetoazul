@@ -19,8 +19,8 @@ export default function SucessfulWithdrawal({ watch, idOperacao, confirmPage, se
         <><div className="__withdraw_form_content" ref={componentRef}>
             <div className="__withdraw_form_header">
                 <div className="__withdraw_print_logo">
-                    <img src={logo} className="logo_white" />
-                    <img src={logoBlack} className="logo_black" />
+                    <img src={logo} className="logo_white" alt="Logo normal ESGTECH" />
+                    <img src={logoBlack} className="logo_black" alt="Logo monocromático ESGTECH" />
                 </div>
                 <div className="__withdraw_form_header_title">
                     <div className="__withdraw_form_header_bar"></div>Comprovante da Solicitação
@@ -48,7 +48,9 @@ export default function SucessfulWithdrawal({ watch, idOperacao, confirmPage, se
                         </div><div className="__withdraw_form_body_information">
                             <p>Data</p>
                             <span>{dateWithdrawal}</span>
-                        </div></>
+                        </div>
+                        <div className="__observation">OBS: A solicitação poderá levar até 7 dias úteis</div>
+                        </>
                 ) : (
                     <>
                         <div className="__withdraw_form_body_information">
@@ -76,14 +78,18 @@ export default function SucessfulWithdrawal({ watch, idOperacao, confirmPage, se
                         <div className="__withdraw_form_body_information">
                             <p>Data</p>
                             <span>{dateToFront(dateWithdrawal)}</span>
-                        </div></>
+                        </div>
+                        <div className="__observation">OBS: A solicitação poderá levar até 7 dias úteis</div>
+                        </>
                 )}
-                
-                <div className="withdraw_form_print">
-                    <center><h5>Autentificação</h5></center>
-                    {uuid}
-                </div>
+
             </div>
+
+            <div className="withdraw_form_print">
+                <center><h5>Autentificação</h5></center>
+                {uuid}
+            </div>
+
         </div><div className="__withdraw_form_buttons">
                 <button className="__withdraw_form_button_secondary" onClick={() => setConfirmPage(false)}>Voltar</button>
                 <button className="__withdraw_form_button_primary" type="button" onClick={handlePrint}>Imprimir</button>

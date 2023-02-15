@@ -25,7 +25,7 @@ export default function Approved({
                 <table className="__admin_compliance_table">
                     <thead className='__admin_compliance_table_thead'>
                         <tr>
-                            <h4 className='__admin_compliance_title'>Todas operações aprovadas</h4>
+                            <h4 className='__admin_compliance_title'>Solicitações de saque aprovadas</h4>
                         </tr>
                         <tr className='__admin_compliance_table_thead_tr'>
                             <th>Nome</th>

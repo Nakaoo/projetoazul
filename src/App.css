@@ -2,6 +2,7 @@
   font-family: 'Poppins';
 }
 body{
+  background-size: cover !important;
   background: url('https://dsm01pap008files.storage.live.com/y4mt44WrpllRoHBZdvQSU1GuDMNlGWt11cVFzVNrTQa5fEhGqztgi49OjvBmLtD3m9MLF2iG6Pi85cee_3daAv_WPXLx8GYCKmEelKuoGgObfMuJoQ7C0asqYJlY4edxqjpbLPrOl1n5GyRdR4eXx80cMtUO_v98grZD9CEl0MwLyam_NJts8e0gjkBVVVk3LkG?width=1726&height=1000&cropmode=none');
 }
 html, body, #app, #app>div{

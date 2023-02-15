@@ -1,15 +1,11 @@
 
-import { React, useContext, useEffect } from "react";
+import { React } from "react";
 import {
     BrowserRouter,
     Routes,
     Route,
     Navigate,
-    redirect
 } from 'react-router-dom'
-
-// Hooks
-import useAuth from "../hooks/useAuth";
 
 // Layout da aplicação
 import ContainerUser from "../components/Layout/ContainerUser";
@@ -22,8 +18,6 @@ import Signup from "../pages/Auth/Signup";
 import RecoverPasswordForm from "../pages/Auth/SignIn/Form/RecoverPasswordForm";
 import ResetPasswordForm from "../pages/Auth/SignIn/Form/ResetPasswordForm";
 import Financeiro from "../pages/User/Financeiro";
-import { UserContext } from "../hooks/UserContext"
-import { useState } from "react"
 import Community from "../pages/User/Community/index";
 import OrderConfirmation from "../pages/User/ConfirmPayment/OrderConfirmation/OrderVerify";
 import OrderPlaced from "../pages/User/ConfirmPayment/OrderPlaced/OrderPlacedVerify";
@@ -31,15 +25,13 @@ import OrderPlaced from "../pages/User/ConfirmPayment/OrderPlaced/OrderPlacedVer
 // Páginas de Admin
 import AdminDashboard from "../pages/Admin/Dashboard";
 import AdminCompliance from "../pages/Admin/Compliance/AdminCompliance";
-import ProtectedRoute from "./ProtectedRoutes";
+import AdminFinance from "../pages/Admin/Finance/AdminFinance";
 import ContainerAdmin from "../components/Layout/ContainerAdmin";
 import Withdraw from "../pages/User/Withdraw";
 
 const AppRoutes = () => {
 
     const logged = localStorage.getItem('tk-user')
-    const role = localStorage.getItem('role')
-    const [value, setValue] = useState(false);
 
     return (
         <BrowserRouter>
@@ -83,7 +75,10 @@ const AppRoutes = () => {
                         path="/admin/dashboard"
                         element={<AdminDashboard />}
                     />
-
+                    <Route
+                        path="/admin/finance"
+                        element={<AdminFinance />}
+                    />
                     <Route
                         path="/admin/compliance"
                         element={<AdminCompliance />}

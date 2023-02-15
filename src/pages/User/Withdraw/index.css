@@ -41,11 +41,11 @@
     margin-bottom: 1rem;
 }
 
-.__withdraw_form_header_information_description{
+.__withdraw_form_header_information_description {
     margin-bottom: 1rem;
 }
 
-.__withdraw_form_header_information_title{
+.__withdraw_form_header_information_title {
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 1rem;
@@ -56,16 +56,16 @@
     margin-top: 0.2rem;
 }
 
-.__withdraw_form_body h4{
+.__withdraw_form_body h4 {
     margin-bottom: 1rem;
     font-weight: 400;
 }
 
-.__col_flex{
+.__col_flex {
     display: flex;
 }
 
-.__withdraw_form_button_primary{
+.__withdraw_form_button_primary {
     position: relative;
     background: #184CC0;
     color: white;
@@ -79,22 +79,22 @@
     cursor: pointer;
 }
 
-.__withdraw_form_button_primary:hover{
+.__withdraw_form_button_primary:hover {
     background: #0eb1d2;
 }
 
-.__withdraw_form_button_secondary{
+.__withdraw_form_button_secondary {
     background: transparent;
     border: 0px;
     cursor: pointer;
     color: #FFF;
 }
 
-.__withdraw_form_check{
+.__withdraw_form_check {
     margin-top: 1rem;
 }
 
-.__withdraw_form_buttons{
+.__withdraw_form_buttons {
     display: flex;
     justify-content: flex-end;
     padding: 0.2rem;
@@ -103,8 +103,41 @@
 }
 
 
-@media screen and (min-width: 1400px){
-    .__withdraw_component{
+@media screen and (min-width: 1400px) {
+    .__withdraw_component {
         height: 100vh;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .__withdraw_component{
+        padding-top: 1rem;
+        place-content: baseline;
+    }
+    
+    .__withdraw_form_header_information {
+        justify-content: baseline;
+        align-items: baseline;
+    }
+
+    .__signup-input-group-col {
+        flex-direction: column;
+        justify-content: baseline;
+        align-items: baseline;
+    }
+
+    .__withdraw_form_buttons {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .__withdraw_form_content {
+        width: auto;
+        padding: 1rem;
+    }
+
+    .__col_flex{
+        flex-direction: column;
     }
 }
