@@ -26,10 +26,12 @@ export default function AdminFinance() {
     const [complianceOrder, setComplianceOrder] = useState([])
     const [filterds, setFilterds] = useState([])
     const [dateSearch, setDateSearch] = useState([])
+    const [approvedOrders, setApprovedOrders] = useState([])
     const [search, setSearch] = useState()
     const [actualValue, setActualValue] = useState('');
     const [openedMenu, setOpenedMenu] = useState(false);
     const location = useLocation();
+    let sum;
 
     useEffect(() => {
         setComplianceOrders(null)
@@ -44,7 +46,9 @@ export default function AdminFinance() {
         setLoading(true)
         if (actualPage === 'pending') {
             let orders = await getFinancial(1)
+            let approvedOrders = await getFinancial(3)
             setComplianceOrders(orders.data.result)
+            setApprovedOrders(approvedOrders.data.result)
         }
         else if (actualPage === 'approved') {
             let orders = await getFinancial(3)
@@ -228,13 +232,13 @@ export default function AdminFinance() {
                 <><div className="__admin_dashboard_cards">
                     <div className="__admin_dashboard_card">
                         <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Solicitações abertas</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-                        <span className="__admin_dashboard_card_value"></span>
+                        <span className="__admin_dashboard_card_value">{complianceOrders?.length}</span>
                         <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
                     </div>
 
                     <div className="__admin_dashboard_card">
                         <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Solicitações concluídas</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-                        <span className="__admin_dashboard_card_value"></span>
+                        <span className="__admin_dashboard_card_value">{approvedOrders?.length}</span>
                         <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
                     </div>
 
@@ -406,11 +410,18 @@ export default function AdminFinance() {
                                 {transactionDetails && (
                                     <div className="__adin_information_content_card_container">
                                         <div className="__admin_information_content_card_form">
+
                                             <div className="__admin_information_content_card_form_content">
                                                 <span>Valor: {actualValue.amount}</span>
                                             </div>
                                             <div className="__admin_information_content_card_form_content">
-                                                <span>Método da operação: Pix </span>
+                                                <span>Tarifa: {actualValue.fee} </span>
+                                            </div>
+                                            <div className="__admin_information_content_card_form_content">
+                                                <span>Subtotal: R$ {actualValue.total} </span>
+                                            </div>
+                                            <div className="__admin_information_content_card_form_content">
+                                                <span>Método da operação: Saque </span>
                                             </div>
                                             <div className="__admin_information_content_card_form_content">
                                                 <span>Data da operação: {actualValue.created_at} </span>
@@ -508,6 +519,7 @@ export default function AdminFinance() {
                             <p>Pedido finalizado</p>
                         </div>
                         <div className="__admin_dashboard_compliance_">
+                            <button onClick={handleBackButton}>Finalizar</button>
                         </div>
                     </div>
                 </div>

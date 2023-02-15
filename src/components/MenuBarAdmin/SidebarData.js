@@ -17,7 +17,6 @@ export const SidebarData = [
         cName: 'nav-text',
         dropdown: true,
         dropdownOpened: false,
-        blocked: true,
         dropdownItems: [
             {
                 title: 'Pendentes',
