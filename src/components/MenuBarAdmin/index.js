@@ -33,11 +33,12 @@ export default function MenuBarAdmin({ people, menu, setMenu, value, setValue, t
 
     function openDropDown(item) {
         setDropDownActual(item.title)
+        console.log(dropDownActual)
     }
 
     function handleNavigation(item) {
 
-        if(item.dropdown){
+        if (item.dropdown) {
             openDropDown(item)
         }
         if (!menu || !item.blocked) {
@@ -50,83 +51,81 @@ export default function MenuBarAdmin({ people, menu, setMenu, value, setValue, t
         }
     }
 
-    function handleDropdown(item) {
-        if (item.dropdown) {
-            navigate(item.url)
-            setActive(item.title)
-            setTitle(item.title)
-            setSubtitle(item.subtitle)
-            setDropDownActual()
-        } else {
-            return;
-        }
-    }
+    function handleDropdown(item){
+    navigate(item.url)
+    setActive(item.title)
+    setTitle(item.title)
+    setSubtitle(item.subtitle)
+    setDropDownActual()
+}
 
-    return (
-        <>
-            {value == false && window.innerWidth <= '600' ? (
-                <>
+return (
+    <>
+        {value == false && window.innerWidth <= '600' ? (
+            <>
 
-                </>
-            ) :
-                (
-                    <div className={value == true && window.innerWidth > 600 ? '__admin_menuBar' : value == true && window.innerWidth ? '__admin_menuBarFull' : ""}>
-                        <div className="__admin_divisionOptions">
-                            <div className="__admin_options">
-                                <div className="__admin_closeMenu">
-                                    <AiOutlineClose onClick={() => setValue(false)} />
-                                </div>
-                                <div className="__admin_logo">
-                                    <img src={logo} alt="" onClick={() => navigate("/")} />
-                                </div>
-
-                                <div className='__admin_info'>
-                                    <div className="__admin_nameUser">Olá, <span className='__admin_highlight'>{people?.user.person.first_name}</span></div>
-                                    <div className="__admin_nameUser">Seu ID: <span className='__admin_highlight'>{people?.user.id}</span> </div>
-                                </div>
+            </>
+        ) :
+            (
+                <div className={value == true && window.innerWidth > 600 ? '__admin_menuBar' : value == true && window.innerWidth ? '__admin_menuBarFull' : ""}>
+                    <div className="__admin_divisionOptions">
+                        <div className="__admin_options">
+                            <div className="__admin_closeMenu">
+                                <AiOutlineClose onClick={() => setValue(false)} />
                             </div>
-                            <div>
-                                {SidebarData.map((item, index) => {
-                                    return (
-                                        <div key={index} className="__admin_option">
-                                            <div className={!menu ? "__admin_linkOption" : "__admin_linkOption disabled"} onClick={() => handleNavigation(item)}>
-                                                <div className={active === item.title ? "__admin_iconOption_active" : "__admin_iconOption"}>
-                                                    {item.icon}
-                                                </div>
+                            <div className="__admin_logo">
+                                <img src={logo} alt="" onClick={() => navigate("/")} />
+                            </div>
 
-                                                <div className="__admin_optionTitle">
-                                                    {item.blocked ? <AiFillLock style={{ marginRight: '0.2rem' }} /> : menu ? <AiFillLock style={{ marginRight: '0.2rem' }} /> : ""} {item.title}
-
-                                                </div>
-                                            </div>
-                                            {item.dropdown && item.title === dropDownActual && (
-                                                <ul className='__admin_menu_ul' id={`__admin_menu_ul${index}`}>
-                                                    {item.dropdownItems.map((value, index) => {
-                                                        <li onClick={() => handleDropdown(value)}>{value.title}</li>
-                                                    })}
-                                                </ul>
-                                            )}
-                                        </div>
-                                    )
-                                })}
-
-                                <div className="__admin_option">
-                                    <div className={"__admin_linkOption"} onClick={logout} >
-                                        <div className="__admin_iconOption">
-                                            <BiLogOut />
-                                        </div>
-
-                                        <div className="__admin_optionTitle">
-                                            Sair
-                                        </div>
-                                    </div>
-                                </div>
-
+                            <div className='__admin_info'>
+                                <div className="__admin_nameUser">Olá, <span className='__admin_highlight'></span></div>
+                                <div className="__admin_nameUser">Seu ID: <span className='__admin_highlight'></span> </div>
                             </div>
                         </div>
+                        <div>
+                            {SidebarData.map((item, index) => {
+                                return (
+                                    <div key={index} className="__admin_option">
+                                        <div className={!menu ? "__admin_linkOption" : "__admin_linkOption disabled"} onClick={() => handleNavigation(item)}>
+                                            <div className={active === item.title ? "__admin_iconOption_active" : "__admin_iconOption"}>
+                                                {item.icon}
+                                            </div>
+
+                                            <div className="__admin_optionTitle">
+                                                {item.blocked ? <AiFillLock style={{ marginRight: '0.2rem' }} /> : menu ? <AiFillLock style={{ marginRight: '0.2rem' }} /> : ""} {item.title}
+
+                                            </div>
+                                        </div>
+                                        {item.dropdown && item.title === dropDownActual && (
+                                            <ul className='__admin_menu_ul' id={`__admin_menu_ul${index}`}>
+                                                {item.dropdownItems.map((value, index) => {
+                                                    return (
+                                                        <li onClick={() => handleDropdown(value)} key={index + 1} className="__admin_menu_li">{value.dropdownTitle}</li>
+                                                    )
+                                                })}
+                                            </ul>
+                                        )}
+                                    </div>
+                                )
+                            })}
+
+                            <div className="__admin_option">
+                                <div className={"__admin_linkOption"} onClick={logout} >
+                                    <div className="__admin_iconOption">
+                                        <BiLogOut />
+                                    </div>
+
+                                    <div className="__admin_optionTitle">
+                                        Sair
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
-                )
-            }
-        </>
-    )
+                </div>
+            )
+        }
+    </>
+)
 }

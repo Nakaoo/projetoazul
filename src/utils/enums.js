@@ -4,7 +4,7 @@ export const genders = {
     2: 'Outros',
 }
 
-export const months = {
+export const monthsLong = {
     1: "Janeiro",
     2: "Fevereiro",
     3: "Março",
@@ -17,4 +17,19 @@ export const months = {
     10: "Outubro",
     11: "Novembro",
     12: "Dezembro"
+}
+
+export const monthsShort = {
+    1: "Jan",
+    2: "Fev",
+    3: "Mar",
+    4: "Abr",
+    5: "Mai",
+    6: "Jun",
+    7: "Jul",
+    8: "Ago",
+    9: "Set",
+    10: "Out",
+    11: "Nov",
+    12: "Dez"
 }

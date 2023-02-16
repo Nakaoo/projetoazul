@@ -82,6 +82,7 @@ li { list-style-type: none; }
 
 .__admin_option{
     display: flex;
+    flex-direction: column;
     cursor: pointer;
 }
 .__admin_option{

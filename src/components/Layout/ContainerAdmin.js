@@ -1,6 +1,6 @@
 import Navbar from '../Navbar/Navbar'
 import { useState, useEffect } from 'react'
-import { getUserInfo, getUserOrder } from '../../pages/User/utils/apiFunctions'
+import { getAdminInfo } from '../../pages/User/utils/apiFunctions'
 import './index.css'
 import { useNavigate, Navigate, Outlet } from 'react-router-dom'
 import Loader from '../Loader/Loader'
@@ -21,9 +21,8 @@ function ContainerAdmin({ children }) {
         setLoadingAmbiente(true)
 
         try {
-            let user = await getUserInfo()
-            console.log(user)
-            setPeople(user.data.result)
+            let admin = await getAdminInfo()
+            setPeople(admin.data.result)
         } catch (err) {
             console.log(err)
         }

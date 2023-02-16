@@ -1,20 +1,10 @@
-import React, { useRef, useState} from "react";
+import React from "react";
 import { Controller } from "react-hook-form";
 import "./styles.css";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import classNames from "classnames";
 import Select from 'react-select';
 
-
-const openMenu = () => {
-  this.setState({ multi: true });
-  this.selectItem.focus();
-  //to do open react select menu
-};
-const closeMenu = () => {
-  this.setState({ multi: false });
-  //to do close react select menu
-};
 
 export default function InputSelect({
   register,

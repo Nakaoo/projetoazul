@@ -8,6 +8,7 @@ export const SidebarData = [
     {
         title: 'Dashboard', 
         path: '/admin/dashboard',
+        subtitle: 'Painel administrativo',
         icon: <AiFillDashboard />,
         cName: 'nav-text'
     },
@@ -20,11 +21,13 @@ export const SidebarData = [
         dropdownItems: [
             {
                 title: 'Financeiro',
-                subtitle: 'Saque pendentes',
+                dropdownTitle: 'Pendentes',
+                subtitle: 'Saques pendentes',
                 url: '/admin/finance?=pending'
             },
             {
                 title: 'Financeiro',
+                dropdownTitle: 'Aprovados',
                 subtitle: 'Saques aprovados',
                 url: '/admin/finance?=historic'
             }
@@ -39,16 +42,19 @@ export const SidebarData = [
         dropdownItems: [
             {
                 title: 'Compliance',
+                dropdownTitle: 'Aprovados',
                 subtitle: 'Pedidos aprovados',
                 url: '/admin/compliance?=approved'
             },
             {
                 title: 'Compliance',
+                dropdownTitle: 'Pendentes',
                 subtitle: 'Pedidos pendentes',
                 url: '/admin/compliance?=pending'
             },
             {
                 title: 'Compliance',
+                dropdownTitle: 'Recusados',
                 subtitle: 'Pedidos recusados',
                 url: '/admin/compliance?=refused'
             },

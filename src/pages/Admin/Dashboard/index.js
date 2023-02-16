@@ -17,25 +17,41 @@ import Navbar from "../../../components/Navbar/Navbar"
 import { BsFillPersonFill } from 'react-icons/bs'
 
 export default function AdminDashboard() {
-    const [accountType, people] = useOutletContext()
+    const [people] = useOutletContext()
+    const [months, setMonths] = useState([{}])
+    const [approvedAccounts, setApprovedAccounts] = useState([])
+    const [pendingAccounts, setPendingAccounts] = useState([{}])
+    const [dataApi, setDataApi] = useState([])
+
+    useEffect(() => {
+        
+        people.active_month.map((data, index) => {
+            if(data.active === 0){
+                setDataApi([{...dataApi, data}])
+            }
+            if(data.active === 1){
+                setApprovedAccounts([{...approvedAccounts, data}])
+            }
+        })
+        console.log(dataApi)
+        console.log(approvedAccounts)
+    }, [])
+
     const tkUser = localStorage.getItem('tk-user')
     const navigate = useNavigate();
     const [chartData, setChartData] = useState({
-        labels: Data.map((data) => data.month),
+        labels: dataApi?.map((data) => data.month),
         datasets: [
             {
                 label: "Contas aprovadas",
-                data: Data.map((data) => data.approvedAccounts),
+                data: dataApi?.map((data) => data.data.count),
                 backgroundColor: [
                     "white",
-                ],
-                borderColor: [
-                    'red'
                 ]
             },
             {
                 label: "Novas contas",
-                data: Data.map((data) => data.newAccounts),
+                data: dataApi?.map((data) => data.accounts),
                 backgroundColor: [
                     "#0C26AD",
                 ],
@@ -59,48 +75,53 @@ export default function AdminDashboard() {
     })
     Chart.register(CategoryScale);
 
+    function removeDuplicates(arr) {
+        return arr.filter((item,
+            index) => arr.indexOf(item) === index);
+    }
+
     return (
-            <div className="__admin_dashboard_content">
-                <div className="__admin_dashboard_cards">
-                    <div className="__admin_dashboard_card">
-                        <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Total de indicações</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-                        <span className="__admin_dashboard_card_value"></span>
-                        <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
-                    </div>
-
-                    <div className="__admin_dashboard_card">
-                        <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Indicações aprovadas</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-                        <span className="__admin_dashboard_card_value"></span>
-                        <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
-                    </div>
-
-                    <div className="__admin_dashboard_card">
-                        <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Indicações pendentes</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-                        <span className="__admin_dashboard_card_value"></span>
-                        <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
-                    </div>
-
-
-                    <div className="__admin_dashboard_card">
-                        <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Mensagens</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-                        <span className="__admin_dashboard_card_value"></span>
-                        <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
-                    </div>
+        <div className="__admin_dashboard_content">
+            <div className="__admin_dashboard_cards">
+                <div className="__admin_dashboard_card">
+                    <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Total de indicações</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
+                    <span className="__admin_dashboard_card_value">{people.active[0].count + people.active[1].count}</span>
+                    <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
                 </div>
 
-                <div className="__admin_dashboard_barchart">
-                    <BarChart chartData={chartData} data={Data} />
+                <div className="__admin_dashboard_card">
+                    <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Indicações aprovadas</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
+                    <span className="__admin_dashboard_card_value">{people.active[0].count}</span>
+                    <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
                 </div>
 
-                <div className="__admin_dashboard_end">
-                    <div className="__admin_dashboard_community">
-                        <CommunityTable />
-                    </div>
+                <div className="__admin_dashboard_card">
+                    <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Indicações pendentes</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
+                    <span className="__admin_dashboard_card_value">{people.active[1].count}</span>
+                    <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
+                </div>
 
-                    <div className="__admin_dashboard_information">
-                        <PieChart chartData={chartDataPie} />
-                    </div>
+
+                <div className="__admin_dashboard_card">
+                    <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Mensagens</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
+                    <span className="__admin_dashboard_card_value">0</span>
+                    <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
                 </div>
             </div>
+
+            <div className="__admin_dashboard_barchart">
+                <BarChart chartData={chartData} data={Data} />
+            </div>
+
+            <div className="__admin_dashboard_end">
+                <div className="__admin_dashboard_community">
+                    <CommunityTable />
+                </div>
+
+                <div className="__admin_dashboard_information">
+                    <PieChart chartData={chartDataPie} />
+                </div>
+            </div>
+        </div>
     )
 }
