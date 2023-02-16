@@ -58,6 +58,7 @@ function ContainerUser({ children }) {
                         people={people}
                         title={title}
                         subtitle={subtitle}
+                        setTitle={setTitle}
                         active={active}
                         setActive={setActive}
                         setSubtitle={setSubtitle} />

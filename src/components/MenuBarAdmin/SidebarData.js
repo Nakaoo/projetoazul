@@ -19,11 +19,13 @@ export const SidebarData = [
         dropdownOpened: false,
         dropdownItems: [
             {
-                title: 'Pendentes',
+                title: 'Financeiro',
+                subtitle: 'Saque pendentes',
                 url: '/admin/finance?=pending'
             },
             {
-                title: 'Histórico',
+                title: 'Financeiro',
+                subtitle: 'Saques aprovados',
                 url: '/admin/finance?=historic'
             }
         ]
@@ -36,15 +38,18 @@ export const SidebarData = [
         dropdownOpened: false,
         dropdownItems: [
             {
-                title: 'Aprovadas',
+                title: 'Compliance',
+                subtitle: 'Pedidos aprovados',
                 url: '/admin/compliance?=approved'
             },
             {
-                title: 'Pendentes',
+                title: 'Compliance',
+                subtitle: 'Pedidos pendentes',
                 url: '/admin/compliance?=pending'
             },
             {
-                title: 'Recusadas',
+                title: 'Compliance',
+                subtitle: 'Pedidos recusados',
                 url: '/admin/compliance?=refused'
             },
         ]

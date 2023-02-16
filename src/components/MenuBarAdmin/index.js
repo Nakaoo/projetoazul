@@ -18,6 +18,8 @@ import { globalImg } from '../../utils/globalImg';
 export default function MenuBarAdmin({ people, menu, setMenu, value, setValue, title, active, subtitle, setTitle, setActive, setSubtitle }) {
     const navigate = useNavigate();
     const [dataUser, setDataUser] = useState();
+    const [dropDownActual, setDropDownActual] = useState();
+
     let logo = globalImg.logo
 
     async function logout() {
@@ -30,22 +32,33 @@ export default function MenuBarAdmin({ people, menu, setMenu, value, setValue, t
     }
 
     function openDropDown(item) {
-        if (item.dropdownOpened == false) {
-            item.dropdownOpened = true
-        } else if (item.dropdownOpened == true) {
-            item.dropdownOpened = false
+        setDropDownActual(item.title)
+    }
+
+    function handleNavigation(item) {
+
+        if(item.dropdown){
+            openDropDown(item)
+        }
+        if (!menu || !item.blocked) {
+            navigate(item.path)
+            setActive(item.title)
+            setTitle(item.title)
+            setSubtitle(item.subtitle)
+        } else {
+            return;
         }
     }
 
-    function handleClick(item){
-        setActive(item.title)
-        setTitle(item.title)
-
-        if(!item.dropdown){
+    function handleDropdown(item) {
+        if (item.dropdown) {
+            navigate(item.url)
+            setActive(item.title)
+            setTitle(item.title)
             setSubtitle(item.subtitle)
-        }
-        if(value){
-            setValue(false)
+            setDropDownActual()
+        } else {
+            return;
         }
     }
 
@@ -57,7 +70,7 @@ export default function MenuBarAdmin({ people, menu, setMenu, value, setValue, t
                 </>
             ) :
                 (
-                    <div className={value == true && window.innerWidth > 600 ? '__admin_menuBar' : value == true && window.innerWidth ? '__admin_menuBarFull'  : "" }>
+                    <div className={value == true && window.innerWidth > 600 ? '__admin_menuBar' : value == true && window.innerWidth ? '__admin_menuBarFull' : ""}>
                         <div className="__admin_divisionOptions">
                             <div className="__admin_options">
                                 <div className="__admin_closeMenu">
@@ -70,35 +83,29 @@ export default function MenuBarAdmin({ people, menu, setMenu, value, setValue, t
                                 <div className='__admin_info'>
                                     <div className="__admin_nameUser">Olá, <span className='__admin_highlight'>{people?.user.person.first_name}</span></div>
                                     <div className="__admin_nameUser">Seu ID: <span className='__admin_highlight'>{people?.user.id}</span> </div>
-                                </div>  
+                                </div>
                             </div>
                             <div>
                                 {SidebarData.map((item, index) => {
                                     return (
                                         <div key={index} className="__admin_option">
-                                            <Link to={!menu ? item.path : ""}>
-                                                <div className={!menu ? "__admin_linkOption" : "__admin_linkOption disabled"} onClick={() => openDropDown(item)}>
-                                                    <div className={active === item.title ? "__admin_iconOption_active" : "__admin_iconOption"}>
-                                                        {item.icon}
-                                                    </div>
-
-                                                    <div className="__admin_optionTitle">
-                                                        {item.blocked ? <AiFillLock style={{ marginRight: '0.2rem' }} /> : menu ? <AiFillLock style={{ marginRight: '0.2rem' }} /> : ""} {item.title}
-
-                                                    </div>
+                                            <div className={!menu ? "__admin_linkOption" : "__admin_linkOption disabled"} onClick={() => handleNavigation(item)}>
+                                                <div className={active === item.title ? "__admin_iconOption_active" : "__admin_iconOption"}>
+                                                    {item.icon}
                                                 </div>
-                                                {item.dropdown == true && item.dropdownOpened == true && (
-                                                    <ul className='__admin_menu_ul' id={`__admin_menu_ul${index}`}>
-                                                        {item.dropdownItems.map((value, index) => {
-                                                            return (
-                                                                <Link to={value.url}>
-                                                                    <li className='__admin_menu_li' key={index + 1}>{value.title}</li>
-                                                                </Link>
-                                                            )
-                                                        })}
-                                                    </ul>
-                                                )}
-                                            </Link>
+
+                                                <div className="__admin_optionTitle">
+                                                    {item.blocked ? <AiFillLock style={{ marginRight: '0.2rem' }} /> : menu ? <AiFillLock style={{ marginRight: '0.2rem' }} /> : ""} {item.title}
+
+                                                </div>
+                                            </div>
+                                            {item.dropdown && item.title === dropDownActual && (
+                                                <ul className='__admin_menu_ul' id={`__admin_menu_ul${index}`}>
+                                                    {item.dropdownItems.map((value, index) => {
+                                                        <li onClick={() => handleDropdown(value)}>{value.title}</li>
+                                                    })}
+                                                </ul>
+                                            )}
                                         </div>
                                     )
                                 })}

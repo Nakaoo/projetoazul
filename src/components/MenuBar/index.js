@@ -17,7 +17,6 @@ import { globalImg } from '../../utils/globalImg';
 
 export default function MenuBar({ people, menu, setMenu, value, setValue, title, active, subtitle, setTitle, setActive, setSubtitle }) {
     const navigate = useNavigate();
-    const [dataUser, setDataUser] = useState();
     let logo = globalImg.logo
 
     async function logout() {
@@ -34,6 +33,18 @@ export default function MenuBar({ people, menu, setMenu, value, setValue, title,
             item.dropdownOpened = true
         } else if (item.dropdownOpened == true) {
             item.dropdownOpened = false
+        }
+    }
+
+    function handleNavigation(item){
+        console.log(item)
+        if(!menu && !item.blocked){
+            navigate(item.path)
+            setActive(item.title)
+            setTitle(item.title)
+            setSubtitle(item.subtitle)
+        }else{
+            return;
         }
     }
 
@@ -58,35 +69,33 @@ export default function MenuBar({ people, menu, setMenu, value, setValue, title,
                                 <div className='__menu_info'>
                                     <div className="__menu_nameUser">Olá, <span className='__menu_highlight'>{people?.user.person.first_name}</span></div>
                                     <div className="__menu_nameUser">Seu ID: <span className='__menu_highlight'>{people?.user.person.id}</span> </div>
-                                </div>  
+                                </div>
                             </div>
                             <div>
                                 {SidebarData.map((item, index) => {
                                     return (
-                                        <div key={index} className="__menu_option">
-                                            <Link to={!menu ? item.path : ""} onClick={() => setActive(item.title)}>
-                                                <div className={!menu ? "__menu_linkOption" : "__menu_linkOption disabled"} onClick={() => openDropDown(item)}>
-                                                    <div className={active === item.title ? "__menu_iconOption_active" : "__menu_iconOption"}>
-                                                        {item.icon}
-                                                    </div>
-
-                                                    <div className="__menu_optionTitle">
-                                                        {item.blocked ? <AiFillLock style={{ marginRight: '0.2rem' }} /> : menu ? <AiFillLock style={{ marginRight: '0.2rem' }} /> : ""} {item.title}
-
-                                                    </div>
+                                        <div key={index} className="__menu_option" onClick={() => handleNavigation(item)}>
+                                            <div className={!menu ? "__menu_linkOption" : "__menu_linkOption disabled"} onClick={() => openDropDown(item)}>
+                                                <div className={active === item.title ? "__menu_iconOption_active" : "__menu_iconOption"}>
+                                                    {item.icon}
                                                 </div>
-                                                {item.dropdown == true && item.dropdownOpened == true && (
-                                                    <ul className='__menu_menu_ul' id={`__menu_menu_ul${index}`}>
-                                                        {item.dropdownItems.map((value, index) => {
-                                                            return (
-                                                                <Link to={value.url}>
-                                                                    <li className='__menu_menu_li' key={index + 1}>{value.title}</li>
-                                                                </Link>
-                                                            )
-                                                        })}
-                                                    </ul>
-                                                )}
-                                            </Link>
+
+                                                <div className="__menu_optionTitle">
+                                                    {item.blocked ? <AiFillLock style={{ marginRight: '0.2rem' }} /> : menu ? <AiFillLock style={{ marginRight: '0.2rem' }} /> : ""} {item.title}
+
+                                                </div>
+                                            </div>
+                                            {item.dropdown == true && item.dropdownOpened == true && (
+                                                <ul className='__menu_menu_ul' id={`__menu_menu_ul${index}`}>
+                                                    {item.dropdownItems.map((value, index) => {
+                                                        return (
+                                                            <Link to={value.url}>
+                                                                <li className='__menu_menu_li' key={index + 1}>{value.title}</li>
+                                                            </Link>
+                                                        )
+                                                    })}
+                                                </ul>
+                                            )}
                                         </div>
                                     )
                                 })}

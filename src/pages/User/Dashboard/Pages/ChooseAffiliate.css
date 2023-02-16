@@ -12,7 +12,7 @@
 .__division-card {
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #1E1E1E;
+    background-color: #01001C;
 }
 
 .__choose_text_buttons{
