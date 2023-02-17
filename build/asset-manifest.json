@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.6fdd0d60.css",
-    "main.js": "/static/js/main.b3f04350.js",
+    "main.js": "/static/js/main.6e04717f.js",
     "static/media/logo_myhart.png": "/static/media/logo_myhart.b85907b5c6158487e8d2.png",
     "static/media/graphic-1.svg": "/static/media/graphic-1.b8b558cf87c3683ac9aab35bf4338836.svg",
     "static/media/graphic-3.svg": "/static/media/graphic-3.287301191ca8dab9b1919f2fcdcd5b20.svg",
@@ -19,10 +19,10 @@
     "static/media/rightArrow.svg": "/static/media/rightArrow.11f4830c298b07be594bd05c3e4bd2e2.svg",
     "static/media/leftArrow.svg": "/static/media/leftArrow.4c1eb535707a91959a2c93ebb3986a99.svg",
     "main.6fdd0d60.css.map": "/static/css/main.6fdd0d60.css.map",
-    "main.b3f04350.js.map": "/static/js/main.b3f04350.js.map"
+    "main.6e04717f.js.map": "/static/js/main.6e04717f.js.map"
   },
   "entrypoints": [
     "static/css/main.6fdd0d60.css",
-    "static/js/main.b3f04350.js"
+    "static/js/main.6e04717f.js"
   ]
 }

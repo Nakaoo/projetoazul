@@ -98,7 +98,7 @@ export default function Payment({
     // console.log(document)
     // let documentTst = await uploadImg(document.Body)
     // console.log(documentTst)
-    navigate('/dashboard')
+    window.onload('/dashboard')
 
     setLoading(false)
   }

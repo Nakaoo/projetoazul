@@ -31,7 +31,7 @@ export default function PendingOrder() {
                             </div>
                         </div>
                         <div className="__needHelp">
-                            <h1>Precisa de Ajuda? <p>Clique Aqui</p></h1>
+                            <h1>Precisa de Ajuda? <a href="mailto:esgtechadm@gmail.com"><p>Clique Aqui</p></a></h1>
                         </div>
                     </div>
 
