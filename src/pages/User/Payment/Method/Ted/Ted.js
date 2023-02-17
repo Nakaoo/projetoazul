@@ -12,6 +12,10 @@ import Product from '../../../ShoppingCard/Product/Product'
 export default function Ted({ setConfirmPay, CloseModal, product, tedDetails, orderDetails, handleConfirmPay, handleRemoveUpload, handleChangeUpload }) {
   const navigate = useNavigate();
 
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
   return (
     <div className="__contentTed">
       <div className="__containerTed">
@@ -129,7 +133,7 @@ export default function Ted({ setConfirmPay, CloseModal, product, tedDetails, or
         <button className="cancel-payment" onClick={() => CloseModal()}>
           Cancelar
         </button>
-        <button className="_buttonFinishPix" onClick={() => navigate('/')}>
+        <button className="_buttonFinishPix" onClick={refreshPage}>
           Finalizar
         </button>
       </div>

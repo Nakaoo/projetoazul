@@ -23,6 +23,10 @@ export default function Pix({ pixDetails, hdocument, setDocument, OrderPayment, 
     message.success("Link copiado");
   }
 
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
   return (
     <div className="__contentMain">
 
@@ -120,11 +124,9 @@ export default function Pix({ pixDetails, hdocument, setDocument, OrderPayment, 
         <button className="cancel-payment" onClick={() => CloseModal()}>
           Cancelar
         </button>
-        <Link to="/dashboard">
-          <button className="_buttonFinishPix">
-            Finalizar
-          </button>
-        </Link>
+        <button className="_buttonFinishPix" onClick={refreshPage}>
+          Finalizar
+        </button>
       </div>
 
     </div>
