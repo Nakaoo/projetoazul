@@ -40,6 +40,7 @@ export default function Payment({
   const [loading, setLoading] = useState(false);
   const [pixDetails, setPixDetails] = useState();
   const [tedDetails, setTedDetails] = useState();
+  const [contractAccept, setContractAccept] = useState(false);
 
   // atual função para criar order
   async function CreateOrder() {
@@ -49,12 +50,18 @@ export default function Payment({
       product: [{
         id: product.uuid,
         qtt: 1
-      }, 
+      },
       {
         id: 'a0b326b2-dd9f-40a3-87e4-6ee6857f0cdb',
         qtt: 1
       }
-    ]
+      ]
+    }
+
+    if(contractAccept === false){
+      message.error("É preciso aceitar os termos do contrato")
+      setLoading(false)
+      return;
     }
 
     let order = await generateOrder(data)
@@ -98,7 +105,7 @@ export default function Payment({
     // console.log(document)
     // let documentTst = await uploadImg(document.Body)
     // console.log(documentTst)
-    window.onload('/dashboard')
+    window.onload('/')
 
     setLoading(false)
   }
@@ -160,6 +167,17 @@ export default function Payment({
     console.log(document)
   };
 
+  function handleContract(){
+    if(contractAccept === true){
+      setContractAccept(false)
+    }
+    else if(contractAccept === false){
+      setContractAccept(true)
+    }
+    else{
+      setContractAccept(false)
+    }
+  }
   return (
     <>
       {optionValue == "option1" && confirmPay == true ? (
@@ -438,6 +456,10 @@ export default function Payment({
                     )}
                   </div>
                 </div>
+              </div>
+              <div className="__input_contract">
+                <input className="check_contract" type="checkbox" onClick={() => handleContract()}/>
+                <label htmlFor="check_contract">Li e aceito os termos de contrato da compra. <br /><a href="https://onedrive.live.com/embed?cid=FA1C55DB9E5E3F29&resid=FA1C55DB9E5E3F29%21228540&authkey=AJ48AQI9pK142hQ&em=2" className="a_terms" target="_blank">Visualizar termos</a></label>
               </div>
             </div>
           </div>

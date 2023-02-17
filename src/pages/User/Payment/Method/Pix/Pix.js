@@ -120,7 +120,7 @@ export default function Pix({ pixDetails, hdocument, setDocument, OrderPayment, 
         <button className="cancel-payment" onClick={() => CloseModal()}>
           Cancelar
         </button>
-        <button className="_buttonFinishPix" onClick={() => handleConfirmPay()}>
+        <button className="_buttonFinishPix" onClick={() => navigate('/')}>
           Finalizar
         </button>
       </div>

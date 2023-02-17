@@ -59,7 +59,10 @@ export default function Card({ products, balanceUser, pessoa }) {
                             <h1>0</h1>
                             <h2>Cashback</h2>
                         </div>
-
+                        <div className="__cashBack">
+                            <h1>0</h1>
+                            <h2>Investimento</h2>
+                        </div>
                     </div>
 
                 </div>

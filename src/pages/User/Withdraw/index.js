@@ -54,9 +54,9 @@ export default function Withdraw() {
                 const amount = parseFloat(value?.replace(/\D/g, "") / 100);
                 return amount.toFixed(2) <= (parseFloat(people?.wallet?.balance));
             })
-            .test("amount", "O saque mínimo são R$ 200", (value, context) => {
+            .test("amount", "O saque mínimo são R$ 50", (value, context) => {
                 const amount = parseFloat(value?.replace(/\D/g, "") / 100);
-                return amount.toFixed(2) >= 200;
+                return amount.toFixed(2) >= 50;
             }),
     });
 

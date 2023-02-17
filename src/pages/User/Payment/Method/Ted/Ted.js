@@ -129,7 +129,7 @@ export default function Ted({ setConfirmPay, CloseModal, product, tedDetails, or
         <button className="cancel-payment" onClick={() => CloseModal()}>
           Cancelar
         </button>
-        <button className="_buttonFinishPix" onClick={() => handleConfirmPay()}>
+        <button className="_buttonFinishPix" onClick={() => navigate('/')}>
           Finalizar
         </button>
       </div>

@@ -216,6 +216,15 @@ border: none;
     display: flex;
 }
 
+.__input_contract{
+    margin-top: 0.5rem;
+}
+
+.a_terms{
+    margin-left: 1.2rem;
+    color: #184CC0;
+}
+
 .__form-address_number{
     display: flex;
     justify-content: space-between;

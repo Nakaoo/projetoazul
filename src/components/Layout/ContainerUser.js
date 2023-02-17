@@ -1,6 +1,6 @@
 import MenuBar from '../MenuBar'
 import Navbar from '../Navbar/Navbar'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { getUserInfo, getUserOrder } from '../../pages/User/utils/apiFunctions'
 import './index.css'
 import { useNavigate, Navigate, Outlet } from 'react-router-dom'
@@ -42,9 +42,13 @@ function ContainerUser({ children }) {
         setLoadingAmbiente(false)
     }
 
+    const callBackEffect = useCallback(async () => {
+        await getUserAllInfo();
+    }, []);
+
     useEffect(() => {
-        getUserAllInfo()
-    }, [accountType])
+        callBackEffect();
+    }, [callBackEffect])
 
     if (loadingAmbiente) return <Loader />
     return (
