@@ -97,7 +97,7 @@ export default function AdminDashboard() {
 
                 <div className="__admin_dashboard_card">
                     <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Indicações pendentes</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-                    <span className="__admin_dashboard_card_value">{people.active[1].count}</span>
+                    <span className="__admin_dashboard_card_value">{people.active[1].count ? people.active[1].count : "0"}</span>
                     <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
                 </div>
 

@@ -50,7 +50,7 @@ export default function Resumo({ pessoa, multinivel, multiniveltotal, sumMultiNi
 
           <div className="__user_dashboard_card">
             <div className="__user_dashboard_card_addon"><p className="__user_dashboard_card_addon_title">Indicações aprovadas</p><span className="__user_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-            <span className="__user_dashboard_card_value">{pessoa?.active?.active}</span>
+            <span className="__user_dashboard_card_value">{pessoa?.active?.active > 0 ? pessoa?.active?.active : "0"}</span>
             <div className="__user_dashboard_last_addon"><span className="__user_dashboard_last_addon_percentage"></span><span className="__user_dashboard_card_explanation">que o mês passado</span></div>
           </div>
         </div>
