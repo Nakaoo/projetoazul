@@ -2,7 +2,7 @@ import './Pix.css';
 import pix from '../../../../../assets/icons/pix.png';
 import { useEffect, useState } from 'react';
 import QrCode from "./QRcode"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { message, Upload, Form } from 'antd';
 import { uploadObject } from '../../../../../utils/uploadImg';
 
@@ -120,9 +120,11 @@ export default function Pix({ pixDetails, hdocument, setDocument, OrderPayment, 
         <button className="cancel-payment" onClick={() => CloseModal()}>
           Cancelar
         </button>
-        <button className="_buttonFinishPix" onClick={() => navigate('/')}>
-          Finalizar
-        </button>
+        <Link to="/dashboard">
+          <button className="_buttonFinishPix">
+            Finalizar
+          </button>
+        </Link>
       </div>
 
     </div>

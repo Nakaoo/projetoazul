@@ -273,7 +273,7 @@ border: none;
 @media screen and (max-width: 600px){
 .cart-payment{
     width: auto;
-    height: 35rem;
+    height: max-content;
 }
 
 .cart-product{
