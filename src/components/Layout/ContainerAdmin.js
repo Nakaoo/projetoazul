@@ -27,6 +27,8 @@ function ContainerAdmin({ children }) {
 
         try {
             let admin = await getAdminInfo()
+            // console.log('admin', admin);
+
             setPeople(admin.data.result)
         } catch (err) {
             console.log(err)

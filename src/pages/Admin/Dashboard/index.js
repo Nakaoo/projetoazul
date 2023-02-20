@@ -2,17 +2,9 @@ import './index.css'
 import React from "react"
 // eslint-disable-next-line
 import { useEffect, useState, useContext } from "react"
-import { useNavigate, useOutletContext } from "react-router-dom"
-import { Data } from "../utils/data"
-import { PieData } from "../utils/piedata"
-import { BarChart } from "../components/BarChart"
-import { CategoryScale } from 'chart.js';
-import Chart from 'chart.js/auto';
-import CommunityTable from "../components/CommunityTable"
-import PieChart from "../components/PieChart"
-import { BsFillPersonFill } from 'react-icons/bs'
 // eslint-disable-next-line
 import { getPerson, getMultiNivel, getMultiNivelTotal } from "../utils/apiFunctions"
+import { useNavigate, useOutletContext } from "react-router-dom"
 // eslint-disable-next-line
 import MenuBarAdmin from "../../../components/MenuBarAdmin"
 // eslint-disable-next-line
@@ -21,17 +13,26 @@ import { HiMenu } from "react-icons/hi"
 import { UserContext } from "../../../hooks/UserContext"
 // eslint-disable-next-line
 import Navbar from "../../../components/Navbar/Navbar"
+import { Data } from "../utils/data"
+import { PieData } from "../utils/piedata"
+import { BarChart } from "../components/BarChart"
+import { CategoryScale } from 'chart.js';
+import Chart from 'chart.js/auto';
+import CommunityTable from "../components/CommunityTable"
+import PieChart from "../components/PieChart"
+import { BsFillPersonFill } from 'react-icons/bs'
 
 export default function AdminDashboard() {
     const [people] = useOutletContext()
-    const [approvedAccounts, setApprovedAccounts] = useState([])
-    const [dataApi, setDataApi] = useState([])
     // eslint-disable-next-line
     const [months, setMonths] = useState([{}])
+    const [approvedAccounts, setApprovedAccounts] = useState([])
     // eslint-disable-next-line
     const [pendingAccounts, setPendingAccounts] = useState([{}])
+    const [dataApi, setDataApi] = useState([])
 
     useEffect(() => {
+        // eslint-disable-next-line
         people.active_month.map((data, index) => {
             if (data.active === 0) {
                 setDataApi([{ ...dataApi, data }])
