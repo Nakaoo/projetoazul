@@ -4,7 +4,7 @@ import { loginAccount } from "../pages/Auth/Signup/utils/apiFunctions";
 import { useEffect } from "react";
 
 const tkUser = localStorage.getItem("tk-user")
-let baseURL = "https://api.dkawasaka.com/api/v1"
+let baseURL = `${process.env.REACT_APP_URL_API}/api/v1`
 
 
 const initialState = {

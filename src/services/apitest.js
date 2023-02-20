@@ -5,7 +5,7 @@ const tkUser = localStorage.getItem('tk-user')
 console.log("tk teste", tkUser);
 
 export default axios.create({
-    baseURL: "https://esgtech.dkawasaka.com/api/v1",
+    baseURL: `${process.env.REACT_APP_URL_API}/api/v1`,
     headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
