@@ -23,3 +23,4 @@ yarn-error.log*
 /src/services/api.js
 src/services/api.js
 .env
+build/

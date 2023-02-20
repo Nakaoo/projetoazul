@@ -1,0 +1,5 @@
+build: inst
+	npm run build
+
+inst:
+	npm install

@@ -21,7 +21,7 @@ function ShoppingCard({
   useEffect(() => {
     var optionMethod = {
       method: 'GET',
-      url: 'https://api.dkawasaka.com/api/v1/methodpayment/',
+      url: 'https://api.esgtechpower.com/api/v1/methodpayment/',
       headers: {
         Authorization: `Bearer ${tokenUser}`,
         Accept: 'application/json'

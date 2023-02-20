@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const api = axios.create({
-    baseURL: "https://esgtech.dkawasaka.com/api/v1/",
+    baseURL: "https://api.esgtechpower.com/api/v1/",
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
