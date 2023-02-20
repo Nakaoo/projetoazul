@@ -2,13 +2,14 @@ import './index.css'
 import React, { useState, useEffect } from "react";
 import ShoppingCard from '../ShoppingCard/Cart';
 import { AiOutlineClose } from "react-icons/ai";
+// eslint-disable-next-line
 import apitest from '../../../services/apitest';
 
-
+// eslint-disable-next-line
 export default function ProductView({ modalProduct, selectedProduct, productsApi, setModalProduct, id }) {
   const [cartsVisibility, setCartsVisibility] = useState(false);
   const [product, setProduct] = useState('');
-  
+
   const [productsInCart, setProductsInCart] =
     useState(
       JSON.parse(
@@ -30,12 +31,12 @@ export default function ProductView({ modalProduct, selectedProduct, productsApi
     /* verifica se já foi adicionado o mesmo produto
      let novoArray = JSON.parse(localStorage.getItem("shopping-cart")); */
     /* novoArray.forEach(function (item, index) {
-         if(item.id == product.id){
+         if(item.id === product.id){
           console.log(productsInCart)           
          }
      });*/
 
-     setProduct(product);
+    setProduct(product);
     const newProduct = {
       ...product,
       count: 1,
@@ -122,11 +123,11 @@ export default function ProductView({ modalProduct, selectedProduct, productsApi
               <span className='__option_energy_text'>Escolha o tipo de investimento da sua preferência para continuar o processo</span>
             </div>
             <div className='__option_energy_header_map'>
-              {productsApi?.filter((val, index) => val?.category_id == 1 && val?.is_active == 1).map((val, index) => {
+              {productsApi?.filter((val) => val?.category_id === 1 && val?.is_active === 1).map((val, index) => {
                 return (
-                    <div className={`product ${val.title}`} onClick={() => addProductToCart(val)} key={index+1} >
-                      <img src={val.image} title={`${val.title} - R$ ${val.price} - CDI ${(val.cdi * 100).toFixed(2)}%`}></img>
-                    </div>
+                  <div className={`product ${val.title}`} onClick={() => addProductToCart(val)} key={index + 1} >
+                    <img src={val.image} title={`${val.title} - R$ ${val.price} - CDI ${(val.cdi * 100).toFixed(2)}%`} alt="" />
+                  </div>
                 )
               })}
             </div>
@@ -135,7 +136,7 @@ export default function ProductView({ modalProduct, selectedProduct, productsApi
 
 
         {
-          cartsVisibility == true ? <ShoppingCard
+          cartsVisibility === true ? <ShoppingCard
             cartsVisibility={cartsVisibility}
             setCartsVisibility={setCartsVisibility}
             productsInCart={productsInCart}

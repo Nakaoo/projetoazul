@@ -3,11 +3,14 @@ import Navbar from '../Navbar/Navbar'
 import { useState, useEffect, useCallback } from 'react'
 import { getUserInfo, getUserOrder } from '../../pages/User/utils/apiFunctions'
 import './index.css'
+// eslint-disable-next-line
 import { useNavigate, Navigate, Outlet } from 'react-router-dom'
 import Loader from '../Loader/Loader'
 
 
+// eslint-disable-next-line
 function ContainerUser({ children }) {
+    // eslint-disable-next-line
     const navigate = useNavigate()
     const [title, setTitle] = useState('Dashboard')
     const [menu, setMenu] = useState(false)
@@ -17,6 +20,7 @@ function ContainerUser({ children }) {
     const [accountType, setAccountType] = useState('valido')
     const [people, setPeople] = useState()
     const [value, setValue] = useState(false)
+    // eslint-disable-next-line
     const user = localStorage.getItem('tk-user')
 
     async function getUserAllInfo() {
@@ -26,7 +30,7 @@ function ContainerUser({ children }) {
             let user = await getUserInfo()
             let order = await getUserOrder()
             setPeople(user.data.result)
-            if (order.data.result.data.length > 0 && order.data.result.data[0].status_id == 3) {
+            if (order.data.result.data.length > 0 && order.data.result.data[0].status_id === 3) {
                 setMenu(true)
                 setAccountType('pagamento')
             } else if (user.data.result.user.person.is_active < 1) {

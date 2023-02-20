@@ -1,15 +1,23 @@
 import './Ted.css'
+// eslint-disable-next-line
 import step1 from '../../../../../assets/icons/step-1.png'
+// eslint-disable-next-line
 import step2 from '../../../../../assets/icons/step-2.png'
+// eslint-disable-next-line
 import step3 from '../../../../../assets/icons/step-3.png'
+// eslint-disable-next-line
 import step4 from '../../../../../assets/icons/step-4.png'
 import { useNavigate } from "react-router-dom";
+// eslint-disable-next-line
 import { message, Upload, Form } from 'antd';
+// eslint-disable-next-line
 import { IoMdReturnLeft } from "react-icons/io";
+// eslint-disable-next-line
 import Product from '../../../ShoppingCard/Product/Product'
 
-
+// eslint-disable-next-line
 export default function Ted({ setConfirmPay, CloseModal, product, tedDetails, orderDetails, handleConfirmPay, handleRemoveUpload, handleChangeUpload }) {
+  // eslint-disable-next-line
   const navigate = useNavigate();
 
   function refreshPage() {

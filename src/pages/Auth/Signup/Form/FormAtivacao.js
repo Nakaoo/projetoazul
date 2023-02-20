@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+// eslint-disable-next-line
 import { Row, Col, Form, Select, Modal } from "antd";
 import { useParams } from "react-router-dom";
 import { validaConta } from "../utils/apiFunctions";
@@ -9,6 +10,7 @@ import { globalImg } from "../../../../utils/globalImg";
 const FormAtivacao = () => {
     const [ativado, setAtivado] = useState()
     const [loading, setLoading] = useState(false)
+    // eslint-disable-next-line
     const verificao = useState()
     const navigate = useNavigate();
     let logo_principal = globalImg.logo
@@ -46,17 +48,17 @@ const FormAtivacao = () => {
                         <h3 className="__signup_span_title">Cadastre-se na pré-venda e tenha acesso a
                             um universo de novas possibilidades</h3>
                     </div>
-                    {loading == true && (
+                    {loading === true && (
                         <Skeleton />
                     )}
-                    {loading == false && ativado == false && (
+                    {loading === false && ativado === false && (
                         <><div className="__signup_subtitle">
                             <span className="__signup_span_subtitle">Token Invalido!!</span>
                         </div><div className="__signup_subtitle">
                                 <span className="__signup_span_subtitle">O token informado encontra-se invalido. Efetue o cadastro novamente, em caso de dúvidas, <br /> <a href="mailto:email@provedor.com.br">Clique aqui para falar conosco</a></span>
                             </div></>
                     )}
-                    {loading == false && ativado == true && (
+                    {loading === false && ativado === true && (
                         <><div className="__signup_subtitle">
                             <span className="__signup_span_subtitle">CONTA ATIVADA COM SUCESSO</span>
                         </div><div className="__signup_form_information_content">

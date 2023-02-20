@@ -11,13 +11,13 @@ export default function OrderPlaced({menu}){
 
     return (
     <div className="__containerOrderPlaced">
-             {window.innerWidth <= "600" && value == true ? (
+             {window.innerWidth <= "600" && value === true ? (
         <div className="__menuBar">
           <MenuBar menu={menu} />
         </div>
       ) : ( <>
         
-        {window.innerWidth <= "600" && value == false ? (
+        {window.innerWidth <= "600" && value === false ? (
             <>
             <div className="__contentOrderPlaced">
               <div className="__menuIsOpen">

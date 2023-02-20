@@ -1,7 +1,9 @@
 import { AiFillDashboard, AiFillSignal, AiFillShop, AiFillShopping, AiOutlineWechat } from 'react-icons/ai'
 import { MdPeople, MdOutlinePayment } from 'react-icons/md'
+// eslint-disable-next-line
 import { BsStars } from 'react-icons/bs'
 import {FiSettings} from 'react-icons/fi'
+// eslint-disable-next-line
 import { useNavigate } from 'react-router-dom'
 
 export const SidebarData = [
@@ -79,7 +81,7 @@ export const SidebarData = [
         blocked: true
     },
     {
-        title: 'Comunidades', 
+        title: 'Indicados', 
         icon: <MdOutlinePayment />,
         cName: 'nav-text',
         blocked: true

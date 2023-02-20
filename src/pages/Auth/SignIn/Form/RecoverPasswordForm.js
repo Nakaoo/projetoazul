@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import { useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AiOutlineMail } from 'react-icons/ai'
@@ -15,6 +16,7 @@ const RecoverPasswordForm = () => {
     const [email, setEmail] = useState('')
     const [step, setStep] = useState(0)
     const [loading, setLoading] = useState(false)
+    // eslint-disable-next-line
     const [emailExihibit, setEmailExihibit] = useState('')
 
     const onKeyDownEnter = e => {
@@ -50,7 +52,7 @@ const RecoverPasswordForm = () => {
                         <img src={logoImg} alt="Logo principal ESGTECH" width="350px" />
                     </div>
                     <div className="__signin_content_form">
-                        {step == 0 && (
+                        {step === 0 && (
                             <form onSubmit={e => { e.preventDefault(); }}>
                                 <div className="form_group_signin">
                                     <div className="__signin_content_title">
@@ -92,7 +94,7 @@ const RecoverPasswordForm = () => {
                             </form>
                         )}
 
-                        {step == 1 && (
+                        {step === 1 && (
                             <div className='__signin_content_details'>
                                 <span className='__signin_content_details_title'>Foi enviado um email de redefinição de senha para: <b>{email}</b></span>
                                 <span className='__signin_content_details_subtitle'>Verifique sua caixa de SPAM</span>

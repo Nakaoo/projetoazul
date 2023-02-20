@@ -1,11 +1,8 @@
-import React from "react"
-import { useEffect, useState, useContext } from "react"
-import { getPerson, getMultiNivel, getMultiNivelTotal } from "../utils/apiFunctions"
-import { useNavigate, useOutletContext } from "react-router-dom"
-import MenuBarAdmin from "../../../components/MenuBarAdmin"
-import { HiMenu } from "react-icons/hi"
-import { UserContext } from "../../../hooks/UserContext"
 import './index.css'
+import React from "react"
+// eslint-disable-next-line
+import { useEffect, useState, useContext } from "react"
+import { useNavigate, useOutletContext } from "react-router-dom"
 import { Data } from "../utils/data"
 import { PieData } from "../utils/piedata"
 import { BarChart } from "../components/BarChart"
@@ -13,32 +10,44 @@ import { CategoryScale } from 'chart.js';
 import Chart from 'chart.js/auto';
 import CommunityTable from "../components/CommunityTable"
 import PieChart from "../components/PieChart"
-import Navbar from "../../../components/Navbar/Navbar"
 import { BsFillPersonFill } from 'react-icons/bs'
+// eslint-disable-next-line
+import { getPerson, getMultiNivel, getMultiNivelTotal } from "../utils/apiFunctions"
+// eslint-disable-next-line
+import MenuBarAdmin from "../../../components/MenuBarAdmin"
+// eslint-disable-next-line
+import { HiMenu } from "react-icons/hi"
+// eslint-disable-next-line
+import { UserContext } from "../../../hooks/UserContext"
+// eslint-disable-next-line
+import Navbar from "../../../components/Navbar/Navbar"
 
 export default function AdminDashboard() {
     const [people] = useOutletContext()
-    const [months, setMonths] = useState([{}])
     const [approvedAccounts, setApprovedAccounts] = useState([])
-    const [pendingAccounts, setPendingAccounts] = useState([{}])
     const [dataApi, setDataApi] = useState([])
+    // eslint-disable-next-line
+    const [months, setMonths] = useState([{}])
+    // eslint-disable-next-line
+    const [pendingAccounts, setPendingAccounts] = useState([{}])
 
     useEffect(() => {
-        
         people.active_month.map((data, index) => {
-            if(data.active === 0){
-                setDataApi([{...dataApi, data}])
+            if (data.active === 0) {
+                setDataApi([{ ...dataApi, data }])
             }
-            if(data.active === 1){
-                setApprovedAccounts([{...approvedAccounts, data}])
+            if (data.active === 1) {
+                setApprovedAccounts([{ ...approvedAccounts, data }])
             }
         })
         console.log(dataApi)
         console.log(approvedAccounts)
     }, [])
-
+    // eslint-disable-next-line
     const tkUser = localStorage.getItem('tk-user')
+    // eslint-disable-next-line
     const navigate = useNavigate();
+    // eslint-disable-next-line
     const [chartData, setChartData] = useState({
         labels: dataApi?.map((data) => data.month),
         datasets: [
@@ -58,6 +67,8 @@ export default function AdminDashboard() {
             }
         ],
     });
+
+    // eslint-disable-next-line
     const [chartDataPie, setChartDataPie] = useState({
         datasets: [
             {
@@ -75,6 +86,7 @@ export default function AdminDashboard() {
     })
     Chart.register(CategoryScale);
 
+    // eslint-disable-next-line
     function removeDuplicates(arr) {
         return arr.filter((item,
             index) => arr.indexOf(item) === index);

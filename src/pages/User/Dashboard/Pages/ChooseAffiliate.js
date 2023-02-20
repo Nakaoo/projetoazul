@@ -1,12 +1,19 @@
 import React, { useState } from "react"
 import './ChooseAffiliate.css'
+// eslint-disable-next-line
 import MenuBar from '../../../../components/MenuBar/index'
 import ProductView from "../../ProductView/index"
+// eslint-disable-next-line
 import { useEffect } from "react"
+// eslint-disable-next-line
 import axios from "axios"
+// eslint-disable-next-line
 import { HiMenu } from "react-icons/hi"
+// eslint-disable-next-line
 import { UserContext } from "../../../../hooks/UserContext"
+// eslint-disable-next-line
 import { useContext } from "react"
+// eslint-disable-next-line
 import { getProducts } from "../../utils/apiFunctions"
 import { globalImg } from "../../../../utils/globalImg"
 
@@ -15,8 +22,10 @@ function Afiliado({ menu, id, productsApi }) {
   let cardImg = globalImg.cardImg
 
   // selecionar produto
+  // eslint-disable-next-line
   const [selectedProduct, setSelectedProduct] = useState([]);
 
+// eslint-disable-next-line
   const SelectedProduct = (product) => {
     setModalProduct(true)
     setSelectedProduct(product)
@@ -35,7 +44,7 @@ function Afiliado({ menu, id, productsApi }) {
 
       <div className="__cardsDivision">
         <div className="__choose_img">
-          <img src={cardImg}></img>
+          <img src={cardImg} alt="CardImg" />
         </div>
         <div className="__choose_text">
           <div className="__choose_text">
@@ -52,7 +61,7 @@ function Afiliado({ menu, id, productsApi }) {
       </div>
 
       {
-        modalProduct == true ?
+        modalProduct === true ?
           <ProductView
             modalProduct={modalProduct}
             setModalProduct={setModalProduct}

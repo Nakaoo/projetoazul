@@ -1,20 +1,25 @@
+import './index.css'
 import Navbar from '../Navbar/Navbar'
 import { useState, useEffect } from 'react'
 import { getAdminInfo } from '../../pages/User/utils/apiFunctions'
-import './index.css'
+// eslint-disable-next-line
 import { useNavigate, Navigate, Outlet } from 'react-router-dom'
 import Loader from '../Loader/Loader'
 import MenuBarAdmin from '../MenuBarAdmin'
 
+// eslint-disable-next-line
 function ContainerAdmin({ children }) {
+    // eslint-disable-next-line
     const navigate = useNavigate()
     const [title, setTitle] = useState('Dashboard')
+    // eslint-disable-next-line
     const [menu, setMenu] = useState(false)
     const [loadingAmbiente, setLoadingAmbiente] = useState(true)
     const [active, setActive] = useState()
     const [subtitle, setSubtitle] = useState('Painel administrativo')
     const [people, setPeople] = useState()
     const [value, setValue] = useState(false)
+    // eslint-disable-next-line
     const user = localStorage.getItem('tk-user')
 
     async function getUserAllInfo() {

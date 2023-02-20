@@ -11,11 +11,14 @@ import { approveFinancial, getFinancial } from "../utils/apiFunctions"
 import { message } from "antd"
 
 export default function AdminFinance() {
+    // eslint-disable-next-line
     const [menu, setMenu] = useState(false)
     const [page, setPage] = useState('pending')
     const [step, setStep] = useState(0)
     const [loading, setLoading] = useState(true)
+    // eslint-disable-next-line
     const [orderNumber, setOrderNumber] = useState()
+    // eslint-disable-next-line
     const [person, setPerson] = useState()
     const [personalDetails, setPersonalDetails] = useState(true)
     const [contactDetails, setContactDetails] = useState(true)
@@ -23,14 +26,17 @@ export default function AdminFinance() {
     const [transactionDetails, setTransactionDetails] = useState(true)
     const [documentDetails, setDocumentDetails] = useState(true)
     const [complianceOrders, setComplianceOrders] = useState([])
+    // eslint-disable-next-line
     const [complianceOrder, setComplianceOrder] = useState([])
     const [filterds, setFilterds] = useState([])
+    // eslint-disable-next-line
     const [dateSearch, setDateSearch] = useState([])
     const [approvedOrders, setApprovedOrders] = useState([])
     const [search, setSearch] = useState()
     const [actualValue, setActualValue] = useState('');
     const [openedMenu, setOpenedMenu] = useState(false);
     const location = useLocation();
+    // eslint-disable-next-line
     let sum;
 
     useEffect(() => {
@@ -89,6 +95,7 @@ export default function AdminFinance() {
         }
     }
 
+    // eslint-disable-next-line
     function handleDocumentDetails() {
         if (documentDetails) {
             setDocumentDetails(false)
@@ -102,6 +109,7 @@ export default function AdminFinance() {
         setStep(0)
     }
 
+    // eslint-disable-next-line
     function handleRefuseButton() {
 
     }
@@ -143,23 +151,23 @@ export default function AdminFinance() {
             setFilterds([])
     }
 
-    function handleSearchCpf(e) {
+    // function handleSearchCpf(e) {
 
-        setSearch(e)
-        let array = []
+    //     setSearch(e)
+    //     let array = []
 
-        complianceOrders.filter((item) => {
-            if (item?.person?.doc_fiscal.toLowerCase().includes(search.toLowerCase())) {
-                array.push(item)
-            }
-        });
+    //     complianceOrders.filter((item) => {
+    //         if (item?.person?.doc_fiscal.toLowerCase().includes(search.toLowerCase())) {
+    //             array.push(item)
+    //         }
+    //     });
 
 
-        setFilterds(array)
+    //     setFilterds(array)
 
-        if (!search)
-            setFilterds([])
-    }
+    //     if (!search)
+    //         setFilterds([])
+    // }
 
     function handleSearchOrder(e) {
 
@@ -198,6 +206,7 @@ export default function AdminFinance() {
         setLoading(false)
     }
 
+    // eslint-disable-next-line
     function handleEditButton() {
 
     }
@@ -209,7 +218,7 @@ export default function AdminFinance() {
     }
 
     function handleActualValue(val) {
-        if (actualValue?.uuid != val?.uuid) {
+        if (actualValue?.uuid !== val?.uuid) {
             setActualValue(val)
             setOpenedMenu(true)
         }
@@ -228,7 +237,7 @@ export default function AdminFinance() {
     return (
 
         <div className="__admin_dashboard_content">
-            {step == 0 && (
+            {step === 0 && (
                 <><div className="__admin_dashboard_cards">
                     <div className="__admin_dashboard_card">
                         <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Solicitações abertas</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
@@ -249,7 +258,7 @@ export default function AdminFinance() {
                     </div>
                 </div><div className="__admin_compliance_table_">
                         <div className="__admin_compliance_table">
-                            {page == 'approved' && (
+                            {page === 'approved' && (
                                 <Approved
                                     complianceOrders={complianceOrders}
                                     handleNextPerson={handleNextPerson}
@@ -265,7 +274,7 @@ export default function AdminFinance() {
                                     search={search}
                                 />
                             )}
-                            {page == 'pending' && (
+                            {page === 'pending' && (
                                 <Pending
                                     complianceOrders={complianceOrders}
                                     handleNextPerson={handleNextPerson}
@@ -284,7 +293,7 @@ export default function AdminFinance() {
                         </div>
                     </div></>
             )}
-            {step == 1 && (
+            {step === 1 && (
                 <div className="admin_dashboard_information_content">
                     <div className="__admin_information_content_principal">
                         <div className="__admin_information_content_cards">
@@ -474,13 +483,13 @@ export default function AdminFinance() {
                                 <button onClick={handleBackButton}>Voltar</button>
                             </div>
                             <div className="__admin_information_content_buttons_end">
-                                {page == 'pending' && (
+                                {page === 'pending' && (
                                     <><button className="__admin_information_content_button_refuse">Reprovar</button><button className="__admin_information_content_button_approve" onClick={() => handleAcceptButton(actualValue.uuid)}>Aprovar</button></>
                                 )}
-                                {page == 'approved' && (
+                                {page === 'approved' && (
                                     <><button className="__admin_information_content_button_edit">Editar</button></>
                                 )}
-                                {page == 'refused' && (
+                                {page === 'refused' && (
                                     <><button className="__admin_information_content_button_approve" onClick={() => handleAcceptButton(actualValue.uuid)}>Aprovar</button></>
                                 )}
                             </div>
@@ -488,7 +497,7 @@ export default function AdminFinance() {
                     </div>
 
 
-                    {page == 'approved' && (
+                    {page === 'approved' && (
                         <div className="__admin_information_account_content">
                             <div className="__admin_information_account">
                                 <div className="__admin_information_account_title">Dados da conta</div>
@@ -510,7 +519,7 @@ export default function AdminFinance() {
                     )}
                 </div>
             )}
-            {step == 2 && (
+            {step === 2 && (
                 <div className="__admin_dashboard_compliance_status">
                     <div className="__admin_dashboard_compliance_status_content">
                         <div className="__admin_dashboard_compliance_status_content_header">

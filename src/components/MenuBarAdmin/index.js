@@ -1,15 +1,23 @@
 import './index.css'
+// eslint-disable-next-line
 import icon_9 from '../../assets/img/Icon-9.svg'
+// eslint-disable-next-line
 import logo from '../../assets/img/logo_myhart_secundario.png'
 import { SidebarData } from './SidebarData'
 import * as React from "react";
+// eslint-disable-next-line
 import { useState, useEffect } from "react";
+// eslint-disable-next-line
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
+// eslint-disable-next-line
 import { HiMenu } from "react-icons/hi"
+// eslint-disable-next-line
 import api from '../../services/api';
 import { AiOutlineClose } from "react-icons/ai"
+// eslint-disable-next-line
 import { UserContext } from '../../hooks/UserContext'
+// eslint-disable-next-line
 import { useContext } from "react"
 import { BiLogOut } from 'react-icons/bi'
 import { AiFillLock } from 'react-icons/ai'
@@ -17,6 +25,7 @@ import { globalImg } from '../../utils/globalImg';
 
 export default function MenuBarAdmin({ people, menu, setMenu, value, setValue, title, active, subtitle, setTitle, setActive, setSubtitle }) {
     const navigate = useNavigate();
+    // eslint-disable-next-line
     const [dataUser, setDataUser] = useState();
     const [dropDownActual, setDropDownActual] = useState();
 
@@ -61,13 +70,13 @@ export default function MenuBarAdmin({ people, menu, setMenu, value, setValue, t
 
 return (
     <>
-        {value == false && window.innerWidth <= '600' ? (
+        {value === false && window.innerWidth <= '600' ? (
             <>
 
             </>
         ) :
             (
-                <div className={value == true && window.innerWidth > 600 ? '__admin_menuBar' : value == true && window.innerWidth ? '__admin_menuBarFull' : ""}>
+                <div className={value === true && window.innerWidth > 600 ? '__admin_menuBar' : value === true && window.innerWidth ? '__admin_menuBarFull' : ""}>
                     <div className="__admin_divisionOptions">
                         <div className="__admin_options">
                             <div className="__admin_closeMenu">

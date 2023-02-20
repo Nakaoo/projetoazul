@@ -1,15 +1,22 @@
 import './index.css'
+// eslint-disable-next-line
 import icon_9 from '../../assets/img/Icon-9.svg'
+// eslint-disable-next-line
 import logo from '../../assets/img/logo_myhart_secundario.png'
 import { SidebarData } from './SidebarData'
 import * as React from "react";
+// eslint-disable-next-line
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
+// eslint-disable-next-line
 import { HiMenu } from "react-icons/hi"
+// eslint-disable-next-line
 import api from '../../services/api';
 import { AiOutlineClose } from "react-icons/ai"
+// eslint-disable-next-line
 import { UserContext } from '../../hooks/UserContext'
+// eslint-disable-next-line
 import { useContext } from "react"
 import { BiLogOut } from 'react-icons/bi'
 import { AiFillLock } from 'react-icons/ai'
@@ -29,9 +36,9 @@ export default function MenuBar({ people, menu, setMenu, value, setValue, title,
     }
 
     function openDropDown(item) {
-        if (item.dropdownOpened == false) {
+        if (item.dropdownOpened === false) {
             item.dropdownOpened = true
-        } else if (item.dropdownOpened == true) {
+        } else if (item.dropdownOpened === true) {
             item.dropdownOpened = false
         }
     }
@@ -50,13 +57,13 @@ export default function MenuBar({ people, menu, setMenu, value, setValue, title,
 
     return (
         <>
-            {value == false && window.innerWidth <= '600' ? (
+            {value === false && window.innerWidth <= '600' ? (
                 <>
 
                 </>
             ) :
                 (
-                    <div className={value == true && window.innerWidth > '600' ? '__menu_menuBar' : value == false && window.innerWidth < 600 ? '__menu_menuBarFull' : '__menu_menuBar'}>
+                    <div className={value === true && window.innerWidth > '600' ? '__menu_menuBar' : value === false && window.innerWidth < 600 ? '__menu_menuBarFull' : '__menu_menuBar'}>
                         <div className="__menu_divisionOptions">
                             <div className="__menu_options">
                                 <div className="__menu_closeMenu">
@@ -85,7 +92,7 @@ export default function MenuBar({ people, menu, setMenu, value, setValue, title,
 
                                                 </div>
                                             </div>
-                                            {item.dropdown == true && item.dropdownOpened == true && (
+                                            {item.dropdown === true && item.dropdownOpened === true && (
                                                 <ul className='__menu_menu_ul' id={`__menu_menu_ul${index}`}>
                                                     {item.dropdownItems.map((value, index) => {
                                                         return (

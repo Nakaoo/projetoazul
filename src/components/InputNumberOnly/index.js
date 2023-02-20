@@ -1,9 +1,11 @@
+// eslint-disable-next-line
 import React, { useState, useEffect } from "react";
 import "./styles.css";
 import { NumericFormat } from 'react-number-format';
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import classNames from "classnames";
 import { Controller } from "react-hook-form";
+// eslint-disable-next-line
 import { BsEmojiHeartEyes } from "react-icons/bs";
 export default function InputNumber({
   label,
@@ -32,6 +34,7 @@ export default function InputNumber({
       <Controller
         name={name}
         control={control}
+        // eslint-disable-next-line
         render={({ field, onChange, value }) => (
           <NumericFormat
             className={!error ? "__signup-input" : "__signup-input error"}
@@ -39,6 +42,7 @@ export default function InputNumber({
             type={type}
             placeholder={placeholder}
             onValueChange={(values) => {
+              // eslint-disable-next-line
               const { formattedValue, value } = values;
 
               //field.onChange(valueAsNumber ? value : formattedValue);

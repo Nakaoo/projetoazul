@@ -1,10 +1,13 @@
+import './Solicitacoes.css'
+// eslint-disable-next-line
 import { useState, useEffect, useRef } from "react";
 import { useReactToPrint } from "react-to-print";
+// eslint-disable-next-line
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 import { globalImg } from "../../../../utils/globalImg";
-import './Solicitacoes.css'
 import { dateToFront } from "../../../../utils/removeMask";
 
+// eslint-disable-next-line
 export default function Solicitacoes({ setStep, openedMenu, actualValue, step, filterds, withdrawals, withdraw, handleActualValue, handleNextPerson, handleSearchOrder }) {
   let logo = globalImg.logo;
   let logoBlack = globalImg.logo_black;
@@ -47,7 +50,7 @@ export default function Solicitacoes({ setStep, openedMenu, actualValue, step, f
                           <td>R$ {val.amount}</td>
                           <td>{!val.user_aprovation_id ? "Pendente" : "Aprovado"}</td>
                           <td><button className='__admin_compliance_table_body_button' onClick={() => handleActualValue(val)}>OPÇÃO <MdKeyboardArrowDown /></button>
-                            {openedMenu == true && actualValue?.uuid == val?.uuid && (
+                            {openedMenu === true && actualValue?.uuid === val?.uuid && (
                               <ul className='__admin_compliance_table_dropdown'>
                                 <li onClick={() => handleNextPerson(val)}>Analisar</li>
                               </ul>
@@ -68,7 +71,7 @@ export default function Solicitacoes({ setStep, openedMenu, actualValue, step, f
                           <td>R$ {val.amount}</td>
                           <td>{!val.user_aprovation_id ? "Pendente" : "Aprovado"}</td>
                           <td><button className='__admin_compliance_table_body_button' onClick={() => handleActualValue(val)}>OPÇÃO <MdKeyboardArrowDown /></button>
-                            {openedMenu == true && actualValue?.uuid == val?.uuid && (
+                            {openedMenu === true && actualValue?.uuid === val?.uuid && (
                               <ul className='__admin_compliance_table_dropdown'>
                                 <li onClick={() => handleNextPerson(val)}>Analisar</li>
                               </ul>
@@ -86,8 +89,8 @@ export default function Solicitacoes({ setStep, openedMenu, actualValue, step, f
         <><div className="__withdraw_form_all"><div className="__withdraw_form_content" ref={componentRef}>
           <div className="__withdraw_form_header">
             <div className="__withdraw_print_logo">
-              <img src={logo} className="logo_white" />
-              <img src={logoBlack} className="logo_black" />
+              <img src={logo} className="logo_white" alt="Logo" />
+              <img src={logoBlack} className="logo_black" alt="LogoBlack" />
             </div>
             <div className="__withdraw_form_header_title">
               <div className="__withdraw_form_header_bar"></div>Comprovante da Solicitação

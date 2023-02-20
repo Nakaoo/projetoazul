@@ -30,8 +30,8 @@ export const SidebarData = [
         blocked: true
     },
     {
-        title: 'Comunidade',
-        subtitle: 'Painel de comunidade',
+        title: 'Indicados',
+        subtitle: 'Painel de Indicados',
         path:'/community',
         icon: <MdPeople />,
         cName: 'nav-text',

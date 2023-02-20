@@ -3,6 +3,7 @@ import Financeiro from "../Financeiro/Pages/index"
 import { getPerson } from "../utils/apiFunctions"
 
   export default function FinanceiroVerify(){
+    // eslint-disable-next-line
     const [accountType, setAccountType] = useState('')
     const [menu, setMenu] = useState(false)
 

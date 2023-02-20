@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { globalImg } from '../../../../../utils/globalImg';
 
 export default function QRcode({ImgQrCode, setModalQrCode}){
+    // eslint-disable-next-line
     const [img2, setImg2] = useState();
     let img;
     let imgEstatica = globalImg.pixQrCode
@@ -24,7 +25,7 @@ export default function QRcode({ImgQrCode, setModalQrCode}){
                 E EFETUE O PAGAMENTO
                 </h1>
             </div>
-            <img src={imgEstatica} width="200px" height="200px" />
+            <img src={imgEstatica} width="200px" height="200px" alt="QRCode" />
        </div>    
     </>
 )

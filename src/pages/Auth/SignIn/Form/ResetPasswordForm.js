@@ -1,15 +1,22 @@
+import '../styles.css'
+
+// eslint-disable-next-line
 import { useEffect, useState, useRef } from 'react'
 import { useNavigate, useParams, useLocation } from 'react-router-dom'
+// eslint-disable-next-line
 import { AiOutlineMail } from 'react-icons/ai'
 import { AiOutlineLock } from 'react-icons/ai'
+// eslint-disable-next-line
 import { useForm, Controller } from "react-hook-form";
 
-import '../styles.css'
+// eslint-disable-next-line
 import logo_principal from '../../../../assets/img/logo_myhart.png'
 import { resetPassword } from '../../Signup/utils/apiFunctions'
 import { LoadingOutlined } from "@ant-design/icons";
 import { NumericFormat } from 'react-number-format';
+// eslint-disable-next-line
 import { yupResolver } from "@hookform/resolvers/yup";
+// eslint-disable-next-line
 import * as Yup from 'yup';
 import { Spin } from 'antd';
 import { globalImg } from '../../../../utils/globalImg';
@@ -65,13 +72,13 @@ const ResetPasswordForm = () => {
 
     async function handleResetPassword() {
         try {
-            if (formData.password != formData.confirmPassword) {
+            if (formData.password !== formData.confirmPassword) {
                 setVisibleError(true)
                 setErrMessage("Senha e confirmação de senha diferentes")
                 return 0;
             }
 
-            if (formData.password.length != 6) {
+            if (formData.password.length !== 6) {
                 setVisibleError(true)
                 setErrMessage("A senha deve conter seis digitos")
                 return 0;
@@ -82,6 +89,7 @@ const ResetPasswordForm = () => {
             }
 
             setLoading(true)
+            // eslint-disable-next-line
             let recover = await resetPassword(token, data, email)
 
             setStep(1)
@@ -103,7 +111,7 @@ const ResetPasswordForm = () => {
                         <img src={logoImg} alt="Logo principal ESGTECH" width="350px" />
                     </div>
                     <div className="__signin_content_form">
-                        {step == 0 && (
+                        {step === 0 && (
                             <form onSubmit={e => { e.preventDefault(); }}>
                                 <div className="form_group_signin">
                                     <div className="__signin_content_title">
@@ -177,7 +185,7 @@ const ResetPasswordForm = () => {
                             </form>
                         )}
 
-                        {step == 1 && (
+                        {step === 1 && (
                             <div className='__signin_content_details'>
                                 <span className='__signin_content_details_title'><b>Parabéns! Sua senha foi alterada com sucesso<br />Você será redirecionado para a tela de login</b></span>
                                 <div className="__signin_content_details_animation">

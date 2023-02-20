@@ -1,14 +1,22 @@
+// eslint-disable-next-line
 import React, { useState, useEffect, useRef } from "react";
+// eslint-disable-next-line
 import Input from '../../../../components/Input'
+// eslint-disable-next-line
 import InputDate from '../../../../components/InputDate'
 import InputMask from '../../../../components/InputMask'
+// eslint-disable-next-line
 import InputSelect from "../../../../components/InputSelect";
+// eslint-disable-next-line
 import BiArrowBack, { BiAbacus } from 'react-icons/bi'
+// eslint-disable-next-line
 import { Row, Col, Form, Select } from "antd";
+// eslint-disable-next-line
 import { LoadingOutlined, QuestionCircleOutlined } from "@ant-design/icons";
 
 
 const FormContact = (
+    // eslint-disable-next-line
     { register, control, errors, onNext, onPrevious, loading }
 ) => {
 

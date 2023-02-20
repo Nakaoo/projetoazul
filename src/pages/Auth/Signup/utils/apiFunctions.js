@@ -69,6 +69,7 @@ export async function getCpfOrEmail(arg){
 }
 
 export async function recoverPassword(data){
+    // eslint-disable-next-line
     let email = data
     const user = await api.post(`/forgot-password`, data)
 

@@ -1,11 +1,11 @@
-import React from "react"
-import { useEffect, useState } from "react"
-import { BsFillPersonFill } from 'react-icons/bs'
-import { useLocation } from "react-router-dom"
-import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
-import { BsCheck2Circle } from 'react-icons/bs'
-import { message } from "antd"
 import './index.css'
+import React from "react"
+// import { useEffect, useState } from "react"
+import { BsFillPersonFill } from 'react-icons/bs'
+// import { useLocation } from "react-router-dom"
+// import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
+// import { BsCheck2Circle } from 'react-icons/bs'
+// import { message } from "antd"
 import { RiListSettingsFill } from 'react-icons/ri'
 import graphic1 from '../../../assets/img/graphic-1.svg'
 import graphic2 from '../../../assets/img/graphic-2.svg'
@@ -13,6 +13,7 @@ import viewMore from '../../../assets/img/viewMore.svg'
 import { useOutletContext } from "react-router-dom"
 
 export default function Community() {
+  // eslint-disable-next-line
   const [accountType, people] = useOutletContext();
 
   return (
@@ -59,7 +60,7 @@ export default function Community() {
 
         <div className="__community_table">
             <div className='__table_scroll'><div className="__admin_dashboard_community_header_title">
-              <h4 className='__admin_dashboard_community_header_title'>Comunidade</h4>
+              <h4 className='__admin_dashboard_community_header_title'>Indicados</h4>
               <span className='__admin_dashboard_community_header_settings'>Filtrar <RiListSettingsFill /></span>
             </div><table className="__admin_dashboard_community_table">
                 <thead className="__admin_dashboard_community_header">

@@ -1,19 +1,25 @@
+// eslint-disable-next-line
 import React, { useState, useEffect, useRef } from "react";
 import Input from '../../../../components/Input'
 import InputDate from '../../../../components/InputDate'
 import InputMask from '../../../../components/InputMask'
 import InputSelect from "../../../../components/InputSelect";
+// eslint-disable-next-line
 import BiArrowBack, { BiAbacus } from 'react-icons/bi'
+// eslint-disable-next-line
 import { Row, Col, Form, Select } from "antd";
+// eslint-disable-next-line
 import { LoadingOutlined, QuestionCircleOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 
 const FormPersonal = (
     { register, control, errors, onNext, setFocus, loading }
 ) => {
+    // eslint-disable-next-line
     const { Option } = Select;
     const calendarRef = useRef();
     const selectRef = useRef();
+    // eslint-disable-next-line
     const inputRef = useRef(null);
     const navigate = useNavigate();
 

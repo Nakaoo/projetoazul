@@ -1,10 +1,15 @@
+// eslint-disable-next-line
 import React, { useState, useEffect, useRef } from "react";
 import InputNumberOnly from "../../../../components/InputNumberOnly";
+// eslint-disable-next-line
 import { Row, Col, Form, Select } from "antd";
+// eslint-disable-next-line
 import { LoadingOutlined, QuestionCircleOutlined } from "@ant-design/icons";
+// eslint-disable-next-line
 import { BsEye } from 'react-icons/bs'
 
 const FormSecurity = (
+    // eslint-disable-next-line
     { register, control, errors, onNext, onPrevious, loading }
 ) => {
 

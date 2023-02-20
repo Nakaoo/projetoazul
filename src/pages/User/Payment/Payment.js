@@ -5,10 +5,14 @@ import React, { useEffect, useState } from "react";
 import ModalPix from "../Payment/Method/Pix/Pix";
 import ModalTed from "../Payment/Method/Ted/Ted";
 import ModalBoleto from "../Payment/Method/Boleto/Boleto";
+// eslint-disable-next-line
 import apitest from "../../../services/apitest";
 import api from "../../../services/api";
+
+// eslint-disable-next-line
 import { LoadingOutlined, QuestionCircleOutlined } from "@ant-design/icons";
 import { deleteOrder, generatePix, generateOrder, generateTed } from "../utils/apiFunctions";
+// eslint-disable-next-line
 import { uploadImg, uploadObject } from "../../../utils/uploadImg";
 import { useNavigate } from "react-router-dom";
 import { message } from "antd";
@@ -33,6 +37,8 @@ export default function Payment({
       'Accept': 'application/json'
     }
   })
+
+  // eslint-disable-next-line
   const navigate = useNavigate();
 
   const [confirmPay, setConfirmPay] = useState(false);
@@ -58,7 +64,7 @@ export default function Payment({
       ]
     }
 
-    if(contractAccept === false){
+    if (contractAccept === false) {
       message.error("É preciso aceitar os termos do contrato")
       setLoading(false)
       return;
@@ -67,7 +73,7 @@ export default function Payment({
     let order = await generateOrder(data)
     setOrderPayment(order.data.result.data)
 
-    if (optionValue == 'option1') {
+    if (optionValue === 'option1') {
       try {
         let pix = await generatePix(order.data.result.data.uuid);
         setPixDetails(pix.data.result)
@@ -77,7 +83,7 @@ export default function Payment({
         return;
       }
     }
-    if (optionValue == 'option2') {
+    if (optionValue === 'option2') {
       try {
         setConfirmPay(true)
         let ted = await generateTed(order.data.result.data.uuid)
@@ -96,9 +102,7 @@ export default function Payment({
     setConfirmPay(true)
   }
 
-  useEffect(() => {
-    LoadDataShipping();
-  }, []);
+  useEffect(() => { LoadDataShipping(); }, []);
 
   async function handleConfirmPay() {
     setLoading(true)
@@ -167,20 +171,20 @@ export default function Payment({
     console.log(document)
   };
 
-  function handleContract(){
-    if(contractAccept === true){
+  function handleContract() {
+    if (contractAccept === true) {
       setContractAccept(false)
     }
-    else if(contractAccept === false){
+    else if (contractAccept === false) {
       setContractAccept(true)
     }
-    else{
+    else {
       setContractAccept(false)
     }
   }
   return (
     <>
-      {optionValue == "option1" && confirmPay == true ? (
+      {optionValue === "option1" && confirmPay === true ? (
         <ModalPix OrderPayment={orderPayment}
           setConfirmPay={setConfirmPay}
           setCartsVisibility={setCartsVisibility}
@@ -193,9 +197,9 @@ export default function Payment({
           setDocument={setDocument}
           pixDetails={pixDetails}
         />
-      ) : optionValue == "option2" && confirmPay == true ? (
+      ) : optionValue === "option2" && confirmPay === true ? (
         <ModalTed setConfirmPay={setConfirmPay} CloseModal={CloseModal} tedDetails={tedDetails} orderDetails={orderPayment} />
-      ) : optionValue == "option3" && confirmPay == true ? (
+      ) : optionValue === "option3" && confirmPay === true ? (
         <ModalBoleto setConfirmPay={setConfirmPay} CloseModal={CloseModal} />
       ) : (
         <div className="__content-payment-">
@@ -233,7 +237,7 @@ export default function Payment({
               <div className="input-shipping-name">
                 <div className="input-data-name">
                   <h1>Nome</h1>
-                  {editShippingName == true ? (
+                  {editShippingName === true ? (
                     <>
                       <div className="_form-update">
                         <input
@@ -249,7 +253,7 @@ export default function Payment({
                         />
                         {changedName ? (
                           <>
-                            <img src={check} />
+                            <img alt="" src={check} />
                           </>
                         ) : null}
                       </div>
@@ -258,8 +262,8 @@ export default function Payment({
                     <form className="__form-data-name">
                       <div>{dataUser?.shipping_first_name}</div>
                       <div>
-                        <img src={check} />{" "}
-                        <img
+                        <img alt="" src={check} />{" "}
+                        <img alt=""
                           src={edit}
                           onClick={() => setEditShippingName(true)}
                         />
@@ -269,7 +273,7 @@ export default function Payment({
                 </div>
                 <div className="input-data-name">
                   <h1>Sobrenome</h1>
-                  {editShippingName == true ? (
+                  {editShippingName === true ? (
                     <>
                       <div className="_form-update">
                         <input
@@ -286,7 +290,7 @@ export default function Payment({
 
                         {changedLastName ? (
                           <>
-                            <img src={check} />
+                            <img alt="" src={check} />
                           </>
                         ) : null}
                       </div>
@@ -295,8 +299,8 @@ export default function Payment({
                     <form className="__form-data-name">
                       <div>{dataUser?.last_name}</div>
                       <div className="__validationShipping">
-                        <img src={check} />{" "}
-                        <img
+                        <img alt="" src={check} />{" "}
+                        <img alt=""
                           src={edit}
                           onClick={() => setEditShippingName(true)}
                         />
@@ -307,7 +311,7 @@ export default function Payment({
               </div>
               <div className="input-payment-data">
                 <h1>CPF</h1>
-                {editShippingCpf == true ? (
+                {editShippingCpf === true ? (
                   <>
                     <div className="_form-update">
                       <input
@@ -324,7 +328,7 @@ export default function Payment({
 
                       {changedCpf ? (
                         <>
-                          <img src={check} />
+                          <img alt="" src={check} />
                         </>
                       ) : null}
                     </div>
@@ -333,8 +337,8 @@ export default function Payment({
                   <form className="__form-payment">
                     <div>{dataUser?.doc_fiscal}</div>
                     <div>
-                      <img src={check} />{" "}
-                      <img
+                      <img alt="" src={check} />{" "}
+                      <img alt=""
                         src={edit}
                         onClick={() => setEditShippingCpf(true)}
                       />
@@ -345,7 +349,7 @@ export default function Payment({
               <div className="input-shipping-address">
                 <div className="input-address-data">
                   <h1>Logradouro</h1>
-                  {editShippingAddress == true ? (
+                  {editShippingAddress === true ? (
                     <>
                       <div className="_form-update">
                         <input
@@ -362,7 +366,7 @@ export default function Payment({
 
                         {changedLogradouro ? (
                           <>
-                            <img src={check} />
+                            <img alt="" src={check} />
                           </>
                         ) : null}
                       </div>
@@ -371,8 +375,8 @@ export default function Payment({
                     <form className="__form-address_logradouro">
                       <div>{dataUser?.address_1}</div>
                       <div className="__validationShipping">
-                        <img src={check} />{" "}
-                        <img
+                        <img alt="" src={check} />{" "}
+                        <img alt=""
                           src={edit}
                           onClick={() => setEditShippingAddress(true)}
                         />
@@ -383,7 +387,7 @@ export default function Payment({
                 <div className="_input-address-data">
                   <div className="input-address-data">
                     <h1>Numero</h1>
-                    {editShippingAddress == true ? (
+                    {editShippingAddress === true ? (
                       <>
                         <div className="_form-update">
                           <input
@@ -400,7 +404,7 @@ export default function Payment({
 
                           {changedNumber ? (
                             <>
-                              <img src={check} />
+                              <img alt="" src={check} />
                             </>
                           ) : null}
                         </div>
@@ -409,8 +413,8 @@ export default function Payment({
                       <form className="__form-address_number">
                         <div>{dataUser?.number}</div>
                         <div className="__validationShipping">
-                          <img src={check} />{" "}
-                          <img
+                          <img alt="" src={check} />{" "}
+                          <img alt=""
                             src={edit}
                             onClick={() => setEditShippingAddress(true)}
                           />
@@ -420,7 +424,7 @@ export default function Payment({
                   </div>
                   <div className="input-address-data">
                     <h1>Cidade</h1>
-                    {editShippingAddress == true ? (
+                    {editShippingAddress === true ? (
                       <>
                         <div className="_form-update">
                           <input
@@ -437,7 +441,7 @@ export default function Payment({
 
                           {changedCity ? (
                             <>
-                              <img src={check} />
+                              <img alt="" src={check} />
                             </>
                           ) : null}
                         </div>
@@ -446,8 +450,8 @@ export default function Payment({
                       <form className="__form-address">
                         <div>{dataUser?.city}</div>
                         <div className="_formCheck">
-                          <img src={check} />{" "}
-                          <img
+                          <img alt="" src={check} />{" "}
+                          <img alt=""
                             src={edit}
                             onClick={() => setEditShippingAddress(true)}
                           />
@@ -458,13 +462,20 @@ export default function Payment({
                 </div>
               </div>
               <div className="__input_contract">
-                <input className="check_contract" type="checkbox" onClick={() => handleContract()}/>
-                <label htmlFor="check_contract">Li e aceito os termos de contrato da compra. <br /><a href="https://onedrive.live.com/embed?cid=FA1C55DB9E5E3F29&resid=FA1C55DB9E5E3F29%21228540&authkey=AJ48AQI9pK142hQ&em=2" className="a_terms" target="_blank">Visualizar termos</a></label>
+                <input className="check_contract" type="checkbox" onClick={() => handleContract()} />
+                <label htmlFor="check_contract">Li e aceito os termos de contrato da compra. <br />
+                  <a href="https://onedrive.live.com/embed?cid=FA1C55DB9E5E3F29&resid=FA1C55DB9E5E3F29%21228540&authkey=AJ48AQI9pK142hQ&em=2"
+                    className="a_terms"
+                    rel="noreferrer"
+                    target="_blank">
+                    Visualizar termos
+                  </a>
+                </label>
               </div>
             </div>
           </div>
           <div className="__button-next-page-payment">
-            {confirmPay == false && productsInCart.length > 0 ? (
+            {confirmPay === false && productsInCart.length > 0 ? (
               <div className="_button-next-page-payment">
                 <button className="cancel-payment" onClick={() => CloseModal()}>
                   Cancelar
@@ -479,7 +490,7 @@ export default function Payment({
             ) : (
               <></>
             )}
-            {optionValue == "" && confirmPay == true ? (
+            {optionValue === "" && confirmPay === true ? (
               <div className="_button-next-page-payment">
                 <button className="cancel-payment" onClick={() => CloseModal()}>
                   Cancelar
