@@ -1,0 +1,13 @@
+.__proof_table{
+    display: flex;
+}
+
+.__proof_table_flex{
+    display: flex;
+    flex-direction: column;
+}
+
+section{
+    font-size: 12px;
+    line-height: normal;
+}
