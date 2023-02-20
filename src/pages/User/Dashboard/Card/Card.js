@@ -52,7 +52,7 @@ export default function Card({ products, balanceUser, pessoa }) {
                             <h3>Saldo Atual</h3>
                         </div>
                         <div className="__income">
-                            <h1>0</h1>
+                            <h1>{pessoa?.invertment ?? 0}</h1>
                             <h2>Rendimentos</h2>
                         </div>
                         <div className="__cashBack">
@@ -60,7 +60,7 @@ export default function Card({ products, balanceUser, pessoa }) {
                             <h2>Cashback</h2>
                         </div>
                         <div className="__cashBack">
-                            <h1>0</h1>
+                            <h1>{pessoa?.invertmentb ?? 0}</h1>
                             <h2>Investimento</h2>
                         </div>
                     </div>
