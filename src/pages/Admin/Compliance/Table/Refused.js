@@ -1,6 +1,8 @@
 import './index.css'
 import { MdKeyboardArrowDown } from 'react-icons/md'
+// eslint-disable-next-line
 import { useEffect, useState } from 'react';
+// eslint-disable-next-line
 import DatePicker, { registerLocale } from "react-datepicker";
 import { cpfToFront } from '../../../../utils/removeMask';
 import SkeletonTable from '../../../../components/Skeleton/SkeletonTable';
@@ -53,7 +55,7 @@ export default function Refused({
                                             <td>R$ {val.amount}</td>
                                             <td>{val.uuid}</td>
                                             <td><button className='__admin_compliance_table_body_button' onClick={() => handleActualValue(val)}>OPÇÃO <MdKeyboardArrowDown /></button>
-                                                {openedMenu == true && actualValue?.uuid == val?.uuid && (
+                                                {openedMenu === true && actualValue?.uuid === val?.uuid && (
                                                     <ul className='__admin_compliance_table_dropdown'>
                                                         <li onClick={() => handleNextPerson(val)}>Analisar</li>
                                                     </ul>
@@ -74,7 +76,7 @@ export default function Refused({
                                             <td>R$ {val.amount}</td>
                                             <td>{val.uuid}</td>
                                             <td><button className='__admin_compliance_table_body_button' onClick={() => handleActualValue(val)}>OPÇÃO <MdKeyboardArrowDown /></button>
-                                                {openedMenu == true && actualValue?.uuid == val?.uuid && (
+                                                {openedMenu === true && actualValue?.uuid === val?.uuid && (
                                                     <ul className='__admin_compliance_table_dropdown'>
                                                         <li onClick={() => handleNextPerson(val)}>Analisar</li>
                                                     </ul>

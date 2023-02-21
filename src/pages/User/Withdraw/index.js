@@ -1,3 +1,4 @@
+import './index.css'
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { AiOutlineDollarCircle } from 'react-icons/ai'
@@ -6,7 +7,6 @@ import { message, Col } from "antd";
 import { useRef, useState } from "react";
 import { useOutletContext } from "react-router-dom"
 import InputSelect from './components/InputSelect'
-import './index.css'
 import InputNumber from "./components/InputNumber";
 import Input from "./components/Input";
 import banks from "../../../utils/banks";
@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 export default function Withdraw() {
     const selectRef = useRef(null);
     const navigate = useNavigate();
+    // eslint-disable-next-line
     const [accountType, people] = useOutletContext();
     const [emergencyFee, setEmergencyFee] = useState(0);
     const [confirmPage, setConfirmPage] = useState(false);

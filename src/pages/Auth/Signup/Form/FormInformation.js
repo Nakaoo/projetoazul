@@ -1,18 +1,32 @@
+// eslint-disable-next-line
 import React, { useState, useEffect, useRef } from "react";
+// eslint-disable-next-line
 import Input from '../../../../components/Input'
+// eslint-disable-next-line
 import InputDate from '../../../../components/InputDate'
+// eslint-disable-next-line
 import InputMask from '../../../../components/InputMask'
+// eslint-disable-next-line
 import InputSelect from "../../../../components/InputSelect";
+// eslint-disable-next-line
 import InputCheckbox from "../../../../components/InputCheckbox";
+// eslint-disable-next-line
 import BiArrowBack, { BiAbacus } from 'react-icons/ai'
+// eslint-disable-next-line
 import { Row, Col, Form, Select, Modal } from "antd";
+// eslint-disable-next-line
 import { formatISO } from "date-fns";
+// eslint-disable-next-line
 import { dateToFront } from "../../../../utils/removeMask";
+// eslint-disable-next-line
 import { VscEye, VscEyeClosed } from "react-icons/vsc"
+// eslint-disable-next-line
 import countStar from "../utils/countStar";
+// eslint-disable-next-line
 import { LoadingOutlined, QuestionCircleOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 const FormInformation = (
+    // eslint-disable-next-line
     { register, control, errors, onNext, onPrevious, watch, loading}
 ) => {
     let navigate = useNavigate();

@@ -1,15 +1,22 @@
 import './Pix.css';
 import pix from '../../../../../assets/icons/pix.png';
+// eslint-disable-next-line
 import { useEffect, useState } from 'react';
 import QrCode from "./QRcode"
+// eslint-disable-next-line
 import { Link, useNavigate } from "react-router-dom";
 import { message, Upload, Form } from 'antd';
+// eslint-disable-next-line
 import { uploadObject } from '../../../../../utils/uploadImg';
 
+// eslint-disable-next-line
 export default function Pix({ pixDetails, hdocument, setDocument, OrderPayment, setConfirmPay, CloseModal, handleConfirmPay, handleRemoveUpload, handleChangeUpload }) {
   const [modalQrCode, setModalQrCode] = useState(false);
+  // eslint-disable-next-line
   const [keyQrCode, setKeyQrCode] = useState('5b851cea-2ee8-403f-899b-f090831107c2');
+  // eslint-disable-next-line
   const [modalOrderConfirm, setModalOrderConfirm] = useState(false);
+  // eslint-disable-next-line
   const navigate = useNavigate();
 
   async function copiarLink() {
@@ -51,7 +58,7 @@ export default function Pix({ pixDetails, hdocument, setDocument, OrderPayment, 
             <button className="_buttonCopy_pix" onClick={copiarLink}>COPIAR</button>
             <button className="_buttonCopy_pix" onClick={() => setModalQrCode(true)}>QRCODE</button>
           </div>
-          {modalQrCode == true ? <QrCode ImgQrCode={pixDetails?.pix} setModalQrCode={setModalQrCode} /> : <></>}
+          {modalQrCode === true ? <QrCode ImgQrCode={pixDetails?.pix} setModalQrCode={setModalQrCode} /> : <></>}
           <div className="__step_2_pix">
             <div className="__confirmPayment">
               <div className='__stepper'>2</div>

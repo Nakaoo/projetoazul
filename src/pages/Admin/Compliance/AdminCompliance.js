@@ -1,8 +1,13 @@
 import React from "react"
+// eslint-disable-next-line
 import { useEffect, useState, useContext, useNavigate } from "react"
+// eslint-disable-next-line
 import Navbar from "../../../components/Navbar/Navbar"
+// eslint-disable-next-line
 import MenuBarAdmin from "../../../components/MenuBarAdmin"
+// eslint-disable-next-line
 import { UserContext } from "../../../hooks/UserContext"
+// eslint-disable-next-line
 import { HiMenu } from "react-icons/hi"
 import { BsFillPersonFill } from 'react-icons/bs'
 import Approved from "./Table/Approved"
@@ -12,19 +17,26 @@ import Refused from "./Table/Refused"
 import { useLocation } from "react-router-dom"
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 import { BsCheck2Circle } from 'react-icons/bs'
+// eslint-disable-next-line
 import { approveOrder, complianceActivation, getOrders } from "../utils/apiFunctions"
 import { LoadingOutlined } from "@ant-design/icons";
+// eslint-disable-next-line
 import { message, Skeleton } from "antd"
+// eslint-disable-next-line
 import { act } from "@testing-library/react"
 import { useOutletContext } from "react-router-dom"
 
 export default function AdminCompliance() {
+    // eslint-disable-next-line
     const [accountType, setAccountType] = useState('')
+    // eslint-disable-next-line
     const [menu, setMenu] = useState(false)
     const [page, setPage] = useState('pending')
     const [step, setStep] = useState(2)
     const [loading, setLoading] = useState(true)
+    // eslint-disable-next-line
     const [orderNumber, setOrderNumber] = useState()
+    // eslint-disable-next-line
     const [person, setPerson] = useState()
     const [personalDetails, setPersonalDetails] = useState(true)
     const [contactDetails, setContactDetails] = useState(true)
@@ -32,12 +44,15 @@ export default function AdminCompliance() {
     const [transactionDetails, setTransactionDetails] = useState(true)
     const [documentDetails, setDocumentDetails] = useState(true)
     const [complianceOrders, setComplianceOrders] = useState([])
+    // eslint-disable-next-line
     const [complianceOrder, setComplianceOrder] = useState([])
     const [filterds, setFilterds] = useState([])
+    // eslint-disable-next-line
     const [dateSearch, setDateSearch] = useState([])
     const [search, setSearch] = useState()
     const [actualValue, setActualValue] = useState('');
     const [openedMenu, setOpenedMenu] = useState(false);
+    // eslint-disable-next-line
     const [complianceStatus, setComplianceStatus] = useState();
     const [people] = useOutletContext()
     const location = useLocation();
@@ -101,6 +116,7 @@ export default function AdminCompliance() {
         }
     }
 
+    // eslint-disable-next-line
     function handleDocumentDetails() {
         if (documentDetails) {
             setDocumentDetails(false)
@@ -115,6 +131,7 @@ export default function AdminCompliance() {
         setComplianceStatus()
     }
 
+    // eslint-disable-next-line
     function handleRefuseButton() {
 
     }
@@ -149,30 +166,29 @@ export default function AdminCompliance() {
             }
         });
 
-
         setFilterds(array)
 
         if (!search)
             setFilterds([])
     }
 
-    function handleSearchCpf(e) {
+    // function handleSearchCpf(e) {
 
-        setSearch(e)
-        let array = []
+    //     setSearch(e)
+    //     let array = []
 
-        complianceOrders.filter((item) => {
-            if (item?.person?.doc_fiscal.toLowerCase().includes(search.toLowerCase())) {
-                array.push(item)
-            }
-        });
+    //     complianceOrders.filter((item) => {
+    //         if (item?.person?.doc_fiscal.toLowerCase().includes(search.toLowerCase())) {
+    //             array.push(item)
+    //         }
+    //     });
 
 
-        setFilterds(array)
+    //     setFilterds(array)
 
-        if (!search)
-            setFilterds([])
-    }
+    //     if (!search)
+    //         setFilterds([])
+    // }
 
     function handleSearchOrder(e) {
 
@@ -201,8 +217,9 @@ export default function AdminCompliance() {
         setLoading(true)
         let order = approveOrder(actualValue?.uuid)
 
-        if (order?.data.error != false) {
+        if (order?.data.error !== false) {
             setStep(2)
+            message.success("Pedido aprovado com sucesso")
         } else {
             message.error("Houve um erro no pagamento.")
         }
@@ -210,24 +227,26 @@ export default function AdminCompliance() {
         setLoading(false)
     }
 
+    // eslint-disable-next-line
     function handleEditButton() {
 
     }
 
-    async function handleAcceptButton(){
-        setLoading(true)
+    // async function handleAcceptButton(){
+    //     setLoading(true)
 
-        try{
-            let order = await approveOrder(actualValue.uuid)
+    //     try{
+    //         // eslint-disable-next-line
+    //         let order = await approveOrder(actualValue.uuid)
 
-            message.success("Pedido aprovado com sucesso")
-            setStep(2)
-            setLoading(false)
-        }catch(err){
-            message.error(err)
-            setLoading(false)
-        }
-    }
+    //         message.success("Pedido aprovado com sucesso")
+    //         setStep(2)
+    //         setLoading(false)
+    //     }catch(err){
+    //         message.error(err)
+    //         setLoading(false)
+    //     }
+    // }
 
     function handleNextPerson(person) {
         setComplianceOrder(person)
@@ -236,7 +255,7 @@ export default function AdminCompliance() {
     }
 
     function handleActualValue(val) {
-        if (actualValue?.uuid != val?.uuid) {
+        if (actualValue?.uuid !== val?.uuid) {
             setActualValue(val)
             setOpenedMenu(true)
         }
@@ -255,9 +274,9 @@ export default function AdminCompliance() {
     return (
 
         <div className="__admin_dashboard_content">
-            {step == 0 && (
+            {step === 0 && (
                 <><div className="__admin_dashboard_cards">
-                     <div className="__admin_dashboard_card">
+                    <div className="__admin_dashboard_card">
                         <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Total de indicações</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
                         <span className="__admin_dashboard_card_value">{people.active[0].count + people.active[1].count}</span>
                         <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
@@ -283,7 +302,7 @@ export default function AdminCompliance() {
                     </div>
                 </div><div className="__admin_compliance_table_">
                         <div className="__admin_compliance_table">
-                            {page == 'approved' && step == 0 && (
+                            {page === 'approved' && step === 0 && (
                                 <Approved
                                     complianceOrders={complianceOrders}
                                     handleNextPerson={handleNextPerson}
@@ -299,7 +318,7 @@ export default function AdminCompliance() {
                                     search={search}
                                 />
                             )}
-                            {page == 'pending' && step == 0 && (
+                            {page === 'pending' && step === 0 && (
                                 <Pending
                                     complianceOrders={complianceOrders}
                                     handleNextPerson={handleNextPerson}
@@ -315,7 +334,7 @@ export default function AdminCompliance() {
                                     search={search}
                                 />
                             )}
-                            {page == 'refused' && step == 0 && (
+                            {page === 'refused' && step === 0 && (
                                 <Refused
                                     complianceOrders={complianceOrders}
                                     handleNextPerson={handleNextPerson}
@@ -334,7 +353,7 @@ export default function AdminCompliance() {
                         </div>
                     </div></>
             )}
-            {step == 1 && (
+            {step === 1 && (
                 <div className="admin_dashboard_information_content">
                     <div className="__admin_information_content_principal">
                         <div className="__admin_information_content_cards">
@@ -517,13 +536,13 @@ export default function AdminCompliance() {
                                 <button onClick={handleBackButton}>Voltar</button>
                             </div>
                             <div className="__admin_information_content_buttons_end">
-                                {page == 'pending' && (
+                                {page === 'pending' && (
                                     <>{loading ? <LoadingOutlined /> : <><button className="__admin_information_content_button_refuse">Reprovar</button><button className="__admin_information_content_button_approve" onClick={() => handleAcceptButton(actualValue.uuid)}>Aprovar</button></>}</>
                                 )}
-                                {page == 'approved' && (
+                                {page === 'approved' && (
                                     <>{loading ? <LoadingOutlined /> : <button className="__admin_information_content_button_edit">Editar</button>}</>
                                 )}
-                                {page == 'refused' && (
+                                {page === 'refused' && (
                                     <>{loading ? <LoadingOutlined /> : <button className="__admin_information_content_button_approve" onClick={() => handleAcceptButton(actualValue?.uuid)}>Aprovar</button>}</>
                                 )}
                             </div>
@@ -531,7 +550,7 @@ export default function AdminCompliance() {
                     </div>
 
 
-                    {page == 'approved' && (
+                    {page === 'approved' && (
                         <div className="__admin_information_account_content">
                             <div className="__admin_information_account">
                                 <div className="__admin_information_account_title">Dados da conta</div>
@@ -553,11 +572,11 @@ export default function AdminCompliance() {
                     )}
                 </div>
             )}
-            {step == 2 && (
+            {step === 2 && (
                 <div className="__admin_dashboard_compliance_status">
                     <div className="__admin_dashboard_compliance_status_content">
                         <div className="__admin_dashboard_compliance_status_content_header">
-                            <BsCheck2Circle className="__adm_dashboard_compliance_status_icon" size={62}/>
+                            <BsCheck2Circle className="__adm_dashboard_compliance_status_icon" size={62} />
                             <span className="__admin_dashboard_compliance_status_content_header_title">Compliance Aprovado</span>
                         </div>
                         {/* <div className="__admin_dashboard_compliance_status_content_body">

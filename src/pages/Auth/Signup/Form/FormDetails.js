@@ -1,23 +1,36 @@
+// eslint-disable-next-line
 import React, { useState, useEffect, useRef } from "react";
+// eslint-disable-next-line
 import Input from '../../../../components/Input'
+// eslint-disable-next-line
 import InputDate from '../../../../components/InputDate'
+// eslint-disable-next-line
 import InputMask from '../../../../components/InputMask'
+// eslint-disable-next-line
 import InputSelect from "../../../../components/InputSelect";
+// eslint-disable-next-line
 import InputCheckbox from "../../../../components/InputCheckbox";
+// eslint-disable-next-line
 import BiArrowBack, { BiAbacus } from 'react-icons/ai'
+// eslint-disable-next-line
 import { Row, Col, Form, Select, Modal } from "antd";
 import { formatISO } from "date-fns";
 import { dateToFront } from "../../../../utils/removeMask";
 import { VscEye, VscEyeClosed } from "react-icons/vsc"
 import countStar from "../utils/countStar";
 import { useNavigate } from "react-router-dom";
+// eslint-disable-next-line
 import { LoadingOutlined, QuestionCircleOutlined } from "@ant-design/icons";
 const FormDetails = (
+    // eslint-disable-next-line
     { register, control, errors, onNext, onPrevious, watch, loading }
 ) => {
+    // eslint-disable-next-line
     let navigate = useNavigate();
     
+    // eslint-disable-next-line
     const [showModal, setShowModal] = useState(false)
+    // eslint-disable-next-line
     const [showModalPolitic, setShowModalPolitic] = useState(false)
     const [passwordShow, setPasswordShow] = useState('password')
 
@@ -26,7 +39,7 @@ const FormDetails = (
     })
 
     function handleStarsPassword() {
-        if (passwordShow == "password")
+        if (passwordShow === "password")
             setPasswordShow('stars');
         else
             setPasswordShow('password');
@@ -49,7 +62,7 @@ const FormDetails = (
                         <p><span class="__signup_form_details_content_row_item_bold">Data de nascimento</span>: {dateToFront(data)} </p>
                     </div>
                     <div className="__signup_form_details_content_row_item">
-                        <p><span class="__signup_form_details_content_row_item_bold">Gênero</span>: {watch("gender") == "0" ? "Masculino" : watch("gender") == "1" ? "Feminino" : "Outros"}</p>
+                        <p><span class="__signup_form_details_content_row_item_bold">Gênero</span>: {watch("gender") === "0" ? "Masculino" : watch("gender") === "1" ? "Feminino" : "Outros"}</p>
                     </div>
                     <div className="__signup_form_details_content_row_item">
                         <p><span class="__signup_form_details_content_row_item_bold">Celular</span>: {watch("mobile1")}</p>
@@ -81,7 +94,7 @@ const FormDetails = (
                         <p><span class="__signup_form_details_content_row_item_bold">Número</span>: {watch("number")}</p>
                     </div>
                     <div className="__signup_form_details_content_row_item">
-                        <p><span class="__signup_form_details_content_row_item_bold">Senha</span>: {passwordShow == "password" ? countStar(watch("password")) :  watch("password")} {passwordShow == "password" ? <VscEye className="simple_icon" onClick={handleStarsPassword} /> : <VscEyeClosed className="simple_icon" onClick={handleStarsPassword} />}</p>
+                        <p><span class="__signup_form_details_content_row_item_bold">Senha</span>: {passwordShow === "password" ? countStar(watch("password")) :  watch("password")} {passwordShow === "password" ? <VscEye className="simple_icon" onClick={handleStarsPassword} /> : <VscEyeClosed className="simple_icon" onClick={handleStarsPassword} />}</p>
                     </div>
                 </div>
             </div>

@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react';
+
 import "./Cart.css";
+// eslint-disable-next-line
+import React, { useEffect, useState } from 'react';
+// eslint-disable-next-line
 import { IoMdReturnLeft } from "react-icons/io";
 import Payment from '../Payment/Payment';
 import Product from '../ShoppingCard/Product/Product'
+// eslint-disable-next-line
 import apitest from '../../../services/apitest'
+// eslint-disable-next-line
 import api from '../../../services/api';
 
 function ShoppingCard({
@@ -21,7 +26,7 @@ function ShoppingCard({
   useEffect(() => {
     var optionMethod = {
       method: 'GET',
-      url: 'https://api.esgtechpower.com/api/v1/methodpayment/',
+      url: `${process.env.REACT_APP_URL_API}/api/v1/methodpayment/`,
       headers: {
         Authorization: `Bearer ${tokenUser}`,
         Accept: 'application/json'

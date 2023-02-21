@@ -30,7 +30,7 @@ export default function InputSelect({
   const style = {
     container: (base) => ({
       ...base,
-      width: type == "row" ? "50%" : "100%",
+      width: type === "row" ? "50%" : "100%",
     }),
     control: () => ({
       display: "flex",
@@ -42,7 +42,6 @@ export default function InputSelect({
       fontWeight: "400",
       lineHeight: "1.5",
       color: "#212529",
-      backgroundColor: "#F1F3F6",
       backgroundClip: "paddingBox",
       border: error ? "1px solid red" : "1px solid #ced4da"
     }),
@@ -95,7 +94,7 @@ export default function InputSelect({
   };
 
   return (
-    <div key="Select" className={type == "row" ? "__signup-input-group-col" : "__signup-input-group"}>
+    <div key="Select" className={type === "row" ? "__signup-input-group-col" : "__signup-input-group"}>
       <label htmlFor={restProps.name} className={!error ? "__signup-input-label-size" : "__signup-input-label error"}>
         {label}
         {required && <span className="__signup-input-required">*</span>}

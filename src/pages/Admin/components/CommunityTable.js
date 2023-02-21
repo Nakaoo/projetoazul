@@ -6,7 +6,7 @@ export default function CommunityTable() {
     return (
         <>
         <div className='__table_scroll'><div className="__admin_dashboard_community_header_title">
-            <h4 className='__admin_dashboard_community_header_title'>Comunidade</h4>
+            <h4 className='__admin_dashboard_community_header_title'>Indicados</h4>
             <span className='__admin_dashboard_community_header_settings'>Filtrar <RiListSettingsFill /></span>
         </div><table className="__admin_dashboard_community_table">
                 <thead className="__admin_dashboard_community_header">

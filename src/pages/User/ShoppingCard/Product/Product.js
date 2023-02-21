@@ -1,7 +1,8 @@
+
+// eslint-disable-next-line
 import { RiDeleteBin6Line } from "react-icons/ri";
 
-
-
+// eslint-disable-next-line
 export default function ({productsInCart, onProductRemove}) {
 let taxValue = 0;
 

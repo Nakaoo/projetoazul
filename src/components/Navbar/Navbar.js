@@ -1,9 +1,12 @@
 import { IoIosNotificationsOutline } from 'react-icons/io'
 import './Navbar.css'
 import { HiMenu } from "react-icons/hi"
+// eslint-disable-next-line
 import { useContext } from 'react'
+// eslint-disable-next-line
 import { UserContext } from '../../hooks/UserContext'
 
+// eslint-disable-next-line
 export default function Navbar({ title, subtitle, value, setValue }) {
 
     return (

@@ -1,4 +1,5 @@
 import './index.css'
+// eslint-disable-next-line
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import { Spin } from 'antd'
 export default function Loader() {

@@ -6,13 +6,17 @@ import { useState, useEffect } from "react"
 import { globalImg } from "../../../../utils/globalImg"
 import { useNavigate } from "react-router-dom"
 
+// eslint-disable-next-line
 export default function Card({ products, balanceUser, pessoa }) {
+    // eslint-disable-next-line
     const [modalWithdrawal, setModalWithdrawal] = useState(false);
     const cardImg = globalImg.cardImg
     const navigate = useNavigate();
 
+    // eslint-disable-next-line
     let product = [];
     if (Array.isArray(products)) {
+        // eslint-disable-next-line
         product = products[0];
     }
 
@@ -25,13 +29,13 @@ export default function Card({ products, balanceUser, pessoa }) {
 
                 <div className="__cardLimit">
                     <div className="__productsCards">
-                        <img src={leftArrow} className="__arrows" />
+                        <img src={leftArrow} className="__arrows" alt="" />
 
                         <div className="__imgCard-">
-                            <img src={cardImg} className="__imgProduct" />
+                            <img src={cardImg} className="__imgProduct" alt="" />
                         </div>
 
-                        <img src={rightArrow} className="__arrows" />
+                        <img src={rightArrow} className="__arrows" alt="" />
                     </div>
                     <div className="__limitBar">
                         <img src={limitBar} alt="" />
@@ -52,7 +56,7 @@ export default function Card({ products, balanceUser, pessoa }) {
                             <h3>Saldo Atual</h3>
                         </div>
                         <div className="__income">
-                            <h1>{pessoa?.invertment ?? 0}</h1>
+                            <h1>{pessoa?.invertmentb ?? 0}</h1>
                             <h2>Rendimentos</h2>
                         </div>
                         <div className="__cashBack">
@@ -60,7 +64,7 @@ export default function Card({ products, balanceUser, pessoa }) {
                             <h2>Cashback</h2>
                         </div>
                         <div className="__cashBack">
-                            <h1>{pessoa?.invertmentb ?? 0}</h1>
+                            <h1>{pessoa?.invertment ?? 0}</h1>
                             <h2>Investimento</h2>
                         </div>
                     </div>

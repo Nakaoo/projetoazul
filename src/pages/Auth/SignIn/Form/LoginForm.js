@@ -1,11 +1,12 @@
 import { AiOutlineMail } from 'react-icons/ai'
+// eslint-disable-next-line
 import Password from 'antd/es/input/Password'
-import history
-    from '../../../../services/history'
+// eslint-disable-next-line
+import history from '../../../../services/history'
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
-
+// eslint-disable-next-line
 const LoginForm = ({ email, setEmail, handleNextStep, loading, setLoading, errMessage, setErrMessage, visibleError, toggle, setToggle }) => {
     let navigate = useNavigate();
 

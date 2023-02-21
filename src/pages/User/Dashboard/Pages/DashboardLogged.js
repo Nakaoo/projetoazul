@@ -1,4 +1,5 @@
 import React from "react"
+// eslint-disable-next-line
 import { useEffect, useState } from "react"
 import '../index.css'
 import Card from "../Card/Card"
@@ -8,6 +9,7 @@ import './DashboardLogged.css'
 import { useOutletContext } from "react-router-dom"
 
 export default function DashboardLogged() {
+  // eslint-disable-next-line
   const [accountType, people] = useOutletContext();
 
   return (

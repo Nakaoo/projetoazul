@@ -1,14 +1,17 @@
 
+import './Resumo.css'
 import graphic1 from '../../../../assets/img/graphic-1.svg'
 import graphic2 from '../../../../assets/img/graphic-2.svg'
 import viewMore from '../../../../assets/img/viewMore.svg'
 import { message } from 'antd'
-import './Resumo.css'
+// eslint-disable-next-line
 import { BsPersonSquare } from "react-icons/bs"
+// eslint-disable-next-line
 import { AiOutlineFall } from "react-icons/ai"
 import { useNavigate } from 'react-router-dom';
 import { BsFillPersonFill } from 'react-icons/bs'
 
+// eslint-disable-next-line
 export default function Resumo({ pessoa, multinivel, multiniveltotal, sumMultiNivel }) {
   const navigate = useNavigate();
 
@@ -56,7 +59,7 @@ export default function Resumo({ pessoa, multinivel, multiniveltotal, sumMultiNi
         </div>
 
         <div className="__myCommunity">
-          <div className="__summaryTitle" onClick={() => navigate("/community")}>Minha Comunidade</div>
+          <div className="__summaryTitle" onClick={() => navigate("/community")}>Meus Indicados</div>
           <h1>Seu Link de Indicação:</h1>
           <div className="__linkIndication">
             <input type="text" name="teste" id="email_indicacao" value={window.location.hostname + `/cadastro?ref=${pessoa?.user.person.nickname}`} disabled=""

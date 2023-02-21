@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import React, { useEffect, useState, useRef, useContext } from "react";
 import './styles.css'
 import LoginForm from "./Form/LoginForm";
@@ -6,6 +7,7 @@ import TokenForm from "./Form/TokenForm";
 import { generateRandomKeyword, getCpfOrEmail, loginAccount, validateToken, getPerson } from "../Signup/utils/apiFunctions";
 import { message } from "antd";
 import { useNavigate } from "react-router-dom";
+// eslint-disable-next-line
 import { PersonContext } from "../../../hooks/PersonContext";
 import { globalImg } from "../../../utils/globalImg";
 import { removeMaskCpf } from "../../../utils/removeMask";
@@ -66,7 +68,7 @@ const SignIn = () => {
 
             console.log(login)
 
-            if (login.status == 204) {
+            if (login.status === 204) {
                 setVisibleError(true)
                 let err = "Usuário não encontrado em nosso banco de dados"
                 setErrMessage(err)
@@ -74,7 +76,7 @@ const SignIn = () => {
                 return;
             }
 
-            if (login.data.message == "Account not validated") {
+            if (login.data.message === "Account not validated") {
                 setVisibleError(true)
                 let err = "A sua conta ainda não foi ativada, cheque o seu email para poder ativar"
                 setErrMessage(err)
@@ -114,7 +116,7 @@ const SignIn = () => {
 
             console.log(login)
 
-            if (login.data.error == true) {
+            if (login.data.error === true) {
                 console.log("error")
                 setVisibleError(true)
                 let err = "Dados de acesso invalidos"
@@ -140,26 +142,26 @@ const SignIn = () => {
             message.success("Token enviado com sucesso!")
         } catch (err) {
 
-            if (err.response.data.message == "The password field is required.") {
+            if (err.response.data.message === "The password field is required.") {
                 setVisibleError(true)
                 let erro = "A senha é obrigatória"
                 setErrMessage(erro)
             }
 
-            if (err.response.data.message == "These credentials do not match our records.") {
+            if (err.response.data.message === "These credentials do not match our records.") {
                 setVisibleError(true)
                 let erro = "Dados de acesso invalidos"
                 setErrMessage(erro)
             }
 
-            if (err.response.data.message == "Account blocked for too many attempts") {
+            if (err.response.data.message === "Account blocked for too many attempts") {
                 setVisibleError(true)
                 let erro = "Conta bloqueada"
                 setErrMessage(erro)
             }
 
 
-            if (err.response.data.message == "Account not validated") {
+            if (err.response.data.message === "Account not validated") {
                 setVisibleError(true)
                 let erro = "Sua conta ainda não foi ativada"
                 setErrMessage(erro)
@@ -187,7 +189,7 @@ const SignIn = () => {
             let res = await validateToken(data)
 
             console.log(res)
-            if (res.status == 422) {
+            if (res.status === 422) {
                 setVisibleError(true)
                 let erro = "Token invalido"
                 setErrMessage(erro)
@@ -219,17 +221,17 @@ const SignIn = () => {
             setErrMessage('')
             setVisibleError(false)
 
-            if(person.data.result.nivel == 1){
+            if(person.data.result.nivel === 1){
                 localStorage.setItem('role', 'user')
                 navigate('/dashboard')
             }
 
-            if(person.data.result.nivel == 20){
+            if(person.data.result.nivel === 20){
                 localStorage.setItem('role', 'admin')
                 navigate('/admin/dashboard')
             }
 
-            if(person.data.result.nivel == 10){
+            if(person.data.result.nivel === 10){
                 localStorage.setItem('role', 'financial')
             }
 
@@ -281,7 +283,7 @@ const SignIn = () => {
                             <form onSubmit={e => { e.preventDefault(); }}>
                                 <div className="form_group_signin">
                                     <article>
-                                        {step == 0 && (
+                                        {step === 0 && (
                                             <LoginForm
                                                 setEmail={setEmail}
                                                 handleNextStep={handleNextStep}
@@ -294,7 +296,7 @@ const SignIn = () => {
                                                 setToggle={setToggle}
                                             />
                                         )}
-                                        {step == 1 && (
+                                        {step === 1 && (
                                             <PasswordForm
                                                 onSubmit={loginSubmit}
                                                 senha={senha}
@@ -312,7 +314,7 @@ const SignIn = () => {
                                                 visibleError={visibleError}
                                             />
                                         )}
-                                        {step == 2 && (
+                                        {step === 2 && (
                                             <TokenForm
                                                 onSubmit={onSubmit}
                                                 loginSubmit={loginSubmit}

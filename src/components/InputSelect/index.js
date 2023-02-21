@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import React, { useRef, useState} from "react";
 import { Controller } from "react-hook-form";
 import "./styles.css";
@@ -6,11 +7,14 @@ import classNames from "classnames";
 import Select from 'react-select';
 
 
+// eslint-disable-next-line
 const openMenu = () => {
   this.setState({ multi: true });
   this.selectItem.focus();
   //to do open react select menu
 };
+
+// eslint-disable-next-line
 const closeMenu = () => {
   this.setState({ multi: false });
   //to do close react select menu
@@ -52,7 +56,6 @@ export default function InputSelect({
       fontWeight: "400",
       lineHeight: "1.5",
       color: "#212529",
-      backgroundColor: "#F1F3F6",
       backgroundClip: "paddingBox",
       border: error ? "1px solid red" : "1px solid #ced4da"
     }),

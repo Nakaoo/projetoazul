@@ -4,20 +4,31 @@ import React, { useEffect, useState, useRef } from "react";
 import { cpf } from "cpf-cnpj-validator";
 import {
     Form,
+    // eslint-disable-next-line
     Input,
+    // eslint-disable-next-line
     Modal,
+    // eslint-disable-next-line
     Row,
+    // eslint-disable-next-line
     Col,
     message,
+    // eslint-disable-next-line
     Select,
+    // eslint-disable-next-line
     Switch,
+    // eslint-disable-next-line
     Button,
+    // eslint-disable-next-line
     Collapse,
+    // eslint-disable-next-line
     Checkbox,
+    // eslint-disable-next-line
     Tabs,
 } from "antd";
 import { formatISO } from "date-fns";
 import { yupResolver } from "@hookform/resolvers/yup";
+// eslint-disable-next-line
 import { removeMask, dateToBack } from '../../../../utils/removeMask';
 import { createAccount, getUserByCpf, getUserByEmail, getUserByLogin, getUserByPhone } from '../utils/apiFunctions';
 import { useLocation } from 'react-router-dom';
@@ -33,8 +44,10 @@ import FormDetails from './FormDetails';
 import FormInformation from './FormInformation';
 
 const RegisterForm = ({ step, setStep, routeProps }) => {
+    // eslint-disable-next-line
     const [form] = Form.useForm();
     const [loading, setLoading] = useState(false);
+    // eslint-disable-next-line
     const [errorMessage, setErrorMessage] = useState(null);
     const [id, setId] = useState()
     const formContainer = useRef(null);
@@ -110,6 +123,7 @@ const RegisterForm = ({ step, setStep, routeProps }) => {
         setValue,
         setFocus,
         watch,
+        // eslint-disable-next-line
         reset,
         formState: { errors },
     } = useForm({ mode: "all", resolver: yupResolver(schema) });
@@ -220,6 +234,7 @@ const RegisterForm = ({ step, setStep, routeProps }) => {
     };
 
     const changeStep = async (value) => {
+        // eslint-disable-next-line
         const values = getValues();
 
         if (value !== step) {
@@ -263,6 +278,7 @@ const RegisterForm = ({ step, setStep, routeProps }) => {
         const values = getValues();
         let validBack = false;
         let validEmail = false;
+        // eslint-disable-next-line
         let validLogin = false;
 
         if (step === 0 && values.cpf) {
@@ -271,7 +287,7 @@ const RegisterForm = ({ step, setStep, routeProps }) => {
 
                 console.log('resposta', response)
 
-                if(response.status == 200){
+                if(response.status === 200){
                     setError(
                         "cpf",
                         {
@@ -304,7 +320,7 @@ const RegisterForm = ({ step, setStep, routeProps }) => {
             } catch (err) {
                 validEmail = true
             }
-            if (validEmail == true) {
+            if (validEmail === true) {
                 try {
                     const response = await getUserByLogin({ 'login': values.login })
 
@@ -328,8 +344,8 @@ const RegisterForm = ({ step, setStep, routeProps }) => {
             try {
                 const response = await getUserByLogin({ 'login': values.login })
 
-                if(response.status == 200){
-                    if (validEmail == false) {
+                if(response.status === 200){
+                    if (validEmail === false) {
                         setError(
                             "email",
                             {
@@ -358,7 +374,7 @@ const RegisterForm = ({ step, setStep, routeProps }) => {
             try{
                 const response = await getUserByPhone({ 'phone': values.mobile1 })
 
-                if(response.status == 200){
+                if(response.status === 200){
                     setError(
                         "mobile1",
                         {

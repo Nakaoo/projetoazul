@@ -1,10 +1,15 @@
 import React from "react";
+// eslint-disable-next-line
 import iconHistory1 from "../../../../assets/img/iconHistory-1.svg";
 import "./index.css";
 import graphic from "../../../../assets/img/graphic-3.svg";
+// eslint-disable-next-line
 import MenuBar from "../../../../components/MenuBar";
+// eslint-disable-next-line
 import { HiMenu } from "react-icons/hi";
+// eslint-disable-next-line
 import { useContext } from "react";
+// eslint-disable-next-line
 import { UserContext } from "../../../../hooks/UserContext";
 import { useState, useEffect } from "react";
 import apitest from "../../../../services/apitest";
@@ -12,9 +17,11 @@ import { BsEyeFill } from "react-icons/bs";
 import { BsEyeSlashFill } from "react-icons/bs";
 import { getWithdrawals } from "../../utils/apiFunctions";
 import { useNavigate } from "react-router-dom";
+// eslint-disable-next-line
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 import Solicitacoes from "./Solicitacoes";
 
+// eslint-disable-next-line
 export default function Financeiro({ menu }) {
   const [products, setProducts] = useState();
   const [balanceUser, setBalanceUser] = useState();
@@ -32,7 +39,9 @@ export default function Financeiro({ menu }) {
 
   let totalcash = 0;
   let totalcdi = 0;
+  // eslint-disable-next-line
   const totalIndicacoes = products?.map((item) => totalcdi + item.cdi);
+  // eslint-disable-next-line
   const totalCashback = products?.map((item) => totalcash + item.cashback);
 
   async function LoadProducts() {
@@ -57,7 +66,7 @@ export default function Financeiro({ menu }) {
 
 
   function handleActualValue(val) {
-    if (actualValue?.uuid != val?.uuid) {
+    if (actualValue?.uuid !== val?.uuid) {
       setActualValue(val)
       setOpenedMenu(true)
     }
@@ -113,7 +122,7 @@ export default function Financeiro({ menu }) {
               <div className="__titleMyBalance">Meu Saldo</div>
               <div className="__balance">
                 <div className="__communityStart">
-                  <h1>Comunidade: </h1>
+                  <h1>Indicados: </h1>
                   <h1>Rendimento: </h1>
                 </div>
                 <div className="__currentBalanceFinancial">
@@ -121,7 +130,7 @@ export default function Financeiro({ menu }) {
                   <div className="balanceFinancial">
                     <div className="__valueFinancial">
                       <h2>R$</h2>
-                      {viewbalance == true ? (
+                      {viewbalance === true ? (
                         <>
                           <h2>{balanceUser}</h2>
                           <div className="icon-eye">
@@ -145,7 +154,7 @@ export default function Financeiro({ menu }) {
                   </div>
                 </div>
                 <div className="__communityIncome">
-                  <h1>Rendimentos COMUNIDADE</h1>
+                  <h1>Rendimentos Indicados</h1>
                   <div className="__valueFinancial">
                     <h2>R$</h2>
                     <h2>{totalcdi}</h2>
@@ -194,7 +203,7 @@ export default function Financeiro({ menu }) {
                 <div className="__yieldExpectation">
                   <div className="_yieldExpectation">
                     <h1>Expectativa de Rendimento a.m</h1>
-                    <h1>Comunidade</h1>
+                    <h1>Indicados</h1>
                     <h1>CDI</h1>
                   </div>
                   <div className="__valueInvested">

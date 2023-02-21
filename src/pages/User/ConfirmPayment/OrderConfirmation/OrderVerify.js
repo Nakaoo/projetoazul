@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react"
 
 export default function OrderverifyConfi(){
     const [accountType, setAccountType] = useState('')
+    // eslint-disable-next-line
     const [menu, setMenu] = useState(false)
 
     async function getPersonConfig() {

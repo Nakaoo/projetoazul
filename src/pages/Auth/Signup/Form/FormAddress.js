@@ -1,24 +1,36 @@
 import React, { useState, useEffect, useRef } from "react";
 import Input from '../../../../components/Input'
+// eslint-disable-next-line
 import InputDate from '../../../../components/InputDate'
 import InputMask from '../../../../components/InputMask'
+// eslint-disable-next-line
 import InputSelect from "../../../../components/InputSelect";
+// eslint-disable-next-line
 import BiArrowBack, { BiAbacus } from 'react-icons/bi'
+// eslint-disable-next-line
 import { Row, Col, Form, Select } from "antd";
+// eslint-disable-next-line
 import { LoadingOutlined, QuestionCircleOutlined } from "@ant-design/icons";
 import { getAllStates, getAllCities, getStateCities } from "easy-location-br";
 import InputSelectAddress from "../../../../components/InputSelectAddress";
 
 const FormAddress = (
+    // eslint-disable-next-line
     { register, control, errors, onNext, onPrevious, inputFunctions, setValue, loading, setLoading }
 ) => {
     const getState = getAllStates();
+    // eslint-disable-next-line
     const [state, setState] = useState("");
     const [cityFromState, setCityFromState] = useState(getAllCities());
+    // eslint-disable-next-line
     const [selectState, setSelectState] = useState([]);
+    // eslint-disable-next-line
     const [currentCountry, setCurrentCountry] = useState("");
+    // eslint-disable-next-line
     const [valueCity, setValueCity] = useState();
+    // eslint-disable-next-line
     const [endereco, setEndereco] = useState();
+    // eslint-disable-next-line
     const stateRef = useRef();
 
     useEffect(() => {
@@ -47,7 +59,8 @@ const FormAddress = (
             setLoading(false)
         }
     }
-
+    
+    // eslint-disable-next-line
     function handleChangeState(e) {
         setState(e);
         setCityFromState(getStateCities(e.target.value));

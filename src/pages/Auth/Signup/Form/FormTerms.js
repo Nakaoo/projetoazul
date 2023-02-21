@@ -1,17 +1,22 @@
+// eslint-disable-next-line
 import React, { useState, useEffect, useRef } from "react";
 import InputCheckbox from "../../../../components/InputCheckbox";
+// eslint-disable-next-line
 import BiArrowBack, { BiAbacus } from 'react-icons/bi'
+// eslint-disable-next-line
 import { Row, Col, Form, Select, Modal } from "antd";
+// eslint-disable-next-line
 import { LoadingOutlined, QuestionCircleOutlined } from "@ant-design/icons";
 
 const FormTerms = (
+    // eslint-disable-next-line
     { register, control, errors, onNext, onPrevious, loading }
 ) => {
     const [showModal, setShowModal] = useState(false)
     const [showModalPolitic, setShowModalPolitic] = useState(false)
 
     function handleTerms() {
-        if (showModal == false) {
+        if (showModal === false) {
             setShowModal(true)
         } else {
             setShowModal(false)
@@ -19,7 +24,7 @@ const FormTerms = (
     }
 
     function handleTermsPolitic() {
-        if (showModalPolitic == false) {
+        if (showModalPolitic === false) {
             setShowModalPolitic(true)
         } else {
             setShowModalPolitic(false)

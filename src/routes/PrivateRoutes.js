@@ -9,7 +9,7 @@ const PrivateRoutes = ({ children }) => {
     const navigate = useNavigate();
     let location = useLocation();
 
-    if (!user && role != 'admin') {
+    if (!user && role !== 'admin') {
         return null;
     }else{
         return children;

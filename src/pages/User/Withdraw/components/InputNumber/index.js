@@ -1,9 +1,11 @@
+// eslint-disable-next-line
 import React, { useState, useEffect } from "react";
 import "./styles.css";
 import { NumericFormat } from 'react-number-format';
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import classNames from "classnames";
 import { Controller } from "react-hook-form";
+// eslint-disable-next-line
 import { BsEmojiHeartEyes } from "react-icons/bs";
 export default function InputNumber({
   label,
