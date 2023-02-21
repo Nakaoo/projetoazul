@@ -44,7 +44,7 @@ const comunidade = function Community() {
     })
     setNetword(trs)
   }
-  console.log('network', network);
+  // console.log('network', network);
 
   const callBackEffect = useCallback(async () => {
     await getNetwor();

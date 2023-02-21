@@ -7,6 +7,7 @@ import { SidebarData } from './SidebarData'
 import * as React from "react";
 // eslint-disable-next-line
 import { useState, useEffect } from "react";
+// eslint-disable-next-line
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 // eslint-disable-next-line
@@ -22,8 +23,13 @@ import { BiLogOut } from 'react-icons/bi'
 import { AiFillLock } from 'react-icons/ai'
 import { globalImg } from '../../utils/globalImg';
 
-export default function MenuBar({ people, menu, setMenu, value, setValue, title, active, subtitle, setTitle, setActive, setSubtitle }) {
+// eslint-disable-next-line
+export default function MenuBarAdmin({ people, menu, setMenu, value, setValue, title, active, subtitle, setTitle, setActive, setSubtitle }) {
     const navigate = useNavigate();
+    // eslint-disable-next-line
+    const [dataUser, setDataUser] = useState();
+    const [dropDownActual, setDropDownActual] = useState();
+
     let logo = globalImg.logo
 
     async function logout() {
@@ -36,23 +42,31 @@ export default function MenuBar({ people, menu, setMenu, value, setValue, title,
     }
 
     function openDropDown(item) {
-        if (item.dropdownOpened === false) {
-            item.dropdownOpened = true
-        } else if (item.dropdownOpened === true) {
-            item.dropdownOpened = false
-        }
+        setDropDownActual(item.title)
+        console.log(dropDownActual)
     }
 
-    function handleNavigation(item){
-        console.log(item)
-        if(!menu && !item.blocked){
+    function handleNavigation(item) {
+
+        if (item.dropdown) {
+            openDropDown(item)
+        }
+        if (!menu || !item.blocked) {
             navigate(item.path)
             setActive(item.title)
             setTitle(item.title)
             setSubtitle(item.subtitle)
-        }else{
+        } else {
             return;
         }
+    }
+
+    function handleDropdown(item) {
+        navigate(item.url)
+        setActive(item.title)
+        setTitle(item.title)
+        setSubtitle(item.subtitle)
+        setDropDownActual()
     }
 
     return (
@@ -63,42 +77,40 @@ export default function MenuBar({ people, menu, setMenu, value, setValue, title,
                 </>
             ) :
                 (
-                    <div className={value === true && window.innerWidth > '600' ? '__menu_menuBar' : value === false && window.innerWidth < 600 ? '__menu_menuBarFull' : '__menu_menuBar'}>
-                        <div className="__menu_divisionOptions">
-                            <div className="__menu_options">
-                                <div className="__menu_closeMenu">
+                    <div className={value === true && window.innerWidth > 600 ? '__admin_menuBar' : value === true && window.innerWidth ? '__admin_menuBarFull' : ""}>
+                        <div className="__admin_divisionOptions">
+                            <div className="__admin_options">
+                                <div className="__admin_closeMenu">
                                     <AiOutlineClose onClick={() => setValue(false)} />
                                 </div>
-                                <div className="__menu_logo">
+                                <div className="__admin_logo">
                                     <img src={logo} alt="" onClick={() => navigate("/")} />
                                 </div>
 
-                                <div className='__menu_info'>
-                                    <div className="__menu_nameUser">Olá, <span className='__menu_highlight'>{people?.user.person.first_name}</span></div>
-                                    <div className="__menu_nameUser">Seu ID: <span className='__menu_highlight'>{people?.user.person.id}</span> </div>
+                                <div className='__admin_info'>
+                                    <div className="__admin_nameUser">Olá, <span className='__admin_highlight'></span></div>
+                                    <div className="__admin_nameUser">Seu ID: <span className='__admin_highlight'></span> </div>
                                 </div>
                             </div>
                             <div>
                                 {SidebarData.map((item, index) => {
                                     return (
-                                        <div key={index} className="__menu_option" onClick={() => handleNavigation(item)}>
-                                            <div className={!menu ? "__menu_linkOption" : "__menu_linkOption disabled"} onClick={() => openDropDown(item)}>
-                                                <div className={active === item.title ? "__menu_iconOption_active" : "__menu_iconOption"}>
+                                        <div key={index} className="__admin_option">
+                                            <div className={!menu ? "__admin_linkOption" : "__admin_linkOption disabled"} onClick={() => handleNavigation(item)}>
+                                                <div className={active === item.title ? "__admin_iconOption_active" : "__admin_iconOption"}>
                                                     {item.icon}
                                                 </div>
 
-                                                <div className="__menu_optionTitle">
+                                                <div className="__admin_optionTitle">
                                                     {item.blocked ? <AiFillLock style={{ marginRight: '0.2rem' }} /> : menu ? <AiFillLock style={{ marginRight: '0.2rem' }} /> : ""} {item.title}
 
                                                 </div>
                                             </div>
-                                            {item.dropdown === true && item.dropdownOpened === true && (
-                                                <ul className='__menu_menu_ul' id={`__menu_menu_ul${index}`}>
+                                            {item.dropdown && item.title === dropDownActual && (
+                                                <ul className='__admin_menu_ul' id={`__admin_menu_ul${index}`}>
                                                     {item.dropdownItems.map((value, index) => {
                                                         return (
-                                                            <Link to={value.url}>
-                                                                <li className='__menu_menu_li' key={index + 1}>{value.title}</li>
-                                                            </Link>
+                                                            <li onClick={() => handleDropdown(value)} key={index + 1} className="__admin_menu_li">{value.dropdownTitle}</li>
                                                         )
                                                     })}
                                                 </ul>
@@ -107,13 +119,13 @@ export default function MenuBar({ people, menu, setMenu, value, setValue, title,
                                     )
                                 })}
 
-                                <div className="__menu_option">
-                                    <div className={"__menu_linkOption"} onClick={logout} >
-                                        <div className="__menu_iconOption">
+                                <div className="__admin_option">
+                                    <div className={"__admin_linkOption"} onClick={logout} >
+                                        <div className="__admin_iconOption">
                                             <BiLogOut />
                                         </div>
 
-                                        <div className="__menu_optionTitle">
+                                        <div className="__admin_optionTitle">
                                             Sair
                                         </div>
                                     </div>
