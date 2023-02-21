@@ -1,6 +1,7 @@
 import './index.css'
-import React from "react"
-// import { useEffect, useState } from "react"
+
+// eslint-disable-next-line
+import React, { useState, useEffect, useCallback } from "react"
 import { BsFillPersonFill } from 'react-icons/bs'
 // import { useLocation } from "react-router-dom"
 // import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
@@ -11,10 +12,50 @@ import graphic1 from '../../../assets/img/graphic-1.svg'
 import graphic2 from '../../../assets/img/graphic-2.svg'
 import viewMore from '../../../assets/img/viewMore.svg'
 import { useOutletContext } from "react-router-dom"
+import { getMultiNivel } from "../utils/apiFunctions"
 
-export default function Community() {
+const comunidade = function Community() {
   // eslint-disable-next-line
   const [accountType, people] = useOutletContext();
+  // eslint-disable-next-line
+  const [network, setNetword] = useState([])
+  // const [setNetword, network] = useOutletContext([])
+
+
+  // eslint-disable-next-line
+  // const mult = await getMultiNivel();
+  // setNetword(mult.data.result)
+
+  // const [network] = useOutletContext();
+  async function getNetwor() {
+    const mult = await getMultiNivel();
+    let data = mult.data.result;
+
+    const trs = data.map(indic => {
+      return (
+        <tr className="__admin_dashboard_community_body_tr" key={indic.affiliate_id}>
+          <td>{indic.name}</td>
+          <td className='text-center'>{indic.email}</td>
+          <td className='text-center'>{indic.phone}</td>
+          <td className='text-center'>{indic.qtt}</td>
+          <td className='text-center'>{indic.situacao === true ? 'Ativo' : 'Pendente'}</td>
+        </tr>
+      )
+    })
+    setNetword(trs)
+  }
+  console.log('network', network);
+
+  const callBackEffect = useCallback(async () => {
+    await getNetwor();
+  }, []);
+
+  useEffect(() => {
+    callBackEffect()
+  }, [callBackEffect])
+
+  // getNetwor();
+  // console.log('network', network.data);
 
   return (
     <div className="__user_community_content">
@@ -58,6 +99,7 @@ export default function Community() {
           </div>
         </div>
 
+        {/* {network ?? 'aff'} */}
         <div className="__community_table">
           <div className='__table_scroll'><div className="__admin_dashboard_community_header_title">
             <h4 className='__admin_dashboard_community_header_title'>Indicados</h4>
@@ -66,16 +108,14 @@ export default function Community() {
               <thead className="__admin_dashboard_community_header">
                 <tr className="__admin_dashboard_community_header_tr">
                   <th>Nome</th>
-                  <th>Email</th>
-                  <th>Telefone</th>
-                  <th>Cashback</th>
-                  <th>Situação</th>
+                  <th className='text-center'>Email</th>
+                  <th className='text-center'>Telefone</th>
+                  <th className='text-center'>Cashback</th>
+                  <th className='text-center'>Situação</th>
                 </tr>
               </thead>
               <tbody>
-                <tr className="__admin_dashboard_community_body_tr">
-
-                </tr>
+                {network}
               </tbody>
             </table>
           </div>
@@ -101,3 +141,5 @@ export default function Community() {
     </div >
   )
 }
+
+export default comunidade;
