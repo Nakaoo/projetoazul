@@ -22,6 +22,7 @@ import { BiLogOut } from 'react-icons/bi'
 import { AiFillLock } from 'react-icons/ai'
 import { globalImg } from '../../utils/globalImg';
 
+// eslint-disable-next-line
 export default function MenuBar({ people, menu, setMenu, value, setValue, title, active, subtitle, setTitle, setActive, setSubtitle }) {
     const navigate = useNavigate();
     let logo = globalImg.logo
