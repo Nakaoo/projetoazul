@@ -10,3 +10,6 @@ build:
 
 update: clean
 	yarn install
+	
+install:
+	yarn install
