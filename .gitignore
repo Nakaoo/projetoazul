@@ -25,3 +25,5 @@ src/services/api.js
 .env
 build/
 _.env-prod
+package-lock.json
+yarn.lock
