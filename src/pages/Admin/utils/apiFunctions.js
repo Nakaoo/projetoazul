@@ -71,3 +71,9 @@ export async function getMessageTotal(){
     return message;
 }
 
+export async function geProduto(){
+    const producto = await api.get(`/admin/product`)
+
+    return producto;
+}
+

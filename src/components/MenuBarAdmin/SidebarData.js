@@ -66,7 +66,8 @@ export const SidebarData = [
         title: 'Produtos', 
         icon: <AiFillShopping />,
         cName: 'nav-text',
-        blocked: true
+        path: '/admin/produto'
+        // blocked: true
     },
     {
         title: 'Usuários', 

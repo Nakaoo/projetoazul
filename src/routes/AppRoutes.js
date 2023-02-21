@@ -26,6 +26,7 @@ import OrderPlaced from "../pages/User/ConfirmPayment/OrderPlaced/OrderPlacedVer
 import AdminDashboard from "../pages/Admin/Dashboard";
 import AdminCompliance from "../pages/Admin/Compliance/AdminCompliance";
 import AdminFinance from "../pages/Admin/Finance/AdminFinance";
+import AdminProduto from "../pages/Admin/Produto/AdminProduto";
 import ContainerAdmin from "../components/Layout/ContainerAdmin";
 import Withdraw from "../pages/User/Withdraw";
 
@@ -82,6 +83,10 @@ const AppRoutes = () => {
                     <Route
                         path="/admin/compliance"
                         element={<AdminCompliance />}
+                    />
+                    <Route
+                        path="/admin/produto"
+                        element={<AdminProduto />}
                     />
                 </Route>
             </Routes>
