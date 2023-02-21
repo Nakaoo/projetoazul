@@ -22,13 +22,13 @@ export default function Community() {
         <div className="__admin_dashboard_cards_grid">
           <div className="__admin_dashboard_card_grid">
             <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Total de indicações</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-            <span className="__admin_dashboard_card_value">{people?.indication?.total ? people?.indication?.total : 0 }</span>
+            <span className="__admin_dashboard_card_value">{people?.indication?.total ? people?.indication?.total : 0}</span>
             <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
           </div>
 
           <div className="__admin_dashboard_card_grid">
             <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Indicações aprovadas</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-            <span className="__admin_dashboard_card_value">{people?.active?.active}</span>
+            <span className="__admin_dashboard_card_value">{people?.active?.active ?? 0}</span>
             <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
           </div>
 
@@ -59,30 +59,30 @@ export default function Community() {
         </div>
 
         <div className="__community_table">
-            <div className='__table_scroll'><div className="__admin_dashboard_community_header_title">
-              <h4 className='__admin_dashboard_community_header_title'>Indicados</h4>
-              <span className='__admin_dashboard_community_header_settings'>Filtrar <RiListSettingsFill /></span>
-            </div><table className="__admin_dashboard_community_table">
-                <thead className="__admin_dashboard_community_header">
-                  <tr className="__admin_dashboard_community_header_tr">
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Telefone</th>
-                    <th>Cashback</th>
-                    <th>Situação</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="__admin_dashboard_community_body_tr">
+          <div className='__table_scroll'><div className="__admin_dashboard_community_header_title">
+            <h4 className='__admin_dashboard_community_header_title'>Indicados</h4>
+            <span className='__admin_dashboard_community_header_settings'>Filtrar <RiListSettingsFill /></span>
+          </div><table className="__admin_dashboard_community_table">
+              <thead className="__admin_dashboard_community_header">
+                <tr className="__admin_dashboard_community_header_tr">
+                  <th>Nome</th>
+                  <th>Email</th>
+                  <th>Telefone</th>
+                  <th>Cashback</th>
+                  <th>Situação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="__admin_dashboard_community_body_tr">
 
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </aside>
       <aside className="__user_community_right">
-      <div className="__cardRewards2">
+        <div className="__cardRewards2">
           <div className="__rewards2">
             <div className="__rewardTitle">
               Recompensas
@@ -93,7 +93,7 @@ export default function Community() {
             <img src={graphic1} alt="" />
           </div>
           <div className="__incomeAmounts">
-           Histórico de Recompensas
+            Histórico de Recompensas
             <img src={graphic2} alt="" />
           </div>
         </div>
