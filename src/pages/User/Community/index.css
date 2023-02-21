@@ -67,6 +67,10 @@
     margin-bottom: 1rem;
 }
 
+.__admin_dashboard_community_body_tr .text-center{
+    text-align: center !important;
+}
+
 @media screen and (max-width: 1140px) {
     .__admin_dashboard_cards_grid {
         display: grid;
