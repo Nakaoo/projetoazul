@@ -70,7 +70,7 @@ export default function MenuBar({ people, menu, setMenu, value, setValue, title,
                                     <AiOutlineClose onClick={() => setValue(false)} />
                                 </div>
                                 <div className="__menu_logo">
-                                    <img src={logo} alt="" onClick={() => navigate("/")} />
+                                    <img src={logo} alt="" onClick={() => navigate("/dashboard")} />
                                 </div>
 
                                 <div className='__menu_info'>
