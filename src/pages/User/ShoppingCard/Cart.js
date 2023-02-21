@@ -26,7 +26,7 @@ function ShoppingCard({
   useEffect(() => {
     var optionMethod = {
       method: 'GET',
-      url: 'https://api.esgtechpower.com/api/v1/methodpayment/',
+      url: `${process.env.REACT_APP_URL_API}/api/v1/methodpayment/`,
       headers: {
         Authorization: `Bearer ${tokenUser}`,
         Accept: 'application/json'
