@@ -1,8 +1,12 @@
 serve:
-	npm run start
+	REACT_APP_URL_API=http://api.dkawasaka.vfs:8074 yarn start
 
+clean:
+	rm -fR build
+	rm -fR node_modules
+	
 build:
-	npm run build
+	yarn build
 
-update:
-	npm install
+update: clean
+	yarn install
