@@ -17,24 +17,22 @@ const LoginForm = ({ email, setEmail, handleNextStep, loading, setLoading, errMe
     }
 
     function handleToggle() {
-        if (toggle) {
-            setToggle(false)
-        }
-        if (!toggle) {
-            setToggle(true)
-        }
+        if (toggle) setToggle(false)
+        else setToggle(true)
+        // if (!toggle) { }
     }
 
-    useEffect(() => { 
+    useEffect(() => {
         let email2 = localStorage.getItem('email')
 
         if (email2) {
             let emailFn = email2.substring(1, email2.length - 1)
-            document.getElementById("customSwitch1").checked = true 
+            document.getElementById("customSwitch1").checked = true
             document.getElementById("email").value = emailFn;
             setEmail(emailFn)
         }
-    }, [])
+    })
+
     return (
         <>
             <div className="__signin_content_title">
@@ -53,8 +51,9 @@ const LoginForm = ({ email, setEmail, handleNextStep, loading, setLoading, errMe
                             <input type="checkbox" name='salvar' className="custom-control-input"
                                 id="customSwitch1" value="salvar" onClick={() => handleToggle} />
                         </div>
-                        <label className="custom-control-label" htmlFor="customSwitch1">Lembrar
-                            acesso?</label>
+                        <label className="custom-control-label" htmlFor="customSwitch1">
+                            Lembrar acesso?
+                        </label>
                     </div>
                     <div className="forgot_password">
                         <span onClick={() => navigate('/recover-password')}>Esqueceu a senha?</span>
