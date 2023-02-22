@@ -35,8 +35,8 @@ export async function createAccount(data){
     return create
 }
 
-export async function generateRandomKeyword(){
-    const random = await api.get(`/random_password`)
+export async function generateRandomKeyword(email){
+    const random = await api.get(`/random_password/${email}`)
 
     return random 
 }
