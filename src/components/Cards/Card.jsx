@@ -1,3 +1,5 @@
+import "./Card.scss"
+
 const Card = (props) => {
     // console.log(props);
 
@@ -11,19 +13,19 @@ const Card = (props) => {
         )
     }
     return (
-        <div className="card" style={props.style}>
+        <div className={` card ${props.className}`} style={props.style}>
             {title}
 
-            <div className="card-body">
-                {props.body}
+            <div className={`card-body ${props.bClassName}`}>
+                {props.body} {props.children}
             </div>
-            <div className="card-footer">
+            <div className={`card-footer`} >
                 <span>{props.footer}</span>
             </div>
             <div className="__admin_dashboard_last_addon">
                 <span className="__admin_dashboard_last_addon_percentage"></span>
                 <span className="__admin_dashboard_card_explanation"></span></div>
-        </div>
+        </div >
     )
 }
 

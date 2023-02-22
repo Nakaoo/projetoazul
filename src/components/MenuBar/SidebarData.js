@@ -1,30 +1,31 @@
 import { AiFillDashboard, AiFillSignal, AiFillShop, AiFillShopping, AiOutlineWechat } from 'react-icons/ai'
 import { MdPeople, MdOutlinePayment } from 'react-icons/md'
-import {FiSettings} from 'react-icons/fi'
+import { FiSettings } from 'react-icons/fi'
 
 export const SidebarData = [
     {
-        title: 'Dashboard', 
+        title: 'Dashboard',
         subtitle: 'Painel de controle',
         path: '/dashboard',
         icon: <AiFillDashboard />,
         cName: 'nav-text'
     },
     {
-        title: 'Financeiro', 
+        title: 'Financeiro',
         subtitle: 'Painel financeiro',
         path: '/financeiro',
         icon: <AiFillSignal />,
         cName: 'nav-text'
     },
     {
-        title: 'Pedidos', 
+        title: 'Pedidos',
         icon: <AiFillShop />,
+        path: '/order',
         cName: 'nav-text',
-        blocked: true
+        // blocked: true
     },
-    { 
-        title: 'Produtos', 
+    {
+        title: 'Produtos',
         icon: <AiFillShopping />,
         cName: 'nav-text',
         blocked: true
@@ -32,25 +33,25 @@ export const SidebarData = [
     {
         title: 'Indicados',
         subtitle: 'Painel de Indicados',
-        path:'/community',
+        path: '/community',
         icon: <MdPeople />,
         cName: 'nav-text',
-        
+
     },
     {
-        title: 'Mensagens', 
+        title: 'Mensagens',
         icon: <AiOutlineWechat />,
         cName: 'nav-text',
         blocked: true
     },
     {
-        title: 'Pagamentos', 
+        title: 'Pagamentos',
         icon: <MdOutlinePayment />,
         cName: 'nav-text',
         blocked: true
     },
     {
-        title: 'Configurações', 
+        title: 'Configurações',
         icon: <FiSettings />,
         cName: 'nav-text',
         blocked: true

@@ -30,7 +30,7 @@ function ContainerUser({ children }) {
             let user = await getUserInfo()
             let order = await getUserOrder()
             setPeople(user.data.result)
-            if (order.data.result.data.length > 0 && order.data.result.data[0].status_id === 3) {
+            if (order.data.result.length > 0 && order.data.result[0].status_id === 3) {
                 setMenu(true)
                 setAccountType('pagamento')
             } else if (user.data.result.user.person.is_active < 1) {

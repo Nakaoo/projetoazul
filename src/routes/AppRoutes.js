@@ -19,6 +19,7 @@ import RecoverPasswordForm from "../pages/Auth/SignIn/Form/RecoverPasswordForm";
 import ResetPasswordForm from "../pages/Auth/SignIn/Form/ResetPasswordForm";
 import Financeiro from "../pages/User/Financeiro";
 import Community from "../pages/User/Community/index";
+import Order from "../pages/User/Order";
 import OrderConfirmation from "../pages/User/ConfirmPayment/OrderConfirmation/OrderVerify";
 import OrderPlaced from "../pages/User/ConfirmPayment/OrderPlaced/OrderPlacedVerify";
 
@@ -56,6 +57,10 @@ const AppRoutes = () => {
                     <Route
                         path="/community"
                         element={<Community />}
+                    />
+                    <Route
+                        path="/order"
+                        element={<Order />}
                     />
                     <Route
                         path="/orderConfirmation"
