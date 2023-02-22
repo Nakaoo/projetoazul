@@ -102,7 +102,7 @@ export default function Payment({
     setConfirmPay(true)
   }
 
-  useEffect(() => { LoadDataShipping(); }, []);
+  useEffect(() => { LoadDataShipping(); });
 
   async function handleConfirmPay() {
     setLoading(true)
