@@ -31,7 +31,6 @@ export default function ProofModal({ showModal, onOk }) {
   return (
     <Modal
       open="true"
-      centered
       wrapClassName="__proof_modal"
       closable={false}
       footer={[
@@ -69,16 +68,16 @@ export default function ProofModal({ showModal, onOk }) {
               <span className="__proof_table_flex_name">EMAIL</span>
             </div>
             <div className="__proof_table_flex">
-              <span className="__proof_table_flex_value">NOME</span>
-              <span className="__proof_table_flex_value">QUALIFICAÇÃO</span>
-              <span className="__proof_table_flex_value">CPF</span>
-              <span className="__proof_table_flex_value">RG</span>
-              <span className="__proof_table_flex_value">ENDEREÇO</span>
-              <span className="__proof_table_flex_value">CIDADE</span>
-              <span className="__proof_table_flex_value">ESTADO</span>
-              <span className="__proof_table_flex_value">PAÍS</span>
-              <span className="__proof_table_flex_value">TELEFONE</span>
-              <span className="__proof_table_flex_valued">EMAIL</span>
+              <span className="__proof_table_flex_value"></span>
+              <span className="__proof_table_flex_value"></span>
+              <span className="__proof_table_flex_value"></span>
+              <span className="__proof_table_flex_value"></span>
+              <span className="__proof_table_flex_value"></span>
+              <span className="__proof_table_flex_value"></span>
+              <span className="__proof_table_flex_value"></span>
+              <span className="__proof_table_flex_value"></span>
+              <span className="__proof_table_flex_value"></span>
+              <span className="__proof_table_flex_valued"></span>
             </div>
           </div>
           <div className="__proof_table_body">
