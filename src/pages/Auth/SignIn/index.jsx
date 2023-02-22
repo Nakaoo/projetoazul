@@ -66,8 +66,7 @@ const SignIn = () => {
         try {
             let login = await getCpfOrEmail(removeMaskCpf(email))
 
-            console.log(login)
-
+            // console.log(login)
             if (login.status === 204) {
                 setVisibleError(true)
                 let err = "Usuário não encontrado em nosso banco de dados"
