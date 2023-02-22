@@ -45,7 +45,7 @@ export default function MenuBar({ people, menu, setMenu, value, setValue, title,
     }
 
     function handleNavigation(item){
-        console.log(item)
+        // console.log(item)
         if(!menu && !item.blocked){
             navigate(item.path)
             setActive(item.title)

@@ -36,5 +36,10 @@
                 border-color: #184CC0;
             }
         }
+
+        .cards .card-body {
+            padding: unset;
+            font-size: 2rem;
+        }
     }
 }

@@ -43,7 +43,11 @@ const LoginForm = ({ email, setEmail, handleNextStep, loading, setLoading, errMe
             <div className="form_group_signin">
                 <label htmlFor="email">Email ou CPF</label>
                 <div className="form_group_input">
-                    <input type="text" className="form_group_input_" id="email" value={email} onChange={(e) => setEmail(e.target.value)} onKeyDown={onKeyDownEnter}></input><div className="form_group_input_email"><AiOutlineMail className="form_group_input_email_icon" /></div>
+                    <input type="text" className="form_group_input_" id="email"
+                        value={email} 
+                        onChange={(e) => setEmail(e.target.value)}
+                        onKeyDown={onKeyDownEnter}></input>
+                    <div className="form_group_input_email"><AiOutlineMail className="form_group_input_email_icon" /></div>
                 </div>
                 <div className="input_addon">
                     <div className="savepassword">
