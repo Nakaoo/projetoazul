@@ -84,7 +84,7 @@ export default function MenuBarAdmin({ people, menu, setMenu, value, setValue, t
                                     <AiOutlineClose onClick={() => setValue(false)} />
                                 </div>
                                 <div className="__admin_logo">
-                                    <img src={logo} alt="" onClick={() => navigate("/")} />
+                                    <img src={logo} alt="" onClick={() => navigate("/admin/dashboard")} />
                                 </div>
 
                                 <div className='__admin_info'>
