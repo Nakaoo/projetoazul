@@ -30,10 +30,10 @@ const SignIn = () => {
 
     const navigate = useNavigate();
 
-    async function generatePassword() {
+    async function generatePassword(email) {
         setTecladoLoading(true)
 
-        let data = await generateRandomKeyword();
+        let data = await generateRandomKeyword(email);
 
         // Transform in keyboard
         let keyData = [];
@@ -51,6 +51,7 @@ const SignIn = () => {
     }
 
     async function handleNextStep() {
+        let emailLocal = ''
         setLoading(true)
         if (email.length < 1) {
             setVisibleError(true)
@@ -64,9 +65,10 @@ const SignIn = () => {
         }
 
         try {
-            let login = await getCpfOrEmail(removeMaskCpf(email))
+            emailLocal = removeMaskCpf(email)
+            let login = await getCpfOrEmail(emailLocal)
 
-            // console.log(login)
+            console.log(login)
             if (login.status === 204) {
                 setVisibleError(true)
                 let err = "Usuário não encontrado em nosso banco de dados"
@@ -86,7 +88,7 @@ const SignIn = () => {
             message.error(err)
         }
         setLoading(false)
-        generatePassword()
+        generatePassword(emailLocal)
         setVisibleError(false)
         setErrMessage('')
         setStep(1)
@@ -180,7 +182,7 @@ const SignIn = () => {
 
         try {
             setLoading(true)
-            
+
             console.log(1)
 
             console.log(data)
@@ -220,17 +222,17 @@ const SignIn = () => {
             setErrMessage('')
             setVisibleError(false)
 
-            if(person.data.result.nivel === 1){
+            if (person.data.result.nivel === 1) {
                 localStorage.setItem('role', 'user')
                 navigate('/dashboard')
             }
 
-            if(person.data.result.nivel === 20){
+            if (person.data.result.nivel === 20) {
                 localStorage.setItem('role', 'admin')
                 navigate('/admin/dashboard')
             }
 
-            if(person.data.result.nivel === 10){
+            if (person.data.result.nivel === 10) {
                 localStorage.setItem('role', 'financial')
             }
 
