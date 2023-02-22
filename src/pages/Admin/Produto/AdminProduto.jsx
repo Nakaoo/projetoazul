@@ -11,7 +11,7 @@ export default _ => {
         setProduto(prod.data.result)
     }
 
-    console.log('prod', produto);
+    // console.log('prod', produto);
     const callBackEffect = useCallback(async () => {
         await getAllProduct();
     }, []);
