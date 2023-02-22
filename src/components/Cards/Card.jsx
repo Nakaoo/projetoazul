@@ -1,3 +1,5 @@
+import "./Card.scss"
+
 const Card = (props) => {
     // console.log(props);
 
