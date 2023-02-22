@@ -14,7 +14,7 @@ import graphic2 from '../../../assets/img/graphic-2.svg'
 import viewMore from '../../../assets/img/viewMore.svg'
 import { useOutletContext } from "react-router-dom"
 import { getMultiNivel } from "../utils/apiFunctions"
-import Card from "./components/Card"
+import Card from "../../../components/Cards/Card"
 
 const comunidade = function Community() {
   // eslint-disable-next-line
