@@ -4,13 +4,20 @@ export const removeMask = val => {
 }
 
 export const removeMaskCpf = val => {
-  let valueCpf = String(val).replace(/\D+/g, '')
-
-  if(/^\d+$/.test(valueCpf)){
-    return valueCpf;
-  }else{
+  if (val.search('@') !== -1) {
     return val;
+  } else {
+    let valueCpf = String(val).replace(/\D+/g, '')
+    console.log('valueCpf', valueCpf);
+
+    if (/^\d+$/.test(valueCpf)) {
+      return valueCpf;
+    } else {
+      return val;
+    }
   }
+
+
 }
 
 

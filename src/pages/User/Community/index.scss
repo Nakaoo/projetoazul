@@ -1,0 +1,45 @@
+.user {
+    .community {
+        .content {
+            height: 100vh;
+            background: #01001C;
+            padding-left: 1rem;
+            padding-top: 1rem;
+            display: flex;
+
+            .left {
+                width: 70%;
+                margin-right: 1rem;
+                // display: flex;
+                // justify-content: space-between;
+                // flex-wrap: wrap;
+
+            }
+
+            .right {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        table {
+            width: 100%;
+            color: #FFFFFF;
+            border-top: 1px solid #184CC0;
+            filter: drop-shadow(3px 3px 30px rgba(0, 0, 0, 0.2));
+            border-radius: 5px;
+            height: max-content;
+            padding: 1rem;
+            font-size: 1rem;
+
+            thead {
+                border-color: #184CC0;
+            }
+        }
+
+        .cards .card-body {
+            padding: unset;
+            font-size: 2rem;
+        }
+    }
+}

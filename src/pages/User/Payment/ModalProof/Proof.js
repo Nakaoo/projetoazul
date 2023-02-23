@@ -5,7 +5,7 @@ import { useReactToPrint } from "react-to-print";
 import { globalImg } from "../../../../utils/globalImg";
 import './Proof.css'
 
-export default function ProofModal({ showModal, onOk }) {
+export default function ProofModal({ showModal, onOk, contract, people, product }) {
   let logo = globalImg.logo
 
   const handleDownloadPdf = async () => {
@@ -30,7 +30,7 @@ export default function ProofModal({ showModal, onOk }) {
 
   return (
     <Modal
-      open="true"
+      open={showModal}
       wrapClassName="__proof_modal"
       closable={false}
       footer={[

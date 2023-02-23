@@ -22,6 +22,7 @@ import { BiLogOut } from 'react-icons/bi'
 import { AiFillLock } from 'react-icons/ai'
 import { globalImg } from '../../utils/globalImg';
 
+// eslint-disable-next-line
 export default function MenuBar({ people, menu, setMenu, value, setValue, title, active, subtitle, setTitle, setActive, setSubtitle }) {
     const navigate = useNavigate();
     let logo = globalImg.logo
@@ -44,7 +45,7 @@ export default function MenuBar({ people, menu, setMenu, value, setValue, title,
     }
 
     function handleNavigation(item){
-        console.log(item)
+        // console.log(item)
         if(!menu && !item.blocked){
             navigate(item.path)
             setActive(item.title)
@@ -70,7 +71,7 @@ export default function MenuBar({ people, menu, setMenu, value, setValue, title,
                                     <AiOutlineClose onClick={() => setValue(false)} />
                                 </div>
                                 <div className="__menu_logo">
-                                    <img src={logo} alt="" onClick={() => navigate("/")} />
+                                    <img src={logo} alt="" onClick={() => navigate("/dashboard")} />
                                 </div>
 
                                 <div className='__menu_info'>

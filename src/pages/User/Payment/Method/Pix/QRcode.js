@@ -6,12 +6,11 @@ import { globalImg } from '../../../../../utils/globalImg';
 export default function QRcode({ImgQrCode, setModalQrCode}){
     // eslint-disable-next-line
     const [img2, setImg2] = useState();
-    let img;
     let imgEstatica = globalImg.pixQrCode
     useEffect(() => {
-        img = ImgQrCode.substring(ImgQrCode.indexOf(`h`))
+        let img = ImgQrCode.substring(ImgQrCode.indexOf(`h`))
         setImg2(img)
-    }, [])
+    })
 
     return (
     <>

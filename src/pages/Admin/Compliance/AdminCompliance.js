@@ -1,14 +1,5 @@
 import React from "react"
-// eslint-disable-next-line
-import { useEffect, useState, useContext, useNavigate } from "react"
-// eslint-disable-next-line
-import Navbar from "../../../components/Navbar/Navbar"
-// eslint-disable-next-line
-import MenuBarAdmin from "../../../components/MenuBarAdmin"
-// eslint-disable-next-line
-import { UserContext } from "../../../hooks/UserContext"
-// eslint-disable-next-line
-import { HiMenu } from "react-icons/hi"
+import { useEffect, useState } from "react"
 import { BsFillPersonFill } from 'react-icons/bs'
 import Approved from "./Table/Approved"
 import './AdminCompliance.css'
@@ -17,42 +8,27 @@ import Refused from "./Table/Refused"
 import { useLocation } from "react-router-dom"
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 import { BsCheck2Circle } from 'react-icons/bs'
-// eslint-disable-next-line
-import { approveOrder, complianceActivation, getOrders } from "../utils/apiFunctions"
+import { approveOrder, getOrders } from "../utils/apiFunctions"
 import { LoadingOutlined } from "@ant-design/icons";
-// eslint-disable-next-line
-import { message, Skeleton } from "antd"
-// eslint-disable-next-line
-import { act } from "@testing-library/react"
+import { message } from "antd"
 import { useOutletContext } from "react-router-dom"
 
 export default function AdminCompliance() {
-    // eslint-disable-next-line
-    const [accountType, setAccountType] = useState('')
-    // eslint-disable-next-line
-    const [menu, setMenu] = useState(false)
     const [page, setPage] = useState('pending')
     const [step, setStep] = useState(2)
     const [loading, setLoading] = useState(true)
-    // eslint-disable-next-line
-    const [orderNumber, setOrderNumber] = useState()
-    // eslint-disable-next-line
-    const [person, setPerson] = useState()
     const [personalDetails, setPersonalDetails] = useState(true)
     const [contactDetails, setContactDetails] = useState(true)
     const [addressDetails, setAddressDetails] = useState(true)
     const [transactionDetails, setTransactionDetails] = useState(true)
     const [documentDetails, setDocumentDetails] = useState(true)
     const [complianceOrders, setComplianceOrders] = useState([])
-    // eslint-disable-next-line
     const [complianceOrder, setComplianceOrder] = useState([])
     const [filterds, setFilterds] = useState([])
-    // eslint-disable-next-line
     const [dateSearch, setDateSearch] = useState([])
     const [search, setSearch] = useState()
     const [actualValue, setActualValue] = useState('');
     const [openedMenu, setOpenedMenu] = useState(false);
-    // eslint-disable-next-line
     const [complianceStatus, setComplianceStatus] = useState();
     const [people] = useOutletContext()
     const location = useLocation();

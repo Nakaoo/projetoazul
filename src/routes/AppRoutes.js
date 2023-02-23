@@ -19,6 +19,7 @@ import RecoverPasswordForm from "../pages/Auth/SignIn/Form/RecoverPasswordForm";
 import ResetPasswordForm from "../pages/Auth/SignIn/Form/ResetPasswordForm";
 import Financeiro from "../pages/User/Financeiro";
 import Community from "../pages/User/Community/index";
+import Order from "../pages/User/Order";
 import OrderConfirmation from "../pages/User/ConfirmPayment/OrderConfirmation/OrderVerify";
 import OrderPlaced from "../pages/User/ConfirmPayment/OrderPlaced/OrderPlacedVerify";
 
@@ -26,6 +27,7 @@ import OrderPlaced from "../pages/User/ConfirmPayment/OrderPlaced/OrderPlacedVer
 import AdminDashboard from "../pages/Admin/Dashboard";
 import AdminCompliance from "../pages/Admin/Compliance/AdminCompliance";
 import AdminFinance from "../pages/Admin/Finance/AdminFinance";
+import AdminProduto from "../pages/Admin/Produto/AdminProduto";
 import ContainerAdmin from "../components/Layout/ContainerAdmin";
 import Withdraw from "../pages/User/Withdraw";
 
@@ -57,6 +59,10 @@ const AppRoutes = () => {
                         element={<Community />}
                     />
                     <Route
+                        path="/order"
+                        element={<Order />}
+                    />
+                    <Route
                         path="/orderConfirmation"
                         element={<OrderConfirmation />}
                     />
@@ -82,6 +88,10 @@ const AppRoutes = () => {
                     <Route
                         path="/admin/compliance"
                         element={<AdminCompliance />}
+                    />
+                    <Route
+                        path="/admin/produto"
+                        element={<AdminProduto />}
                     />
                 </Route>
             </Routes>

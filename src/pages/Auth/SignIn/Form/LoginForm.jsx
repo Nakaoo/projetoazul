@@ -17,24 +17,22 @@ const LoginForm = ({ email, setEmail, handleNextStep, loading, setLoading, errMe
     }
 
     function handleToggle() {
-        if (toggle) {
-            setToggle(false)
-        }
-        if (!toggle) {
-            setToggle(true)
-        }
+        if (toggle) setToggle(false)
+        else setToggle(true)
+        // if (!toggle) { }
     }
 
-    useEffect(() => { 
+    useEffect(() => {
         let email2 = localStorage.getItem('email')
 
         if (email2) {
             let emailFn = email2.substring(1, email2.length - 1)
-            document.getElementById("customSwitch1").checked = true 
+            document.getElementById("customSwitch1").checked = true
             document.getElementById("email").value = emailFn;
             setEmail(emailFn)
         }
-    }, [])
+    })
+
     return (
         <>
             <div className="__signin_content_title">
@@ -45,7 +43,11 @@ const LoginForm = ({ email, setEmail, handleNextStep, loading, setLoading, errMe
             <div className="form_group_signin">
                 <label htmlFor="email">Email ou CPF</label>
                 <div className="form_group_input">
-                    <input type="text" className="form_group_input_" id="email" value={email} onChange={(e) => setEmail(e.target.value)} onKeyDown={onKeyDownEnter}></input><div className="form_group_input_email"><AiOutlineMail className="form_group_input_email_icon" /></div>
+                    <input type="text" className="form_group_input_" id="email"
+                        value={email} 
+                        onChange={(e) => setEmail(e.target.value)}
+                        onKeyDown={onKeyDownEnter}></input>
+                    <div className="form_group_input_email"><AiOutlineMail className="form_group_input_email_icon" /></div>
                 </div>
                 <div className="input_addon">
                     <div className="savepassword">
@@ -53,8 +55,9 @@ const LoginForm = ({ email, setEmail, handleNextStep, loading, setLoading, errMe
                             <input type="checkbox" name='salvar' className="custom-control-input"
                                 id="customSwitch1" value="salvar" onClick={() => handleToggle} />
                         </div>
-                        <label className="custom-control-label" htmlFor="customSwitch1">Lembrar
-                            acesso?</label>
+                        <label className="custom-control-label" htmlFor="customSwitch1">
+                            Lembrar acesso?
+                        </label>
                     </div>
                     <div className="forgot_password">
                         <span onClick={() => navigate('/recover-password')}>Esqueceu a senha?</span>
