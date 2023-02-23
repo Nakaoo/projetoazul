@@ -1,10 +1,11 @@
-import "./Payment.css";
+import "./Payment.scss";
+
 import check from "../../../assets/icons/checkbox.svg";
 import edit from "../../../assets/icons/edit.svg";
 import React, { useEffect, useState } from "react";
-import ModalPix from "../Payment/Method/Pix/Pix";
-import ModalTed from "../Payment/Method/Ted/Ted";
-import ModalBoleto from "../Payment/Method/Boleto/Boleto";
+import ModalPix from "./Method/Pix/Pix";
+import ModalTed from "./Method/Ted/Ted";
+import ModalBoleto from "./Method/Boleto/Boleto";
 // eslint-disable-next-line
 import apitest from "../../../services/apitest";
 import api from "../../../services/api";
