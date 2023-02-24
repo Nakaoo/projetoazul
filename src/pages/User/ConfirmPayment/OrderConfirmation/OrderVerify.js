@@ -1,34 +1,38 @@
 import { getPerson } from "../../utils/apiFunctions"
 import OrderConfirmation from "./Page/OrderConfirmation"
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 
-export default function OrderverifyConfi(){
-    const [accountType, setAccountType] = useState('')
-    // eslint-disable-next-line
-    const [menu, setMenu] = useState(false)
+export default function OrderverifyConfi() {
+  const [accountType, setAccountType] = useState('')
+  // eslint-disable-next-line
+  const [menu, setMenu] = useState(false)
 
-    async function getPersonConfig() {
+  async function getPersonConfig() {
 
-  let person = await getPerson()
+    let person = await getPerson()
 
-  if (person?.data.result.purchase_active < 1) {
-    setAccountType('invalido')
-    setMenu(false)
-  } else {
-    setAccountType('valido')
-    setMenu(true)
+    if (person?.data.result.purchase_active < 1) {
+      setAccountType('invalido')
+      setMenu(false)
+    } else {
+      setAccountType('valido')
+      setMenu(true)
+    }
   }
-}
+
+  const callBackEffect = useCallback(async () => {
+    await getPersonConfig()
+  })
 
   useEffect(() => {
-    getPersonConfig()
-  }, [])
+    callBackEffect()
+  }, [callBackEffect])
 
-    return(
-        <>
-        {accountType === "invalido" && (
-          <OrderConfirmation />
-        )}
-      </>
-    )
+  return (
+    <>
+      {accountType === "invalido" && (
+        <OrderConfirmation />
+      )}
+    </>
+  )
 }
