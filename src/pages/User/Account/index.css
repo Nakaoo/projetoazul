@@ -5,6 +5,10 @@
     background-color: #01001C;
 }
 
+.__account_section{
+    color: #fff;
+}
+
 .__account-type-radio {
     display: flex;
     align-items: baseline;
