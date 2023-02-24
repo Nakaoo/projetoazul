@@ -22,6 +22,7 @@ import Community from "../pages/User/Community/index";
 import Order from "../pages/User/Order";
 import OrderConfirmation from "../pages/User/ConfirmPayment/OrderConfirmation/OrderVerify";
 import OrderPlaced from "../pages/User/ConfirmPayment/OrderPlaced/OrderPlacedVerify";
+import { PaymentOk } from "../pages/User/PaymentOk/PaymentOk";
 
 // Páginas de Admin
 import AdminDashboard from "../pages/Admin/Dashboard";
@@ -30,6 +31,7 @@ import AdminFinance from "../pages/Admin/Finance/AdminFinance";
 import AdminProduto from "../pages/Admin/Produto/AdminProduto";
 import ContainerAdmin from "../components/Layout/ContainerAdmin";
 import Withdraw from "../pages/User/Withdraw";
+import { Account } from "../pages/User/Account";
 
 const AppRoutes = () => {
 
@@ -73,6 +75,14 @@ const AppRoutes = () => {
                     <Route
                         path="/withdraw"
                         element={<Withdraw />}
+                    />
+                    <Route
+                        path="/paymentok"
+                        element={<PaymentOk />}
+                    />
+                    <Route
+                        path="/configurations"
+                        element={<Account />}
                     />
                 </Route>
 

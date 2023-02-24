@@ -1,58 +1,59 @@
-.__proof_table{
+.__proof_table {
     display: flex;
 }
 
-.__proof_table_flex{
+.__proof_table_flex {
     display: flex;
     flex-direction: column;
 }
 
-.__proof_table_body_content{
+.__proof_table_body_content {
     margin-top: 1.5rem;
     padding: 0;
     display: flex;
     flex-direction: column;
 }
 
-.__proof_table_title_span{
+.__proof_table_title_span {
     font-weight: 600;
 }
 
-.__proof_table{
+.__proof_table {
     display: grid;
     grid-template-columns: 1fr 1fr;
     border: 1px solid black;
 }
 
-.__proof_table_flex_name, .__proof_table_flex_value{
+.__proof_table_flex_name,
+.__proof_table_flex_value {
     padding: 0.3rem;
     border: 1px solid black;
 }
 
-.__proof_table_body_content_title{
+.__proof_table_body_content_title {
     text-align: center;
     font-weight: 700;
     font-size: 15px;
     margin-bottom: 1rem;
 }
 
-.__proof_table_header{
+.__proof_table_header {
     display: flex;
     flex-direction: column;
 }
 
-.proof_modal_min{
+.proof_modal_min {
     font-size: 10px;
     margin-bottom: 1rem;
 }
 
-.__proof_modal_title{
+.__proof_modal_title {
     font-weight: 600;
     font-size: 16px;
     margin-bottom: 1rem;
 }
 
-.__proof_section{
+.__proof_section {
     font-size: 14px;
     line-height: 1;
     letter-spacing: normal;
@@ -61,12 +62,22 @@
     overflow: auto;
 }
 
+.__proof_table_ td:last-child{
+    text-align: start !important;
+}
+
 @media print {
-    #proof{
-        padding: 2rem;
+    #proof {
+        padding: 1rem;
     }
 
-    .__proof_section{
+    .__proof_section {
         max-height: max-content;
+        overflow: hidden;
     }
+}
+
+@page {
+    size: auto;
+    margin: 25mm 25mm 25mm 25mm;
 }

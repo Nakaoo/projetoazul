@@ -257,7 +257,7 @@ display: flex;
 }
 
 .__inputIndications {
-    width: 23rem;
+    max-width: 23rem;
     height: 50px;
     background-color: #F1F3F6;
     border-radius: 8px;

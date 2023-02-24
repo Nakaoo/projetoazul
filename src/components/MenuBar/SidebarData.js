@@ -20,12 +20,12 @@ export const SidebarData = [
     {
         title: 'Pedidos',
         icon: <AiFillShop />,
+        subtitle: 'Controle de pedidos',
         path: '/order',
-        cName: 'nav-text',
-        // blocked: true
     },
     {
         title: 'Produtos',
+        subtitle: 'Controle de produtos',
         icon: <AiFillShopping />,
         cName: 'nav-text',
         blocked: true
@@ -52,8 +52,9 @@ export const SidebarData = [
     },
     {
         title: 'Configurações',
+        subtitle: 'Gerencie a sua conta',
+        path: '/configurations',
         icon: <FiSettings />,
-        cName: 'nav-text',
-        blocked: true
+        cName: 'nav-text'
     },
 ]

@@ -1,11 +1,11 @@
 import { useRef, useEffect } from "react";
 import { Modal, Button } from "antd";
-import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 import { useReactToPrint } from "react-to-print";
 import { globalImg } from "../../../../utils/globalImg";
 import { useOutletContext } from "react-router";
 import './Proof.css'
+import { dateToFront } from '../../../../utils/removeMask'
 
 export default function ProofModal({ showModal, onOk, contract, product, orderDetails }) {
   let logo = globalImg.logo_black
@@ -131,7 +131,7 @@ export default function ProofModal({ showModal, onOk, contract, product, orderDe
                 Discriminação” abaixo:</span>
             </div>
             <div className="__proof_table_body_content">
-              <table>
+              <table className="__proof_table_">
                 <thead>
                   <tr>
                     <td>ITEM</td>
@@ -174,7 +174,7 @@ export default function ProofModal({ showModal, onOk, contract, product, orderDe
                       {product.price}
                     </tr>
                     <tr>
-                      {dateWithdrawal}
+                      {dateToFront(dateWithdrawal)}
                     </tr>
                     <tr>
                       {(product.cdi * 100).toFixed(2) + ' %'}

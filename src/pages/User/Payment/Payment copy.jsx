@@ -110,7 +110,7 @@ export default function Payment({
     // console.log(document)
     // let documentTst = await uploadImg(document.Body)
     // console.log(documentTst)
-    window.onload('/')
+    navigate('/paymentok')
 
     setLoading(false)
   }

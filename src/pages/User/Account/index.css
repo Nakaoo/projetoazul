@@ -1,0 +1,73 @@
+.__account_container{
+    display: grid;
+    place-content: center;
+    height: 100%;
+    background-color: #01001C;
+}
+
+.__account-type-radio {
+    display: flex;
+    align-items: baseline;
+}
+
+.__account__radio[type=radio] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+.__account__divisaoOpcaoAtivo {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    margin: 0 2rem 1rem 0;
+    padding: 0 3rem .35rem .25rem;
+    border-radius: .1rem;
+    cursor: pointer;
+    border-bottom: 3px solid #FBA500;
+}
+
+.__account__divisaoOpcao {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    margin: 0 2rem 1rem 0;
+    padding: 0 3rem .35rem .25rem;
+    border-radius: .1rem;
+    cursor: pointer;
+}
+
+.__account__divisaoIconeOpcoes {
+    background: #0B472620;
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 50%;
+    text-align: center;
+    padding: .2rem 0 0 0;
+    margin: 0 .5rem 0 0;
+    border: 1px solid #0B472635;
+}
+
+.__account__divisaoIconeOpcoesAtivo {
+    background: #FBA50020;
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 50%;
+    text-align: center;
+    padding: .2rem 0 0 0;
+    margin: 0 .5rem 0 0;
+    border: 1px solid #FBA50035;
+}
+
+.__account_Icon {
+    color: #0B4726;
+    font-size: 1.5rem;
+    padding: 0.4rem 0 0 0;
+}
+
+.__account_IconAtivo {
+    font-size: 1.5rem;
+    padding: 0.4rem 0 0 0;
+    color: #FBA500;
+}
