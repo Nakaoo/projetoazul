@@ -1,15 +1,11 @@
 import './Pix.css';
 import pix from '../../../../../assets/icons/pix.png';
 // eslint-disable-next-line
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import QrCode from "./QRcode"
 // eslint-disable-next-line
-import { Link, useNavigate } from "react-router-dom";
-import { message, Upload, Form } from 'antd';
-// eslint-disable-next-line
-import { uploadObject } from '../../../../../utils/uploadImg';
-
-// eslint-disable-next-line
+import { useNavigate } from "react-router-dom";
+import { message, Upload } from 'antd';
 export default function Pix({ pixDetails, hdocument, setDocument, OrderPayment, setConfirmPay, CloseModal, handleConfirmPay, handleRemoveUpload, handleChangeUpload }) {
   const [modalQrCode, setModalQrCode] = useState(false);
   // eslint-disable-next-line

@@ -59,9 +59,12 @@ export default (props) => {
                                     {allOrder ? allOrder?.map(item => {
                                         return item.items.map(prod => {
                                             console.log('prod', item);
-                                            if (prod.product.name != 'Ativação') {
+                                            if (prod.product.name !== 'Ativação') {
                                                 let status = ''
                                                 switch (item.status_id) {
+                                                    default: 
+                                                        status = 'Pendente';
+                                                        break;
                                                     case 1:
                                                         status = 'Pendente'
                                                         break;

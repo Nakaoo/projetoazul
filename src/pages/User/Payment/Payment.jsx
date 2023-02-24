@@ -6,15 +6,10 @@ import React, { useEffect, useState } from "react";
 import ModalPix from "./Method/Pix/Pix";
 import ModalTed from "./Method/Ted/Ted";
 import ModalBoleto from "./Method/Boleto/Boleto";
-// eslint-disable-next-line
-import apitest from "../../../services/apitest";
 import api from "../../../services/api";
-
-// eslint-disable-next-line
-import { LoadingOutlined, QuestionCircleOutlined } from "@ant-design/icons";
+import ProofModal from './ModalProof/Proof.js'
+import { LoadingOutlined } from "@ant-design/icons";
 import { deleteOrder, generatePix, generateOrder, generateTed } from "../utils/apiFunctions";
-// eslint-disable-next-line
-import { uploadImg, uploadObject } from "../../../utils/uploadImg";
 import { useNavigate } from "react-router-dom";
 import { message } from "antd";
 export default function Payment({
@@ -48,6 +43,11 @@ export default function Payment({
   const [pixDetails, setPixDetails] = useState();
   const [tedDetails, setTedDetails] = useState();
   const [contractAccept, setContractAccept] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const onOk = () => {
+    setShowModal(false)
+  }
 
   // atual função para criar order
   async function CreateOrder() {
@@ -472,10 +472,7 @@ export default function Payment({
                         <div className="form-check">
                           <input className="form-check-input" type="checkbox" onClick={() => handleContract()} />
                           <label className="form-check-label" htmlFor="check_contract">Li e aceito os termos de contrato da compra. <br />
-                            <a href="https://onedrive.live.com/embed?cid=FA1C55DB9E5E3F29&resid=FA1C55DB9E5E3F29%21228540&authkey=AJ48AQI9pK142hQ&em=2"
-                              className="text-decoration-none"
-                              rel="noreferrer"
-                              target="_blank">
+                            <a className="text-decoration-none" rel="noreferrer" onClick={() => setShowModal(true)}>
                               Visualizar termos
                             </a>
                           </label>
@@ -528,7 +525,7 @@ export default function Payment({
                     </div>
                   </div>
                 </div>
-
+                <ProofModal showModal={showModal} onOk={onOk} product={product} />
               </div>
             </div>
           </div>

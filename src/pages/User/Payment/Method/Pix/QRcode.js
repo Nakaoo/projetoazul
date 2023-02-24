@@ -10,7 +10,7 @@ export default function QRcode({ImgQrCode, setModalQrCode}){
     useEffect(() => {
         let img = ImgQrCode.substring(ImgQrCode.indexOf(`h`))
         setImg2(img)
-    })
+    }, [ImgQrCode])
 
     return (
     <>
