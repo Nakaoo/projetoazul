@@ -91,7 +91,7 @@ export default function Financeiro({ menu }) {
 
     withdrawals.filter((item) => {
       if (item?.id.includes(search)) {
-        array.push(item)
+        return array.push(item)
       }
     });
 

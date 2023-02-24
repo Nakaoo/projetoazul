@@ -18,8 +18,7 @@
     filter: drop-shadow(3px 3px 30px rgba(0, 0, 0, 0.2));
     border-radius: 5px;
     width: 16rem;
-    padding-bottom: 1rem;
-    padding-left: 1rem;
+    padding: 1rem;
     height: max-content;
     margin-bottom: 1rem;
     color: #FFFFFF;

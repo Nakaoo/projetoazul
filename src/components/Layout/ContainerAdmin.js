@@ -1,6 +1,6 @@
 import './index.css'
 import Navbar from '../Navbar/Navbar'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { getAdminInfo } from '../../pages/User/utils/apiFunctions'
 // eslint-disable-next-line
 import { useNavigate, Navigate, Outlet } from 'react-router-dom'
@@ -27,7 +27,6 @@ function ContainerAdmin({ children }) {
 
         try {
             let admin = await getAdminInfo()
-            // console.log('admin', admin);
 
             setPeople(admin.data.result)
         } catch (err) {
@@ -36,10 +35,14 @@ function ContainerAdmin({ children }) {
 
         setLoadingAmbiente(false)
     }
+    
+    const callBackEffect = useCallback(async () => {
+        await getUserAllInfo();
+    }, []);
 
     useEffect(() => {
-        getUserAllInfo()
-    }, [])
+        callBackEffect();
+    }, [callBackEffect])
 
     if (loadingAmbiente) return <Loader />
     return (

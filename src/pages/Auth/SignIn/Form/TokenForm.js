@@ -1,17 +1,7 @@
-// eslint-disable-next-line
-import { useEffect, useState, useRef } from 'react'
-// eslint-disable-next-line
-import { AiOutlineLock } from 'react-icons/ai'
-// eslint-disable-next-line
-import { generateRandomKeyword } from '../../Signup/utils/apiFunctions'
-// eslint-disable-next-line
-import { RiDeleteBack2Line } from 'react-icons/ri'
-// eslint-disable-next-line
-import { message } from 'antd'
+import { useEffect } from 'react'
 import { LoadingOutlined } from "@ant-design/icons";
 import VerificationInput from 'react-verification-input'
 
-// eslint-disable-next-line
 const TokenForm = ({ botaoTimer, name, onSubmit, loading, setLoading, setToken, token, visibleError, errMessage, loginSubmit }) => {
     let tokenImg = 'https://dsm01pap008files.storage.live.com/y4mPE1ijmV6WwQ03B9FnB-cYdvoEUbN8AQBQef6EJvPuBGymP3ujPRnhPl8r2siDQ6QpcvBtLOV1ozg9AdZa0oubASuFHKw88pCzt57o-6qyt0sjPCh1CQRE6_iTp4yvw4y5MKxAgK93R0kYOd606LoCbDUx85wNKIIwHeJRoHluapRTZW2oZB689pwY4rAQoGw?width=148&height=148&cropmode=none'
 

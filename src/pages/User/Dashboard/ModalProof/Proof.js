@@ -1,25 +1,64 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { Modal, Button } from "antd";
-import { jsPDF } from "jspdf";
+import { jsPDF, html2canvas, onePageCanvas, quotes } from "jspdf";
 import { useReactToPrint } from "react-to-print";
 import { globalImg } from "../../../../utils/globalImg";
 import './Proof.css'
 
-export default function ProofModal({ showModal, onOk }) {
+export default function ProofModal({ showModal, onOk, orderDetails }) {
   let logo = globalImg.logo
 
   const handleDownloadPdf = async () => {
     const input = document.getElementById("proof");
-    const pdf = new jsPDF("p", "px", "a4");
+    const pdf = new jsPDF({
+      orientation: "p", 
+      unit: "mm",
+      format: "a4",
+      precision: 5
+    });
 
-    pdf
-      .html(input, {
-        html2canvas: { scale: 0.7 },
-        margin: [10, 50, 0, 50],
-      })
-      .then(() => {
-        pdf.save("comprovante_esgtech.pdf");
-      });
+    html2canvas(input).then((canvas) => {
+
+      for (var i = 0; i <= quotes.clientHeight / 980; i++) {
+        //! This is all just html2canvas stuff
+        var srcImg = canvas;
+        var sX = 0;
+        var sY = 980 * i; // start 980 pixels down for every new page
+        var sWidth = 900;
+        var sHeight = 980;
+        var dX = 0;
+        var dY = 0;
+        var dWidth = 900;
+        var dHeight = 980;
+
+        window.onePageCanvas = document.createElement("canvas");
+        onePageCanvas.setAttribute('width', 900);
+        onePageCanvas.setAttribute('height', 980);
+        var ctx = onePageCanvas.getContext('2d');
+        // details on this usage of this function: 
+        // https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Using_images#Slicing
+        ctx.drawImage(srcImg, sX, sY, sWidth, sHeight, dX, dY, dWidth, dHeight);
+
+        // document.body.appendChild(canvas);
+        var canvasDataURL = onePageCanvas.toDataURL("image/png", 1.0);
+
+        var width = onePageCanvas.width;
+        var height = onePageCanvas.clientHeight;
+
+        //! If we're on anything other than the first page,
+        // add another page
+        if (i > 0) {
+          pdf.addPage(612, 791); //8.5" x 11" in pts (in*72)
+        }
+        //! now we declare that we're working on that page
+        pdf.setPage(i + 1);
+        //! now we add content to that page!
+        pdf.addImage(canvasDataURL, 'PNG', 20, 40, (width * .62), (height * .62));
+
+      }
+      //! after the for loop is finished running, we save the pdf.
+      pdf.save('Test.pdf');
+    });
   };
 
   const componentRef = useRef();
@@ -28,9 +67,13 @@ export default function ProofModal({ showModal, onOk }) {
     content: () => componentRef.current,
   });
 
+  useEffect(() => {
+    console.log(people)
+  })
+
   return (
     <Modal
-      open="true"
+      open={showModal}
       wrapClassName="__proof_modal"
       closable={false}
       footer={[
@@ -77,7 +120,7 @@ export default function ProofModal({ showModal, onOk }) {
               <span className="__proof_table_flex_value"></span>
               <span className="__proof_table_flex_value"></span>
               <span className="__proof_table_flex_value"></span>
-              <span className="__proof_table_flex_valued"></span>
+              <span className="__proof_table_flex_value"></span>
             </div>
           </div>
           <div className="__proof_table_body">
