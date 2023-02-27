@@ -474,36 +474,30 @@ export default function AdminCompliance() {
                                 )}
                             </div>
 
-                            {/* <div className="__admin_information_content_card">
-                                        <div className="__admin_information_content_card_title">
-                                            <span className="__admin_information_content_card_title_span">
-                                                Documentos
-                                            </span>
-                                            {documentDetails ? <MdKeyboardArrowUp className="__admin_information_content_card_title_icon"
-                                                onClick={handleDocumentDetails} /> : <MdKeyboardArrowDown className="__admin_information_content_card_title_icon" onClick={handleTransactionDetails} />}
+                            <div className="__admin_information_content_card">
+                                <div className="__admin_information_content_card_title">
+                                    <span className="__admin_information_content_card_title_span">
+                                        Comprovante de Pagamento
+                                    </span>
+                                    {documentDetails ? <MdKeyboardArrowUp className="__admin_information_content_card_title_icon"
+                                        onClick={handleDocumentDetails} /> : <MdKeyboardArrowDown className="__admin_information_content_card_title_icon" onClick={handleTransactionDetails} />}
+                                </div>
+
+                                {documentDetails && (
+                                    <div className="__adin_information_content_card_container">
+                                        <div className="__admin_information_content_card_form">
+                                            <div className="__admin_information_content_card_form_img">
+                                            
+                                            </div>
                                         </div>
 
-                                        {documentDetails && (
-                                            <div className="__adin_information_content_card_container">
-                                                <div className="__admin_information_content_card_form">
-                                                    <div className="__admin_information_content_card_form_content">
-                                                        <span>Valor: </span>
-                                                    </div>
-                                                    <div className="__admin_information_content_card_form_content">
-                                                        <span>Método da operação: </span>
-                                                    </div>
-                                                    <div className="__admin_information_content_card_form_content">
-                                                        <span>Data da operação: </span>
-                                                    </div>
-                                                </div>
-
-                                                <div className="__admin_information_content_card_form_checkbox">
-                                                    <input type="checkbox" name="confirmationInformation" />
-                                                    <label htmlFor="confirmationInformation">Verificar se todos os dados estão corretos</label>
-                                                </div>
-                                            </div>
-                                        )}
-                                    </div> */}
+                                        <div className="__admin_information_content_card_form_checkbox">
+                                            <input type="checkbox" name="confirmationInformation" />
+                                            <label htmlFor="confirmationInformation">Verificar se todos os dados estão corretos</label>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
 
                         </div>
 

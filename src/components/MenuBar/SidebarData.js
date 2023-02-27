@@ -54,6 +54,7 @@ export const SidebarData = [
         title: 'Configurações',
         subtitle: 'Gerencie a sua conta',
         path: '/configurations',
+        blocked: true,
         icon: <FiSettings />,
         cName: 'nav-text'
     },

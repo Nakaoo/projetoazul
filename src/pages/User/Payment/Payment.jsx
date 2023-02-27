@@ -1,15 +1,20 @@
 import "./Payment.scss";
 
+import React, { useCallback, useEffect, useState } from "react";
 import check from "../../../assets/icons/checkbox.svg";
 import edit from "../../../assets/icons/edit.svg";
-import React, { useEffect, useState } from "react";
 import ModalPix from "./Method/Pix/Pix";
 import ModalTed from "./Method/Ted/Ted";
 import ModalBoleto from "./Method/Boleto/Boleto";
 import api from "../../../services/api";
 import ProofModal from './ModalProof/Proof.js'
-import { LoadingOutlined } from "@ant-design/icons";
-import { deleteOrder, generatePix, generateOrder, generateTed } from "../utils/apiFunctions";
+
+// eslint-disable-next-line
+import { LoadingOutlined, QuestionCircleOutlined } from "@ant-design/icons";
+import { deleteOrder, generatePix, generateOrder, generateTed, getUser } from "../utils/apiFunctions";
+// eslint-disable-next-line
+// import { uploadImg, uploadObject } from "../../../utils/uploadImg";
+import uploadImg from "../../../utils/aws";
 import { useNavigate } from "react-router-dom";
 import { message } from "antd";
 export default function Payment({
@@ -23,16 +28,20 @@ export default function Payment({
   const changeOption = (newState) => {
     setOptionValue(newState);
   };
-  const [document, setDocument] = useState({
+
+  const initProofState = {
     Bucket: "mtbroadcast",
     Key: "",
     Body: "",
-    ACL: "public",
+    // Acl: "public",
     Metadata: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
+      'Accept': 'application/json',
+      'Allow-Access-Control-Origin': '*',
+      'Content-Type': `image/*`
     }
-  })
+  }
+
+  const [proof, setProof] = useState(initProofState)
 
   // eslint-disable-next-line
   const navigate = useNavigate();
@@ -103,13 +112,24 @@ export default function Payment({
     setConfirmPay(true)
   }
 
-  useEffect(() => { LoadDataShipping(); });
+  const loadDataShippingCallback = useCallback(async () => {
+    const rst = await getUser()
+    setDataUser(rst.data.result)
+    // await LoadDataShipping()
+  }, [])
+
+  useEffect(() => {
+    loadDataShippingCallback();
+  }, [loadDataShippingCallback]);
 
   async function handleConfirmPay() {
     setLoading(true)
     // console.log(document)
     // let documentTst = await uploadImg(document.Body)
     // console.log(documentTst)
+    
+    await uploadImg(proof)
+
     navigate('/paymentok')
     
     setLoading(false)
@@ -136,15 +156,6 @@ export default function Payment({
       .catch((error) => console.log(error));
   }
 
-  //load data shipping
-  const dataShipping = {};
-  async function LoadDataShipping() {
-    await api
-      .get(`person`, dataShipping)
-      .then((response) => setDataUser(response.data.result))
-      .catch((error) => console.log(error));
-  }
-
   async function CloseModal() {
     setCartsVisibility(false);
     setModalProduct(false);
@@ -153,23 +164,29 @@ export default function Payment({
 
 
   const handleRemoveUpload = async () => {
-    setDocument({
-      Bucket: "mtbroadcast",
-      Key: "",
-      Body: "",
-      ACL: "public",
-      Metadata: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Allow-Access-Control-Origin': '*'
-      }
-    })
+    setProof(initProofState)
   };
 
   const handleChangeUpload = async (file) => {
-    setDocument({ ...document, Key: file.file.uid, Body: file.file })
 
-    console.log(document)
+    const name = file.file.name.split('.')
+    const ext = name[name.length - 1]
+
+    console.log('dataUser', dataUser)
+    const dt = {
+      ...proof,
+      Key: `${process.env.REACT_APP_DIGITAL_PATH}/${dataUser?.uuid}/${file.file.uid}`,
+      KeyName: `${process.env.REACT_APP_DIGITAL_PATH}/${dataUser?.uuid}/${file.file.uid}.${ext}`,
+      Body: file.file,
+      Metadata: {
+        'Accept': 'application/json',
+        'Allow-Access-Control-Origin': '*',
+        "Content-Type": file.file.type,
+      }
+    }
+    setProof(dt)
+
+    console.log('proof', dt)
   };
 
   function handleContract() {
@@ -194,8 +211,8 @@ export default function Payment({
           handleConfirmPay={handleConfirmPay}
           handleRemoveUpload={handleRemoveUpload}
           handleChangeUpload={handleChangeUpload}
-          document={document}
-          setDocument={setDocument}
+          proof={proof}
+          setProof={setProof}
           pixDetails={pixDetails}
         />
       ) : optionValue === "option2" && confirmPay === true ? (
@@ -237,9 +254,8 @@ export default function Payment({
                       </div>
                       <div className="col-lg-12 mt-3">
                         <div>OBS:</div>
-                        <span className="h3">
-                          Pagamentos via boleto levam até 3 dias utéis para ser
-                          compensados
+                        <span className="h5">
+                          Pagamentos via boleto levam até 3 dias utéis para ser compensados
                         </span>
                       </div>
 

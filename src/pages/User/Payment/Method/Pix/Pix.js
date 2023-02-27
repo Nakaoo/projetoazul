@@ -4,14 +4,16 @@ import pix from '../../../../../assets/icons/pix.png';
 import { useState } from 'react';
 import QrCode from "./QRcode"
 // eslint-disable-next-line
-import { useNavigate } from "react-router-dom";
-import { message, Upload } from 'antd';
-export default function Pix({ pixDetails, hdocument, setDocument, OrderPayment, setConfirmPay, CloseModal, handleConfirmPay, handleRemoveUpload, handleChangeUpload }) {
+import { Link, useNavigate } from "react-router-dom";
+import { message, Upload, Form } from 'antd';
+// eslint-disable-next-line
+// import { uploadObject } from '../../../../../utils/uploadImg';
+
+// eslint-disable-next-line
+export default function Pix({ pixDetails, proof, setProof, OrderPayment, setConfirmPay, CloseModal, handleConfirmPay, handleRemoveUpload, handleChangeUpload }) {
   const [modalQrCode, setModalQrCode] = useState(false);
   // eslint-disable-next-line
   const [keyQrCode, setKeyQrCode] = useState('5b851cea-2ee8-403f-899b-f090831107c2');
-  // eslint-disable-next-line
-  const [modalOrderConfirm, setModalOrderConfirm] = useState(false);
   // eslint-disable-next-line
   const navigate = useNavigate();
 
@@ -127,7 +129,8 @@ export default function Pix({ pixDetails, hdocument, setDocument, OrderPayment, 
         <button className="cancel-payment" onClick={() => CloseModal()}>
           Cancelar
         </button>
-        <button className="_buttonFinishPix" onClick={refreshPage}>
+        {/* <button className="_buttonFinishPix" onClick={refreshPage}> */}
+        <button className="_buttonFinishPix" onClick={handleConfirmPay}>
           Finalizar
         </button>
       </div>

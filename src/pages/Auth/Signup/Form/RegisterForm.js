@@ -59,6 +59,8 @@ const RegisterForm = ({ step, setStep, routeProps }) => {
         setId(id)
     }, [])
 
+    const digitsOnly = (value) => /^\d+$/.test(value)
+    
     const schemaFields = {
         personal: {
             cpf: Yup.string()
@@ -98,7 +100,11 @@ const RegisterForm = ({ step, setStep, routeProps }) => {
             politic: Yup.boolean().oneOf([true], "É necessário aceitar a politica de privacidade"),
         },
         security: {
-            password: Yup.string().required("Campo obrigatório"),
+            password: Yup.string().required("Campo obrigatório").test(
+                "passwordError",
+                "Insira apenas números",
+                (value) => value !== 1
+            ),
             confirmPassword: Yup.string()
                 .required("Campo obrigatório")
                 .oneOf([Yup.ref("password"), null], "As senhas devem ser iguais"),
