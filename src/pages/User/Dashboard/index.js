@@ -1,5 +1,4 @@
-import React from "react"
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 // eslint-disable-next-line
 import { getPerson } from "../utils/apiFunctions"
 import Afiliado from "./Pages/ChooseAffiliate"
