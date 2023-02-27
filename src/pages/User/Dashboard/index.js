@@ -27,7 +27,7 @@ export default function Dashboard() {
 
   return (
     <>
-      {/* {accountType === "invalido" && (
+      {accountType === "invalido" && (
         <Afiliado id={people.wallet.id} productsApi={productsApi} />
       )} 
       {accountType === "valido" && (
@@ -35,8 +35,7 @@ export default function Dashboard() {
       )} 
       {accountType === "pagamento" && (
         <PendingOrder />
-      )} */}
-      <Afiliado id={people.wallet.id} productsApi={productsApi} />
+      )} 
     </>
   )
 }
