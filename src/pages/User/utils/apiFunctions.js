@@ -85,3 +85,9 @@ export async function getWithdrawals(){
 
     return withdrawals;
 }
+
+export async function sendProof(order, data){
+    const comprovante = await api.put(`/payment/order/comprovante/${order}`, data)
+
+    return comprovante; 
+}

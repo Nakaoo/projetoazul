@@ -32,6 +32,7 @@ import AdminProduto from "../pages/Admin/Produto/AdminProduto";
 import ContainerAdmin from "../components/Layout/ContainerAdmin";
 import Withdraw from "../pages/User/Withdraw";
 import { Account } from "../pages/User/Account";
+import ProductList from "../pages/User/Product";
 
 const AppRoutes = () => {
 
@@ -83,6 +84,10 @@ const AppRoutes = () => {
                     <Route
                         path="/configurations"
                         element={<Account />}
+                    />
+                    <Route
+                        path="/products"
+                        element={<ProductList />}
                     />
                 </Route>
 

@@ -18,8 +18,10 @@ function ShoppingCard({
     onProductRemove,
     id,
     setModalProduct,
-    product
+    product,
+    firstBuy
 }) {
+
   
    // method payment *api bloqueando cors 
   /*const [methodPayment, setMethodPayment] = useState(); 
@@ -57,6 +59,7 @@ function ShoppingCard({
           <Product productsInCart={productsInCart}
                    onProductRemove={onProductRemove}
                    product={product}
+                   firstBuy
                   />
           <Payment 
           productsInCart={productsInCart} 
@@ -64,6 +67,7 @@ function ShoppingCard({
           setModalProduct={setModalProduct}
           id={id}
           product={product}
+          firstBuy={firstBuy}
           />
         </div>
        </div>

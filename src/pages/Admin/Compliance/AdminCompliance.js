@@ -490,11 +490,6 @@ export default function AdminCompliance() {
                                             
                                             </div>
                                         </div>
-
-                                        <div className="__admin_information_content_card_form_checkbox">
-                                            <input type="checkbox" name="confirmationInformation" />
-                                            <label htmlFor="confirmationInformation">Verificar se todos os dados estão corretos</label>
-                                        </div>
                                     </div>
                                 )}
                             </div>

@@ -82,8 +82,9 @@ export default function Pix({ pixDetails, proof, setProof, OrderPayment, setConf
               <Upload
                 style={{ color: "white" }}
                 onPreview={() => null}
-                onChange={(file) =>
-                  handleChangeUpload(file)
+                onChange={(file) => {
+                  console.log(file)
+                  handleChangeUpload(file)}
                 }
                 onRemove={() => {
                   handleRemoveUpload();

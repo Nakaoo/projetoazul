@@ -1,0 +1,50 @@
+.__option_energy_header_map_new {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, 0.2fr);
+    grid-template-rows: repeat(2, 1fr);
+    color: #fff;
+    grid-gap: 10px;
+    place-content: center;
+    padding: 1rem;
+}
+
+.__division-card{
+    background: #01001C;
+    height: 100%;
+}
+
+.__division-card h2{
+    color: #fff;
+}
+
+.__division-card h3{
+    font-size: 18px;
+}
+
+.product_new{
+    cursor: pointer;
+    text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+
+    .__cardsDivision {
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .__title {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .__option_energy_content{
+        padding: 1rem;
+    }
+
+    .__option_energy_header_map_new{
+        display: flex;
+        flex-direction: column;
+    }
+}

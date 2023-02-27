@@ -26,9 +26,8 @@ export const SidebarData = [
     {
         title: 'Produtos',
         subtitle: 'Controle de produtos',
+        path: '/products',
         icon: <AiFillShopping />,
-        cName: 'nav-text',
-        blocked: true
     },
     {
         title: 'Indicados',

@@ -11,7 +11,7 @@ import ProofModal from './ModalProof/Proof.js'
 
 // eslint-disable-next-line
 import { LoadingOutlined, QuestionCircleOutlined } from "@ant-design/icons";
-import { deleteOrder, generatePix, generateOrder, generateTed, getUser } from "../utils/apiFunctions";
+import { deleteOrder, generatePix, generateOrder, generateTed, getUser, sendProof } from "../utils/apiFunctions";
 // eslint-disable-next-line
 // import { uploadImg, uploadObject } from "../../../utils/uploadImg";
 import uploadImg from "../../../utils/aws";
@@ -22,7 +22,8 @@ export default function Payment({
   setCartsVisibility,
   setModalProduct,
   id,
-  product
+  product,
+  firstBuy
 }) {
   const [optionValue, setOptionValue] = useState("option1");
   const changeOption = (newState) => {
@@ -53,6 +54,7 @@ export default function Payment({
   const [tedDetails, setTedDetails] = useState();
   const [contractAccept, setContractAccept] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [fileEx, setFileEx] = useState("");
 
   const onOk = () => {
     setShowModal(false)
@@ -61,7 +63,7 @@ export default function Payment({
   // atual função para criar order
   async function CreateOrder() {
     setLoading(true)
-    const data = {
+    const dataFirstBuy = {
       wallet: id,
       product: [{
         id: product.uuid,
@@ -74,10 +76,30 @@ export default function Payment({
       ]
     }
 
+    const data = {
+      wallet: id,
+      product: [{
+        id: product.uuid,
+        qtt: 1
+      }
+      ]
+    }
+
+
     if (contractAccept === false) {
       message.error("É preciso aceitar os termos do contrato")
       setLoading(false)
       return;
+    }
+
+    if (!firstBuy) {
+      let order = await generateOrder(dataFirstBuy)
+      setOrderPayment(order.data.result.data)
+    }
+
+    if (firstBuy) {
+      let order = await generateOrder(data)
+      setOrderPayment(order.data.result.data)
     }
 
     let order = await generateOrder(data)
@@ -112,6 +134,22 @@ export default function Payment({
     setConfirmPay(true)
   }
 
+  // Enviar comprovante
+  async function CreateOrderProof() {
+
+    let dataProof = `${process.env.REACT_APP_DIGITAL_S3URL}/${proof.KeyName}`
+
+    console.log(dataProof)
+
+    const data = {
+      proof: `${process.env.REACT_APP_DIGITAL_S3URL}/${proof.KeyName}`
+    }
+
+    let pay = await sendProof(orderPayment.uuid, data)
+
+    console.log(pay)
+  }
+
   const loadDataShippingCallback = useCallback(async () => {
     const rst = await getUser()
     setDataUser(rst.data.result)
@@ -124,14 +162,12 @@ export default function Payment({
 
   async function handleConfirmPay() {
     setLoading(true)
-    // console.log(document)
-    // let documentTst = await uploadImg(document.Body)
-    // console.log(documentTst)
-    
+
     await uploadImg(proof)
+    await CreateOrderProof()
 
     navigate('/paymentok')
-    
+
     setLoading(false)
   }
   /// alterar dados
@@ -168,11 +204,14 @@ export default function Payment({
   };
 
   const handleChangeUpload = async (file) => {
+    const name = file.file.name.split('.')[0]
+    let ext = file.file.name.split('.')[1]
 
-    const name = file.file.name.split('.')
-    const ext = name[name.length - 1]
+    // Convert extension because files reading jpeg as jpg and bugging in link.
+    if (file.file.type === "image/jpg" || file.file.type === "image/jpeg") {
+      ext = "jpeg"
+    }
 
-    console.log('dataUser', dataUser)
     const dt = {
       ...proof,
       Key: `${process.env.REACT_APP_DIGITAL_PATH}/${dataUser?.uuid}/${file.file.uid}`,
