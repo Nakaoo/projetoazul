@@ -11,6 +11,15 @@
 
 }
 
+.__current_balance_amount{
+    font-size: 26px;
+    color: #43A6E9;
+}
+
+.__current_balance_description{
+    color: #FFFF;
+}
+
 .__cardCommunity {
     padding: 1rem;
     display: flex;
@@ -43,6 +52,7 @@
 .__limitValue {
     display: flex;
     align-items: baseline;
+    margin-top: -0.3rem;
 }
 
 .__limitValue h1 {
@@ -54,10 +64,10 @@
 
 .__limitValue h2 {
     font-family: 'Lato', sans-serif;
-    font-weight: 600;
+    font-weight: 700;
     font-size: .9rem;
     color: #FFFFFF;
-    padding-left: 6.2rem;
+    padding-left: 5.7rem;
 }
 
 ._upgrade{
@@ -184,6 +194,20 @@
     display: flex;
     align-items: flex-end;
     flex-direction: column;
+}
+
+.__income_balance_amount{
+    color: #2AFE7F;
+    font-weight: 500;    
+    font-size: 18px;
+}
+
+.__income_balance_description{
+    color: #FFFF;
+}
+
+.__income{
+    margin-top: 0.7rem;
 }
 
 @media screen and (max-width: 600px) {

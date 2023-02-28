@@ -42,7 +42,7 @@ export default function Card({ products, balanceUser, pessoa }) {
                     </div>
                     <div className="__limitValue">
                         <h1>valor minimo para saque:</h1>
-                        <h2>R$00.00/ R$1.000</h2>
+                        <h2>R$ 00.00 / R$ 1.000</h2>
                     </div>
 
                 </div>
@@ -51,21 +51,20 @@ export default function Card({ products, balanceUser, pessoa }) {
                 <div className="__divisionLimit">
                     <div className="__valueLimit">
                         <div className="__currentBalance">
-                            <h2>R$</h2>
-                            <h1>{pessoa?.wallet?.balance}</h1>
-                            <h3>Saldo Atual</h3>
+                            <span className="__current_balance_amount"><span className="__current_balance_currency">R$</span> {pessoa?.wallet?.balance}</span>
+                            <span className="__current_balance_description">Saldo Atual</span>
                         </div>
                         <div className="__income">
-                            <h1>{pessoa?.invertmentb ?? 0}</h1>
-                            <h2>Rendimentos</h2>
+                            <span className="__income_balance_amount"><span className="__income_balance_currency">R$</span> {pessoa?.invertmentb ?? 0}</span>
+                            <span className="__income_balance_description">Rendimentos</span>
                         </div>
-                        <div className="__cashBack">
-                            <h1>0</h1>
-                            <h2>Cashback</h2>
+                        <div className="__income">
+                            <span className="__income_balance_amount"><span className="__income_balance_currency">R$</span> 0.00</span>
+                            <span className="__income_balance_description">Cashback</span>
                         </div>
-                        <div className="__cashBack">
-                            <h1>{pessoa?.invertment ?? 0}</h1>
-                            <h2>Investimento</h2>
+                        <div className="__income">
+                            <span className="__income_balance_amount"><span className="__income_balance_currency">R$</span> {pessoa?.invertment ?? 0}</span>
+                            <span className="__income_balance_description">Investimento</span>
                         </div>
                     </div>
 

@@ -11,7 +11,7 @@
     margin-bottom: 1rem;
 }
 
-.__user_dashboard_card{
+.__user_dashboard_card {
     display: flex;
     flex-direction: column;
     border: 1px solid #184CC0;
@@ -98,7 +98,7 @@
 }
 
 .__limitBar {
-    padding-top: 1.5rem;
+    padding-top: 1.4rem;
 }
 
 .__summaryTitle {
@@ -122,7 +122,7 @@
     background-color: #FFFFFF;
 }
 
-._cardIndications{
+._cardIndications {
     display: flex;
 }
 
@@ -133,58 +133,58 @@
     font-size: .8rem;
 }
 
-._userIndication{
-  padding-top: .5rem;
+._userIndication {
+    padding-top: .5rem;
 }
 
-.__valueIndications{
+.__valueIndications {
     display: flex;
 }
 
-._cardIndication{
-width: 17rem;
-height: 7rem;
-background-color: #FFFFFF;
-border-radius: 5px;
-display: flex;
+._cardIndication {
+    width: 17rem;
+    height: 7rem;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    display: flex;
 }
 
-._cardIndication h1{
-    font-family: 'Poppins', sans-serif; 
-    font-size: .8rem; 
+._cardIndication h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: .8rem;
     font-weight: 600;
 }
 
-._percentage{
+._percentage {
     display: flex;
     align-items: center;
 }
 
-._percentage h2{
-    font-family: 'Inter', sans-serif; 
-    font-size: .7rem; 
+._percentage h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: .7rem;
     color: #535353;
     font-weight: 600;
 }
 
 
 
-._divisionCardIndication{
-   width: 74%;
-   padding-left: 1rem;
-   display: flex;
-   flex-direction: column;
-   justify-content: space-around;
+._divisionCardIndication {
+    width: 74%;
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
-._divisionCardIndication h1{
-   font-family: 'Poppins', sans-serif;
-   font-weight: 600;
-   font-size: 1rem;
-   margin: 2px;
+._divisionCardIndication h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 2px;
 }
 
-._iconPercentage{
+._iconPercentage {
     display: flex;
     padding: 3px, 2px, 3px, 2px;
     background: rgba(217, 83, 79, 0.24);
@@ -192,18 +192,18 @@ display: flex;
     height: 1.5rem;
 }
 
-._percentage h2{
-   padding-left: .8rem;
+._percentage h2 {
+    padding-left: .8rem;
 }
 
-._iconPercentage h1{
-    font-family: 'Montserrat', sans-serif; 
+._iconPercentage h1 {
+    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: .7rem;
     color: #D9534F;
 }
 
-._contentCardIndication{
+._contentCardIndication {
     width: 34rem;
     height: 16rem;
     display: flex;
@@ -222,7 +222,7 @@ display: flex;
     flex-direction: column;
 }
 
-._contentCard{
+._contentCard {
     display: flex;
     width: 36rem;
     justify-content: space-between;
@@ -280,7 +280,7 @@ display: flex;
     cursor: pointer !important;
 }
 
-.__buttonIndications:hover{
+.__buttonIndications:hover {
     background: #0eb1d2;
 }
 
@@ -389,7 +389,22 @@ display: flex;
     font-size: .8rem;
 }
 
+@media screen and (max-width: 450px) {
+    .__linkIndication {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 1rem;
+        align-items: center;
+    }
 
+    .__inputIndications{
+        max-width: 18rem;
+    }
+
+    .__buttonIndications{
+        margin-top: 0.6rem;
+    }
+}
 
 @media screen and (max-width: 600px) {
     .__card {
@@ -397,16 +412,16 @@ display: flex;
         display: flex;
         flex-direction: column;
     }
-    
-    .__rewards{
+
+    .__rewards {
         width: 20rem;
     }
 
-    .__incomeAmounts{
+    .__incomeAmounts {
         width: 20rem;
     }
-    
-    .__user_dashboard_card{
+
+    .__user_dashboard_card {
         width: 21rem;
     }
 
