@@ -54,7 +54,7 @@
 .__signup_header,
 .__signup_subtitle {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     padding-bottom: 1rem;
 }
 
@@ -324,17 +324,11 @@ span.anticon.anticon-exclamation-circle.__signup-input-error-icon {
 /* Responsividade */
 @media only screen and (min-width: 1400px) {
     .__signup_container{
-        position: default;
-        height: 100vh;
         background-repeat: round;
-    }
-    .__signup_content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -moz-transform: translateX(-50%) translateY(-50%);
-        -webkit-transform: translateX(-50%) translateY(-50%);
-        transform: translateX(-50%) translateY(-50%);
+        display: grid;
+        height: 100vh;
+        position: default;
+        place-content: center;
     }
 }
 

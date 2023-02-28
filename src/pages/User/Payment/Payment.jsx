@@ -17,6 +17,7 @@ import { deleteOrder, generatePix, generateOrder, generateTed, getUser, sendProo
 import uploadImg from "../../../utils/aws";
 import { useNavigate } from "react-router-dom";
 import { message } from "antd";
+
 export default function Payment({
   productsInCart,
   setCartsVisibility,
@@ -85,25 +86,21 @@ export default function Payment({
       ]
     }
 
-
     if (contractAccept === false) {
       message.error("É preciso aceitar os termos do contrato")
       setLoading(false)
       return;
     }
-
+    let order = ''
     if (!firstBuy) {
-      let order = await generateOrder(dataFirstBuy)
+      order = await generateOrder(dataFirstBuy)
       setOrderPayment(order.data.result.data)
     }
 
     if (firstBuy) {
-      let order = await generateOrder(data)
+      order = await generateOrder(data)
       setOrderPayment(order.data.result.data)
     }
-
-    let order = await generateOrder(data)
-    setOrderPayment(order.data.result.data)
 
     if (optionValue === 'option1') {
       try {
@@ -119,8 +116,6 @@ export default function Payment({
       try {
         setConfirmPay(true)
         let ted = await generateTed(order.data.result.data.uuid)
-        console.log('ted', ted)
-        console.log('order', order)
         setTedDetails(ted)
       } catch (err) {
         message.error("Houve algum erro na geração")
@@ -239,6 +234,7 @@ export default function Payment({
       setContractAccept(false)
     }
   }
+
   return (
     <>
       {optionValue === "option1" && confirmPay === true ? (
@@ -259,331 +255,308 @@ export default function Payment({
       ) : optionValue === "option3" && confirmPay === true ? (
         <ModalBoleto setConfirmPay={setConfirmPay} CloseModal={CloseModal} />
       ) : (
-        <div className="payment">
-          <div className="row text-light">
-            <div className="border border-primary rounded p-4">
-              <div className="col-lg-12">
-                <div className="card bg-transparent">
-                  <div className="card-head px-3">
-                    <h1>
-                      <strong>Pagamento</strong>
-                    </h1>
-                  </div>
-                  <div className="card-body">
-                    <div className="row">
-                      <div className="col-lg-12 mb-2">
-                        <h2>
-                          <b>Informações de Pagamento</b>
-                        </h2>
+        <div className="__content-payment-">
+          <div className="cart-payment">
+            <div className="cart-payment-container">
+              <div className="title-payment">
+                <h1>
+                  <b>Pagamento</b>
+                </h1>
+                <h2>
+                  <b>Informações de Pagamento</b>
+                </h2>
+              </div>
+              <div className="model-payment">
+                <h1>Forma de Pagamento</h1>
+
+                <select
+                  className="__selectOption-payment"
+                  onChange={(event) => changeOption(event.target.value)}
+                  value={optionValue}
+                >
+                  <option value="">Selecione uma Opção</option>
+                  <option value="option1">PIX</option>
+                  <option value="option2">TED</option>
+                  <option value="option3">BOLETO</option>
+                </select>
+              </div>
+              <div className="description-payment">
+                OBS:
+                <h1>
+                  Pagamentos via boleto levam até 3 dias utéis para ser
+                  compensados
+                </h1>
+              </div>
+              <div className="input-shipping-name">
+                <div className="input-data-name">
+                  <h1>Nome</h1>
+                  {editShippingName === true ? (
+                    <>
+                      <div className="_form-update">
+                        <input
+                          className="__form-input-name"
+                          onChange={(e) => {
+                            setChangedName(true);
+                            setUpdateShipping({
+                              ...updateShipping,
+                              shipping_first_name: e.target.value,
+                            });
+                            UpdateShipping();
+                          }}
+                        />
+                        {changedName ? (
+                          <>
+                            <img alt="" src={check} />
+                          </>
+                        ) : null}
                       </div>
-                      <div className="col-lg-6"><h2 className="h4">Forma de Pagamento</h2></div>
-                      <div className="col-lg-6">
-                        <div className="form-group position-relative">
-                          <select
-                            className="form-control"
-                            onChange={(event) => changeOption(event.target.value)}
-                            value={optionValue}
-                          >
-                            <option value="">Selecione uma Opção</option>
-                            <option value="option1">PIX</option>
-                            <option value="option2">TED</option>
-                            <option value="option3">BOLETO</option>
-                          </select>
-                        </div>
+                    </>
+                  ) : (
+                    <form className="__form-data-name">
+                      <div>{dataUser?.shipping_first_name}</div>
+                      <div>
+                        <img alt="" src={check} />{" "}
+                        <img alt=""
+                          src={edit}
+                          onClick={() => setEditShippingName(true)}
+                        />
                       </div>
-                      <div className="col-lg-12 mt-3">
-                        <div>OBS:</div>
-                        <span className="h5">
-                          Pagamentos via boleto levam até 3 dias utéis para ser compensados
-                        </span>
+                    </form>
+                  )}
+                </div>
+                <div className="input-data-name">
+                  <h1>Sobrenome</h1>
+                  {editShippingName === true ? (
+                    <>
+                      <div className="_form-update">
+                        <input
+                          className="__form-payment-input"
+                          onChange={(e) => {
+                            setChangedLastName(true);
+                            setUpdateShipping({
+                              ...updateShipping,
+                              shipping_last_name: e.target.value,
+                            });
+                            UpdateShipping();
+                          }}
+                        />
+
+                        {changedLastName ? (
+                          <>
+                            <img alt="" src={check} />
+                          </>
+                        ) : null}
                       </div>
-
-                      <div className="col-lg-6 mt-3">
-                        <div className="form-group position-relative">
-                          <label htmlFor=""><h2>Nome</h2></label>
-                          {editShippingName === true ? (
-                            <>
-                              <input
-                                className="form-control"
-                                onChange={(e) => {
-                                  setChangedName(true);
-                                  setUpdateShipping({
-                                    ...updateShipping,
-                                    shipping_first_name: e.target.value,
-                                  });
-                                  UpdateShipping();
-                                }}
-                              />
-                              {changedName ? (
-                                <>
-                                  <img alt="" src={check} />
-                                </>
-                              ) : null}
-                            </>
-                          ) : (
-                            <>
-                              <div className="form-control">{dataUser?.shipping_first_name}</div>
-                              <div className="formCheck">
-                                <img alt="" src={check} />{" "}
-                                <img alt=""
-                                  src={edit}
-                                  onClick={() => setEditShippingName(true)}
-                                />
-                              </div>
-                            </>
-                          )}
-                        </div>
+                    </>
+                  ) : (
+                    <form className="__form-data-name">
+                      <div>{dataUser?.last_name}</div>
+                      <div className="__validationShipping">
+                        <img alt="" src={check} />{" "}
+                        <img alt=""
+                          src={edit}
+                          onClick={() => setEditShippingName(true)}
+                        />
                       </div>
+                    </form>
+                  )}
+                </div>
+              </div>
+              <div className="input-payment-data">
+                <h1>CPF</h1>
+                {editShippingCpf === true ? (
+                  <>
+                    <div className="_form-update">
+                      <input
+                        className="__form-payment-input"
+                        onChange={(e) => {
+                          setChangedCpf(true);
+                          setUpdateShipping({
+                            ...updateShipping,
+                            doc_fiscal: e.target.value,
+                          });
+                          UpdateShipping();
+                        }}
+                      />
 
-                      <div className="col-lg-6 mt-3">
-                        <div className="form-group position-relative">
-                          <label htmlFor=""><h2>Sobrenome</h2></label>
-                          {editShippingName === true ? (
-                            <>
-                              <input
-                                className="form-control"
-                                onChange={(e) => {
-                                  setChangedLastName(true);
-                                  setUpdateShipping({
-                                    ...updateShipping,
-                                    shipping_last_name: e.target.value,
-                                  });
-                                  UpdateShipping();
-                                }}
-                              />
-
-                              {changedLastName ? (
-                                <>
-                                  <img alt="" src={check} />
-                                </>
-                              ) : null}
-                            </>
-                          ) : (
-                            <>
-                              <div className="form-control">{dataUser?.last_name}</div>
-                              <div className="formCheck">
-                                <img alt="" src={check} />{" "}
-                                <img alt=""
-                                  src={edit}
-                                  onClick={() => setEditShippingName(true)}
-                                />
-                              </div>
-                            </>
-                          )}
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6 mt-3">
-                        <div className="form-group position-relative">
-                          <label htmlFor=""><h2>CPF</h2></label>
-                          {editShippingCpf === true ? (
-                            <>
-                              <input
-                                className="form-control"
-                                onChange={(e) => {
-                                  setChangedCpf(true);
-                                  setUpdateShipping({
-                                    ...updateShipping,
-                                    doc_fiscal: e.target.value,
-                                  });
-                                  UpdateShipping();
-                                }}
-                              />
-
-                              {changedCpf ? (
-                                <>
-                                  <img alt="" src={check} />
-                                </>
-                              ) : null}
-                            </>
-                          ) : (
-                            <>
-                              <div className="form-control">{dataUser?.doc_fiscal}</div>
-                              <div className="formCheck">
-                                <img alt="" src={check} />{" "}
-                                <img alt=""
-                                  src={edit}
-                                  onClick={() => setEditShippingCpf(true)}
-                                />
-                              </div>
-                            </>
-                          )}
-                        </div>
-                      </div>
-
-                      <div className="col-lg-12 mt-3">
-                        <div className="form-group position-relative">
-                          <label htmlFor=""><h2>Logradouro</h2></label>
-                          {editShippingAddress === true ? (
-                            <>
-                              <input
-                                className="__form-input-address"
-                                onChange={(e) => {
-                                  setChangedLogradouro(true);
-                                  setUpdateShipping({
-                                    ...updateShipping,
-                                    shipping_address_1: e.target.value,
-                                  });
-                                  UpdateShipping();
-                                }}
-                              />
-
-                              {changedLogradouro ? (
-                                <>
-                                  <img alt="" src={check} />
-                                </>
-                              ) : null}
-                            </>
-                          ) : (
-                            <>
-                              <div className="form-control">{dataUser?.address_1}</div>
-                              <div className="formCheck">
-                                <img alt="" src={check} />{" "}
-                                <img alt=""
-                                  src={edit}
-                                  onClick={() => setEditShippingAddress(true)}
-                                />
-                              </div>
-                            </>
-                          )}
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6 mt-3">
-                        <div className="form-group position-relative">
-                          <label htmlFor=""><h2>Numero</h2></label>
-                          {editShippingAddress === true ? (
-                            <>
-                              <input
-                                className="form-control"
-                                onChange={(e) => {
-                                  setChangedNumber(true);
-                                  setUpdateShipping({
-                                    ...updateShipping,
-                                    shipping_number: e.target.value,
-                                  });
-                                  UpdateShipping();
-                                }}
-                              />
-
-                              {changedNumber ? (
-                                <>
-                                  <img alt="" src={check} />
-                                </>
-                              ) : null}
-                            </>
-                          ) : (
-                            <>
-                              <div className="form-control">{dataUser?.number}</div>
-                              <div className="formCheck">
-                                <img alt="" src={check} />{" "}
-                                <img alt=""
-                                  src={edit}
-                                  onClick={() => setEditShippingAddress(true)}
-                                />
-                              </div>
-                            </>
-                          )}
-                        </div>
-                      </div>
-                      <div className="col-lg-6 mt-3">
-                        <div className="form-group position-relative">
-                          <label htmlFor=""><h2>Cidade</h2></label>
-                          {editShippingAddress === true ? (
-                            <>
-                              <input
-                                className="form-control"
-                                onChange={(e) => {
-                                  setChangedCity(true);
-                                  setUpdateShipping({
-                                    ...updateShipping,
-                                    shipping_city: e.target.value,
-                                  });
-                                  UpdateShipping();
-                                }}
-                              />
-
-                              {changedCity ? (
-                                <>
-                                  <img alt="" src={check} />
-                                </>
-                              ) : null}
-                            </>
-                          ) : (
-                            <>
-                              <div className="form-control">{dataUser?.city}</div>
-                              <div className="formCheck">
-                                <img alt="" src={check} />{" "}
-                                <img alt=""
-                                  src={edit}
-                                  onClick={() => setEditShippingAddress(true)}
-                                />
-                              </div>
-                            </>
-                          )}
-                        </div>
-                      </div>
-                      <div className="col-lg-6 mt-3">
-                        <div className="form-check">
-                          <input className="form-check-input" type="checkbox" onClick={() => handleContract()} />
-                          <label className="form-check-label" htmlFor="check_contract">Li e aceito os termos de contrato da compra. <br />
-                            <a className="text-decoration-none" rel="noreferrer" onClick={() => setShowModal(true)}>
-                              Visualizar termos
-                            </a>
-                          </label>
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6 mt-3 button-group">
-                        {confirmPay === false && productsInCart.length > 0 ? (
-                          <div className="row">
-                            <div className="col">
-                              <button className="btn btn-outline-dark text-light" onClick={() => CloseModal()}>
-                                Cancelar
-                              </button>
-                            </div>
-                            <div className="col-7">
-                              <button
-                                className="btn btn-primary"
-                                onClick={() => CreateOrder()}
-                              >
-                                {loading ? <LoadingOutlined /> : "Ir para o pagamento"}
-                              </button>
-                            </div>
-                          </div>
-                        ) : (
-                          <></>
-                        )}
-
-                        {optionValue === "" && confirmPay === true ? (
-                          <div className="row">
-                            <div className="col">
-                              <button className="btn btn-outline-dark text-light" onClick={() => CloseModal()}>
-                                Cancelar
-                              </button>
-                            </div>
-                            <div className="col-7">
-                              <button
-                                className="next-page-payment"
-                                onClick={() => CreateOrder()}
-                              >
-                                {loading ? <LoadingOutlined /> : "Ir para o pagamento"}
-                              </button>
-                            </div>
-                          </div>
-                        ) : (
-                          <></>
-                        )}
-
-                      </div>
-
+                      {changedCpf ? (
+                        <>
+                          <img alt="" src={check} />
+                        </>
+                      ) : null}
                     </div>
+                  </>
+                ) : (
+                  <form className="__form-payment">
+                    <div>{dataUser?.doc_fiscal}</div>
+                    <div>
+                      <img alt="" src={check} />{" "}
+                      <img alt=""
+                        src={edit}
+                        onClick={() => setEditShippingCpf(true)}
+                      />
+                    </div>
+                  </form>
+                )}
+              </div>
+              <div className="input-shipping-address">
+                <div className="input-address-data">
+                  <h1>Logradouro</h1>
+                  {editShippingAddress === true ? (
+                    <>
+                      <div className="_form-update">
+                        <input
+                          className="__form-input-address"
+                          onChange={(e) => {
+                            setChangedLogradouro(true);
+                            setUpdateShipping({
+                              ...updateShipping,
+                              shipping_address_1: e.target.value,
+                            });
+                            UpdateShipping();
+                          }}
+                        />
+
+                        {changedLogradouro ? (
+                          <>
+                            <img alt="" src={check} />
+                          </>
+                        ) : null}
+                      </div>
+                    </>
+                  ) : (
+                    <form className="__form-address_logradouro">
+                      <div>{dataUser?.address_1}</div>
+                      <div className="__validationShipping">
+                        <img alt="" src={check} />{" "}
+                        <img alt=""
+                          src={edit}
+                          onClick={() => setEditShippingAddress(true)}
+                        />
+                      </div>
+                    </form>
+                  )}
+                </div>
+                <div className="_input-address-data">
+                  <div className="input-address-data">
+                    <h1>Numero</h1>
+                    {editShippingAddress === true ? (
+                      <>
+                        <div className="_form-update">
+                          <input
+                            className="__form-input-address"
+                            onChange={(e) => {
+                              setChangedNumber(true);
+                              setUpdateShipping({
+                                ...updateShipping,
+                                shipping_number: e.target.value,
+                              });
+                              UpdateShipping();
+                            }}
+                          />
+
+                          {changedNumber ? (
+                            <>
+                              <img alt="" src={check} />
+                            </>
+                          ) : null}
+                        </div>
+                      </>
+                    ) : (
+                      <form className="__form-address_number">
+                        <div>{dataUser?.number}</div>
+                        <div className="__validationShipping">
+                          <img alt="" src={check} />{" "}
+                          <img alt=""
+                            src={edit}
+                            onClick={() => setEditShippingAddress(true)}
+                          />
+                        </div>
+                      </form>
+                    )}
+                  </div>
+                  <div className="input-address-data">
+                    <h1>Cidade</h1>
+                    {editShippingAddress === true ? (
+                      <>
+                        <div className="_form-update">
+                          <input
+                            className="__form-input-address"
+                            onChange={(e) => {
+                              setChangedCity(true);
+                              setUpdateShipping({
+                                ...updateShipping,
+                                shipping_city: e.target.value,
+                              });
+                              UpdateShipping();
+                            }}
+                          />
+
+                          {changedCity ? (
+                            <>
+                              <img alt="" src={check} />
+                            </>
+                          ) : null}
+                        </div>
+                      </>
+                    ) : (
+                      <form className="__form-address">
+                        <div>{dataUser?.city}</div>
+                        <div className="_formCheck">
+                          <img alt="" src={check} />{" "}
+                          <img alt=""
+                            src={edit}
+                            onClick={() => setEditShippingAddress(true)}
+                          />
+                        </div>
+                      </form>
+                    )}
                   </div>
                 </div>
-                <ProofModal showModal={showModal} onOk={onOk} product={product} />
+              </div>
+              <div className="__input_contract">
+                <input className="form-check-input" type="checkbox" onClick={() => handleContract()} />
+                <label htmlFor="check_contract">Li e aceito os termos de contrato da compra. <br />
+                  <a onClick={() => setShowModal(true)} className="contract_a">
+                    Visualizar termos
+                  </a>
+                </label>
               </div>
             </div>
           </div>
+          <div className="__button-next-page-payment">
+            {confirmPay === false && productsInCart.length > 0 ? (
+              <div className="_button-next-page-payment">
+                <button className="cancel-payment" onClick={() => CloseModal()}>
+                  Cancelar
+                </button>
+                <button
+                  className="next-page-payment"
+                  onClick={() => CreateOrder()}
+                >
+                  {loading ? <LoadingOutlined /> : "Ir para o pagamento"}
+                </button>
+              </div>
+            ) : (
+              <></>
+            )}
+            {optionValue === "" && confirmPay === true ? (
+              <div className="_button-next-page-payment">
+                <button className="cancel-payment" onClick={() => CloseModal()}>
+                  Cancelar
+                </button>
+                <button
+                  className="next-page-payment"
+                  onClick={() => CreateOrder()}
+                >
+                  {loading ? <LoadingOutlined /> : "Ir para o pagamento"}
+                </button>
+              </div>
+            ) : (
+              <></>
+            )}
+          </div>
+          <ProofModal showModal={showModal} onOk={onOk} product={product} />
         </div>
       )}
     </>

@@ -35,6 +35,8 @@ export default function AdminFinance() {
     const [search, setSearch] = useState()
     const [actualValue, setActualValue] = useState('');
     const [openedMenu, setOpenedMenu] = useState(false);
+    let [totalValue, setTotalValue] = useState(0);
+
     const location = useLocation();
     // eslint-disable-next-line
     let sum;
@@ -55,6 +57,10 @@ export default function AdminFinance() {
             let approvedOrders = await getFinancial(3)
             setComplianceOrders(orders.data.result)
             setApprovedOrders(approvedOrders.data.result)
+            orders?.data.result.map((val, index) => {
+                totalValue += parseFloat(val.amount)
+                setTotalValue(totalValue)
+            })
         }
         else if (actualPage === 'approved') {
             let orders = await getFinancial(3)
@@ -151,24 +157,6 @@ export default function AdminFinance() {
             setFilterds([])
     }
 
-    // function handleSearchCpf(e) {
-
-    //     setSearch(e)
-    //     let array = []
-
-    //     complianceOrders.filter((item) => {
-    //         if (item?.person?.doc_fiscal.toLowerCase().includes(search.toLowerCase())) {
-    //             array.push(item)
-    //         }
-    //     });
-
-
-    //     setFilterds(array)
-
-    //     if (!search)
-    //         setFilterds([])
-    // }
-
     function handleSearchOrder(e) {
 
         setSearch(e)
@@ -253,7 +241,7 @@ export default function AdminFinance() {
 
                     <div className="__admin_dashboard_card">
                         <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Valor pendente</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-                        <span className="__admin_dashboard_card_value"></span>
+                        <span className="__admin_dashboard_card_value">R$ {totalValue.toFixed(2)}</span>
                         <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
                     </div>
                 </div><div className="__admin_compliance_table_">

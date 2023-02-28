@@ -1,15 +1,90 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './AdminProduto.css'
-
 import { useState, useEffect, useCallback } from "react"
 import { geProduto } from "../utils/apiFunctions"
+import { Button, Space, Table } from "antd";
 
 export default _ => {
     const [produto, setProduto] = useState([])
+
     const getAllProduct = async () => {
         let prod = await geProduto()
-        setProduto(prod.data.result)
+        let newObj = prod?.data?.result.map((e) => (
+            {
+                ...e,
+                price: "R$ " + e.price,
+                cdi: (e.cdi * 100).toFixed(2) + "%",
+                commission: e.commission + "%",
+                is_active: e.is_active === 1 ? "Ativo" : "Desativado"
+            }
+        ))
+
+        setProduto(newObj)
     }
+
+    const [filteredInfo, setFilteredInfo] = useState({});
+    const [sortedInfo, setSortedInfo] = useState({});
+
+    const handleChange = (pagination, filters, sorter) => {
+        setFilteredInfo(filters);
+        setSortedInfo(sorter);
+    };
+
+
+    const clearFilters = () => {
+        setFilteredInfo({});
+    };
+
+    const clearAll = () => {
+        setFilteredInfo({});
+        setSortedInfo({});
+    };
+
+    const columns = [
+        {
+            title: 'Preço',
+            dataIndex: 'price',
+            key: 'price',
+            sorter: (a, b) => a.price - b.price,
+            sortOrder: sortedInfo.columnKey === 'price' ? sortedInfo.order : null,
+            ellipsis: true,
+        },
+        {
+            title: 'CDI',
+            dataIndex: 'cdi',
+            key: 'cdi',
+            value: (val) => { return `${val.cdi * 1000}%` },
+            sorter: (a, b) => a.cdi - b.cdi,
+            sortOrder: sortedInfo.columnKey === 'cdi' ? sortedInfo.order : null,
+            ellipsis: true,
+        },
+        {
+            title: 'Comissão',
+            dataIndex: 'commission',
+            key: 'commission',
+            value: (a) => a.commission * 100,
+            sorter: (a, b) => a.commission - b.commission,
+            sortOrder: sortedInfo.columnKey === 'cdi' ? sortedInfo.order : null,
+            ellipsis: true,
+        },
+        {
+            title: 'Situacao',
+            dataIndex: 'is_active',
+            key: 'is_active',
+            sorter: (a, b) => a.is_active - b.is_active,
+            sortOrder: sortedInfo.columnKey === 'is_active' ? sortedInfo.order : null,
+            ellipsis: true,
+        },
+        {
+            title: 'Nome',
+            dataIndex: 'name',
+            key: 'name',
+            filteredValue: filteredInfo.name || null,
+            onFilter: (value, record) => record.name.includes(value),
+            sorter: (a, b) => a.name.length - b.name.length,
+            sortOrder: sortedInfo.columnKey === 'name' ? sortedInfo.order : null,
+            ellipsis: true,
+        },
+    ];
 
     // console.log('prod', produto);
     const callBackEffect = useCallback(async () => {
@@ -21,50 +96,14 @@ export default _ => {
     }, [callBackEffect])
 
     return (
-        <div className="container">
-            <div className='border border-primary p-3 mt-3 rounded'>
-                <div className="row text-light">
-                    <div className="col-lg-12">
-                        <h2>Lista de produtos</h2>
-                    </div>
-                    <div className="col-lg-12">
-                        <table className="table  text-light">
-                            <thead>
-                                <th>Id</th>
-                                <th>Nome</th>
-                                <th className='text-end'>Preço</th>
-                                <th className='text-end'>CDI</th>
-                                <th className='text-end'>Comissão</th>
-                                <th className='text-center'>Categoria</th>
-                                <th className='text-center'>Ativo</th>
-                                <th className='text-end'>Ação</th>
-                            </thead>
-                            <tbody>
-                                {produto.map(prod => {
-                                    const vl = prod.cdi * 100;
-                                    const cm = prod.commission * 100;
-                                    console.log('cm', cm);
-                                    return (
-                                        <tr key={prod.uuid}>
-                                            <td>{prod.uuid.substring(1, 8)}</td>
-                                            <td>{prod.name}</td>
-                                            <td className='text-end'>{prod.price}</td>
-                                            <td className='text-end'>{vl.toFixed(2)}%</td>
-                                            <td className='text-end'>{cm.toFixed(2)}%</td>
-                                            <td className='text-center'>{prod.category?.name}</td>
-                                            <td className='text-center'>{prod.is_active === 1 ? 'Sim' : 'Não'}</td>
-                                            <td className='text-end'>
-                                                <button className='btn btn-outline-info mx-1'>Editar</button>
-                                                <button className='btn btn-outline-danger mx-1'>Apagar</button>
-                                            </td>
-                                        </tr>
-                                    )
-                                })}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <>
+            <Table 
+            columns={columns} 
+            dataSource={produto} 
+            onChange={handleChange} 
+            rowClassName="admin_prod_row"
+            className="admin_prod_col"
+            />
+        </>
     )
 }

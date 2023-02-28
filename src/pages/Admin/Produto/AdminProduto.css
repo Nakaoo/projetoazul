@@ -2,3 +2,26 @@
 .table tbody td {
     padding: 0.3rem 0.5rem;
 }
+
+.ant-spin-container{
+    padding: 1rem;
+}
+
+.ant-table{
+    color: #fff !important;
+    background: transparent !important;
+    border: 1px solid #184CC0 !important;
+}
+
+:where(.css-dev-only-do-not-override-1km3mtt).ant-table-wrapper td.ant-table-column-sort{
+    background: none;
+}
+
+:where(.css-dev-only-do-not-override-1km3mtt).ant-table-wrapper .ant-table-tbody >tr.ant-table-row:hover>td, :where(.css-dev-only-do-not-override-1km3mtt).ant-table-wrapper .ant-table-tbody >tr >td.ant-table-cell-row-hover {
+    background: #184cc0;
+}
+
+:where(.css-dev-only-do-not-override-1km3mtt).ant-table-wrapper .ant-table-thead >tr>th, :where(.css-dev-only-do-not-override-1km3mtt).ant-table-wrapper .ant-table-thead >tr>td{
+    color: #fff;
+    background: transparent;
+}

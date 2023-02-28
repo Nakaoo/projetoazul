@@ -12,6 +12,11 @@ export async function getOrders(status){
     return orders;
 }
 
+export async function getOrderDetails(id){
+    const order = await api.get(`financial/order/${id}`)
+    return order
+}
+
 export async function approveOrder(orderUuid){
     let orderItem = orderUuid;
 
@@ -20,6 +25,13 @@ export async function approveOrder(orderUuid){
     return order
 }
 
+export async function refusalOrder(orderUuid){
+    let orderItem = orderUuid;
+
+    const order = await api.put(`/financial/reject/${orderItem}`)
+
+    return order
+}
 export async function getFinancial(status){
     const orders = await api.get(`/financial/withdrawal?status_id=${status}`)
 

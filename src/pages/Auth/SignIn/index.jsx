@@ -68,7 +68,6 @@ const SignIn = () => {
             emailLocal = removeMaskCpf(email)
             let login = await getCpfOrEmail(emailLocal)
 
-            console.log(login)
             if (login.status === 204) {
                 setVisibleError(true)
                 let err = "Usuário não encontrado em nosso banco de dados"
@@ -85,7 +84,7 @@ const SignIn = () => {
                 return;
             }
         } catch (err) {
-            message.error(err)
+            console.log(err)
         }
         setLoading(false)
         generatePassword(emailLocal)
@@ -103,19 +102,19 @@ const SignIn = () => {
     }
 
     async function loginSubmit() {
+        let emailLocal = removeMaskCpf(email)
+
         const data = {
-            email: email,
+            email: emailLocal,
             password: senha,
             keys: teclado
         }
-
 
         try {
             setLoading(true)
 
             let login = await loginAccount(data)
 
-            console.log(login)
 
             if (login.data.error === true) {
                 console.log("error")
@@ -173,8 +172,10 @@ const SignIn = () => {
     }
 
     async function onSubmit() {
+        let emailLocal = removeMaskCpf(email)
+
         const data = {
-            email: email,
+            email: emailLocal,
             password: senha,
             keys: teclado,
             token: token
@@ -183,13 +184,8 @@ const SignIn = () => {
         try {
             setLoading(true)
 
-            console.log(1)
-
-            console.log(data)
-
             let res = await validateToken(data)
 
-            console.log(res)
             if (res.status === 422) {
                 setVisibleError(true)
                 let erro = "Token invalido"
@@ -210,13 +206,7 @@ const SignIn = () => {
 
             localStorage.setItem('tk-user', JSON.stringify(user))
 
-            console.log(4)
-
             let person = await getPerson()
-
-            console.log(5)
-
-            console.log(person.data.result.nivel)
 
             setLoading(false)
             setErrMessage('')
@@ -235,8 +225,6 @@ const SignIn = () => {
             if (person.data.result.nivel === 10) {
                 localStorage.setItem('role', 'financial')
             }
-
-            console.log(6)
 
         } catch (err) {
             setVisibleError(true)

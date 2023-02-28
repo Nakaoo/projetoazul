@@ -8,7 +8,7 @@ import Refused from "./Table/Refused"
 import { useLocation } from "react-router-dom"
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 import { BsCheck2Circle } from 'react-icons/bs'
-import { approveOrder, getOrders } from "../utils/apiFunctions"
+import { approveOrder, getOrderDetails, getOrders, refusalOrder } from "../utils/apiFunctions"
 import { LoadingOutlined } from "@ant-design/icons";
 import { message } from "antd"
 import { useOutletContext } from "react-router-dom"
@@ -30,6 +30,8 @@ export default function AdminCompliance() {
     const [actualValue, setActualValue] = useState('');
     const [openedMenu, setOpenedMenu] = useState(false);
     const [complianceStatus, setComplianceStatus] = useState();
+    const [loadingOrder, setLoadingOrder] = useState(false);
+    const [approvedPage, setApprovedPage] = useState(true);
     const [people] = useOutletContext()
     const location = useLocation();
 
@@ -47,6 +49,7 @@ export default function AdminCompliance() {
         setLoading(true)
         if (actualPage === 'pending') {
             let orders = await getOrders(3)
+            console.log(orders.data.result)
             setComplianceOrders(orders.data.result)
         }
         else if (actualPage === 'approved') {
@@ -189,12 +192,29 @@ export default function AdminCompliance() {
         setSearch()
     }
 
-    function handleAcceptButton() {
-        setLoading(true)
-        let order = approveOrder(actualValue?.uuid)
+    async function handleRefusalButton() {
+        let order = await refusalOrder(actualValue?.uuid)
 
-        if (order?.data.error !== false) {
+        if (order?.status === 200) {
             setStep(2)
+            setApprovedPage(false)
+            message.success("Pedido rejeitado com sucesso")
+        } else {
+            message.error("Houve um erro no pagamento.")
+        }
+
+        setLoading(false)
+    }
+
+    async function handleAcceptButton() {
+        setLoading(true)
+        let order = await approveOrder(actualValue?.uuid)
+
+        console.log(order)
+
+        if (order?.status === 200) {
+            setStep(2)
+            setApprovedPage(true)
             message.success("Pedido aprovado com sucesso")
         } else {
             message.error("Houve um erro no pagamento.")
@@ -224,10 +244,26 @@ export default function AdminCompliance() {
     //     }
     // }
 
-    function handleNextPerson(person) {
-        setComplianceOrder(person)
-        setActualValue(person)
-        setStep(1)
+    async function handleNextPerson(person) {
+        setLoadingOrder(true)
+
+        try {
+            document.body.style.cursor = 'wait'
+
+            let order = await getOrderDetails(person.uuid)
+
+            setComplianceOrder(order.data.result[0])
+            setActualValue(order.data.result[0])
+            setStep(1)
+            setLoadingOrder(false)
+
+            document.body.style.cursor = 'auto'
+        } catch (err) {
+            message.error("Erro ao carregar. Tente novamente mais tarde")
+            console.log(err)
+            setLoadingOrder(false)
+            document.body.style.cursor = 'auto'
+        }
     }
 
     function handleActualValue(val) {
@@ -346,26 +382,22 @@ export default function AdminCompliance() {
                                     <div className="__adin_information_content_card_container">
                                         <div className="__admin_information_content_card_form">
                                             <div className="__admin_information_content_card_form_content">
-                                                <span>Nome Completo: {actualValue.person.first_name} {actualValue.person.last_name}</span>
+                                                <span>Nome Completo: {actualValue?.person?.first_name} {actualValue?.person?.last_name}</span>
                                             </div>
                                             <div className="__admin_information_content_card_form_content">
-                                                <span>Data de Nascimento: {actualValue.person.birhtdate}</span>
+                                                <span>Data de Nascimento: {actualValue.person?.birhtdate}</span>
                                             </div>
                                             <div className="__admin_information_content_card_form_content">
                                                 <span>Estado Civil: </span>
                                             </div>
                                             <div className="__admin_information_content_card_form_content">
-                                                <span>CPF: {actualValue.person.doc_fiscal}</span>
+                                                <span>CPF: {actualValue?.person?.doc_fiscal}</span>
                                             </div>
                                             <div className="__admin_information_content_card_form_content">
-                                                <span>Sexo: {actualValue.person.sex}</span>
+                                                <span>Sexo: {actualValue?.person?.sex}</span>
                                             </div>
                                         </div>
 
-                                        <div className="__admin_information_content_card_form_checkbox">
-                                            <input type="checkbox" name="confirmationInformation" />
-                                            <label htmlFor="confirmationInformation">Verificar se todos os dados estão corretos</label>
-                                        </div>
                                     </div>
                                 )}
 
@@ -384,17 +416,13 @@ export default function AdminCompliance() {
                                     <div className="__adin_information_content_card_container">
                                         <div className="__admin_information_content_card_form">
                                             <div className="__admin_information_content_card_form_content">
-                                                <span>Telefone: {actualValue.person.celular1}</span>
+                                                <span>Telefone: {actualValue?.person?.celular1}</span>
                                             </div>
                                             <div className="__admin_information_content_card_form_content">
-                                                <span>E-mail:  {actualValue.person.email}</span>
+                                                <span>E-mail:  {actualValue?.person?.email}</span>
                                             </div>
                                         </div>
 
-                                        <div className="__admin_information_content_card_form_checkbox">
-                                            <input type="checkbox" name="confirmationInformation" />
-                                            <label htmlFor="confirmationInformation">Verificar se todos os dados estão corretos</label>
-                                        </div>
                                     </div>
                                 )}
                             </div>
@@ -412,25 +440,25 @@ export default function AdminCompliance() {
                                     <div className="__adin_information_content_card_container">
                                         <div className="__admin_information_content_card_form">
                                             <div className="__admin_information_content_card_form_content">
-                                                <span>CEP: {actualValue.person.postcode}</span>
+                                                <span>CEP: {actualValue?.person?.postcode}</span>
                                             </div>
                                             <div className="__admin_information_content_card_form_content">
-                                                <span>Estado: {actualValue.person.state}</span>
+                                                <span>Estado: {actualValue?.person?.state}</span>
                                             </div>
                                             <div className="__admin_information_content_card_form_content">
-                                                <span>Cidade: {actualValue.person.city} </span>
+                                                <span>Cidade: {actualValue?.person?.city} </span>
                                             </div>
                                             <div className="__admin_information_content_card_form_content">
-                                                <span>Bairro: {actualValue.person.neighborhood}</span>
+                                                <span>Bairro: {actualValue?.person?.neighborhood}</span>
                                             </div>
                                             <div className="__admin_information_content_card_form_content">
-                                                <span>Rua: {actualValue.person.address_1}</span>
+                                                <span>Rua: {actualValue?.person?.address_1}</span>
                                             </div>
                                             <div className="__admin_information_content_card_form_content">
-                                                <span>Número: {actualValue.person.number}</span>
+                                                <span>Número: {actualValue?.person?.number}</span>
                                             </div>
                                             <div className="__admin_information_content_card_form_content">
-                                                <span>Complemento: {actualValue.person.complement}</span>
+                                                <span>Complemento: {actualValue?.person?.complement}</span>
                                             </div>
                                         </div>
 
@@ -456,13 +484,13 @@ export default function AdminCompliance() {
                                     <div className="__adin_information_content_card_container">
                                         <div className="__admin_information_content_card_form">
                                             <div className="__admin_information_content_card_form_content">
-                                                <span>Valor: {actualValue.amount}</span>
+                                                <span>Valor: {actualValue?.amount}</span>
                                             </div>
                                             <div className="__admin_information_content_card_form_content">
                                                 <span>Método da operação: Pix </span>
                                             </div>
                                             <div className="__admin_information_content_card_form_content">
-                                                <span>Data da operação: {actualValue.created_at} </span>
+                                                <span>Data da operação: {actualValue?.created_at} </span>
                                             </div>
                                         </div>
 
@@ -485,9 +513,11 @@ export default function AdminCompliance() {
 
                                 {documentDetails && (
                                     <div className="__adin_information_content_card_container">
-                                        <div className="__admin_information_content_card_form">
-                                            <div className="__admin_information_content_card_form_img">
-                                            
+                                        <div className="__admin_information_content_card_form_img">
+                                            <a href={actualValue?.payment?.proof} target="_blank"><img src={actualValue?.payment?.proof} target="__blank" /></a>
+                                            <div className="__admin_information_content_card_form_buttons">
+                                                <button className="__admin_information_content_card_form_buttons_refusal">Reprovar</button>
+                                                <button className="__admin_information_content_card_form_buttons_approve">Aprovar</button>
                                             </div>
                                         </div>
                                     </div>
@@ -502,7 +532,7 @@ export default function AdminCompliance() {
                             </div>
                             <div className="__admin_information_content_buttons_end">
                                 {page === 'pending' && (
-                                    <>{loading ? <LoadingOutlined /> : <><button className="__admin_information_content_button_refuse">Reprovar</button><button className="__admin_information_content_button_approve" onClick={() => handleAcceptButton(actualValue.uuid)}>Aprovar</button></>}</>
+                                    <>{loading ? <LoadingOutlined /> : <><button className="__admin_information_content_button_refuse" onClick={() => handleRefusalButton(actualValue?.uuid)}>Reprovar</button><button className="__admin_information_content_button_approve" onClick={() => handleAcceptButton(actualValue.uuid)}>Aprovar</button></>}</>
                                 )}
                                 {page === 'approved' && (
                                     <>{loading ? <LoadingOutlined /> : <button className="__admin_information_content_button_edit">Editar</button>}</>
@@ -538,20 +568,36 @@ export default function AdminCompliance() {
                 </div>
             )}
             {step === 2 && (
-                <div className="__admin_dashboard_compliance_status">
-                    <div className="__admin_dashboard_compliance_status_content">
-                        <div className="__admin_dashboard_compliance_status_content_header">
-                            <BsCheck2Circle className="__adm_dashboard_compliance_status_icon" size={62} />
-                            <span className="__admin_dashboard_compliance_status_content_header_title">Compliance Aprovado</span>
+                <>
+                    {approvedPage ? (
+                        <div className="__admin_dashboard_compliance_status">
+                            <div className="__admin_dashboard_compliance_status_content">
+                                <div className="__admin_dashboard_compliance_status_content_header">
+                                    <BsCheck2Circle className="__adm_dashboard_compliance_status_icon" size={62} />
+                                    <span className="__admin_dashboard_compliance_status_content_header_title">Compliance Aprovado</span>
+                                </div>
+                                <div className="__admin_dashboard_compliance_">
+                                    <button onClick={() => handleBackButton()}>Finalizar</button>
+                                </div>
+                            </div>
                         </div>
-                        {/* <div className="__admin_dashboard_compliance_status_content_body">
+                    ) : (
+                        <div className="__admin_dashboard_compliance_status">
+                            <div className="__admin_dashboard_compliance_status_content">
+                                <div className="__admin_dashboard_compliance_status_content_header">
+                                    <BsCheck2Circle className="__adm_dashboard_compliance_status_icon" size={62} />
+                                    <span className="__admin_dashboard_compliance_status_content_header_title">Compliance Rejeitado</span>
+                                </div>
+                                {/* <div className="__admin_dashboard_compliance_status_content_body">
                             <p>O compliance foi aprovado e enviado para o financeiro para que eles possam efetuar o pagamento</p>
                         </div> */}
-                        <div className="__admin_dashboard_compliance_">
-                            <button onClick={() => handleBackButton()}>Finalizar</button>
+                                <div className="__admin_dashboard_compliance_">
+                                    <button onClick={() => handleBackButton()}>Finalizar</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    )}
+                </>
             )}
         </div>
     )

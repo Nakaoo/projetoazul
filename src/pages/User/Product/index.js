@@ -130,7 +130,7 @@ export default function ProductList() {
                         <div className={`product_new`} onClick={() => addProductToCart(val)} key={index + 1} >
                             <h5>{val.title}</h5>
                             <img src={val.image} title={`${val.title} - R$ ${val.price} - CDI ${(val.cdi * 100).toFixed(2)}%`}></img>
-                            <h5>${val.price}</h5>
+                            <h5>R${val.price}</h5>
                         </div>
                     )
                 })}

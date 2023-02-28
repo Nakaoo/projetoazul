@@ -17,7 +17,7 @@
 .__contentMain {
     display: flex;
     flex-direction: column;
-    height: 35rem;
+    height: 100vh;
     color: #FFFFFF;
 }
 
@@ -198,4 +198,15 @@
 
 @media screen and (min-width: 1400px) {
 
+}
+
+
+@media screen and (max-width: 600px) {
+    ._randomKey{
+        width: 14rem;
+    }
+
+    ._infoPayment_pix{
+        flex-direction: column;
+    }
 }

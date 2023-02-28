@@ -33,7 +33,7 @@ function ContainerUser({ children }) {
             if (order.data.result.length > 0 && order.data.result[0].status_id === 3) {
                 setMenu(true)
                 setAccountType('pagamento')
-            } else if (user.data.result.user.person.is_active < 1) {
+            } else if (user.data.result.user.person.is_active !== 1) {
                 setMenu(true)
                 setAccountType('invalido')
             } else {

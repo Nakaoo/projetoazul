@@ -22,6 +22,7 @@ export default function Dashboard() {
   }
 
   useEffect(() => {
+    console.log(accountType)
     getAllProducts();
   }, [])
 

@@ -7,17 +7,17 @@ import DatePicker, { registerLocale } from "react-datepicker";
 import { cpfToFront } from '../../../../utils/removeMask';
 import SkeletonTable from '../../../../components/Skeleton/SkeletonTable';
 
-export default function Pending({ 
+export default function Pending({
     search,
-    filterds, 
-    handleSearchName, 
+    filterds,
+    handleSearchName,
     handleSearchCpf,
     handleSearchOrder,
     clearFilter,
     loading,
     complianceOrders,
-    handleNextPerson, 
-    actualValue, 
+    handleNextPerson,
+    actualValue,
     handleActualValue,
     openedMenu }) {
 
@@ -29,7 +29,7 @@ export default function Pending({
                         <tr>
                             <h4 className='__admin_compliance_title'>Solicitações de saques pendente</h4>
                         </tr>
-                        
+
                         <tr className='__admin_compliance_table_thead_tr'>
                             <th>Nome</th>
                             <th>Cpf</th>
@@ -41,28 +41,33 @@ export default function Pending({
                         </tr>
                     </thead>
                     <tbody className='__admin_compliance_table_body'>
-                        {loading && (
-                            <SkeletonTable />
-                        )}
+
                         {filterds.length <= 0 && !search ?
                             (
                                 complianceOrders?.map((val, index) => {
                                     return (
-                                        <tr key={index + 1}>
-                                            <td>{val.person.first_name} {val.person.last_name}</td>
-                                            <td>{cpfToFront(val.person.doc_fiscal)}</td>
-                                            <td></td>
-                                            <td>Compra</td>
-                                            <td>R$ {val.amount}</td>
-                                            <td>{val.uuid}</td>
-                                            <td><button className='__admin_compliance_table_body_button' onClick={() => handleActualValue(val)}>OPÇÃO <MdKeyboardArrowDown /></button>
-                                                {openedMenu === true && actualValue?.uuid === val?.uuid && (
-                                                    <ul className='__admin_compliance_table_dropdown'>
-                                                        <li onClick={() => handleNextPerson(val)}>Analisar</li>
-                                                    </ul>
-                                                )}
-                                            </td>
-                                        </tr>
+                                        <>
+                                            {loading ? (
+                                                <SkeletonTable />
+                                            ) : (
+                                                <tr key={index + 1}>
+                                                    <td>{val.person.first_name} {val.person.last_name}</td>
+                                                    <td>{cpfToFront(val.person.doc_fiscal)}</td>
+                                                    <td></td>
+                                                    <td>Saque</td>
+                                                    <td>R$ {val.amount}</td>
+                                                    <td>{val.uuid}</td>
+                                                    <td><button className='__admin_compliance_table_body_button' onClick={() => handleActualValue(val)}>OPÇÃO <MdKeyboardArrowDown /></button>
+                                                        {openedMenu === true && actualValue?.uuid === val?.uuid && (
+                                                            <ul className='__admin_compliance_table_dropdown'>
+                                                                <li onClick={() => handleNextPerson(val)}>Analisar</li>
+                                                            </ul>
+                                                        )}
+                                                    </td>
+                                                </tr>
+                                            )
+                                            }
+                                        </>
                                     )
                                 })
                             ) :
@@ -140,6 +145,6 @@ export default function Pending({
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

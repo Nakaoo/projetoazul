@@ -43,7 +43,7 @@ export default function Approved({
                         {loading && (
                             <SkeletonTable />
                         )}
-                        {filterds.length <= 0 && !search ?
+                        {filterds?.length <= 0 && !search ?
                             (
                                 complianceOrders?.map((val, index) => {
                                     return (
