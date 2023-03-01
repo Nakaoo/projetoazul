@@ -2,6 +2,7 @@ import './AdminProduto.css'
 import { useState, useEffect, useCallback } from "react"
 import { geProduto } from "../utils/apiFunctions"
 import { Button, Space, Table } from "antd";
+import { formatCurrencyFront } from '../../../utils/removeMask';
 
 export default _ => {
     const [produto, setProduto] = useState([])
@@ -11,7 +12,7 @@ export default _ => {
         let newObj = prod?.data?.result.map((e) => (
             {
                 ...e,
-                price: "R$ " + e.price,
+                price: formatCurrencyFront(e.price),
                 cdi: (e.cdi * 100).toFixed(2) + "%",
                 commission: e.commission + "%",
                 is_active: e.is_active === 1 ? "Ativo" : "Desativado"
