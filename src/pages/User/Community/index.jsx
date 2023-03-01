@@ -14,7 +14,6 @@ import graphic2 from '../../../assets/img/graphic-2.svg'
 import viewMore from '../../../assets/img/viewMore.svg'
 import { useOutletContext } from "react-router-dom"
 import { getMultiNivel } from "../utils/apiFunctions"
-import Card from "../../../components/Cards/Card"
 
 const comunidade = function Community() {
   // eslint-disable-next-line
@@ -60,62 +59,86 @@ const comunidade = function Community() {
   // console.log('network', network.data);
 
   return (
-    <div className="user">
-      <div className="community">
-        <div className="content">
-          <aside className="left">
-            <div className="cards">
-              <Card icon={<span className="icon"><BsFillPersonFill /></span>} title="Total de indicações" body={people?.indication?.total ? people?.indication?.total : 0} />
-              <Card icon={<span className="icon"><BsFillPersonFill /></span>} title="Indicações aprovadas" body={people?.active?.active ? people?.active?.active : 0} />
-              <Card icon={<span className="icon"><BsFillPersonFill /></span>} title="Indicações pendentes"
-                body={people?.active?.active && people?.indication?.total ? people?.indication?.total - people?.active?.active : 0} />
+    <div className="__user_community_content">
+      <aside className="__user_community_left">
+        <div className="__admin_dashboard_cards_grid">
+          <div className="__admin_dashboard_card_grid">
+            <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Total de indicações</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
+            <span className="__admin_dashboard_card_value">{people?.indication?.total ? people?.indication?.total : 0}</span>
+            <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
+          </div>
 
-              <Card icon={<span className="icon"><BsFillPersonFill /></span>} title="Novas mensagens" body="0" />
-              <Card icon={<span className="icon"><BsFillPersonFill /></span>} title="Todas mensagens" body="0" />
-              <Card icon={<span className="icon"><BsFillPersonFill /></span>} title="Bônus e cashback" body={`R$ ${people?.lockwallet?.balance}`} />
-            </div>
+          <div className="__admin_dashboard_card_grid">
+            <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Indicações aprovadas</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
+            <span className="__admin_dashboard_card_value">{people?.active?.active ?? 0}</span>
+            <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
+          </div>
 
-            <div className="cards">
-              <Card
-                icon={<span className='icon_settings'>Filtrar <RiListSettingsFill /></span>}
-                // title="Indicados"
-                style={{ width: '100%' }}
-                body={<table className="table">
-                  <thead className="">
-                    <tr className="">
-                      <th>Nome</th>
-                      <th className='text-center'>Email</th>
-                      <th className='text-center'>Telefone</th>
-                      <th className='text-center'>Cashback</th>
-                      <th className='text-center'>Situação</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {network}
-                  </tbody>
-                </table>}
-              />
+          <div className="__admin_dashboard_card_grid">
+            <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Indicações pendentes</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
+            <span className="__admin_dashboard_card_value">{people?.indication?.total > 0 ? people?.indication?.total - people?.active?.active : 0}</span>
+            <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
+          </div>
+
+
+          <div className="__admin_dashboard_card_grid">
+            <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Novas mensagens</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
+            <span className="__admin_dashboard_card_value">0</span>
+            <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
+          </div>
+
+          <div className="__admin_dashboard_card_grid">
+            <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Todas mensagens</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
+            <span className="__admin_dashboard_card_value">0</span>
+            <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
+          </div>
+
+          <div className="__admin_dashboard_card_grid">
+            <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Bônus e cashback</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
+            <span className="__admin_dashboard_card_value">{`R$ ${people?.lockwallet?.balance}`}</span>
+            <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
+          </div>
+        </div>
+
+        {/* {network ?? 'aff'} */}
+        <div className="__community_table">
+          <div className='__table_scroll'><div className="__admin_dashboard_community_header_title">
+            <h4 className='__admin_dashboard_community_header_title'>Indicados</h4>
+            <span className='__admin_dashboard_community_header_settings'>Filtrar <RiListSettingsFill /></span>
+          </div><table className="__admin_dashboard_community_table">
+              <thead className="__admin_dashboard_community_header">
+                <tr className="__admin_dashboard_community_header_tr">
+                  <th>Nome</th>
+                  <th className='text-center'>Email</th>
+                  <th className='text-center'>Telefone</th>
+                  <th className='text-center'>Cashback</th>
+                  <th className='text-center'>Situação</th>
+                </tr>
+              </thead>
+              <tbody>
+                {network}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </aside>
+      <aside className="__user_community_right">
+        <div className="__cardRewards2">
+          <div className="__rewards2">
+            <div className="__rewardTitle">
+              Recompensas
+              <img src={viewMore} alt="" />
             </div>
-          </aside>
-          <aside className="right">
-            <div className="__cardRewards2">
-              <div className="__rewards2">
-                <div className="__rewardTitle">
-                  Recompensas
-                  <img src={viewMore} alt="" />
-                </div>
-                <h2></h2>
-                <h3>Ultimos 30 dias</h3>
-                <img src={graphic1} alt="" />
-              </div>
-              <div className="__incomeAmounts">
-                Histórico de Recompensas
-                <img src={graphic2} alt="" />
-              </div>
-            </div>
-          </aside>
-        </div >
-      </div >
+            <h2></h2>
+            <h3>Ultimos 30 dias</h3>
+            <img src={graphic1} alt="" />
+          </div>
+          <div className="__incomeAmounts">
+            Histórico de Recompensas
+            <img src={graphic2} alt="" />
+          </div>
+        </div>
+      </aside>
     </div >
   )
 }

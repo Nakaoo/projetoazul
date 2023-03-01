@@ -269,7 +269,7 @@
 @media screen and (max-width: 600px) {
     .cart-payment {
         width: auto;
-        height: auto;
+        max-height: max-content;
     }
 
     .input-shipping-name, ._input-address-data{

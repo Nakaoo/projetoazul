@@ -5,6 +5,7 @@ import './Card.css'
 import { useState, useEffect } from "react"
 import { globalImg } from "../../../../utils/globalImg"
 import { useNavigate } from "react-router-dom"
+import { formatCurrencyFront } from "../../../../utils/removeMask"
 
 // eslint-disable-next-line
 export default function Card({ products, balanceUser, pessoa }) {
@@ -51,11 +52,11 @@ export default function Card({ products, balanceUser, pessoa }) {
                 <div className="__divisionLimit">
                     <div className="__valueLimit">
                         <div className="__currentBalance">
-                            <span className="__current_balance_amount"><span className="__current_balance_currency">R$</span> {pessoa?.wallet?.balance}</span>
+                            <span className="__current_balance_amount">{formatCurrencyFront(pessoa?.wallet?.balance)}</span>
                             <span className="__current_balance_description">Saldo Atual</span>
                         </div>
                         <div className="__income">
-                            <span className="__income_balance_amount"><span className="__income_balance_currency">R$</span> {pessoa?.invertmentb ?? 0}</span>
+                            <span className="__income_balance_amount">{formatCurrencyFront(pessoa?.invertmentb) ?? 0}</span>
                             <span className="__income_balance_description">Rendimentos</span>
                         </div>
                         <div className="__income">
@@ -63,7 +64,7 @@ export default function Card({ products, balanceUser, pessoa }) {
                             <span className="__income_balance_description">Cashback</span>
                         </div>
                         <div className="__income">
-                            <span className="__income_balance_amount"><span className="__income_balance_currency">R$</span> {pessoa?.invertment ?? 0}</span>
+                            <span className="__income_balance_amount">{formatCurrencyFront(pessoa?.invertment) ?? 0}</span>
                             <span className="__income_balance_description">Investimento</span>
                         </div>
                     </div>

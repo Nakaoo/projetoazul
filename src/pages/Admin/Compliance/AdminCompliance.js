@@ -290,19 +290,19 @@ export default function AdminCompliance() {
                 <><div className="__admin_dashboard_cards">
                     <div className="__admin_dashboard_card">
                         <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Total de indicações</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-                        <span className="__admin_dashboard_card_value">{people.active[0].count + people.active[1].count}</span>
+                        <span className="__admin_dashboard_card_value">{people?.active[0]?.count + people?.active[1].count}</span>
                         <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
                     </div>
 
                     <div className="__admin_dashboard_card">
                         <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Indicações aprovadas</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-                        <span className="__admin_dashboard_card_value">{people.active[0].count}</span>
+                        <span className="__admin_dashboard_card_value">{people?.active[0]?.count}</span>
                         <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
                     </div>
 
                     <div className="__admin_dashboard_card">
                         <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Indicações pendentes</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-                        <span className="__admin_dashboard_card_value">{people.active[1].count}</span>
+                        <span className="__admin_dashboard_card_value">{people?.active[1]?.count}</span>
                         <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
                     </div>
 
@@ -514,7 +514,7 @@ export default function AdminCompliance() {
                                 {documentDetails && (
                                     <div className="__adin_information_content_card_container">
                                         <div className="__admin_information_content_card_form_img">
-                                            <a href={actualValue?.payment?.proof} target="_blank"><img src={actualValue?.payment?.proof} target="__blank" /></a>
+                                            <a href={actualValue?.payment?.proof} target="_blank"><embed src={actualValue?.payment?.proof} target="__blank" /></a>
                                             <div className="__admin_information_content_card_form_buttons">
                                                 <button className="__admin_information_content_card_form_buttons_refusal">Reprovar</button>
                                                 <button className="__admin_information_content_card_form_buttons_approve">Aprovar</button>

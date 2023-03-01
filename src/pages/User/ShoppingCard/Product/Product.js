@@ -1,7 +1,7 @@
 
 // eslint-disable-next-line
 import { RiDeleteBin6Line } from "react-icons/ri";
-
+import { formatCurrencyFront } from "../../../../utils/removeMask";
 // eslint-disable-next-line
 export default function ({productsInCart, onProductRemove}) {
 let taxValue = 0;
@@ -55,7 +55,7 @@ let taxValue = 0;
               <div className="product-info">
                 <span className="product-price">
                   <h1>{product.name}</h1>
-                  <h2>R${product.price}</h2>
+                  <h2>{formatCurrencyFront(product.price)}</h2>
                 </span>
                 <span className="product-subtotal">
                   <h1>CDI</h1>
@@ -71,7 +71,7 @@ let taxValue = 0;
                 </span>
                 <span className="total-products-car">
                   <h1>Subtotal</h1>
-                  <h2>R$ {(parseFloat(product.price, 2) + taxValue).toFixed(2)}</h2>
+                  <h2>{formatCurrencyFront((parseFloat(product.price, 2) + taxValue).toFixed(2))}</h2>
                 </span>
                 {/* <span className="remove-item-car">
                   <h1>Remover Produto</h1>

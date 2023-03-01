@@ -10,7 +10,7 @@ import { BsPersonSquare } from "react-icons/bs"
 import { AiOutlineFall } from "react-icons/ai"
 import { useNavigate } from 'react-router-dom';
 import { BsFillPersonFill } from 'react-icons/bs'
-
+import { formatCurrencyFront } from '../../../../utils/removeMask'
 // eslint-disable-next-line
 export default function Resumo({ pessoa, multinivel, multiniveltotal, sumMultiNivel }) {
   const navigate = useNavigate();
@@ -41,7 +41,7 @@ export default function Resumo({ pessoa, multinivel, multiniveltotal, sumMultiNi
 
           <div className="__user_dashboard_card">
             <div className="__user_dashboard_card_addon"><p className="__user_dashboard_card_addon_title">Saldo a liberar</p><span className="__user_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-            <span className="__user_dashboard_card_value">{`R$ ${pessoa?.lockwallet?.balance}`}</span>
+            <span className="__user_dashboard_card_value">{formatCurrencyFront(pessoa?.lockwallet?.balance)}</span>
             <div className="__user_dashboard_last_addon"><span className="__user_dashboard_last_addon_percentage"></span><span className="__user_dashboard_card_explanation">que o mês passado</span></div>
           </div>
 

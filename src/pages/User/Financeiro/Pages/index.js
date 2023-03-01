@@ -19,10 +19,13 @@ import { getWithdrawals } from "../../utils/apiFunctions";
 import { useNavigate } from "react-router-dom";
 // eslint-disable-next-line
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
+import { formatCurrencyFront } from "../../../../utils/removeMask";
+import { useOutletContext } from "react-router-dom";
 import Solicitacoes from "./Solicitacoes";
 
 // eslint-disable-next-line
 export default function Financeiro({ menu }) {
+  const [accountType, people] = useOutletContext();
   const [products, setProducts] = useState();
   const [balanceUser, setBalanceUser] = useState();
   const [viewbalance, setViewbalance] = useState(true);
@@ -108,6 +111,7 @@ export default function Financeiro({ menu }) {
     setStep(1)
   }
   useEffect(() => {
+    console.log(people)
     LoadProducts();
     LoadBalance();
     getWithdrawalUser();
@@ -122,17 +126,16 @@ export default function Financeiro({ menu }) {
               <div className="__titleMyBalance">Meu Saldo</div>
               <div className="__balance">
                 <div className="__communityStart">
-                  <h1>Indicados: </h1>
-                  <h1>Rendimento: </h1>
+                  <h1>Indicados: {formatCurrencyFront(people?.lockwallet?.balance + people?.wallet?.balance)}</h1>
+                  <h1>Rendimento: R$ 0</h1>
                 </div>
                 <div className="__currentBalanceFinancial">
                   <h1>Saldo Atual</h1>
                   <div className="balanceFinancial">
                     <div className="__valueFinancial">
-                      <h2>R$</h2>
                       {viewbalance === true ? (
                         <>
-                          <h2>{balanceUser}</h2>
+                          <h2>{formatCurrencyFront(balanceUser)}</h2>
                           <div className="icon-eye">
                             <BsEyeFill
                               size={25}
@@ -157,14 +160,13 @@ export default function Financeiro({ menu }) {
                   <h1>Rendimentos Indicados</h1>
                   <div className="__valueFinancial">
                     <h2>R$</h2>
-                    <h2>{totalcdi}</h2>
+                    <h2></h2>
                   </div>
                 </div>
                 <div className="__cashBackFinancial">
                   <h1>Cashback</h1>
                   <div className="__valueFinancial">
-                    <h2>R$</h2>
-                    <h2>{totalcash}</h2>
+                    <h2>R$ {people?.lockwallet?.balance}</h2>
                   </div>
                 </div>
                 <div className="__buttonFinancial">
@@ -194,10 +196,10 @@ export default function Financeiro({ menu }) {
                 <div className="__totalInvested">
                   <h1>Total Investido</h1>
                   <div className="__valueInvested">
-                    <h1>0</h1>
+                    <h1>{formatCurrencyFront(people?.invertment) ?? 0}</h1>
                     <h3>0</h3>
                   </div>
-                  <h2>Valor disponivel para Saque: {balanceUser}</h2>
+                  <h2>Valor disponivel para Saque: {formatCurrencyFront(balanceUser)}</h2>
                 </div>
 
                 <div className="__yieldExpectation">
@@ -207,8 +209,7 @@ export default function Financeiro({ menu }) {
                     <h1>CDI</h1>
                   </div>
                   <div className="__valueInvested">
-                    <h1>0</h1>
-                    <h2>0</h2>
+                    <h1>{formatCurrencyFront()}</h1>
                   </div>
                   <div className="__titleValueInvested">
                     <h1>

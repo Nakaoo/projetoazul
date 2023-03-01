@@ -86,7 +86,16 @@
 
 }
 
+@media screen and (max-width: 300px){
+    .__admin_dashboard_cards_grid{
+        display: flex;
+        flex-direction: column;
+    }
 
+    .__community_table, .__rewards2{
+        width: 15rem;
+    }
+}
 @media screen and (max-width: 600px) {
     .__admin_dashboard_cards {
         display: flex;

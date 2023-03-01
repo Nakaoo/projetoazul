@@ -16,10 +16,7 @@ export const removeMaskCpf = val => {
       return val;
     }
   }
-
-
 }
-
 
 export const dateToBack = val => {
   return String(val).split('/').reverse().join('-')
@@ -34,7 +31,7 @@ export const dateToFront = val => {
 
 export const formatCurrencyFront = value => {
   if (!value) return value
-  const patrimony = (value / 100).toLocaleString("pt-BR", {
+  const patrimony = (value * 1).toLocaleString("pt-BR", {
     style: "currency",
     currency: "BRL",
   })

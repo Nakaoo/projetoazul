@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react"
 import Card from "../../../components/Cards/Card"
 import { getUserOrder } from '../utils/apiFunctions'
 import { Button, Space, Table } from "antd";
+import { formatCurrencyFront, formatCurrency } from '../../../utils/removeMask'
 
 export default (props) => {
     const [search, setSearch] = useState('')
@@ -15,8 +16,14 @@ export default (props) => {
             {
                 ...e,
                 product: e?.items[0].product.name,
-                price: e?.items[0].product.price,
-                status_id: e.status_id
+                price: formatCurrencyFront(e?.items[0].product.price),
+                status_id: e.status_id === 1 ? "Pendete" 
+                        : e.status_id === 2 ? "Cancelado"
+                        : e.status_id === 3 ? "Pagamento pendente"
+                        : e.status_id === 4 ? "Pago"
+                        : e.status_id === 5 ? "Em rota"
+                        : e.status_id === 6 ? "Concluído"
+                        : "Status desconhecido"
             }
         ))
 
