@@ -242,7 +242,7 @@ export default function AdminFinance() {
 
                     <div className="__admin_dashboard_card">
                         <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Valor pendente</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-                        <span className="__admin_dashboard_card_value">R$ {formatCurrencyFront(totalValue)}</span>
+                        <span className="__admin_dashboard_card_value">{formatCurrencyFront(totalValue)}</span>
                         <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
                     </div>
                 </div><div className="__admin_compliance_table_">

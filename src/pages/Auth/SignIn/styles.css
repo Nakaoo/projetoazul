@@ -324,8 +324,8 @@
 }
 
 .__signin_content_logo_img {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
 }
 
 .__signin_cadastro:disabled {
@@ -426,6 +426,10 @@ span.__signin_content_subtitle_explanation {
         text-align: center;
     }
 
+    .__signin_content_logo_img{
+        height: 80px;
+        width: 80px;
+    }
     .__signin_padding {
         padding-left: 10px;
         padding-right: 30px !important;

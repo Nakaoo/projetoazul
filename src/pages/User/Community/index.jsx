@@ -14,6 +14,7 @@ import graphic2 from '../../../assets/img/graphic-2.svg'
 import viewMore from '../../../assets/img/viewMore.svg'
 import { useOutletContext } from "react-router-dom"
 import { getMultiNivel } from "../utils/apiFunctions"
+import { formatCurrencyFront } from '../../../utils/removeMask'
 
 const comunidade = function Community() {
   // eslint-disable-next-line
@@ -95,7 +96,7 @@ const comunidade = function Community() {
 
           <div className="__admin_dashboard_card_grid">
             <div className="__admin_dashboard_card_addon"><p className="__admin_dashboard_card_addon_title">Bônus e cashback</p><span className="__admin_dashboard_card_addon_people"><BsFillPersonFill /></span></div>
-            <span className="__admin_dashboard_card_value">{`R$ ${people?.lockwallet?.balance}`}</span>
+            <span className="__admin_dashboard_card_value">{formatCurrencyFront(people?.lockwallet?.balance)}</span>
             <div className="__admin_dashboard_last_addon"><span className="__admin_dashboard_last_addon_percentage"></span><span className="__admin_dashboard_card_explanation">que o mês passado</span></div>
           </div>
         </div>

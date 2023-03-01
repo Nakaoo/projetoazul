@@ -110,6 +110,12 @@ export default function Financeiro({ menu }) {
     setActualValue(person)
     setStep(1)
   }
+
+  function sumTotalIndicate(){
+    people.map((val, index) => {
+      console.log(val)
+    })
+  }
   useEffect(() => {
     console.log(people)
     LoadProducts();
@@ -125,10 +131,6 @@ export default function Financeiro({ menu }) {
             <div className="_myBalance">
               <div className="__titleMyBalance">Meu Saldo</div>
               <div className="__balance">
-                <div className="__communityStart">
-                  <h1>Indicados: {formatCurrencyFront(people?.lockwallet?.balance + people?.wallet?.balance)}</h1>
-                  <h1>Rendimento: R$ 0</h1>
-                </div>
                 <div className="__currentBalanceFinancial">
                   <h1>Saldo Atual</h1>
                   <div className="balanceFinancial">
@@ -160,13 +162,19 @@ export default function Financeiro({ menu }) {
                   <h1>Rendimentos Indicados</h1>
                   <div className="__valueFinancial">
                     <h2>R$</h2>
-                    <h2></h2>
+                    <h2>0,00</h2>
                   </div>
                 </div>
                 <div className="__cashBackFinancial">
                   <h1>Cashback</h1>
                   <div className="__valueFinancial">
-                    <h2>R$ {people?.lockwallet?.balance}</h2>
+                    <h2>{formatCurrencyFront(people?.lockwallet?.balance)}</h2>
+                  </div>
+                </div>
+                <div className="__cashBackFinancial">
+                  <h1>Indicados</h1>
+                  <div className="__valueFinancial">
+                    <h2>{formatCurrencyFront(people?.lockwallet?.balance)}</h2>
                   </div>
                 </div>
                 <div className="__buttonFinancial">

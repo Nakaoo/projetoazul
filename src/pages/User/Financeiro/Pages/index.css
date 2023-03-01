@@ -51,7 +51,7 @@
 
 .__currentBalanceFinancial h1 {
     font-family: 'Poppins', sans-serif;
-    font-size: .8rem;
+    font-size: 1rem;
     color: #AEAEAE;
     font-weight: 500;
 }
@@ -64,7 +64,7 @@
 
 .__communityIncome h1 {
     font-family: 'Poppins', sans-serif;
-    font-size: .8rem;
+    font-size: 1rem;
     color: #AEAEAE;
     font-weight: 500;
 }
@@ -72,13 +72,13 @@
 .__communityIncome h2 {
     font-family: 'Lato', sans-serif;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #439A86;
 }
 
 .__cashBackFinancial h1 {
     font-family: 'Poppins', sans-serif;
-    font-size: .8rem;
+    font-size: 1rem;
     color: #AEAEAE;
     font-weight: 500;
 }
@@ -87,7 +87,7 @@
 .__cashBackFinancial h2 {
     font-family: 'Lato', sans-serif;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #439A86;
 }
 
@@ -123,6 +123,7 @@
 }
 
 .icon-eye {
+    cursor: pointer;
     display: flex;
     align-items: center;
 }
