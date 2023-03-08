@@ -28,13 +28,13 @@ export default function ProductView({ modalProduct, selectedProduct, productsApi
 
   const addProductToCart = (product) => {
     setCartsVisibility(true);
-    /* verifica se já foi adicionado o mesmo produto
-     let novoArray = JSON.parse(localStorage.getItem("shopping-cart")); */
-    /* novoArray.forEach(function (item, index) {
-         if(item.id === product.id){
-          console.log(productsInCart)           
-         }
-     });*/
+    // verifica se já foi adicionado o mesmo produto
+    let novoArray = JSON.parse(localStorage.getItem("shopping-cart"));
+    novoArray.forEach(function (item, index) {
+      if (item.id === product.id) {
+        console.log(productsInCart)
+      }
+    });
 
     setProduct(product);
     const newProduct = {
@@ -42,7 +42,6 @@ export default function ProductView({ modalProduct, selectedProduct, productsApi
       count: 1,
     }
     setProductsInCart([
-
       newProduct,
     ]);
   }
