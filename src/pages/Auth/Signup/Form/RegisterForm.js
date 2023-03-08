@@ -424,7 +424,7 @@ const RegisterForm = ({ step, setStep, routeProps }) => {
             city: values.city,
             state: values.state,
             cep: values.cep,
-            sponsor_id: id
+            sponsor_id: !id ? 1 : id
         };
 
         try {
